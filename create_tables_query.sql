@@ -4,7 +4,7 @@
 CREATE TABLE users (
 user_id INT(32) NOT NULL AUTO_INCREMENT,
 user_name VARCHAR(50) NOT NULL,
-user_pass VARCHAR(255) NOT NULL,
+user_pass VARCHAR(255) NOT NULL, -- NOTE: Never store raw password. Must be one way crypto hashed first in php. Ming. 
 user_email VARCHAR(255) NOT NULL,
 user_date DATETIME NOT NULL,
 user_level INT(16) NOT NULL,
