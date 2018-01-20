@@ -1,4 +1,5 @@
 -- Ming Tao Yu 2018-01-20, adapted from open source license @ code.tutsplus.com Evert Padje
+-- Adds table for storing users info, questions, replies and question categories.
 
 CREATE TABLE users (
 user_id INT(32) NOT NULL AUTO_INCREMENT,
