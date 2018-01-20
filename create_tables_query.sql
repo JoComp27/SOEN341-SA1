@@ -1,6 +1,7 @@
 -- Ming Tao Yu 2018-01-20, adapted from open source license @ code.tutsplus.com Evert Padje
 -- Adds table for storing users info, questions, replies and question categories.
 
+DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 user_id INT(32) NOT NULL AUTO_INCREMENT,
 user_name VARCHAR(50) NOT NULL,
@@ -17,6 +18,8 @@ UNIQUE INDEX user_name_unique (user_name),
 PRIMARY KEY (user_id)
 ) ENGINE=INNODB;
 
+
+DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
 cat_id INT(16) NOT NULL AUTO_INCREMENT,
 cat_name VARCHAR(255) NOT NULL,
@@ -25,6 +28,7 @@ UNIQUE INDEX cat_name_unique (cat_name),
 PRIMARY KEY (cat_id)
 ) ENGINE=INNODB;
 
+DROP TABLE IF EXISTS questions;
 CREATE TABLE questions (
 question_id INT(16) NOT NULL AUTO_INCREMENT,
 question_title VARCHAR(255) NOT NULL,
@@ -35,7 +39,7 @@ question_upvote INT(16) NOT NULL,
 PRIMARY KEY (question_id)
 ) ENGINE=INNODB;
 
-
+DROP TABLE IF EXISTS answers;
 CREATE TABLE answers(
 answers_id INT(16) NOT NULL AUTO_INCREMENT,
 answers_content VARCHAR(5000),
