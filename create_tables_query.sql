@@ -1,6 +1,6 @@
 -=============================================================================================
 -- Query Description:
--- Adds table for storing users info, questions, replies and question categories.
+-- Add tables for storing users info, questions, replies and question categories.
 -- Howtos: Run query once on either XAMPP to begin local dev or AWS mysql for global to create tables. 
 -- Ming Tao Yu 2018-01-20, adapted from open source license @ code.tutsplus.com Evert Padje
 -=============================================================================================
