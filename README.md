@@ -7,7 +7,7 @@ Website Project for SOEN 341 : Team SA1
 
 ### Dev environment:
 - Git/Github
-- Local: XAMPP (see issues tab -> TODO 4 for links on how to install). 
+- Local: XAMPP (see issues tab -> TODO 4 for links on how to install). XAMPP will enable you to compile PHP. It also provide you with a local mySQL server. 
 - Remote cloud: AWS Elastic Beanstalk Application PHP server + MySQL database*. 
 - Text editor: Sublime Text 3, notepad++ or anything you feel comfortable writing codes in. 
 
