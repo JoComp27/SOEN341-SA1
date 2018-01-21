@@ -4,7 +4,11 @@ Website Project for SOEN 341 : Team SA1
 ### Team Members:
 - Refat Kamal
 - Ming Tao Yu
+<<<<<<< HEAD
 - Jonathan Cournoyer
+=======
+-Eric Kokmanian
+>>>>>>> master
 
 ### Dev environment:
 - Git/Github
@@ -30,7 +34,7 @@ HTML, CSS, PHP, SQL (alternative to PHP to be discussed, i.e. javascript + node.
 Please see issue tab for comprehensive list
 
 SUMMARY - All team members needs to:
-- Clone the master repo, create a new branch, add their name to the "Team Members" list in this Readme and make pull request to merge their changes to master repo. They then need to review someone else's pull request and approve the merge. 
+- Clone the master repo, create a new branch, attempt to add your name to the "Team Members" list in the readme of the master branch from the new branch you created through a git "Pull Request" (please feel free to message on slack if you need help for this step). You should then review someone else's pull request and approve it. 
 - Setup dev environment with the softwares mentionned above
 - Look into the "issue" section of the repo 
 
