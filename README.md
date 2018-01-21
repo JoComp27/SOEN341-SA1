@@ -8,10 +8,10 @@ Website Project for SOEN 341 : Team SA1
 ### Dev environment:
 - Git/Github
 - Local: XAMPP (see issues tab -> TODO 4 for links on how to install). 
-- Global: AWS Elastic Beanstalk Application PHP server + MySQL database. 
+- Remote cloud: AWS Elastic Beanstalk Application PHP server + MySQL database*. 
 - Text editor: Sublime Text 3, notepad++ or anything you feel comfortable writing codes in. 
 
-Note that AWS is optional. You can start developing with just XAMPP + text editor + Git & not everyone needs to have an AWS account. I however recommend looking into AWS if cloud computing interests you. 
+*Note that AWS is optional. You can start developing with just XAMPP + text editor + Git & not everyone needs to have an AWS account. I however recommend looking into AWS if cloud computing interests you. 
 
 ### Main languages: 
 HTML, CSS, PHP, SQL (alternative to PHP to be discussed, i.e. javascript + node.js) 
