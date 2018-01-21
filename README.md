@@ -4,7 +4,8 @@ Website Project for SOEN 341 : Team SA1
 ### Team Members:
 - Refat Kamal
 - Ming Tao Yu
--Eric Kokmanian
+- Jonathan Cournoyer
+- Eric Kokmanian
 
 ### Dev environment:
 - Git/Github
@@ -19,6 +20,8 @@ Website Project for SOEN 341 : Team SA1
   - Sign up for a 12 month free account and read Issues -> TODO: Setup AWS environment for some useful links. 
 
 - Text editor: Sublime Text 3, notepad++ or anything you feel comfortable writing codes in. It doesn't matter what text editors you use as the "compiler" will always be XAMPP
+
+- Link for Sublime Text : https://www.sublimetext.com/
 
 *Note that AWS is optional. You can start developing with just XAMPP + text editor + Git & not everyone needs to have an AWS account. I however recommend looking into AWS if cloud computing interests you. 
 
@@ -38,3 +41,16 @@ SUMMARY - All team members needs to:
 - Read this tutorial: https://code.tutsplus.com/tutorials/how-to-create-a-phpmysql-powered-forum-from-scratch--net-10188
 - Create the basic backbone of the Stackoverflow-like website before the 10th of December (Deadline is the 14th. However, this coincide with midterm week and should be avoided) 
 
+### Formatting for branch and issue names
+- For this, we will try to set up a neat formatting strategy to help us organise the project in a smart way.
+
+Formatting for name: 
+SA1 #[issue number] : [Title of Issue]
+
+Formatting for description : 
+Author: [Author of issue]
+
+Description : [Description of what shall be fixed]
+
+- The issue number will be the main identifiers of issues and branches we will be creating.
+- This number will help us identify what issue we will be talking about.
