@@ -28,7 +28,7 @@ HTML, CSS, PHP, SQL (alternative to PHP to be discussed, i.e. javascript + node.
 
 Please see issue tab for comprehensive list
 
-All team members needs to:
+SUMMARY - All team members needs to:
 - Clone the master repo, create a new branch, add their name to the "Team Members" list in this Readme and make pull request to merge their changes to master repo. They then need to review someone else's pull request and approve the merge. 
 - Setup dev environment with the softwares mentionned above
 - Look into the "issue" section of the repo 
