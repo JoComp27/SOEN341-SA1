@@ -10,7 +10,7 @@ Website Project for SOEN 341 : Team SA1
 - Local: XAMPP:
 What is it: XAMPP is a free open source plateform that will turn your pc into a temporary local server capable of compiling PHP. It also provide you with a local mySQL database creation functionalities. 
 
-Where to Download: https://www.apachefriends.org/download.html
+-- Where to Download: https://www.apachefriends.org/download.html
 -- How to run php with XAMPP https://www.techwalla.com/articles/how-to-run-a-php-file-in-xampp 
 -- How to create a mySQL database with XAMPP: https://www.cloudways.com/blog/connect-mysql-with-php/ (copy past the .sql file in ourSOEN341 repo made specifically for the backend side of our website and execute it to create in XAMPP the tables)
 
