@@ -3,6 +3,7 @@ Website Project for SOEN 341 : Team SA1
 
 ### Team Members:
 - Refat Kamal
+- Ming Tao Yu
 
 ### Dev environment:
 - Local: XAMPP (see issues tab -> TODO 4 for links on how to install)
