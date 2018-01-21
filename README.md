@@ -4,6 +4,7 @@ Website Project for SOEN 341 : Team SA1
 ### Team Members:
 - Refat Kamal
 - Ming Tao Yu
+- Jonathan Cournoyer
 
 ### Dev environment:
 - Git/Github
@@ -37,3 +38,16 @@ SUMMARY - All team members needs to:
 - Read this tutorial: https://code.tutsplus.com/tutorials/how-to-create-a-phpmysql-powered-forum-from-scratch--net-10188
 - Create the basic backbone of the Stackoverflow-like website before the 10th of December (Deadline is the 14th. However, this coincide with midterm week and should be avoided) 
 
+### Formatting for branch and issue names
+- For this, we will try to set up a neat formatting strategy to help us organise the project in a smart way.
+
+Formatting for name: 
+SA1 #[issue number] : [Title of Issue]
+
+Formatting for description : 
+Author: [Author of issue]
+
+Description : [Description of what shall be fixed]
+
+The issue number will be the main identifiers of issues and branches we will be creating.
+This number will help us identify what issue we will be talking about.
