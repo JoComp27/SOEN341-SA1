@@ -4,11 +4,8 @@ Website Project for SOEN 341 : Team SA1
 ### Team Members:
 - Refat Kamal
 - Ming Tao Yu
-<<<<<<< HEAD
 - Jonathan Cournoyer
-=======
--Eric Kokmanian
->>>>>>> master
+- Eric Kokmanian
 
 ### Dev environment:
 - Git/Github
@@ -23,6 +20,8 @@ Website Project for SOEN 341 : Team SA1
   - Sign up for a 12 month free account and read Issues -> TODO: Setup AWS environment for some useful links. 
 
 - Text editor: Sublime Text 3, notepad++ or anything you feel comfortable writing codes in. It doesn't matter what text editors you use as the "compiler" will always be XAMPP
+
+- Link for Sublime Text : https://www.sublimetext.com/
 
 *Note that AWS is optional. You can start developing with just XAMPP + text editor + Git & not everyone needs to have an AWS account. I however recommend looking into AWS if cloud computing interests you. 
 
@@ -54,4 +53,4 @@ Author: [Author of issue]
 Description : [Description of what shall be fixed]
 
 - The issue number will be the main identifiers of issues and branches we will be creating.
-This number will help us identify what issue we will be talking about.
+- This number will help us identify what issue we will be talking about.
