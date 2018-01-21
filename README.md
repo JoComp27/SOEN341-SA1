@@ -7,9 +7,17 @@ Website Project for SOEN 341 : Team SA1
 
 ### Dev environment:
 - Git/Github
-- Local: XAMPP (see issues tab -> TODO 4 for links on how to install). XAMPP will enable you to compile PHP. It also provide you with a local mySQL server. 
-- Remote cloud: AWS Elastic Beanstalk Application PHP server + MySQL database*. 
-- Text editor: Sublime Text 3, notepad++ or anything you feel comfortable writing codes in. 
+- Local: XAMPP:
+What is it: XAMPP is a free open source plateform that will turn your pc into a temporary local server capable of compiling PHP. It also provide you with a local mySQL database creation functionalities. 
+
+Where to Download: https://www.apachefriends.org/download.html
+How to run php with XAMPP https://www.techwalla.com/articles/how-to-run-a-php-file-in-xampp 
+How to create a mySQL database with XAMPP: https://www.cloudways.com/blog/connect-mysql-with-php/ (copy past the .sql file in our SOEN341 repo made specifically for the backend side of our website and execute it to create in XAMPP the tables)
+
+- Remote cloud (Optional): AWS Elastic Beanstalk Application PHP server + MySQL database*. 
+Sign up for a 12 month free account and read Issues -> TODO: Setup AWS environment for some useful links. 
+
+- Text editor: Sublime Text 3, notepad++ or anything you feel comfortable writing codes in. It doesn't matter what text editors you use as the "compiler" will always be XAMPP
 
 *Note that AWS is optional. You can start developing with just XAMPP + text editor + Git & not everyone needs to have an AWS account. I however recommend looking into AWS if cloud computing interests you. 
 
