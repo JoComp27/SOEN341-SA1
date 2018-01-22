@@ -43,6 +43,7 @@ SUMMARY - All team members needs to:
 - Clone the master repo, create a new branch, attempt to add your name to the "Team Members" list in the readme of the master branch from the new branch you created through a git "Pull Request" (please feel free to message on slack if you need help for this step). You should then review someone else's pull request and approve it. 
 - Setup dev environment with the softwares mentionned above
 - Look into the "issue" section of the repo 
+- Look into Sprint 2 objective since half of sprint 2 is during midterm week. We'll start working on sprint 2 right away. 
 
 ### Sprint 2 objectives:
 - Read this tutorial: https://code.tutsplus.com/tutorials/how-to-create-a-phpmysql-powered-forum-from-scratch--net-10188
