@@ -7,6 +7,7 @@ Website Project for SOEN 341 : Team SA1
 - Jonathan Cournoyer
 - Eric Kokmanian
 - Kresten Ordekian
+- Jessica Allaire
 
 ### Dev environment:
 - Git/Github
