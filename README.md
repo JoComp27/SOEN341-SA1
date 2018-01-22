@@ -12,16 +12,16 @@ Website Project for SOEN 341 : Team SA1
 - Local: 
 
 1) PHPStorm
-  - Refat made an excellent suggestion for PHPStorm. Please download it at: www.jetbrains.com/shop/eform/students
-  - Follow the conversation in Slack, testing pending.
+    - Refat made an excellent suggestion for PHPStorm. Please download it at: www.jetbrains.com/shop/eform/students
+    - Follow the conversation in Slack, testing pending.
 
 2) XAMPP
-  - If PHPStorm does not work for you (Try the sql feature of PHPStorm to see if you can create tables using our .sql query of the repo), here's an alternative solution. This is less user-friendly than Refat's idea, but will get the job done in the worst case scenario. 
-  - What is XAMPP: XAMPP is a free open source plateform that will turn your pc into a temporary local server capable of compiling PHP code (PHP can only be run on a server). It also provides you with a local mySQL database backend. 
+    - If PHPStorm does not work for you (Try the sql feature of PHPStorm to see if you can create tables using our .sql query of the repo), here's an alternative solution. This is less user-friendly than Refat's idea, but will get the job done in the worst case scenario. 
+    - What is XAMPP: XAMPP is a free open source plateform that will turn your pc into a temporary local server capable of compiling PHP code (PHP can only be run on a server). It also provides you with a local mySQL database backend. 
 
-  - Where to Download: https://www.apachefriends.org/download.html
-  - How to run php with XAMPP https://www.techwalla.com/articles/how-to-run-a-php-file-in-xampp 
-  - How to create a mySQL database with XAMPP: https://www.cloudways.com/blog/connect-mysql-with-php/ (Note that the backend code for our website has already been created. Simply copy past the queries found in the .sql file of our SOEN341 repo and execute it on XAMPP to have local testing sql tables.)
+    - Where to Download: https://www.apachefriends.org/download.html
+    - How to run php with XAMPP https://www.techwalla.com/articles/how-to-run-a-php-file-in-xampp 
+    - How to create a mySQL database with XAMPP: https://www.cloudways.com/blog/connect-mysql-with-php/ (Note that the backend code for our website has already been created. Simply copy past the queries found in the .sql file of our SOEN341 repo and execute it on XAMPP to have local testing sql tables.)
 
 - Remote cloud (Optional): AWS Elastic Beanstalk Application PHP server + MySQL database*. 
   - Sign up for a 12 month free account and read Issues -> TODO: Setup AWS environment for some useful links. 
