@@ -6,6 +6,7 @@ Website Project for SOEN 341 : Team SA1
 - Ming Tao Yu
 - Jonathan Cournoyer
 - Eric Kokmanian
+- Kresten Ordekian
 
 ### Dev environment:
 - Git/Github
@@ -22,6 +23,8 @@ Website Project for SOEN 341 : Team SA1
     - Where to Download: https://www.apachefriends.org/download.html
     - How to run php with XAMPP https://www.techwalla.com/articles/how-to-run-a-php-file-in-xampp 
     - How to create a mySQL database with XAMPP: https://www.cloudways.com/blog/connect-mysql-with-php/ (Note that the backend code for our website has already been created. Simply copy past the queries found in the .sql file of our SOEN341 repo and execute it on XAMPP to have local testing sql tables.)
+    - Why is it worse than PHPStorm: Because it doesn't come with a developer environment to write code in PHP. It just compiles it. You'll need a separate software listed below in order to write codes. 
+ 
 
 - Remote cloud (Optional): AWS Elastic Beanstalk Application PHP server + MySQL database*. 
   - Sign up for a 12 month free account and read Issues -> TODO: Setup AWS environment for some useful links. 
