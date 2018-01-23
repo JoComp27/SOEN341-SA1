@@ -6,6 +6,7 @@ Website Project for SOEN 341 : Team SA1
 - Ming Tao Yu
 - Jonathan Cournoyer
 - Eric Kokmanian
+- Aida Bumbu
 
 ### Dev environment:
 - Git/Github
