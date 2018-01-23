@@ -27,3 +27,9 @@ Adapted from open source code: https://code.tutsplus.com/tutorials | Evert Padje
         <div id="userbar"> Log out.</div>
     </div>
         <div id="content">
+            
+    </div><!-- content -->
+    </div><!-- wrapper -->
+    <div id="footer">Created for Nettuts+</div>
+</body>
+</html>
