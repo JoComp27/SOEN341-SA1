@@ -1,5 +1,5 @@
 </div><!-- content -->
 </div><!-- wrapper -->
-<div id="footer">Created for Nettuts+</div>
+<div id="footer">+</div>
 </body>
 </html>
