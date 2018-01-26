@@ -49,7 +49,7 @@ SUMMARY - All team members needs to:
 - Setup dev environment with the softwares mentionned above
 - Look into the "issue" section of the repo 
 - Look into Sprint 2 objective since half of sprint 2 is during midterm week. We'll start working on sprint 2 right away. 
-- Complete the task assigned in the "issue" section of the repo. The task are design to help you familiarize with the dev environment and design and start working on the basic architecture of our website
+- Complete the task assigned in the "issue" section of the repo. The task are design to help you familiarize with the dev environment and to start working on the basic architecture of our website.
 
 ### Sprint 2 objectives:
 - Read this tutorial: https://code.tutsplus.com/tutorials/how-to-create-a-phpmysql-powered-forum-from-scratch--net-10188
