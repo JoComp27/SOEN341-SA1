@@ -40,13 +40,13 @@ Website Project for SOEN 341 : Team SA1
 ### Main languages: 
 HTML, CSS, PHP, SQL (alternative to PHP to be discussed, i.e. javascript + node.js) 
 
-PHP Tutorial CodeAcademy : https://www.codecademy.com/en/tracks/php
+- PHP Tutorial CodeAcademy : https://www.codecademy.com/en/tracks/php
 
-SQL Tutorial CodeAcademy : https://www.codecademy.com/catalog/language/sql
+- SQL Tutorial CodeAcademy : https://www.codecademy.com/catalog/language/sql
 
-HTML & CSS - CodeAcademy : https://www.codecademy.com/catalog/language/html-css
+- HTML & CSS - CodeAcademy : https://www.codecademy.com/catalog/language/html-css
 
-Javascript - CodeAcademy : https://www.codecademy.com/catalog/language/javascript
+- Javascript - CodeAcademy : https://www.codecademy.com/catalog/language/javascript
 
 ### Sprint 1 objectives:
 
