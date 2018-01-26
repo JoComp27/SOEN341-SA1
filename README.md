@@ -49,21 +49,22 @@ SUMMARY - All team members needs to:
 - Setup dev environment with the softwares mentionned above
 - Look into the "issue" section of the repo 
 - Look into Sprint 2 objective since half of sprint 2 is during midterm week. We'll start working on sprint 2 right away. 
+- Complete the task assigned in the "issue" section of the repo. The task are design to help you familiarize with the dev environment and design and start working on the basic architecture of our website
 
 ### Sprint 2 objectives:
 - Read this tutorial: https://code.tutsplus.com/tutorials/how-to-create-a-phpmysql-powered-forum-from-scratch--net-10188
-- Create the basic backbone of the Stackoverflow-like website before the 10th of December (Deadline is the 14th. However, this coincide with midterm week and should be avoided) 
+- Complete the basic backbone of the Stackoverflow-like website before the 10th of December (Deadline is the 14th. However, this coincide with midterm week and should be avoided) 
 
 ### Formatting for branch and issue names
 - For this, we will try to set up a neat formatting strategy to help us organise the project in a smart way.
 
-Formatting for name: 
-SA1 #[issue number] : [Title of Issue]
+    - Formatting for name: 
+    - SA1 #[issue number] : [Title of Issue]
 
-Formatting for description : 
-Author: [Author of issue]
+    - Formatting for description : 
+    - Author: [Author of issue]
 
-Description : [Description of what shall be fixed]
+    - Description : [Description of what shall be fixed]
 
 - The issue number will be the main identifiers of issues and branches we will be creating.
 - This number will help us identify what issue we will be talking about.
