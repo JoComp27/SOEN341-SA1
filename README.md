@@ -38,7 +38,8 @@ Website Project for SOEN 341 : Team SA1
 *Note that AWS is optional. You can start developing with just XAMPP + text editor + Git & not everyone needs to have an AWS account. I however recommend looking into AWS if cloud computing interests you. 
 
 ### Main languages: 
-HTML, CSS, PHP, SQL (alternative to PHP to be discussed, i.e. javascript + node.js) 
+PHP, SQL (alternative to PHP to be discussed, i.e. javascript + node.js) 
+Front end: HTML, CSS, Javascript, bootstrap, 
 
 - PHP Tutorial CodeAcademy : https://www.codecademy.com/en/tracks/php
 
