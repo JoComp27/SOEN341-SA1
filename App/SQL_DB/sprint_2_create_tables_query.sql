@@ -5,6 +5,7 @@
 -- Ming Tao Yu 2018-01-20, adapted from open source license @ code.tutsplus.com Evert Padje
 -=============================================================================================
 
+-- Table users will not be used for spring 2, as no sign in is currently required. (TODO for sprint 3)
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 user_id INT(32) NOT NULL AUTO_INCREMENT,
@@ -58,5 +59,5 @@ PRIMARY KEY (answers_id)
 )ENGINE=INNODB;
 
 
--- ALTER TABLE topics ADD FOREIGN KEY(question_by) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE topics ADD FOREIGN KEY(question_by) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 
