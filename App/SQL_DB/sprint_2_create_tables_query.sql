@@ -59,5 +59,5 @@ PRIMARY KEY (answers_id)
 )ENGINE=INNODB;
 
 
-ALTER TABLE topics ADD FOREIGN KEY(question_by) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE answers ADD FOREIGN KEY(reply_questions) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 
