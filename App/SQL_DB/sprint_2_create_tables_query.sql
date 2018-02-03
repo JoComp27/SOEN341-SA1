@@ -64,5 +64,4 @@ ALTER TABLE answers ADD FOREIGN KEY(reply_questions) REFERENCES questions(questi
 -- ALTER TABLE questions ADD FOREIGN KEY(question_by) REFERENCES user(user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- ALTER TABLE questions ADD FOREIGN KEY(question_cat) REFERENCES categories(cat_id) ON DELETE RESTRICT ON UPDATE CASCADE;
--- sdjksdkjfhkjsdhfjkhsdfkjsdf
 
