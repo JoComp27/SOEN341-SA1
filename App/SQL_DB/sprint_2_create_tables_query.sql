@@ -54,7 +54,7 @@ answers_date DATETIME,
 reply_questions INT(16) NOT NULL, -- which question is this answer addressed to. foreign key to question_id in table questions
 reply_by INT(32), -- foreign key to users_id in table user
 answers_upvotes INT(8),
-answer_state INT(1), --State 2= accepted, state 1 = pending, state 0= refused. Whether the answer has been refused or accepted
+answer_state INT(1), -- State 2= accepted, state 1 = pending, state 0= refused. Whether the answer has been refused or accepted
 PRIMARY KEY (answers_id)
 )ENGINE=INNODB;
 
