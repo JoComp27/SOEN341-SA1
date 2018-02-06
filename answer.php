@@ -52,6 +52,17 @@ while($get_answers=mysqli_fetch_assoc($sql)){
 
   ?> 
   <li class="list-group-item"><b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content']; ?></li>
+  	<a class="social-like" >
+                    <span class="like"><i class="glyphicon glyphicon-thumbs-up"></i></span>
+                    <span class="count" >5</span>
+                </a>
+                &nbsp;
+                <a class="social-dislike" >
+                    <span class="dislike" >4</span>
+                    <span class="like"><i class="glyphicon glyphicon-thumbs-down"></i></span>
+                </a>
+  </li>
+
   
   <?php $a++; } 
 
@@ -65,7 +76,7 @@ while($get_answers=mysqli_fetch_assoc($sql)){
 
 <form method="post" action="answer.php?id=<?php echo $qus_id; ?>">
   <div class="form-group">
-  <label for="comment">Enter new Answer:</label>
+  <label for="comment">Comment:</label>
   <textarea name="answer" required="" class="form-control" rows="5" id="comment"></textarea>
 </div> 
 <button type="Submit" name="submit" class="btn btn-primary">Submit</button> 
