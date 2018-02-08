@@ -11,6 +11,14 @@ Website Project for SOEN 341 : Team SA1
 - Jessica Allaire
 - Sumit Bharti
 
+### How to run website locally:
+- Install XAMPP (see dev environment for more details)
+- In XAMPP, open up one Apache instance + one SQL instance
+- Use default XAMPP mysql root password. i.e. no password. 
+- Follow instruction in APP/PHP_HTML/sql_connector.php to set up the backend server. Use queries in SQL_DB/sprint_2_createsql to create tables in XAMPP mysql if they have not been already created.
+- Place all files from PHP-HTML in your local XAMPP/htdoc/okapi directory (create an okapi directory if it does not exist, okapi is the name of our website)
+- Go to any browser: localhost/okapi to access the home page of the website
+
 ### Dev environment:
 - Git/Github
 - Local: 
@@ -20,7 +28,7 @@ Website Project for SOEN 341 : Team SA1
     - Follow the conversation in Slack, testing pending.
 
 2) XAMPP
-    - If PHPStorm does not work for you (Try the sql feature of PHPStorm to see if you can create tables using our .sql query of the repo), here's an alternative solution. This is less user-friendly than Refat's idea, but will get the job done in the worst case scenario. 
+    - Used for mySQL. 
     - What is XAMPP: XAMPP is a free open source plateform that will turn your pc into a temporary local server capable of compiling PHP code (PHP can only be run on a server). It also provides you with a local mySQL database backend. 
 
     - Where to Download: https://www.apachefriends.org/download.html
@@ -37,6 +45,7 @@ Website Project for SOEN 341 : Team SA1
 - Link for Sublime Text : https://www.sublimetext.com/
 
 *Note that AWS is optional. You can start developing with just XAMPP + text editor + Git & not everyone needs to have an AWS account. I however recommend looking into AWS if cloud computing interests you. 
+
 
 ### Main languages: 
 PHP, SQL (alternative to PHP to be discussed, i.e. javascript + node.js) 
