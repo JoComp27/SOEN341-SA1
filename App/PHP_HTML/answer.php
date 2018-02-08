@@ -99,7 +99,7 @@ if(isset($_POST['submit'])){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h2>Answer Listing</h2>
+<h2><?php echo $get_questions['question_title']; ?></h2>
 <ul class="list-group">
   <li class="list-group-item"><b> <?php echo $data['question_description']; ?></b></li>
 </ul>  
