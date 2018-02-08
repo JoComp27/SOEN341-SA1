@@ -11,13 +11,13 @@ Website Project for SOEN 341 : Team SA1
 - Jessica Allaire
 - Sumit Bharti
 
-### How to run website locally:
+### How to run our website locally:
 - Install XAMPP (see dev environment for more details)
 - In XAMPP, open up one Apache instance + one SQL instance
 - Use default XAMPP mysql root password. i.e. no password. 
-- Follow instruction in APP/PHP_HTML/sql_connector.php to set up the backend server. Use queries in SQL_DB/sprint_2_createsql to create tables in XAMPP mysql if they have not been already created.
-- Place all files from PHP-HTML in your local XAMPP/htdoc/okapi directory (create an okapi directory if it does not exist, okapi is the name of our website)
-- Go to any browser: localhost/okapi to access the home page of the website
+- Follow instruction in github master repo/APP/PHP_HTML/sql_connector.php to set up the backend server. Use queries in github master repo/SQL_DB/sprint_2_createsql to create tables in XAMPP mysql if they have not been already created.
+- Place all files from github master repo/PHP-HTML to your local XAMPP/htdoc/okapi directory (create an okapi directory if it does not exist, okapi is the name of our website)
+- Go to any browser: type localhost/okapi to access the home page of the website
 
 ### Dev environment:
 - Git/Github
