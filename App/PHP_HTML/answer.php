@@ -64,6 +64,9 @@ $qus_id = $_GET['id'];
 $select_query = "select * from questions where question_id = '$qus_id'";
 $question_data = mysqli_query($db,$select_query) or die(mysqli_error($db));
 $data=mysqli_fetch_assoc($question_data); 
+
+$query = "Update questions set question_view_count = question_view_count + 1 where question_id = '$qus_id'";
+mysqli_query($db, $query) or die(mysqli_error($db));
 ?>
 
 <?php
