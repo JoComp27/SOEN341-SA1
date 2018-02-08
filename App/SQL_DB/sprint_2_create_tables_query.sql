@@ -41,7 +41,7 @@ question_title VARCHAR(255),
 question_date DATETIME,
 question_cat INT(16), -- foreign key to cat_id in table categories
 question_by INT(32),-- foreign key to users_id
-question_upvote INT(16),
+question_upvote INT(16) DEFAULT 0,
 question_keyword_tag VARCHAR(500), -- we can add tags to the question later
 question_description VARCHAR(1000),
 question_view_count INT(16) DEFAULT 0,
