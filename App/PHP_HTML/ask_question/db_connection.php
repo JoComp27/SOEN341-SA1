@@ -7,14 +7,11 @@
  * 4- Use the code below (include) to connect to the newly created database using PHP. 
  * You may now perform server-side SQL queries on your local db website_db using additional PHP codes 
  */
+$user   = 'root';
+$password   = '';
+$database   = 'website_db';
 
-function OpenCon() {
-    $user   = 'root';
-    $password   = '';
-    $database   = 'website_db';
-    $db = new mysqli('localhost', $user, $password, $database) or die("Connection failed");
-    return $db;
-}
+$db = new mysqli('localhost', $user, $password, $database) or die("Connection failed");
 
 function CloseCon($db) {
     $db -> close();
