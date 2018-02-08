@@ -5,14 +5,11 @@
 <body>
 <?php
     include "db_connection.php";
-    $conn = OpenCon();
     $title = $_POST["title"];
     $details = $_POST["details"];
-    $sql = "INSERT INTO questions (question_title) VALUES (\"$title\")";
-    $sql2 = "INSERT INTO questions (question_description) VALUES (\"$details\")";
-    $conn->query($sql);
-    $conn->query($sql2);
-    CloseCon($conn);
+    $sql = "INSERT INTO questions (question_title, question_description, question_date) VALUES (\"$title\", \"$details\", NOW())";
+    $db->query($sql);
+    CloseCon($db);
 ?>
 </body>
 </html>
