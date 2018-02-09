@@ -1,12 +1,25 @@
-<div class="answer-state">
+<script>
+    function checkState(answerNumber) {
+        console.log("answer-state-" + answerNumber);
+        var answerStateView = document.getElementById("answer-state-" + answerNumber);
+        console.log(answerStateView);
+        var state = parseInt(document.querySelector('input[name="state"]:checked').value);
+
+        answerStateView.innerHTML = "<span>Answer has been " + (state === 2 ? "accepted" : "refused") + ".</span>";
+    }
+</script>
+
+<div id="answer-state-<?php echo $a ?>" class="answer-state">
     <?php if ($get_answers['answer_state'] == 1) { ?>
-        <form action="">
-            <input type="radio" name="state" value="2">Accept Answer &nbsp;
-            <input type="radio" name="state" value="0">Refuse Answer
+        <form class="answer-state-form" name="answerState" action="">
+            <label><input type="radio" name="state" value="2" onchange="checkState(<?php echo $a ?>)">
+                Accept Answer</label>&nbsp;
+            <label><input type="radio" name="state" value="0" onchange="checkState(<?php echo $a ?>)">
+                Refuse Answer</label>
         </form>
     <?php } elseif ($get_answers['answer_state'] == 2) { ?>
-        <span>Answer has been accepted</span>
+        <span>Answer has been accepted.</span>
     <?php } else { ?>
-        <span>Answer has been refused</span>
+        <span>Answer has been refused.</span>
     <?php } ?>
 </div>

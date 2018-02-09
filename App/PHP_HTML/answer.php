@@ -117,18 +117,19 @@ if (isset($_POST['submit'])) {
 
 
         ?>
-        <li class="list-group-item"><b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content']; ?>
+        <li id="<?php echo "answer-$a" ?>" class="list-group-item">
+            <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content']; ?>
 
-        <?php include('answer_state.php'); ?>
+            <?php include('answer_state.php'); ?>
 
-        <a class="social-like">
-            <span class="like"><i class="glyphicon glyphicon-thumbs-up"></i></span>
-            <span class="count">5</span>
-        </a>&nbsp;
-        <a class="social-dislike">
-            <span class="dislike">4</span>
-            <span class="like"><i class="glyphicon glyphicon-thumbs-down"></i></span>
-        </a>
+            <a class="social-like">
+                <span class="like"><i class="glyphicon glyphicon-thumbs-up"></i></span>
+                <span class="count">5</span>
+            </a>&nbsp;
+            <a class="social-dislike">
+                <span class="dislike">4</span>
+                <span class="like"><i class="glyphicon glyphicon-thumbs-down"></i></span>
+            </a>
         </li><br/>
 
 
