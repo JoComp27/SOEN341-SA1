@@ -1,0 +1,11 @@
+{
+  "autoload": {
+      "prs-0":{
+          "Test": "lib/"
+      }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "7.0.*"
+  }
+
+}
