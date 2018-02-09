@@ -117,21 +117,9 @@ if (isset($_POST['submit'])) {
 
 
         ?>
-        <li class="list-group-item"><b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content']; ?></li>
+        <li class="list-group-item"><b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content']; ?>
 
-        <div class="answer-state">
-            <span>Answer state is: <?php echo $get_answers['answer_state']; ?></span>&nbsp;
-            <?php if ($get_answers['answer_state'] == 1) { ?>
-                <form action="">
-                    <input type="radio" name="state" value="2">Accept Answer &nbsp;
-                    <input type="radio" name="state" value="0">Refuse Answer
-                </form>
-            <?php } elseif ($get_answers['answer_state'] == 2) { ?>
-                <span>Answer has been accepted</span>
-            <?php } else { ?>
-                <span>Answer has been refused</span>
-            <?php } ?>
-        </div>
+        <?php include('answer_state.php'); ?>
 
         <a class="social-like">
             <span class="like"><i class="glyphicon glyphicon-thumbs-up"></i></span>
@@ -141,7 +129,7 @@ if (isset($_POST['submit'])) {
             <span class="dislike">4</span>
             <span class="like"><i class="glyphicon glyphicon-thumbs-down"></i></span>
         </a>
-        </li>
+        </li><br/>
 
 
         <?php $a++;
