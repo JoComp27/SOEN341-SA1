@@ -113,10 +113,8 @@ if (isset($_POST['submit'])) {
     $select_query = "select * from answers where reply_questions ='$qus_id' order by answers_id DESC";
     $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
     $a = 1;
-    while ($get_answers = mysqli_fetch_assoc($sql)) {
 
-
-        ?>
+    while ($get_answers = mysqli_fetch_assoc($sql)) {?>
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
             <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content']; ?>
 
@@ -132,14 +130,9 @@ if (isset($_POST['submit'])) {
             </a>
         </li><br/>
 
-
         <?php $a++;
-    }
-
-
-    ?>
+    } ?>
 </ul>
-
 
 <form method="post" action="answer.php?id=<?php echo $qus_id; ?>">
     <div class="form-group">
