@@ -10,6 +10,7 @@
     $sql = "INSERT INTO questions (question_title, question_description, question_date) VALUES (\"$title\", \"$details\", NOW())";
     $db->query($sql);
     CloseCon($db);
+    header("Location: home.php");
 ?>
 </body>
 </html>
