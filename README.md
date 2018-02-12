@@ -88,3 +88,4 @@ SUMMARY - All team members needs to:
 
 - The issue number will be the main identifiers of issues and branches we will be creating.
 - This number will help us identify what issue we will be talking about.
+
