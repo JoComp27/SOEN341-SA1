@@ -6,9 +6,7 @@ function check() {
             document.getElementById("question_field").classList.add("hidden");
     });
 }
-function check2() {
-    document.getElementById("copy").classList.remove("hidden");
-}
-window.addEventListener( "load", check, false);/**
+window.addEventListener( "load", check, false);
+/**
  * Created by Jessica on 2017-04-17.
  */
