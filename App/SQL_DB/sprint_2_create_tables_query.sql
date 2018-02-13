@@ -13,8 +13,8 @@ user_name VARCHAR(50) NOT NULL,
 user_pass VARCHAR(255) NOT NULL, -- NOTE: Never store raw password. Must be one way crypto hashed first.
 user_email VARCHAR(255) NOT NULL,
 user_date DATETIME NOT NULL,
-user_level INT(16) NOT NULL,
-user_karma_score INT(32) NOT NULL, -- Reddit-like point system
+user_level INT(16),
+user_karma_score INT(32) DEFAULT 0, -- Reddit-like point system
 user_type INT(3), 
 user_answers_count INT(16), -- keep track of the user's contribution
 user_questions_count INT (16),
