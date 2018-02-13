@@ -13,8 +13,8 @@ user_name VARCHAR(50) NOT NULL,
 user_pass VARCHAR(255) NOT NULL, -- NOTE: Never store raw password. Must be one way crypto hashed first.
 user_email VARCHAR(255) NOT NULL,
 user_date DATETIME NOT NULL,
-user_level INT(16) NOT NULL,
-user_karma_score INT(32) NOT NULL, -- Reddit-like point system
+user_level INT(16),
+user_karma_score INT(32) DEFAULT 0, -- Reddit-like point system
 user_type INT(3), 
 user_answers_count INT(16), -- keep track of the user's contribution
 user_questions_count INT (16),
@@ -22,6 +22,14 @@ user_profile_description_short VARCHAR(300),
 user_profile_description_long VARCHAR(2000),
 UNIQUE INDEX user_name_unique (user_name),
 PRIMARY KEY (user_id)
+) ENGINE=INNODB;
+
+DROP TABLE IF EXISTS loggedin;
+CREATE TABLE loggedin(
+user_id INT(32),
+logged_in DATETIME DEFAULT CURRENT_TIMESTAMP,
+logged_out DATETIME,
+active INT(1)
 ) ENGINE=INNODB;
 
 
