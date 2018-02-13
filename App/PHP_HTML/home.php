@@ -4,6 +4,23 @@
     <?php include "header.php" ?>
 </head>
 <body>
+    <div class="container">
+        <form method="POST" action="question_submission.php">
+            <button id="ask" type="button">Ask a Question!</button>
+            <br>
+            <p id="question_field" name="question_field" class="hidden">
+                <strong id="title_title" class="pretty">Title</strong>
+                <br>
+                <input type="text" name="title">
+                <br>
+                <strong id="details_title">Details</strong>
+                <br>
+                <textarea rows="4" cols="50" name="details"></textarea>
+                <br>
+                <input id="submit" type="submit">
+            </p>
+        </form>
+    </div>
 	<div class="container">
 	  <h2>Top Questions</h2>
 
