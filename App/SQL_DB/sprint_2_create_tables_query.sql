@@ -24,6 +24,14 @@ UNIQUE INDEX user_name_unique (user_name),
 PRIMARY KEY (user_id)
 ) ENGINE=INNODB;
 
+DROP TABLE IF EXISTS loggedin;
+CREATE TABLE loggedin(
+user_id INT(32),
+logged_in DATETIME DEFAULT CURRENT_TIMESTAMP,
+logged_out DATETIME,
+active INT(1)
+) ENGINE=INNODB;
+
 
 DROP TABLE IF EXISTS categories;
 CREATE TABLE categories ( -- What type of question this is. Optional. May be removed later
