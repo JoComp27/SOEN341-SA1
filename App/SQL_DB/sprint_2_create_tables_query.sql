@@ -20,6 +20,8 @@ user_answers_count INT(16), -- keep track of the user's contribution
 user_questions_count INT (16),
 user_profile_description_short VARCHAR(300),
 user_profile_description_long VARCHAR(2000),
+user_birthDate DATE, 
+user_gender VARCHAR(1),
 UNIQUE INDEX user_name_unique (user_name),
 PRIMARY KEY (user_id)
 ) ENGINE=INNODB;
