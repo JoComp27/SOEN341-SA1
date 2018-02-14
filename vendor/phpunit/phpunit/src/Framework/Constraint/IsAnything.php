@@ -26,13 +26,13 @@ class IsAnything extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
-     * @param mixed  $other        value or object to evaluate
+     * @param mixed  $other        Value or object to evaluate.
      * @param string $description  Additional information about the test
      * @param bool   $returnResult Whether to return a result or throw an exception
      *
-     * @throws ExpectationFailedException
-     *
      * @return mixed
+     *
+     * @throws ExpectationFailedException
      */
     public function evaluate($other, $description = '', $returnResult = false)
     {
@@ -44,7 +44,7 @@ class IsAnything extends Constraint
      *
      * @return string
      */
-    public function toString(): string
+    public function toString()
     {
         return 'is anything';
     }
@@ -54,7 +54,7 @@ class IsAnything extends Constraint
      *
      * @return int
      */
-    public function count(): int
+    public function count()
     {
         return 0;
     }

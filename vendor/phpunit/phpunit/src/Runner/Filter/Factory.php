@@ -25,10 +25,8 @@ class Factory
     /**
      * @param ReflectionClass $filter
      * @param mixed           $args
-     *
-     * @throws InvalidArgumentException
      */
-    public function addFilter(ReflectionClass $filter, $args): void
+    public function addFilter(ReflectionClass $filter, $args)
     {
         if (!$filter->isSubclassOf(\RecursiveFilterIterator::class)) {
             throw new InvalidArgumentException(
@@ -45,11 +43,11 @@ class Factory
     /**
      * @return FilterIterator
      */
-    public function factory(Iterator $iterator, TestSuite $suite): FilterIterator
+    public function factory(Iterator $iterator, TestSuite $suite)
     {
         foreach ($this->filters as $filter) {
-            [$class, $args] = $filter;
-            $iterator       = $class->newInstance($iterator, $args, $suite);
+            list($class, $args) = $filter;
+            $iterator           = $class->newInstance($iterator, $args, $suite);
         }
 
         return $iterator;

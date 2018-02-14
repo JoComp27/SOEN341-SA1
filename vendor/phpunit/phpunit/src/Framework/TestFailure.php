@@ -18,7 +18,12 @@ use Throwable;
 class TestFailure
 {
     /**
-     * @var null|Test
+     * @var string
+     */
+    private $testName;
+
+    /**
+     * @var Test|null
      */
     protected $failedTest;
 
@@ -26,10 +31,6 @@ class TestFailure
      * @var Throwable
      */
     protected $thrownException;
-    /**
-     * @var string
-     */
-    private $testName;
 
     /**
      * Constructs a TestFailure with the given test and exception.
@@ -57,7 +58,7 @@ class TestFailure
      *
      * @return string
      */
-    public function toString(): string
+    public function toString()
     {
         return \sprintf(
             '%s: %s',
@@ -69,11 +70,9 @@ class TestFailure
     /**
      * Returns a description for the thrown exception.
      *
-     * @throws \InvalidArgumentException
-     *
      * @return string
      */
-    public function getExceptionAsString(): string
+    public function getExceptionAsString()
     {
         return self::exceptionToString($this->thrownException);
     }
@@ -83,11 +82,9 @@ class TestFailure
      *
      * @param Throwable $e
      *
-     * @throws \InvalidArgumentException
-     *
      * @return string
      */
-    public static function exceptionToString(Throwable $e): string
+    public static function exceptionToString(Throwable $e)
     {
         if ($e instanceof SelfDescribing) {
             $buffer = $e->toString();
@@ -119,7 +116,7 @@ class TestFailure
      *
      * @return string
      */
-    public function getTestName(): string
+    public function getTestName()
     {
         return $this->testName;
     }
@@ -132,9 +129,9 @@ class TestFailure
      *
      * @see Exception
      *
-     * @return null|Test
+     * @return Test|null
      */
-    public function failedTest(): ?Test
+    public function failedTest()
     {
         return $this->failedTest;
     }
@@ -144,7 +141,7 @@ class TestFailure
      *
      * @return Throwable
      */
-    public function thrownException(): Throwable
+    public function thrownException()
     {
         return $this->thrownException;
     }
@@ -154,7 +151,7 @@ class TestFailure
      *
      * @return string
      */
-    public function exceptionMessage(): string
+    public function exceptionMessage()
     {
         return $this->thrownException()->getMessage();
     }
@@ -165,8 +162,8 @@ class TestFailure
      *
      * @return bool
      */
-    public function isFailure(): bool
+    public function isFailure()
     {
-        return $this->thrownException() instanceof AssertionFailedError;
+        return ($this->thrownException() instanceof AssertionFailedError);
     }
 }

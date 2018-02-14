@@ -9,24 +9,25 @@
  */
 namespace PHPUnit\Util;
 
-final class RegularExpression
+/**
+ * Error handler that converts PHP errors and warnings to exceptions.
+ */
+class RegularExpression
 {
     /**
      * @param string $pattern
      * @param string $subject
-     * @param array  $matches
+     * @param null   $matches
      * @param int    $flags
      * @param int    $offset
      *
-     * @throws \Exception
-     *
-     * @return false|int
+     * @return int
      */
-    public static function safeMatch(string $pattern, string $subject, ?array $matches = null, int $flags = 0, int $offset = 0)
+    public static function safeMatch($pattern, $subject, $matches = null, $flags = 0, $offset = 0)
     {
-        $handler_terminator = ErrorHandler::handleErrorOnce();
+        $handler_terminator = ErrorHandler::handleErrorOnce(E_WARNING);
         $match              = \preg_match($pattern, $subject, $matches, $flags, $offset);
-        $handler_terminator();
+        $handler_terminator(); // cleaning
 
         return $match;
     }

@@ -50,11 +50,19 @@ class Exception extends \RuntimeException implements \PHPUnit\Exception
     }
 
     /**
-     * @throws \InvalidArgumentException
+     * Returns the serializable trace (without 'args').
      *
+     * @return array
+     */
+    public function getSerializableTrace()
+    {
+        return $this->serializableTrace;
+    }
+
+    /**
      * @return string
      */
-    public function __toString(): string
+    public function __toString()
     {
         $string = TestFailure::exceptionToString($this);
 
@@ -65,18 +73,8 @@ class Exception extends \RuntimeException implements \PHPUnit\Exception
         return $string;
     }
 
-    public function __sleep(): array
+    public function __sleep()
     {
         return \array_keys(\get_object_vars($this));
-    }
-
-    /**
-     * Returns the serializable trace (without 'args').
-     *
-     * @return array
-     */
-    public function getSerializableTrace(): array
-    {
-        return $this->serializableTrace;
     }
 }

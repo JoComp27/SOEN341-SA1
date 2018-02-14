@@ -9,6 +9,7 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
+use PHPUnit\Util\InvalidArgumentHelper;
 use SplObjectStorage;
 
 /**
@@ -20,17 +21,17 @@ class TraversableContains extends Constraint
     /**
      * @var bool
      */
-    private $checkForObjectIdentity;
+    protected $checkForObjectIdentity;
 
     /**
      * @var bool
      */
-    private $checkForNonObjectIdentity;
+    protected $checkForNonObjectIdentity;
 
     /**
      * @var mixed
      */
-    private $value;
+    protected $value;
 
     /**
      * @param mixed $value
@@ -39,9 +40,17 @@ class TraversableContains extends Constraint
      *
      * @throws \PHPUnit\Framework\Exception
      */
-    public function __construct($value, bool $checkForObjectIdentity = true, bool $checkForNonObjectIdentity = false)
+    public function __construct($value, $checkForObjectIdentity = true, $checkForNonObjectIdentity = false)
     {
         parent::__construct();
+
+        if (!\is_bool($checkForObjectIdentity)) {
+            throw InvalidArgumentHelper::factory(2, 'boolean');
+        }
+
+        if (!\is_bool($checkForNonObjectIdentity)) {
+            throw InvalidArgumentHelper::factory(3, 'boolean');
+        }
 
         $this->checkForObjectIdentity    = $checkForObjectIdentity;
         $this->checkForNonObjectIdentity = $checkForNonObjectIdentity;
@@ -49,31 +58,14 @@ class TraversableContains extends Constraint
     }
 
     /**
-     * Returns a string representation of the constraint.
-     *
-     * @throws \Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     *
-     * @return string
-     */
-    public function toString(): string
-    {
-        if (\is_string($this->value) && \strpos($this->value, "\n") !== false) {
-            return 'contains "' . $this->value . '"';
-        }
-
-        return 'contains ' . $this->exporter->export($this->value);
-    }
-
-    /**
      * Evaluates the constraint for parameter $other. Returns true if the
      * constraint is met, false otherwise.
      *
-     * @param mixed $other value or object to evaluate
+     * @param mixed $other Value or object to evaluate.
      *
      * @return bool
      */
-    protected function matches($other): bool
+    protected function matches($other)
     {
         if ($other instanceof SplObjectStorage) {
             return $other->contains($this->value);
@@ -105,19 +97,30 @@ class TraversableContains extends Constraint
     }
 
     /**
+     * Returns a string representation of the constraint.
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        if (\is_string($this->value) && \strpos($this->value, "\n") !== false) {
+            return 'contains "' . $this->value . '"';
+        }
+
+        return 'contains ' . $this->exporter->export($this->value);
+    }
+
+    /**
      * Returns the description of the failure
      *
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
-     * @param mixed $other evaluated value or object
-     *
-     * @throws \Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @param mixed $other Evaluated value or object.
      *
      * @return string
      */
-    protected function failureDescription($other): string
+    protected function failureDescription($other)
     {
         return \sprintf(
             '%s %s',

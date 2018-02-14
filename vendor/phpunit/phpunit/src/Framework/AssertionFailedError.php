@@ -20,7 +20,7 @@ class AssertionFailedError extends Exception implements SelfDescribing
      *
      * @return string
      */
-    public function toString(): string
+    public function toString()
     {
         return $this->getMessage();
     }

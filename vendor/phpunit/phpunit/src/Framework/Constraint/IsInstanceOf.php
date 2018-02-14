@@ -23,7 +23,7 @@ class IsInstanceOf extends Constraint
     /**
      * @var string
      */
-    private $className;
+    protected $className;
 
     /**
      * @param string $className
@@ -31,35 +31,20 @@ class IsInstanceOf extends Constraint
     public function __construct($className)
     {
         parent::__construct();
-
         $this->className = $className;
-    }
-
-    /**
-     * Returns a string representation of the constraint.
-     *
-     * @return string
-     */
-    public function toString(): string
-    {
-        return \sprintf(
-            'is instance of %s "%s"',
-            $this->getType(),
-            $this->className
-        );
     }
 
     /**
      * Evaluates the constraint for parameter $other. Returns true if the
      * constraint is met, false otherwise.
      *
-     * @param mixed $other value or object to evaluate
+     * @param mixed $other Value or object to evaluate.
      *
      * @return bool
      */
-    protected function matches($other): bool
+    protected function matches($other)
     {
-        return $other instanceof $this->className;
+        return ($other instanceof $this->className);
     }
 
     /**
@@ -68,18 +53,29 @@ class IsInstanceOf extends Constraint
      * The beginning of failure messages is "Failed asserting that" in most
      * cases. This method should return the second part of that sentence.
      *
-     * @param mixed $other evaluated value or object
-     *
-     * @throws \Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @param mixed $other Evaluated value or object.
      *
      * @return string
      */
-    protected function failureDescription($other): string
+    protected function failureDescription($other)
     {
         return \sprintf(
             '%s is an instance of %s "%s"',
             $this->exporter->shortenedExport($other),
+            $this->getType(),
+            $this->className
+        );
+    }
+
+    /**
+     * Returns a string representation of the constraint.
+     *
+     * @return string
+     */
+    public function toString()
+    {
+        return \sprintf(
+            'is instance of %s "%s"',
             $this->getType(),
             $this->className
         );

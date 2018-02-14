@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 class ConfigurationGeneratorTest extends TestCase
 {
-    public function testGeneratesConfigurationCorrectly(): void
+    public function testGeneratesConfigurationCorrectly()
     {
         $generator = new ConfigurationGenerator;
 

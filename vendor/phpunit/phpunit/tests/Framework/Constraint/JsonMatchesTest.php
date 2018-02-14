@@ -17,16 +17,8 @@ class JsonMatchesTest extends ConstraintTestCase
 {
     /**
      * @dataProvider evaluateDataprovider
-     *
-     * @param mixed $expected
-     * @param mixed $jsonOther
-     * @param mixed $jsonValue
-     *
-     * @throws ExpectationFailedException
-     * @throws \Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testEvaluate($expected, $jsonOther, $jsonValue): void
+    public function testEvaluate($expected, $jsonOther, $jsonValue)
     {
         $constraint = new JsonMatches($jsonValue);
 
@@ -35,17 +27,8 @@ class JsonMatchesTest extends ConstraintTestCase
 
     /**
      * @dataProvider evaluateThrowsExpectationFailedExceptionWhenJsonIsValidButDoesNotMatchDataprovider
-     *
-     * @param mixed $jsonOther
-     * @param mixed $jsonValue
-     *
-     * @throws ExpectationFailedException
-     * @throws \Exception
-     * @throws \PHPUnit\Framework\AssertionFailedError
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testEvaluateThrowsExpectationFailedExceptionWhenJsonIsValidButDoesNotMatch($jsonOther, $jsonValue): void
+    public function testEvaluateThrowsExpectationFailedExceptionWhenJsonIsValidButDoesNotMatch($jsonOther, $jsonValue)
     {
         $constraint = new JsonMatches($jsonValue);
 
@@ -61,7 +44,7 @@ class JsonMatchesTest extends ConstraintTestCase
         }
     }
 
-    public function testToString(): void
+    public function testToString()
     {
         $jsonValue  = \json_encode(['Mascott' => 'Tux']);
         $constraint = new JsonMatches($jsonValue);
@@ -86,7 +69,6 @@ class JsonMatchesTest extends ConstraintTestCase
             'single boolean valid json'               => [true, 'true', 'true'],
             'single number valid json'                => [true, '5.3', '5.3'],
             'single null valid json'                  => [true, 'null', 'null'],
-            'objects are not arrays'                  => [false, '{}', '[]']
         ];
     }
 

@@ -31,6 +31,6 @@ class SampleArrayAccess implements ArrayAccess
     }
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 }

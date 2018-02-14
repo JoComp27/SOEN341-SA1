@@ -16,17 +16,42 @@ use SebastianBergmann\CodeCoverage\Util;
 /**
  * Renders a file node.
  */
-final class File extends Renderer
+class File extends Renderer
 {
     /**
      * @var int
      */
-    private $htmlSpecialCharsFlags = ENT_COMPAT | ENT_HTML401 | ENT_SUBSTITUTE;
+    private $htmlspecialcharsFlags;
 
     /**
-     * @throws \RuntimeException
+     * Constructor.
+     *
+     * @param string $templatePath
+     * @param string $generator
+     * @param string $date
+     * @param int    $lowUpperBound
+     * @param int    $highLowerBound
      */
-    public function render(FileNode $node, string $file): void
+    public function __construct($templatePath, $generator, $date, $lowUpperBound, $highLowerBound)
+    {
+        parent::__construct(
+            $templatePath,
+            $generator,
+            $date,
+            $lowUpperBound,
+            $highLowerBound
+        );
+
+        $this->htmlspecialcharsFlags = ENT_COMPAT;
+
+        $this->htmlspecialcharsFlags = $this->htmlspecialcharsFlags | ENT_HTML401 | ENT_SUBSTITUTE;
+    }
+
+    /**
+     * @param FileNode $node
+     * @param string   $file
+     */
+    public function render(FileNode $node, $file)
     {
         $template = new \Text_Template($this->templatePath . 'file.html', '{{', '}}');
 
@@ -42,7 +67,12 @@ final class File extends Renderer
         $template->renderTo($file);
     }
 
-    protected function renderItems(FileNode $node): string
+    /**
+     * @param FileNode $node
+     *
+     * @return string
+     */
+    protected function renderItems(FileNode $node)
     {
         $template = new \Text_Template($this->templatePath . 'file_item.html', '{{', '}}');
 
@@ -92,25 +122,28 @@ final class File extends Renderer
         return $items;
     }
 
-    protected function renderTraitOrClassItems(array $items, \Text_Template $template, \Text_Template $methodItemTemplate): string
+    /**
+     * @param array          $items
+     * @param \Text_Template $template
+     * @param \Text_Template $methodItemTemplate
+     *
+     * @return string
+     */
+    protected function renderTraitOrClassItems(array $items, \Text_Template $template, \Text_Template $methodItemTemplate)
     {
-        $buffer = '';
-
         if (empty($items)) {
-            return $buffer;
+            return '';
         }
 
+        $buffer = '';
+
         foreach ($items as $name => $item) {
-            $numMethods       = 0;
+            $numMethods       = \count($item['methods']);
             $numTestedMethods = 0;
 
             foreach ($item['methods'] as $method) {
-                if ($method['executableLines'] > 0) {
-                    $numMethods++;
-
-                    if ($method['executedLines'] === $method['executableLines']) {
-                        $numTestedMethods++;
-                    }
+                if ($method['executedLines'] == $method['executableLines']) {
+                    $numTestedMethods++;
                 }
             }
 
@@ -146,7 +179,8 @@ final class File extends Renderer
                     'numExecutableLines'           => $item['executableLines'],
                     'testedMethodsPercent'         => Util::percent(
                         $numTestedMethods,
-                        $numMethods
+                        $numMethods,
+                        false
                     ),
                     'testedMethodsPercentAsString' => Util::percent(
                         $numTestedMethods,
@@ -155,7 +189,8 @@ final class File extends Renderer
                     ),
                     'testedClassesPercent'         => Util::percent(
                         $numTestedMethods == $numMethods ? 1 : 0,
-                        1
+                        1,
+                        false
                     ),
                     'testedClassesPercentAsString' => Util::percent(
                         $numTestedMethods == $numMethods ? 1 : 0,
@@ -178,7 +213,13 @@ final class File extends Renderer
         return $buffer;
     }
 
-    protected function renderFunctionItems(array $functions, \Text_Template $template): string
+    /**
+     * @param array          $functions
+     * @param \Text_Template $template
+     *
+     * @return string
+     */
+    protected function renderFunctionItems(array $functions, \Text_Template $template)
     {
         if (empty($functions)) {
             return '';
@@ -196,18 +237,14 @@ final class File extends Renderer
         return $buffer;
     }
 
-    protected function renderFunctionOrMethodItem(\Text_Template $template, array $item, string $indent = ''): string
+    /**
+     * @param \Text_Template $template
+     *
+     * @return string
+     */
+    protected function renderFunctionOrMethodItem(\Text_Template $template, array $item, $indent = '')
     {
-        $numMethods       = 0;
-        $numTestedMethods = 0;
-
-        if ($item['executableLines'] > 0) {
-            $numMethods = 1;
-
-            if ($item['executedLines'] === $item['executableLines']) {
-                $numTestedMethods = 1;
-            }
-        }
+        $numTestedItems = $item['executedLines'] == $item['executableLines'] ? 1 : 0;
 
         return $this->renderItemTemplate(
             $template,
@@ -216,14 +253,15 @@ final class File extends Renderer
                     '%s<a href="#%d"><abbr title="%s">%s</abbr></a>',
                     $indent,
                     $item['startLine'],
-                    \htmlspecialchars($item['signature'], $this->htmlSpecialCharsFlags),
-                    $item['functionName'] ?? $item['methodName']
+                    \htmlspecialchars($item['signature']),
+                    isset($item['functionName']) ? $item['functionName'] : $item['methodName']
                 ),
-                'numMethods'                   => $numMethods,
-                'numTestedMethods'             => $numTestedMethods,
+                'numMethods'                   => 1,
+                'numTestedMethods'             => $numTestedItems,
                 'linesExecutedPercent'         => Util::percent(
                     $item['executedLines'],
-                    $item['executableLines']
+                    $item['executableLines'],
+                    false
                 ),
                 'linesExecutedPercentAsString' => Util::percent(
                     $item['executedLines'],
@@ -233,11 +271,12 @@ final class File extends Renderer
                 'numExecutedLines'             => $item['executedLines'],
                 'numExecutableLines'           => $item['executableLines'],
                 'testedMethodsPercent'         => Util::percent(
-                    $numTestedMethods,
-                    1
+                    $numTestedItems,
+                    1,
+                    false
                 ),
                 'testedMethodsPercentAsString' => Util::percent(
-                    $numTestedMethods,
+                    $numTestedItems,
                     1,
                     true
                 ),
@@ -251,7 +290,7 @@ final class File extends Renderer
      *
      * @return string
      */
-    protected function renderSource(FileNode $node): string
+    protected function renderSource(FileNode $node)
     {
         $coverageData = $node->getCoverageData();
         $testData     = $node->getTestData();
@@ -332,7 +371,7 @@ final class File extends Renderer
                         $popoverContent .= \sprintf(
                             '<li%s>%s</li>',
                             $testCSS,
-                            \htmlspecialchars($test, $this->htmlSpecialCharsFlags)
+                            \htmlspecialchars($test)
                         );
                     }
 
@@ -341,14 +380,14 @@ final class File extends Renderer
                 }
             }
 
-            $popover = '';
-
             if (!empty($popoverTitle)) {
                 $popover = \sprintf(
                     ' data-title="%s" data-content="%s" data-placement="bottom" data-html="true"',
                     $popoverTitle,
-                    \htmlspecialchars($popoverContent, $this->htmlSpecialCharsFlags)
+                    \htmlspecialchars($popoverContent)
                 );
+            } else {
+                $popover = '';
             }
 
             $lines .= \sprintf(
@@ -372,7 +411,7 @@ final class File extends Renderer
      *
      * @return array
      */
-    protected function loadFile($file): array
+    protected function loadFile($file)
     {
         $buffer              = \file_get_contents($file);
         $tokens              = \token_get_all($buffer);
@@ -388,26 +427,26 @@ final class File extends Renderer
                 if ($token === '"' && $tokens[$j - 1] !== '\\') {
                     $result[$i] .= \sprintf(
                         '<span class="string">%s</span>',
-                        \htmlspecialchars($token, $this->htmlSpecialCharsFlags)
+                        \htmlspecialchars($token)
                     );
 
                     $stringFlag = !$stringFlag;
                 } else {
                     $result[$i] .= \sprintf(
                         '<span class="keyword">%s</span>',
-                        \htmlspecialchars($token, $this->htmlSpecialCharsFlags)
+                        \htmlspecialchars($token)
                     );
                 }
 
                 continue;
             }
 
-            [$token, $value] = $token;
+            list($token, $value) = $token;
 
             $value = \str_replace(
                 ["\t", ' '],
                 ['&nbsp;&nbsp;&nbsp;&nbsp;', '&nbsp;'],
-                \htmlspecialchars($value, $this->htmlSpecialCharsFlags)
+                \htmlspecialchars($value, $this->htmlspecialcharsFlags)
             );
 
             if ($value === "\n") {

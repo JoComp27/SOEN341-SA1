@@ -70,7 +70,7 @@ class InvocationMocker implements MatcherCollection, Invokable, NamespaceMatch
     /**
      * @param mixed $id
      *
-     * @return null|bool
+     * @return bool|null
      */
     public function lookupId($id)
     {
@@ -115,9 +115,9 @@ class InvocationMocker implements MatcherCollection, Invokable, NamespaceMatch
     /**
      * @param Invocation $invocation
      *
-     * @throws Exception
-     *
      * @return mixed
+     *
+     * @throws Exception
      */
     public function invoke(Invocation $invocation)
     {
@@ -172,9 +172,9 @@ class InvocationMocker implements MatcherCollection, Invokable, NamespaceMatch
     }
 
     /**
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     *
      * @return bool
+     *
+     * @throws \PHPUnit\Framework\ExpectationFailedException
      */
     public function verify()
     {

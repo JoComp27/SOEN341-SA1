@@ -12,7 +12,6 @@ namespace PHPUnit\Runner\Filter;
 use PHPUnit\Framework\TestSuite;
 use PHPUnit\Framework\WarningTestCase;
 use PHPUnit\Util\RegularExpression;
-use PHPUnit\Util\Test;
 use RecursiveFilterIterator;
 use RecursiveIterator;
 
@@ -35,8 +34,6 @@ class NameFilterIterator extends RecursiveFilterIterator
     /**
      * @param RecursiveIterator $iterator
      * @param string            $filter
-     *
-     * @throws \Exception
      */
     public function __construct(RecursiveIterator $iterator, $filter)
     {
@@ -45,44 +42,9 @@ class NameFilterIterator extends RecursiveFilterIterator
     }
 
     /**
-     * @return bool
-     */
-    public function accept(): bool
-    {
-        $test = $this->getInnerIterator()->current();
-
-        if ($test instanceof TestSuite) {
-            return true;
-        }
-
-        $tmp = Test::describe($test);
-
-        if ($test instanceof WarningTestCase) {
-            $name = $test->getMessage();
-        } else {
-            if ($tmp[0] != '') {
-                $name = \implode('::', $tmp);
-            } else {
-                $name = $tmp[1];
-            }
-        }
-
-        $accepted = @\preg_match($this->filter, $name, $matches);
-
-        if ($accepted && isset($this->filterMax)) {
-            $set      = \end($matches);
-            $accepted = $set >= $this->filterMin && $set <= $this->filterMax;
-        }
-
-        return $accepted;
-    }
-
-    /**
      * @param string $filter
-     *
-     * @throws \Exception
      */
-    protected function setFilter($filter): void
+    protected function setFilter($filter)
     {
         if (RegularExpression::safeMatch($filter, '') === false) {
             // Handles:
@@ -125,5 +87,38 @@ class NameFilterIterator extends RecursiveFilterIterator
         }
 
         $this->filter = $filter;
+    }
+
+    /**
+     * @return bool
+     */
+    public function accept()
+    {
+        $test = $this->getInnerIterator()->current();
+
+        if ($test instanceof TestSuite) {
+            return true;
+        }
+
+        $tmp = \PHPUnit\Util\Test::describe($test, false);
+
+        if ($test instanceof WarningTestCase) {
+            $name = $test->getMessage();
+        } else {
+            if ($tmp[0] != '') {
+                $name = \implode('::', $tmp);
+            } else {
+                $name = $tmp[1];
+            }
+        }
+
+        $accepted = @\preg_match($this->filter, $name, $matches);
+
+        if ($accepted && isset($this->filterMax)) {
+            $set      = \end($matches);
+            $accepted = $set >= $this->filterMin && $set <= $this->filterMax;
+        }
+
+        return $accepted;
     }
 }

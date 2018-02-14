@@ -1,5 +1,9 @@
 --TEST--
-\PHPUnit\Framework\MockObject\Generator::generate('Foo', [], 'MockFoo', true, true)
+\PHPUnit\Framework\MockObject\Generator::generate('Foo', array(), 'MockFoo', true, true)
+--SKIPIF--
+<?php
+if (!version_compare(PHP_VERSION, '7.1', '>=')) print 'skip: PHP >= 7.1 required';
+?>
 --FILE--
 <?php
 interface Foo
@@ -13,7 +17,7 @@ $generator = new \PHPUnit\Framework\MockObject\Generator;
 
 $mock = $generator->generate(
     'Foo',
-    [],
+    array(),
     'MockFoo',
     true,
     true
@@ -21,7 +25,7 @@ $mock = $generator->generate(
 
 print $mock['code'];
 ?>
---EXPECT--
+--EXPECTF--
 class MockFoo implements PHPUnit\Framework\MockObject\MockObject, Foo
 {
     private $__phpunit_invocationMocker;
@@ -35,7 +39,7 @@ class MockFoo implements PHPUnit\Framework\MockObject\MockObject, Foo
 
     public function bar(string $baz): ?string
     {
-        $arguments = [$baz];
+        $arguments = array($baz);
         $count     = func_num_args();
 
         if ($count > 1) {
@@ -62,10 +66,9 @@ class MockFoo implements PHPUnit\Framework\MockObject\MockObject, Foo
 
     public function method()
     {
-        $any     = new \PHPUnit\Framework\MockObject\Matcher\AnyInvokedCount;
+        $any = new \PHPUnit\Framework\MockObject\Matcher\AnyInvokedCount;
         $expects = $this->expects($any);
-
-        return call_user_func_array([$expects, 'method'], func_get_args());
+        return call_user_func_array(array($expects, 'method'), func_get_args());
     }
 
     public function __phpunit_setOriginalObject($originalObject)

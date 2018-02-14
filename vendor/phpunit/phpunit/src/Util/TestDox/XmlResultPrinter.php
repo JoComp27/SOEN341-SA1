@@ -39,14 +39,12 @@ class XmlResultPrinter extends Printer implements TestListener
     private $prettifier;
 
     /**
-     * @var null|\Throwable
+     * @var \Exception|null
      */
     private $exception;
 
     /**
-     * @param resource|string $out
-     *
-     * @throws Exception
+     * @param string|resource $out
      */
     public function __construct($out = null)
     {
@@ -64,7 +62,7 @@ class XmlResultPrinter extends Printer implements TestListener
     /**
      * Flush buffer and close output.
      */
-    public function flush(): void
+    public function flush()
     {
         $this->write($this->document->saveXML());
 
@@ -75,12 +73,12 @@ class XmlResultPrinter extends Printer implements TestListener
      * An error occurred.
      *
      * @param Test       $test
-     * @param \Throwable $t
+     * @param \Exception $e
      * @param float      $time
      */
-    public function addError(Test $test, \Throwable $t, float $time): void
+    public function addError(Test $test, \Exception $e, $time)
     {
-        $this->exception = $t;
+        $this->exception = $e;
     }
 
     /**
@@ -90,7 +88,7 @@ class XmlResultPrinter extends Printer implements TestListener
      * @param Warning $e
      * @param float   $time
      */
-    public function addWarning(Test $test, Warning $e, float $time): void
+    public function addWarning(Test $test, Warning $e, $time)
     {
     }
 
@@ -101,7 +99,7 @@ class XmlResultPrinter extends Printer implements TestListener
      * @param AssertionFailedError $e
      * @param float                $time
      */
-    public function addFailure(Test $test, AssertionFailedError $e, float $time): void
+    public function addFailure(Test $test, AssertionFailedError $e, $time)
     {
         $this->exception = $e;
     }
@@ -110,10 +108,10 @@ class XmlResultPrinter extends Printer implements TestListener
      * Incomplete test.
      *
      * @param Test       $test
-     * @param \Throwable $t
+     * @param \Exception $e
      * @param float      $time
      */
-    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
+    public function addIncompleteTest(Test $test, \Exception $e, $time)
     {
     }
 
@@ -121,10 +119,10 @@ class XmlResultPrinter extends Printer implements TestListener
      * Risky test.
      *
      * @param Test       $test
-     * @param \Throwable $t
+     * @param \Exception $e
      * @param float      $time
      */
-    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
+    public function addRiskyTest(Test $test, \Exception $e, $time)
     {
     }
 
@@ -132,10 +130,10 @@ class XmlResultPrinter extends Printer implements TestListener
      * Skipped test.
      *
      * @param Test       $test
-     * @param \Throwable $t
+     * @param \Exception $e
      * @param float      $time
      */
-    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
+    public function addSkippedTest(Test $test, \Exception $e, $time)
     {
     }
 
@@ -144,7 +142,7 @@ class XmlResultPrinter extends Printer implements TestListener
      *
      * @param TestSuite $suite
      */
-    public function startTestSuite(TestSuite $suite): void
+    public function startTestSuite(TestSuite $suite)
     {
     }
 
@@ -153,7 +151,7 @@ class XmlResultPrinter extends Printer implements TestListener
      *
      * @param TestSuite $suite
      */
-    public function endTestSuite(TestSuite $suite): void
+    public function endTestSuite(TestSuite $suite)
     {
     }
 
@@ -162,7 +160,7 @@ class XmlResultPrinter extends Printer implements TestListener
      *
      * @param Test $test
      */
-    public function startTest(Test $test): void
+    public function startTest(Test $test)
     {
         $this->exception = null;
     }
@@ -172,11 +170,8 @@ class XmlResultPrinter extends Printer implements TestListener
      *
      * @param Test  $test
      * @param float $time
-     *
-     * @throws \Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function endTest(Test $test, float $time): void
+    public function endTest(Test $test, $time)
     {
         if (!$test instanceof TestCase) {
             return;
@@ -187,7 +182,11 @@ class XmlResultPrinter extends Printer implements TestListener
         $groups = \array_filter(
             $test->getGroups(),
             function ($group) {
-                return !($group === 'small' || $group === 'medium' || $group === 'large');
+                if ($group == 'small' || $group == 'medium' || $group == 'large') {
+                    return false;
+                }
+
+                return true;
             }
         );
 
@@ -224,7 +223,7 @@ class XmlResultPrinter extends Printer implements TestListener
             $file  = $class->getFileName();
 
             foreach ($steps as $step) {
-                if (isset($step['file']) && $step['file'] === $file) {
+                if (isset($step['file']) && $step['file'] == $file) {
                     $node->setAttribute('exceptionLine', $step['line']);
 
                     break;

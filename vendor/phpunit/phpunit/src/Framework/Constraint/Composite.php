@@ -16,7 +16,7 @@ abstract class Composite extends Constraint
     /**
      * @var Constraint
      */
-    private $innerConstraint;
+    protected $innerConstraint;
 
     /**
      * @param Constraint $innerConstraint
@@ -24,7 +24,6 @@ abstract class Composite extends Constraint
     public function __construct(Constraint $innerConstraint)
     {
         parent::__construct();
-
         $this->innerConstraint = $innerConstraint;
     }
 
@@ -38,15 +37,13 @@ abstract class Composite extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
-     * @param mixed  $other        value or object to evaluate
+     * @param mixed  $other        Value or object to evaluate.
      * @param string $description  Additional information about the test
      * @param bool   $returnResult Whether to return a result or throw an exception
      *
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     * @throws \Exception
-     *
      * @return mixed
+     *
+     * @throws ExpectationFailedException
      */
     public function evaluate($other, $description = '', $returnResult = false)
     {
@@ -66,13 +63,8 @@ abstract class Composite extends Constraint
      *
      * @return int
      */
-    public function count(): int
+    public function count()
     {
         return \count($this->innerConstraint);
-    }
-
-    protected function innerConstraint(): Constraint
-    {
-        return $this->innerConstraint;
     }
 }

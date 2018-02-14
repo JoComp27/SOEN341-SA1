@@ -5,7 +5,11 @@
       }
   },
   "require-dev": {
-    "phpunit/phpunit": "7.0.*"
-  }
+    "phpunit/phpunit": "^6.5"
+  },
+  "require": {
+     "aws/aws-sdk-php": "2.*",
+    "laravel/installer": "^2.0"
+    }
 
 }

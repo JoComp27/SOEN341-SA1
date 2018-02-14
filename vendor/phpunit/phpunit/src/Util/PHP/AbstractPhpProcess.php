@@ -15,9 +15,9 @@ use ErrorException;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\SyntheticError;
 use PHPUnit\Framework\Test;
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestFailure;
 use PHPUnit\Framework\TestResult;
+use PHPUnit\Util\InvalidArgumentHelper;
 use SebastianBergmann\Environment\Runtime;
 
 /**
@@ -68,11 +68,16 @@ abstract class AbstractPhpProcess
      *
      * Then $stderrRedirection is TRUE, STDERR is redirected to STDOUT.
      *
+     * @throws Exception
      *
      * @param bool $stderrRedirection
      */
-    public function setUseStderrRedirection(bool $stderrRedirection): void
+    public function setUseStderrRedirection($stderrRedirection)
     {
+        if (!\is_bool($stderrRedirection)) {
+            throw InvalidArgumentHelper::factory(1, 'boolean');
+        }
+
         $this->stderrRedirection = $stderrRedirection;
     }
 
@@ -81,7 +86,7 @@ abstract class AbstractPhpProcess
      *
      * @return bool
      */
-    public function useStderrRedirection(): bool
+    public function useStderrRedirection()
     {
         return $this->stderrRedirection;
     }
@@ -91,7 +96,7 @@ abstract class AbstractPhpProcess
      *
      * @param string $stdin
      */
-    public function setStdin($stdin): void
+    public function setStdin($stdin)
     {
         $this->stdin = (string) $stdin;
     }
@@ -101,7 +106,7 @@ abstract class AbstractPhpProcess
      *
      * @return string
      */
-    public function getStdin(): string
+    public function getStdin()
     {
         return $this->stdin;
     }
@@ -111,7 +116,7 @@ abstract class AbstractPhpProcess
      *
      * @param string $args
      */
-    public function setArgs($args): void
+    public function setArgs($args)
     {
         $this->args = (string) $args;
     }
@@ -121,7 +126,7 @@ abstract class AbstractPhpProcess
      *
      * @retrun string
      */
-    public function getArgs(): string
+    public function getArgs()
     {
         return $this->args;
     }
@@ -131,7 +136,7 @@ abstract class AbstractPhpProcess
      *
      * @param array<string, string> $env
      */
-    public function setEnv(array $env): void
+    public function setEnv(array $env)
     {
         $this->env = $env;
     }
@@ -141,7 +146,7 @@ abstract class AbstractPhpProcess
      *
      * @return array<string, string>
      */
-    public function getEnv(): array
+    public function getEnv()
     {
         return $this->env;
     }
@@ -151,7 +156,7 @@ abstract class AbstractPhpProcess
      *
      * @param int $timeout
      */
-    public function setTimeout($timeout): void
+    public function setTimeout($timeout)
     {
         $this->timeout = (int) $timeout;
     }
@@ -161,7 +166,7 @@ abstract class AbstractPhpProcess
      *
      * @return int
      */
-    public function getTimeout(): int
+    public function getTimeout()
     {
         return $this->timeout;
     }
@@ -169,9 +174,9 @@ abstract class AbstractPhpProcess
     /**
      * @return AbstractPhpProcess
      */
-    public static function factory(): self
+    public static function factory()
     {
-        if (DIRECTORY_SEPARATOR === '\\') {
+        if (DIRECTORY_SEPARATOR == '\\') {
             return new WindowsPhpProcess;
         }
 
@@ -185,10 +190,9 @@ abstract class AbstractPhpProcess
      * @param Test       $test
      * @param TestResult $result
      *
-     * @throws \Exception
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws Exception
      */
-    public function runTestJob($job, Test $test, TestResult $result): void
+    public function runTestJob($job, Test $test, TestResult $result)
     {
         $result->startTest($test);
 
@@ -206,16 +210,16 @@ abstract class AbstractPhpProcess
      * Returns the command based into the configurations.
      *
      * @param array       $settings
-     * @param null|string $file
+     * @param string|null $file
      *
      * @return string
      */
-    public function getCommand(array $settings, $file = null): string
+    public function getCommand(array $settings, $file = null)
     {
         $command = $this->runtime->getBinary();
         $command .= $this->settingsToParameters($settings);
 
-        if (PHP_SAPI === 'phpdbg') {
+        if ('phpdbg' === PHP_SAPI) {
             $command .= ' -qrr ';
 
             if ($file) {
@@ -231,7 +235,7 @@ abstract class AbstractPhpProcess
             $command .= ' -- ' . $this->args;
         }
 
-        if ($this->stderrRedirection === true) {
+        if (true === $this->stderrRedirection) {
             $command .= ' 2>&1';
         }
 
@@ -245,15 +249,17 @@ abstract class AbstractPhpProcess
      * @param array  $settings
      *
      * @return array
+     *
+     * @throws Exception
      */
-    abstract public function runJob($job, array $settings = []): array;
+    abstract public function runJob($job, array $settings = []);
 
     /**
      * @param array $settings
      *
      * @return string
      */
-    protected function settingsToParameters(array $settings): string
+    protected function settingsToParameters(array $settings)
     {
         $buffer = '';
 
@@ -271,11 +277,8 @@ abstract class AbstractPhpProcess
      * @param TestResult $result
      * @param string     $stdout
      * @param string     $stderr
-     *
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     * @throws \Exception
      */
-    private function processChildResult(Test $test, TestResult $result, $stdout, $stderr): void
+    private function processChildResult(Test $test, TestResult $result, $stdout, $stderr)
     {
         $time = 0;
 
@@ -286,7 +289,7 @@ abstract class AbstractPhpProcess
                 $time
             );
         } else {
-            \set_error_handler(function ($errno, $errstr, $errfile, $errline): void {
+            \set_error_handler(function ($errno, $errstr, $errfile, $errline) {
                 throw new ErrorException($errstr, $errno, $errno, $errfile, $errline);
             });
 
@@ -312,8 +315,6 @@ abstract class AbstractPhpProcess
                 if (!empty($childResult['output'])) {
                     $output = $childResult['output'];
                 }
-
-                /* @var TestCase $test */
 
                 $test->setResult($childResult['testResult']);
                 $test->addToAssertionCount($childResult['numAssertions']);
@@ -389,9 +390,9 @@ abstract class AbstractPhpProcess
      *
      * @return Exception
      *
-     * @see https://github.com/sebastianbergmann/phpunit/issues/74
+     * @see    https://github.com/sebastianbergmann/phpunit/issues/74
      */
-    private function getException(TestFailure $error): Exception
+    private function getException(TestFailure $error)
     {
         $exception = $error->thrownException();
 

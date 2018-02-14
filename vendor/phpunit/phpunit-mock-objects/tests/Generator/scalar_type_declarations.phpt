@@ -1,5 +1,5 @@
 --TEST--
-\PHPUnit\Framework\MockObject\Generator::generate('Foo', [], 'MockFoo', true, true)
+\PHPUnit\Framework\MockObject\Generator::generate('Foo', array(), 'MockFoo', true, true)
 --FILE--
 <?php
 class Foo
@@ -15,7 +15,7 @@ $generator = new \PHPUnit\Framework\MockObject\Generator;
 
 $mock = $generator->generate(
     'Foo',
-    [],
+    array(),
     'MockFoo',
     true,
     true
@@ -23,7 +23,7 @@ $mock = $generator->generate(
 
 print $mock['code'];
 ?>
---EXPECT--
+--EXPECTF--
 class MockFoo extends Foo implements PHPUnit\Framework\MockObject\MockObject
 {
     private $__phpunit_invocationMocker;
@@ -37,7 +37,7 @@ class MockFoo extends Foo implements PHPUnit\Framework\MockObject\MockObject
 
     public function bar(string $baz)
     {
-        $arguments = [$baz];
+        $arguments = array($baz);
         $count     = func_num_args();
 
         if ($count > 1) {
@@ -64,10 +64,9 @@ class MockFoo extends Foo implements PHPUnit\Framework\MockObject\MockObject
 
     public function method()
     {
-        $any     = new \PHPUnit\Framework\MockObject\Matcher\AnyInvokedCount;
+        $any = new \PHPUnit\Framework\MockObject\Matcher\AnyInvokedCount;
         $expects = $this->expects($any);
-
-        return call_user_func_array([$expects, 'method'], func_get_args());
+        return call_user_func_array(array($expects, 'method'), func_get_args());
     }
 
     public function __phpunit_setOriginalObject($originalObject)

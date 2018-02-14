@@ -24,7 +24,7 @@ class CallbackTest extends ConstraintTestCase
         return true;
     }
 
-    public function testConstraintCallback(): void
+    public function testConstraintCallback()
     {
         $closureReflect = function ($parameter) {
             return $parameter;
@@ -52,7 +52,7 @@ class CallbackTest extends ConstraintTestCase
         $this->assertEquals('is accepted by specified callback', $constraint->toString());
     }
 
-    public function testConstraintCallbackFailure(): void
+    public function testConstraintCallbackFailure()
     {
         $constraint = new Callback(function () {
             return false;

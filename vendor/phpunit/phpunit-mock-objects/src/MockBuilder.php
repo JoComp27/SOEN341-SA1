@@ -74,7 +74,7 @@ class MockBuilder
     /**
      * @var object
      */
-    private $proxyTarget;
+    private $proxyTarget = null;
 
     /**
      * @var bool
@@ -172,7 +172,7 @@ class MockBuilder
     /**
      * Specifies the subset of methods to mock. Default is to mock none of them.
      *
-     * @param null|array $methods
+     * @param array|null $methods
      *
      * @return MockBuilder
      */

@@ -23,12 +23,12 @@ interface TestSuiteLoader
      *
      * @return ReflectionClass
      */
-    public function load($suiteClassName, $suiteClassFile = ''): ReflectionClass;
+    public function load($suiteClassName, $suiteClassFile = '');
 
     /**
      * @param ReflectionClass $aClass
      *
      * @return ReflectionClass
      */
-    public function reload(ReflectionClass $aClass): ReflectionClass;
+    public function reload(ReflectionClass $aClass);
 }

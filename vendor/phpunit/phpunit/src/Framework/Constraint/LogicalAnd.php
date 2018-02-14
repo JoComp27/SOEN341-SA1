@@ -19,7 +19,12 @@ class LogicalAnd extends Constraint
     /**
      * @var Constraint[]
      */
-    private $constraints = [];
+    protected $constraints = [];
+
+    /**
+     * @var Constraint
+     */
+    protected $lastConstraint;
 
     public static function fromConstraints(Constraint ...$constraints): self
     {
@@ -35,7 +40,7 @@ class LogicalAnd extends Constraint
      *
      * @throws \PHPUnit\Framework\Exception
      */
-    public function setConstraints(array $constraints): void
+    public function setConstraints(array $constraints)
     {
         $this->constraints = [];
 
@@ -61,19 +66,18 @@ class LogicalAnd extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
-     * @param mixed  $other        value or object to evaluate
+     * @param mixed  $other        Value or object to evaluate.
      * @param string $description  Additional information about the test
      * @param bool   $returnResult Whether to return a result or throw an exception
      *
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     * @throws \Exception
-     *
      * @return mixed
+     *
+     * @throws ExpectationFailedException
      */
     public function evaluate($other, $description = '', $returnResult = false)
     {
-        $success = true;
+        $success    = true;
+        $constraint = null;
 
         foreach ($this->constraints as $constraint) {
             if (!$constraint->evaluate($other, $description, true)) {
@@ -97,7 +101,7 @@ class LogicalAnd extends Constraint
      *
      * @return string
      */
-    public function toString(): string
+    public function toString()
     {
         $text = '';
 
@@ -117,7 +121,7 @@ class LogicalAnd extends Constraint
      *
      * @return int
      */
-    public function count(): int
+    public function count()
     {
         $count = 0;
 

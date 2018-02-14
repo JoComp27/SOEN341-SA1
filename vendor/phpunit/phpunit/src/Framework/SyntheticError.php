@@ -57,7 +57,7 @@ class SyntheticError extends AssertionFailedError
     /**
      * @return string
      */
-    public function getSyntheticFile(): string
+    public function getSyntheticFile()
     {
         return $this->syntheticFile;
     }
@@ -65,7 +65,7 @@ class SyntheticError extends AssertionFailedError
     /**
      * @return int
      */
-    public function getSyntheticLine(): int
+    public function getSyntheticLine()
     {
         return $this->syntheticLine;
     }
@@ -73,7 +73,7 @@ class SyntheticError extends AssertionFailedError
     /**
      * @return array
      */
-    public function getSyntheticTrace(): array
+    public function getSyntheticTrace()
     {
         return $this->syntheticTrace;
     }

@@ -19,7 +19,7 @@ class LogicalXor extends Constraint
     /**
      * @var Constraint[]
      */
-    private $constraints = [];
+    protected $constraints = [];
 
     public static function fromConstraints(Constraint ...$constraints): self
     {
@@ -33,7 +33,7 @@ class LogicalXor extends Constraint
     /**
      * @param Constraint[] $constraints
      */
-    public function setConstraints(array $constraints): void
+    public function setConstraints(array $constraints)
     {
         $this->constraints = [];
 
@@ -58,20 +58,19 @@ class LogicalXor extends Constraint
      * a boolean value instead: true in case of success, false in case of a
      * failure.
      *
-     * @param mixed  $other        value or object to evaluate
+     * @param mixed  $other        Value or object to evaluate.
      * @param string $description  Additional information about the test
      * @param bool   $returnResult Whether to return a result or throw an exception
      *
-     * @throws ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
-     * @throws \Exception
-     *
      * @return mixed
+     *
+     * @throws ExpectationFailedException
      */
     public function evaluate($other, $description = '', $returnResult = false)
     {
         $success    = true;
         $lastResult = null;
+        $constraint = null;
 
         foreach ($this->constraints as $constraint) {
             $result = $constraint->evaluate($other, $description, true);
@@ -99,7 +98,7 @@ class LogicalXor extends Constraint
      *
      * @return string
      */
-    public function toString(): string
+    public function toString()
     {
         $text = '';
 
@@ -119,7 +118,7 @@ class LogicalXor extends Constraint
      *
      * @return int
      */
-    public function count(): int
+    public function count()
     {
         $count = 0;
 

@@ -18,16 +18,28 @@ class StringStartsWith extends Constraint
     /**
      * @var string
      */
-    private $prefix;
+    protected $prefix;
 
     /**
      * @param string $prefix
      */
-    public function __construct(string $prefix)
+    public function __construct($prefix)
     {
         parent::__construct();
-
         $this->prefix = $prefix;
+    }
+
+    /**
+     * Evaluates the constraint for parameter $other. Returns true if the
+     * constraint is met, false otherwise.
+     *
+     * @param mixed $other Value or object to evaluate.
+     *
+     * @return bool
+     */
+    protected function matches($other)
+    {
+        return \strpos($other, $this->prefix) === 0;
     }
 
     /**
@@ -35,21 +47,8 @@ class StringStartsWith extends Constraint
      *
      * @return string
      */
-    public function toString(): string
+    public function toString()
     {
         return 'starts with "' . $this->prefix . '"';
-    }
-
-    /**
-     * Evaluates the constraint for parameter $other. Returns true if the
-     * constraint is met, false otherwise.
-     *
-     * @param mixed $other value or object to evaluate
-     *
-     * @return bool
-     */
-    protected function matches($other): bool
-    {
-        return \strpos($other, $this->prefix) === 0;
     }
 }

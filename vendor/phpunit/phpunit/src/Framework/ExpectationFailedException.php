@@ -24,8 +24,8 @@ class ExpectationFailedException extends AssertionFailedError
 
     /**
      * @param string                 $message
-     * @param null|ComparisonFailure $comparisonFailure
-     * @param null|\Exception        $previous
+     * @param ComparisonFailure|null $comparisonFailure
+     * @param \Exception|null        $previous
      */
     public function __construct($message, ComparisonFailure $comparisonFailure = null, \Exception $previous = null)
     {
@@ -37,7 +37,7 @@ class ExpectationFailedException extends AssertionFailedError
     /**
      * @return null|ComparisonFailure
      */
-    public function getComparisonFailure(): ?ComparisonFailure
+    public function getComparisonFailure()
     {
         return $this->comparisonFailure;
     }

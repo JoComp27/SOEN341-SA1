@@ -25,14 +25,14 @@ class Version
      *
      * @return string
      */
-    public static function id(): string
+    public static function id()
     {
         if (self::$pharVersion !== null) {
             return self::$pharVersion;
         }
 
         if (self::$version === null) {
-            $version       = new VersionId('7.0.0', \dirname(__DIR__, 2));
+            $version       = new VersionId('6.5.6', \dirname(\dirname(__DIR__)));
             self::$version = $version->getVersion();
         }
 
@@ -42,7 +42,7 @@ class Version
     /**
      * @return string
      */
-    public static function series(): string
+    public static function series()
     {
         if (\strpos(self::id(), '-')) {
             $version = \explode('-', self::id())[0];
@@ -56,7 +56,7 @@ class Version
     /**
      * @return string
      */
-    public static function getVersionString(): string
+    public static function getVersionString()
     {
         return 'PHPUnit ' . self::id() . ' by Sebastian Bergmann and contributors.';
     }
@@ -64,7 +64,7 @@ class Version
     /**
      * @return string
      */
-    public static function getReleaseChannel(): string
+    public static function getReleaseChannel()
     {
         if (\strpos(self::$pharVersion, '-') !== false) {
             return '-nightly';
