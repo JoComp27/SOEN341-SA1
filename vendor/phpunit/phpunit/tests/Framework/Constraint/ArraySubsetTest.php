@@ -19,9 +19,13 @@ class ArraySubsetTest extends ConstraintTestCase
      * @param array|\Traversable $subset
      * @param array|\Traversable $other
      * @param bool               $strict
+     *
+     * @throws ExpectationFailedException
+     * @throws \Exception
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      * @dataProvider evaluateDataProvider
      */
-    public function testEvaluate($expected, $subset, $other, $strict)
+    public function testEvaluate($expected, $subset, $other, $strict): void
     {
         $constraint = new ArraySubset($subset, $strict);
 
@@ -58,7 +62,7 @@ class ArraySubsetTest extends ConstraintTestCase
         ];
     }
 
-    public function testEvaluateWithArrayAccess()
+    public function testEvaluateWithArrayAccess(): void
     {
         $arrayAccess = new \ArrayAccessible(['foo' => 'bar']);
 
@@ -67,7 +71,7 @@ class ArraySubsetTest extends ConstraintTestCase
         $this->assertTrue($constraint->evaluate($arrayAccess, '', true));
     }
 
-    public function testEvaluateFailMessage()
+    public function testEvaluateFailMessage(): void
     {
         $constraint = new ArraySubset(['foo' => 'bar']);
 

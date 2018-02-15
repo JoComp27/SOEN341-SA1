@@ -17,12 +17,12 @@ final class CountConstraint extends Constraint
         return $instance;
     }
 
-    public function matches($other)
+    public function matches($other): bool
     {
         return true;
     }
 
-    public function toString()
+    public function toString(): string
     {
         return sprintf(
             'is accepted by %s',
@@ -30,7 +30,7 @@ final class CountConstraint extends Constraint
         );
     }
 
-    public function count()
+    public function count(): int
     {
         return $this->count;
     }

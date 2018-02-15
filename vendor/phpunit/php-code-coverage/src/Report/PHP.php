@@ -15,15 +15,9 @@ use SebastianBergmann\CodeCoverage\CodeCoverage;
 /**
  * Uses var_export() to write a SebastianBergmann\CodeCoverage\CodeCoverage object to a file.
  */
-class PHP
+final class PHP
 {
-    /**
-     * @param CodeCoverage $coverage
-     * @param string       $target
-     *
-     * @return string
-     */
-    public function process(CodeCoverage $coverage, $target = null)
+    public function process(CodeCoverage $coverage, ?string $target = null): string
     {
         $filter = $coverage->filter();
 
@@ -44,8 +38,8 @@ return $coverage;',
 
         if ($target !== null) {
             return \file_put_contents($target, $output);
-        } else {
-            return $output;
         }
+
+        return $output;
     }
 }

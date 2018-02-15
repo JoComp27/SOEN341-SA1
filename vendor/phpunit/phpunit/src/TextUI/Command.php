@@ -25,16 +25,16 @@ use PHPUnit\Runner\TestSuiteLoader;
 use PHPUnit\Runner\Version;
 use PHPUnit\Util\Configuration;
 use PHPUnit\Util\ConfigurationGenerator;
-use PHPUnit\Util\Fileloader;
+use PHPUnit\Util\FileLoader;
 use PHPUnit\Util\Filesystem;
 use PHPUnit\Util\Getopt;
 use PHPUnit\Util\Log\TeamCity;
 use PHPUnit\Util\Printer;
-use PHPUnit\Util\TestDox\TextResultPrinter;
+use PHPUnit\Util\TestDox\CliTestDoxPrinter;
 use PHPUnit\Util\TextTestListRenderer;
 use PHPUnit\Util\XmlTestListRenderer;
 use ReflectionClass;
-use SebastianBergmann\CodeCoverage\Report\PHP;
+
 use Throwable;
 
 /**
@@ -140,6 +140,11 @@ class Command
 
     /**
      * @param bool $exit
+     *
+     * @throws \RuntimeException
+     * @throws \ReflectionException
+     * @throws \PHPUnit\Framework\Exception
+     * @throws \InvalidArgumentException
      */
     public static function main($exit = true)
     {
@@ -152,9 +157,14 @@ class Command
      * @param array $argv
      * @param bool  $exit
      *
+     * @throws \RuntimeException
+     * @throws \ReflectionException
+     * @throws \InvalidArgumentException
+     * @throws Exception
+     *
      * @return int
      */
-    public function run(array $argv, $exit = true)
+    public function run(array $argv, $exit = true): int
     {
         $this->handleArguments($argv);
 
@@ -217,7 +227,7 @@ class Command
      *
      * @return TestRunner
      */
-    protected function createRunner()
+    protected function createRunner(): TestRunner
     {
         return new TestRunner($this->arguments['loader']);
     }
@@ -266,8 +276,10 @@ class Command
      * </code>
      *
      * @param array $argv
+     *
+     * @throws Exception
      */
-    protected function handleArguments(array $argv)
+    protected function handleArguments(array $argv): void
     {
         try {
             $this->options = Getopt::getopt(
@@ -548,7 +560,7 @@ class Command
                     break;
 
                 case '--testdox':
-                    $this->arguments['printer'] = TextResultPrinter::class;
+                    $this->arguments['printer'] = CliTestDoxPrinter::class;
 
                     break;
 
@@ -834,7 +846,7 @@ class Command
             }
 
             if (!isset($this->arguments['test'])) {
-                $testSuite = $configuration->getTestSuiteConfiguration($this->arguments['testsuite'] ?? null);
+                $testSuite = $configuration->getTestSuiteConfiguration($this->arguments['testsuite'] ?? '');
 
                 if ($testSuite !== null) {
                     $this->arguments['test'] = $testSuite;
@@ -868,9 +880,9 @@ class Command
      * @param string $loaderClass
      * @param string $loaderFile
      *
-     * @return TestSuiteLoader|null
+     * @return null|TestSuiteLoader
      */
-    protected function handleLoader($loaderClass, $loaderFile = '')
+    protected function handleLoader($loaderClass, $loaderFile = ''): ?TestSuiteLoader
     {
         if (!\class_exists($loaderClass, false)) {
             if ($loaderFile == '') {
@@ -896,7 +908,7 @@ class Command
         }
 
         if ($loaderClass == StandardTestSuiteLoader::class) {
-            return;
+            return null;
         }
 
         $this->exitWithErrorMessage(
@@ -905,6 +917,8 @@ class Command
                 $loaderClass
             )
         );
+
+        return null;
     }
 
     /**
@@ -913,7 +927,7 @@ class Command
      * @param string $printerClass
      * @param string $printerFile
      *
-     * @return Printer|string|null
+     * @return null|Printer|string
      */
     protected function handlePrinter($printerClass, $printerFile = '')
     {
@@ -985,16 +999,16 @@ class Command
      *
      * @param string $filename
      */
-    protected function handleBootstrap($filename)
+    protected function handleBootstrap($filename): void
     {
         try {
-            Fileloader::checkAndLoad($filename);
+            FileLoader::checkAndLoad($filename);
         } catch (Exception $e) {
             $this->exitWithErrorMessage($e->getMessage());
         }
     }
 
-    protected function handleVersionCheck()
+    protected function handleVersionCheck(): void
     {
         $this->printVersionString();
 
@@ -1017,7 +1031,7 @@ class Command
     /**
      * Show the help message.
      */
-    protected function showHelp()
+    protected function showHelp(): void
     {
         $this->printVersionString();
 
@@ -1121,11 +1135,11 @@ EOT;
     /**
      * Custom callback for test suite discovery.
      */
-    protected function handleCustomTestSuite()
+    protected function handleCustomTestSuite(): void
     {
     }
 
-    private function printVersionString()
+    private function printVersionString(): void
     {
         if ($this->versionStringPrinted) {
             return;
@@ -1139,7 +1153,7 @@ EOT;
     /**
      * @param string $message
      */
-    private function exitWithErrorMessage($message)
+    private function exitWithErrorMessage($message): void
     {
         $this->printVersionString();
 
@@ -1151,7 +1165,7 @@ EOT;
     /**
      * @param string $directory
      */
-    private function handleExtensions($directory)
+    private function handleExtensions($directory): void
     {
         $facade = new File_Iterator_Facade;
 

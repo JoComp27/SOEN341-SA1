@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Runner;
 
-use PHP_Timer;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\IncompleteTestError;
@@ -17,8 +16,8 @@ use PHPUnit\Framework\SelfDescribing;
 use PHPUnit\Framework\SkippedTestError;
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestResult;
-use PHPUnit\Util\InvalidArgumentHelper;
 use PHPUnit\Util\PHP\AbstractPhpProcess;
+use SebastianBergmann\Timer\Timer;
 use Text_Template;
 use Throwable;
 
@@ -66,17 +65,10 @@ class PhptTestCase implements Test, SelfDescribing
     /**
      * Constructs a test case with the given filename.
      *
-     * @param string             $filename
-     * @param AbstractPhpProcess $phpUtil
-     *
      * @throws Exception
      */
-    public function __construct($filename, $phpUtil = null)
+    public function __construct(string $filename, AbstractPhpProcess $phpUtil = null)
     {
-        if (!\is_string($filename)) {
-            throw InvalidArgumentHelper::factory(1, 'string');
-        }
-
         if (!\is_file($filename)) {
             throw new Exception(
                 \sprintf(
@@ -95,46 +87,9 @@ class PhptTestCase implements Test, SelfDescribing
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return 1;
-    }
-
-    /**
-     * @param array  $sections
-     * @param string $output
-     *
-     * @throws Exception
-     */
-    private function assertPhptExpectation(array $sections, $output)
-    {
-        $assertions = [
-            'EXPECT'      => 'assertEquals',
-            'EXPECTF'     => 'assertStringMatchesFormat',
-            'EXPECTREGEX' => 'assertRegExp',
-        ];
-
-        $actual = \preg_replace('/\r\n/', "\n", \trim($output));
-
-        foreach ($assertions as $sectionName => $sectionAssertion) {
-            if (isset($sections[$sectionName])) {
-                $sectionContent = \preg_replace('/\r\n/', "\n", \trim($sections[$sectionName]));
-                $assertion      = $sectionAssertion;
-                $expected       = $sectionName === 'EXPECTREGEX' ? "/{$sectionContent}/" : $sectionContent;
-
-                break;
-            }
-        }
-
-        if (!isset($assertion)) {
-            throw new Exception('No PHPT assertion found');
-        }
-
-        if (!isset($expected)) {
-            throw new Exception('No PHPT expectation found');
-        }
-
-        Assert::$assertion($expected, $actual);
     }
 
     /**
@@ -142,9 +97,19 @@ class PhptTestCase implements Test, SelfDescribing
      *
      * @param TestResult $result
      *
+     * @throws Exception
+     * @throws \ReflectionException
+     * @throws \SebastianBergmann\CodeCoverage\CoveredCodeNotExecutedException
+     * @throws \SebastianBergmann\CodeCoverage\InvalidArgumentException
+     * @throws \SebastianBergmann\CodeCoverage\MissingCoversAnnotationException
+     * @throws \SebastianBergmann\CodeCoverage\RuntimeException
+     * @throws \SebastianBergmann\CodeCoverage\UnintentionallyCoveredCodeException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws \Exception
+     *
      * @return TestResult
      */
-    public function run(TestResult $result = null)
+    public function run(TestResult $result = null): TestResult
     {
         $sections = $this->parse();
         $code     = $this->render($sections['FILE']);
@@ -195,10 +160,10 @@ class PhptTestCase implements Test, SelfDescribing
             $this->renderForCoverage($settings);
         }
 
-        PHP_Timer::start();
+        Timer::start();
 
         $jobResult = $this->phpUtil->runJob($code, $this->stringifyIni($settings));
-        $time      = PHP_Timer::stop();
+        $time      = Timer::stop();
 
         if ($result->getCollectCodeCoverageInformation() && ($coverage = $this->cleanupForCoverage())) {
             $result->getCodeCoverage()->append($coverage, $this, true, [], [], true);
@@ -228,13 +193,133 @@ class PhptTestCase implements Test, SelfDescribing
     }
 
     /**
-     * @param array<string, string> $sections
-     * @param TestResult            $result
-     * @param array                 $settings
+     * Returns the name of the test case.
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->toString();
+    }
+
+    /**
+     * Returns a string representation of the test case.
+     *
+     * @return string
+     */
+    public function toString(): string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * Parse --INI-- section key value pairs and return as array.
+     *
+     * @param array|string
+     * @param mixed $content
+     * @param mixed $ini
+     *
+     * @return array
+     */
+    private function parseIniSection($content, $ini = []): array
+    {
+        if (\is_string($content)) {
+            $content = \explode("\n", \trim($content));
+        }
+
+        foreach ($content as $setting) {
+            if (\strpos($setting, '=') === false) {
+                continue;
+            }
+
+            $setting = \explode('=', $setting, 2);
+            $name    = \trim($setting[0]);
+            $value   = \trim($setting[1]);
+
+            if ($name === 'extension' || $name === 'zend_extension') {
+                if (!isset($ini[$name])) {
+                    $ini[$name] = [];
+                }
+
+                $ini[$name][] = $value;
+
+                continue;
+            }
+
+            $ini[$name] = $value;
+        }
+
+        return $ini;
+    }
+
+    /**
+     * @param string $content
+     *
+     * @return array<string, string>
+     */
+    private function parseEnvSection($content): array
+    {
+        $env = [];
+
+        foreach (\explode("\n", \trim($content)) as $e) {
+            $e = \explode('=', \trim($e), 2);
+
+            if (!empty($e[0]) && isset($e[1])) {
+                $env[$e[0]] = $e[1];
+            }
+        }
+
+        return $env;
+    }
+
+    /**
+     * @param array  $sections
+     * @param string $output
+     *
+     * @throws Exception
+     */
+    private function assertPhptExpectation(array $sections, $output): void
+    {
+        $assertions = [
+            'EXPECT'      => 'assertEquals',
+            'EXPECTF'     => 'assertStringMatchesFormat',
+            'EXPECTREGEX' => 'assertRegExp',
+        ];
+
+        $actual = \preg_replace('/\r\n/', "\n", \trim($output));
+
+        foreach ($assertions as $sectionName => $sectionAssertion) {
+            if (isset($sections[$sectionName])) {
+                $sectionContent = \preg_replace('/\r\n/', "\n", \trim($sections[$sectionName]));
+                $assertion      = $sectionAssertion;
+                $expected       = $sectionName === 'EXPECTREGEX' ? "/{$sectionContent}/" : $sectionContent;
+
+                break;
+            }
+        }
+
+        if (!isset($assertion)) {
+            throw new Exception('No PHPT assertion found');
+        }
+
+        if (!isset($expected)) {
+            throw new Exception('No PHPT expectation found');
+        }
+
+        Assert::$assertion($expected, $actual);
+    }
+
+    /**
+     * @param            $sections
+     * @param TestResult $result
+     * @param array      $settings
+     *
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws \Exception
      *
      * @return bool
      */
-    private function runSkip(&$sections, TestResult $result, $settings)
+    private function runSkip(&$sections, TestResult $result, $settings): bool
     {
         if (!isset($sections['SKIPIF'])) {
             return false;
@@ -261,7 +346,7 @@ class PhptTestCase implements Test, SelfDescribing
     /**
      * @param array<string, string> $sections
      */
-    private function runClean(&$sections)
+    private function runClean(&$sections): void
     {
         $this->phpUtil->setStdin('');
         $this->phpUtil->setArgs('');
@@ -274,31 +359,11 @@ class PhptTestCase implements Test, SelfDescribing
     }
 
     /**
-     * Returns the name of the test case.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->toString();
-    }
-
-    /**
-     * Returns a string representation of the test case.
-     *
-     * @return string
-     */
-    public function toString()
-    {
-        return $this->filename;
-    }
-
-    /**
-     * @return array
-     *
      * @throws Exception
+     *
+     * @return array
      */
-    private function parse()
+    private function parse(): array
     {
         $sections = [];
         $section  = '';
@@ -326,7 +391,8 @@ class PhptTestCase implements Test, SelfDescribing
                 $sections[$section] = '';
 
                 continue;
-            } elseif (empty($section)) {
+            }
+            if (empty($section)) {
                 throw new Exception('Invalid PHPT file');
             }
 
@@ -338,7 +404,7 @@ class PhptTestCase implements Test, SelfDescribing
             unset($sections['FILEEOF']);
         }
 
-        $this->parseExtenal($sections);
+        $this->parseExternal($sections);
 
         if (!$this->validate($sections)) {
             throw new Exception('Invalid PHPT file');
@@ -357,8 +423,10 @@ class PhptTestCase implements Test, SelfDescribing
 
     /**
      * @param array<string, string> $sections
+     *
+     * @throws Exception
      */
-    private function parseExtenal(&$sections)
+    private function parseExternal(&$sections): void
     {
         $allowSections = [
             'FILE',
@@ -395,7 +463,7 @@ class PhptTestCase implements Test, SelfDescribing
      *
      * @return bool
      */
-    private function validate(&$sections)
+    private function validate(&$sections): bool
     {
         $requiredSections = [
             'FILE',
@@ -438,7 +506,7 @@ class PhptTestCase implements Test, SelfDescribing
      *
      * @return string
      */
-    private function render($code)
+    private function render($code): string
     {
         return \str_replace(
             [
@@ -456,7 +524,7 @@ class PhptTestCase implements Test, SelfDescribing
     /**
      * @return array<string, string>
      */
-    private function getCoverageFiles()
+    private function getCoverageFiles(): array
     {
         $baseDir          = \dirname($this->filename) . DIRECTORY_SEPARATOR;
         $basename         = \basename($this->filename, 'phpt');
@@ -469,10 +537,8 @@ class PhptTestCase implements Test, SelfDescribing
 
     /**
      * @param array $settings
-     *
-     * @return string
      */
-    private function renderForCoverage(&$settings)
+    private function renderForCoverage(&$settings): void
     {
         $files = $this->getCoverageFiles();
 
@@ -517,7 +583,7 @@ class PhptTestCase implements Test, SelfDescribing
     /**
      * @return array
      */
-    private function cleanupForCoverage()
+    private function cleanupForCoverage(): array
     {
         $files    = $this->getCoverageFiles();
         $coverage = @\unserialize(\file_get_contents($files['coverage']));
@@ -534,7 +600,7 @@ class PhptTestCase implements Test, SelfDescribing
      *
      * @return array
      */
-    private function stringifyIni($ini)
+    private function stringifyIni($ini): array
     {
         $settings = [];
 
@@ -551,63 +617,5 @@ class PhptTestCase implements Test, SelfDescribing
         }
 
         return $settings;
-    }
-
-    /**
-     * Parse --INI-- section key value pairs and return as array.
-     *
-     * @param string|array
-     *
-     * @return array
-     */
-    protected function parseIniSection($content, $ini = [])
-    {
-        if (\is_string($content)) {
-            $content = \explode("\n", \trim($content));
-        }
-
-        foreach ($content as $setting) {
-            if (\strpos($setting, '=') === false) {
-                continue;
-            }
-
-            $setting = \explode('=', $setting, 2);
-            $name    = \trim($setting[0]);
-            $value   = \trim($setting[1]);
-
-            if ($name === 'extension' || $name === 'zend_extension') {
-                if (!isset($ini[$name])) {
-                    $ini[$name] = [];
-                }
-
-                $ini[$name][] = $value;
-
-                continue;
-            }
-
-            $ini[$name] = $value;
-        }
-
-        return $ini;
-    }
-
-    /**
-     * @param string $content
-     *
-     * @return array<string, string>
-     */
-    protected function parseEnvSection($content)
-    {
-        $env = [];
-
-        foreach (\explode("\n", \trim($content)) as $e) {
-            $e = \explode('=', \trim($e), 2);
-
-            if (!empty($e[0]) && isset($e[1])) {
-                $env[$e[0]] = $e[1];
-            }
-        }
-
-        return $env;
     }
 }
