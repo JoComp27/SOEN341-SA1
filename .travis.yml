@@ -4,8 +4,3 @@ php:
 
 before_install:
   - composer self-update
-
-before_script:
-  - composer install
-
-script: phpunit --configuration phpunit.xml --coverage-text
