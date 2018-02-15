@@ -3,7 +3,7 @@ php:
   - "7.2.1"
 
 before_install:
-  - php /home/travis/.phpenv/version/5.4.25/bin/composer.phar self-update
+  - composer self-update
 
 before_script:
   - composer install
