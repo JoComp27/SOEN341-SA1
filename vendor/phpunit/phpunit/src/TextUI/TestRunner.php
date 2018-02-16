@@ -52,9 +52,9 @@ use SebastianBergmann\Environment\Runtime;
  */
 class TestRunner extends BaseTestRunner
 {
-    const SUCCESS_EXIT   = 0;
-    const FAILURE_EXIT   = 1;
-    const EXCEPTION_EXIT = 2;
+    public const SUCCESS_EXIT   = 0;
+    public const FAILURE_EXIT   = 1;
+    public const EXCEPTION_EXIT = 2;
 
     /**
      * @var CodeCoverageFilter
@@ -102,15 +102,18 @@ class TestRunner extends BaseTestRunner
     }
 
     /**
-     * @param Test|ReflectionClass $test
+     * @param ReflectionClass|Test $test
      * @param array                $arguments
      * @param bool                 $exit
      *
-     * @return TestResult
-     *
+     * @throws \RuntimeException
+     * @throws \InvalidArgumentException
      * @throws Exception
+     * @throws \ReflectionException
+     *
+     * @return TestResult
      */
-    public static function run($test, array $arguments = [], $exit = true)
+    public static function run($test, array $arguments = [], $exit = true): TestResult
     {
         if ($test instanceof ReflectionClass) {
             $test = new TestSuite($test);
@@ -130,59 +133,18 @@ class TestRunner extends BaseTestRunner
     }
 
     /**
-     * @return TestResult
-     */
-    protected function createTestResult()
-    {
-        return new TestResult;
-    }
-
-    /**
-     * @param TestSuite $suite
-     * @param array     $arguments
-     */
-    private function processSuiteFilters(TestSuite $suite, array $arguments)
-    {
-        if (!$arguments['filter'] &&
-            empty($arguments['groups']) &&
-            empty($arguments['excludeGroups'])) {
-            return;
-        }
-
-        $filterFactory = new Factory;
-
-        if (!empty($arguments['excludeGroups'])) {
-            $filterFactory->addFilter(
-                new ReflectionClass(ExcludeGroupFilterIterator::class),
-                $arguments['excludeGroups']
-            );
-        }
-
-        if (!empty($arguments['groups'])) {
-            $filterFactory->addFilter(
-                new ReflectionClass(IncludeGroupFilterIterator::class),
-                $arguments['groups']
-            );
-        }
-
-        if ($arguments['filter']) {
-            $filterFactory->addFilter(
-                new ReflectionClass(NameFilterIterator::class),
-                $arguments['filter']
-            );
-        }
-
-        $suite->injectFilter($filterFactory);
-    }
-
-    /**
      * @param Test  $suite
      * @param array $arguments
      * @param bool  $exit
      *
+     * @throws Exception
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
+     * @throws \ReflectionException
+     *
      * @return TestResult
      */
-    public function doRun(Test $suite, array $arguments = [], $exit = true)
+    public function doRun(Test $suite, array $arguments = [], $exit = true): TestResult
     {
         if (isset($arguments['configuration'])) {
             $GLOBALS['__PHPUNIT_CONFIGURATION_FILE'] = $arguments['configuration'];
@@ -545,7 +507,6 @@ class TestRunner extends BaseTestRunner
 
         $suite->run($result);
 
-        unset($suite);
         $result->flushListeners();
 
         if ($this->printer instanceof ResultPrinter) {
@@ -701,9 +662,31 @@ class TestRunner extends BaseTestRunner
     /**
      * @param ResultPrinter $resultPrinter
      */
-    public function setPrinter(ResultPrinter $resultPrinter)
+    public function setPrinter(ResultPrinter $resultPrinter): void
     {
         $this->printer = $resultPrinter;
+    }
+
+    /**
+     * Returns the loader to be used.
+     *
+     * @return TestSuiteLoader
+     */
+    public function getLoader(): TestSuiteLoader
+    {
+        if ($this->loader === null) {
+            $this->loader = new StandardTestSuiteLoader;
+        }
+
+        return $this->loader;
+    }
+
+    /**
+     * @return TestResult
+     */
+    protected function createTestResult(): TestResult
+    {
+        return new TestResult;
     }
 
     /**
@@ -712,7 +695,7 @@ class TestRunner extends BaseTestRunner
      *
      * @param string $message
      */
-    protected function runFailed($message)
+    protected function runFailed($message): void
     {
         $this->write($message . PHP_EOL);
         exit(self::FAILURE_EXIT);
@@ -721,7 +704,7 @@ class TestRunner extends BaseTestRunner
     /**
      * @param string $buffer
      */
-    protected function write($buffer)
+    protected function write($buffer): void
     {
         if (PHP_SAPI != 'cli' && PHP_SAPI != 'phpdbg') {
             $buffer = \htmlspecialchars($buffer);
@@ -735,23 +718,11 @@ class TestRunner extends BaseTestRunner
     }
 
     /**
-     * Returns the loader to be used.
-     *
-     * @return TestSuiteLoader
-     */
-    public function getLoader()
-    {
-        if ($this->loader === null) {
-            $this->loader = new StandardTestSuiteLoader;
-        }
-
-        return $this->loader;
-    }
-
-    /**
      * @param array $arguments
+     *
+     * @throws Exception
      */
-    protected function handleConfiguration(array &$arguments)
+    protected function handleConfiguration(array &$arguments): void
     {
         if (isset($arguments['configuration']) &&
             !$arguments['configuration'] instanceof Configuration) {
@@ -1092,10 +1063,51 @@ class TestRunner extends BaseTestRunner
     }
 
     /**
+     * @param TestSuite $suite
+     * @param array     $arguments
+     *
+     * @throws \ReflectionException
+     * @throws \InvalidArgumentException
+     */
+    private function processSuiteFilters(TestSuite $suite, array $arguments): void
+    {
+        if (!$arguments['filter'] &&
+            empty($arguments['groups']) &&
+            empty($arguments['excludeGroups'])) {
+            return;
+        }
+
+        $filterFactory = new Factory;
+
+        if (!empty($arguments['excludeGroups'])) {
+            $filterFactory->addFilter(
+                new ReflectionClass(ExcludeGroupFilterIterator::class),
+                $arguments['excludeGroups']
+            );
+        }
+
+        if (!empty($arguments['groups'])) {
+            $filterFactory->addFilter(
+                new ReflectionClass(IncludeGroupFilterIterator::class),
+                $arguments['groups']
+            );
+        }
+
+        if ($arguments['filter']) {
+            $filterFactory->addFilter(
+                new ReflectionClass(NameFilterIterator::class),
+                $arguments['filter']
+            );
+        }
+
+        $suite->injectFilter($filterFactory);
+    }
+
+    /**
      * @param string $type
      * @param string $message
      */
-    private function writeMessage($type, $message)
+    private function writeMessage($type, $message): void
     {
         if (!$this->messagePrinted) {
             $this->write("\n");
