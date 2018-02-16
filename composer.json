@@ -5,8 +5,7 @@
   },
 
   "require": {
-     "aws/aws-sdk-php": "2.*",
-    "laravel/installer": "^2.0"
+     "aws/aws-sdk-php": "2.*"
     }
 
 }

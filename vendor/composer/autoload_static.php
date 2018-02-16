@@ -7,10 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d
 {
     public static $files = array (
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
     );
 
@@ -25,25 +21,7 @@ class ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d
         ),
         'S' => 
         array (
-            'Symfony\\Polyfill\\Mbstring\\' => 26,
-            'Symfony\\Component\\Process\\' => 26,
-            'Symfony\\Component\\Filesystem\\' => 29,
             'Symfony\\Component\\EventDispatcher\\' => 34,
-            'Symfony\\Component\\Console\\' => 26,
-        ),
-        'P' => 
-        array (
-            'Psr\\Http\\Message\\' => 17,
-        ),
-        'L' => 
-        array (
-            'Laravel\\Installer\\Console\\' => 26,
-        ),
-        'G' => 
-        array (
-            'GuzzleHttp\\Psr7\\' => 16,
-            'GuzzleHttp\\Promise\\' => 19,
-            'GuzzleHttp\\' => 11,
         ),
         'D' => 
         array (
@@ -63,45 +41,9 @@ class ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
-        'Symfony\\Component\\Process\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/process',
-        ),
-        'Symfony\\Component\\Filesystem\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/filesystem',
-        ),
         'Symfony\\Component\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
-        ),
-        'Symfony\\Component\\Console\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/console',
-        ),
-        'Psr\\Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Laravel\\Installer\\Console\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laravel/installer/src',
-        ),
-        'GuzzleHttp\\Psr7\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
-        ),
-        'GuzzleHttp\\Promise\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
-        ),
-        'GuzzleHttp\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -292,7 +234,7 @@ class ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d
         'PHPUnit\\Util\\Configuration' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Configuration.php',
         'PHPUnit\\Util\\ConfigurationGenerator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/ConfigurationGenerator.php',
         'PHPUnit\\Util\\ErrorHandler' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/ErrorHandler.php',
-        'PHPUnit\\Util\\Fileloader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/FileLoader.php',
+        'PHPUnit\\Util\\Fileloader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Fileloader.php',
         'PHPUnit\\Util\\Filesystem' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Filesystem.php',
         'PHPUnit\\Util\\Filter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Filter.php',
         'PHPUnit\\Util\\Getopt' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Getopt.php',
