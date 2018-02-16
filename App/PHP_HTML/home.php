@@ -341,4 +341,3 @@
    
 </body>
 </html>
-<?php CloseCon($db); ?>

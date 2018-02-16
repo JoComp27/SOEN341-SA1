@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
         </div>
     <?php } else { ?>
         <div class="alert alert-danger">
-            <strong>Sorry!</strong> Somthing went wrong.
+            <strong>Sorry!</strong> Something went wrong.
         </div>
     <?php } ?>
 
