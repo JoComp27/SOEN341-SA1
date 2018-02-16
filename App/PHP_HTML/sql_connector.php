@@ -13,8 +13,4 @@ $database   = 'website_db';
 
 $db = new mysqli('localhost', $user, $password, $database) or die("Connection failed");
 
-function CloseCon($db) {
-    $db -> close();
-}
-
 ?>
