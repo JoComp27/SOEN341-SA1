@@ -44,12 +44,11 @@
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+			<!--  calling search.php for issue#68 --> 
+			   <form action="search.php" method="GET">
+				 <input type="text" name="query" />
+				 <input type="submit" value="Search" />
+               </form>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="login sample/signIn.php">Sign In</a></li>
                 <li><a href="login sample/signUp.php">Sign Up</a></li>
