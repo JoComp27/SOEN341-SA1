@@ -10,6 +10,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+		function increment(id){
+			<?php $qus_id =$_GET['id'];?>
+			var x = "answer.php?id=<?php echo $qus_id ?>";
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("POST","incrementalVoting.php",true);
+			xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xhttp.send("value="+id);
+			window.location.href=x;
+		}
+	
+		function decrement(id){
+			<?php $qus_id =$_GET['id'];?>
+			var x = "answer.php?id=<?php echo $qus_id ?>";
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("POST","decrementalVoting.php",true);
+			xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xhttp.send("value="+id);
+			window.location.href=x;
+		}
+	</script>
 </head>
 <body>
 <?php include "header.php" ?>
@@ -40,7 +61,7 @@ if (isset($_POST['submit'])) {
         </div>
     <?php } else { ?>
         <div class="alert alert-danger">
-            <strong>Sorry!</strong> Somthing went wrong.
+            <strong>Sorry!</strong> Something went wrong.
         </div>
     <?php } ?>
 
@@ -74,14 +95,17 @@ if (isset($_POST['submit'])) {
 
             <?php include('answer_state.php'); ?>
 
+                      <button type="vote_button" id="incrementalbutton" name="button1" onclick="increment(<?php echo $get_answers['answers_id']; ?>)">
             <a class="social-like">
                 <span class="like"><i class="glyphicon glyphicon-thumbs-up"></i></span>
-                <span class="count">5</span>
-            </a>&nbsp;
+                <span class="count"> <?php echo $get_answers['answers_upvotes']; ?> </span>
+            </a>&nbsp; </button>
+			
+			<button type="vote_button" id="decrementalbutton" name="button2" onclick="decrement(<?php echo $get_answers['answers_id']; ?>)">
             <a class="social-dislike">
-                <span class="dislike">4</span>
+                <span class="dislike"> <?php echo $get_answers['answers_downvotes'] ; ?> </span>
                 <span class="like"><i class="glyphicon glyphicon-thumbs-down"></i></span>
-            </a>
+            </a> </button>
         </li><br/>
 
         <?php $a++;
