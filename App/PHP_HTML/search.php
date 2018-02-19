@@ -28,7 +28,7 @@
      
     if(strlen($query) >= $min_length){ // if query length is more or equal minimum length then
          
- 		$search_query = "select questions.question_id,questions.question_view_count,questions.question_title, questions.question_date, 
+ 	$search_query = "select questions.question_id,questions.question_view_count,questions.question_title, questions.question_date, 
 							questions.question_upvote, ifnull(count(answers.answers_id),0) as total
 							from questions left join answers on (answers.reply_questions = questions.question_id)
 							where (questions.question_description like '%$query%' OR questions.question_title like '%$query%') 
