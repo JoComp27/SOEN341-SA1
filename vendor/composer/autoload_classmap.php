@@ -155,7 +155,7 @@ return array(
     'PHPUnit\\Util\\Configuration' => $vendorDir . '/phpunit/phpunit/src/Util/Configuration.php',
     'PHPUnit\\Util\\ConfigurationGenerator' => $vendorDir . '/phpunit/phpunit/src/Util/ConfigurationGenerator.php',
     'PHPUnit\\Util\\ErrorHandler' => $vendorDir . '/phpunit/phpunit/src/Util/ErrorHandler.php',
-    'PHPUnit\\Util\\Fileloader' => $vendorDir . '/phpunit/phpunit/src/Util/Fileloader.php',
+    'PHPUnit\\Util\\FileLoader' => $vendorDir . '/phpunit/phpunit/src/Util/FileLoader.php',
     'PHPUnit\\Util\\Filesystem' => $vendorDir . '/phpunit/phpunit/src/Util/Filesystem.php',
     'PHPUnit\\Util\\Filter' => $vendorDir . '/phpunit/phpunit/src/Util/Filter.php',
     'PHPUnit\\Util\\Getopt' => $vendorDir . '/phpunit/phpunit/src/Util/Getopt.php',

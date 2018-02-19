@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d
+class ComposerStaticInit90d9bc87c67d6945080829886ef4288d
 {
     public static $files = array (
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
@@ -233,7 +233,7 @@ class ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d
         'PHPUnit\\Util\\Configuration' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Configuration.php',
         'PHPUnit\\Util\\ConfigurationGenerator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/ConfigurationGenerator.php',
         'PHPUnit\\Util\\ErrorHandler' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/ErrorHandler.php',
-        'PHPUnit\\Util\\Fileloader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Fileloader.php',
+        'PHPUnit\\Util\\FileLoader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/FileLoader.php',
         'PHPUnit\\Util\\Filesystem' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Filesystem.php',
         'PHPUnit\\Util\\Filter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Filter.php',
         'PHPUnit\\Util\\Getopt' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Getopt.php',
@@ -608,10 +608,10 @@ class ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit37582f0f5424ffb8ca67dc2a23ad3a6d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit90d9bc87c67d6945080829886ef4288d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit90d9bc87c67d6945080829886ef4288d::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit90d9bc87c67d6945080829886ef4288d::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit90d9bc87c67d6945080829886ef4288d::$classMap;
 
         }, null, ClassLoader::class);
     }
