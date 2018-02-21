@@ -1,4 +1,8 @@
-{
-  "language": "php",
-  "os": "windows"
-}
+language: php
+php:
+  - 7.1
+  - 7.2
+  - master
+
+before_install:
+  - composer update
