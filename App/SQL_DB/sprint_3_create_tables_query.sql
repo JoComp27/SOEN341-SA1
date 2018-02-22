@@ -3,12 +3,17 @@
 --       - Additions for Spring 3 
 --       - Added additional tables (notification, notification_user) to support user notification feature
 --       - Added additional columns (x_deleted) to support delete answer/question feature
--- Howtos: Run query once on either XAMPP to begin local dev or AWS mysql for global to create tables. 
+--       - Deleted table categories and replaced it with tags
+-- Howtos: Run query once on either XAMPP to begin local dev, under database name = website_db, or AWS mysql for global to create tables. 
 -- Ming Tao Yu 2018-02-22, adapted from open source license @ code.tutsplus.com Evert Padje
 -- Modifications:
--- 
---            
+--              By:               Detail:                 Date:
+--
+--
+--             
 -- =============================================================================================
+
+DROP TABLE IF EXISTS categories;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
@@ -42,13 +47,14 @@ active INT(1)
 ) ENGINE=INNODB;
 
 
-DROP TABLE IF EXISTS categories;
-CREATE TABLE categories ( -- What type of question this is. Optional. May be removed later
-cat_id INT(16) NOT NULL AUTO_INCREMENT,
-cat_name VARCHAR(255),
-cat_description VARCHAR(255),
-UNIQUE INDEX cat_name_unique (cat_name),
-PRIMARY KEY (cat_id)
+DROP TABLE IF EXISTS tag;
+CREATE TABLE tag ( -- What type of question this is. Optional. May be removed later
+tag_id INT(16) NOT NULL AUTO_INCREMENT,
+question_id INT(16), -- Foreign key to table questions, question_id. A question may have several tags
+tag_name VARCHAR(20),
+tag_description VARCHAR(255),
+UNIQUE INDEX tag_name_unique (tag_name),
+PRIMARY KEY (tag_id)
 ) ENGINE=INNODB;
 
 DROP TABLE IF EXISTS questions;
@@ -56,7 +62,6 @@ CREATE TABLE questions (
 question_id INT(16) NOT NULL AUTO_INCREMENT,
 question_title VARCHAR(255),
 question_date DATETIME,
-question_cat INT(16), -- foreign key to cat_id in table categories
 question_by INT(32),-- foreign key to users_id
 question_upvote INT(16) DEFAULT 0,
 question_keyword_tag VARCHAR(500), -- we can add tags to the question later
