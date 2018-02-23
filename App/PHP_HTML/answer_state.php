@@ -8,7 +8,7 @@
 
 <div id="answer-state-<?php echo $a ?>" class="answer-state">
     <?php if ($get_answers['answer_state'] == 1) { ?>
-        <form class="answer-state-form" name="answerState" action="answer_state_2.php?id=<?php echo $get_answers['answers_id']?>&question_id==<?php echo $get_answers['reply_questions'] ?>" method="post""> <!--TODO: Complete Backend-->
+        <form class="answer-state-form" name="answerState" action="answer_state_2.php?id=<?php echo $get_answers['answers_id']?>&question_id==<?php echo $get_answers['reply_questions'] ?>" method="post"">
             <label><input type="submit" name="state" value="2" onchange="checkState(<?php echo $a ?>); this.form.submit()">
                 Accept Answer</label>&nbsp;
             <label><input type="submit" name="state" value="0" onchange="checkState(<?php echo $a ?>); this.form.submit()">
