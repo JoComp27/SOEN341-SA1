@@ -2,8 +2,12 @@
 <html>
 <head>
     <?php include "header.php" ?>
+
+      <link rel="stylesheet" type="text/css" href="home.css">
+
 </head>
 <body>
+<br>
     <div class="container">
         <form method="POST" action="question_submission.php">
             <button id="ask" type="button">Ask a Question!</button>
