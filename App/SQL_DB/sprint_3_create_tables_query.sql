@@ -101,6 +101,21 @@ user_id INT(16), -- foreign key to table users user_id
 PRIMARY KEY (notification_id)
 ) ENGINE=INNODB;
 
+DROP TABLE IF EXISTS tags;
+CREATE TABLE tags (
+  tag_id INT(16) NOT NULL AUTO_INCREMENT, -- foreign key to table question_tags.
+  tag_name VARCHAR(255),
+  PRIMARY KEY (tag_id)
+) ENGINE=INNODB;
+
+DROP TABLE IF EXISTS question_tags;
+CREATE TABLE question_tags (
+  question_id INT(16) NOT NULL, -- foreign key from table questions
+  tag_id INT(16) NOT NULL,      -- foreign key from table tag
+  FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  PRIMARY KEY (question_id, tag_id)
+) ENGINE=INNODB;
 
 -- ALTER TABLE answers ADD FOREIGN KEY(reply_questions) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ALTER TABLE answers ADD FOREIGN KEY(reply_by) REFERENCES user(user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
