@@ -46,17 +46,6 @@ logged_out DATETIME,
 active INT(1)
 ) ENGINE=INNODB;
 
-
-DROP TABLE IF EXISTS tag;
-CREATE TABLE tag ( -- What type of question this is. Optional. May be removed later
-tag_id INT(16) NOT NULL AUTO_INCREMENT,
-question_id INT(16), -- Foreign key to table questions, question_id. A question may have several tags
-tag_name VARCHAR(20),
-tag_description VARCHAR(255),
-UNIQUE INDEX tag_name_unique (tag_name),
-PRIMARY KEY (tag_id)
-) ENGINE=INNODB;
-
 DROP TABLE IF EXISTS questions;
 CREATE TABLE questions (
 question_id INT(16) NOT NULL AUTO_INCREMENT,
@@ -104,7 +93,9 @@ PRIMARY KEY (notification_id)
 DROP TABLE IF EXISTS tags;
 CREATE TABLE tags (
   tag_id INT(16) NOT NULL AUTO_INCREMENT, -- foreign key to table question_tags.
-  tag_name VARCHAR(255),
+  tag_name VARCHAR(255) NOT NULL,
+  tag_description VARCHAR(255),
+  UNIQUE INDEX tag_name_unique (tag_name),
   PRIMARY KEY (tag_id)
 ) ENGINE=INNODB;
 
@@ -112,8 +103,8 @@ DROP TABLE IF EXISTS question_tags;
 CREATE TABLE question_tags (
   question_id INT(16) NOT NULL, -- foreign key from table questions
   tag_id INT(16) NOT NULL,      -- foreign key from table tag
-  FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-  FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+--  FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+--  FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON DELETE RESTRICT ON UPDATE CASCADE,
   PRIMARY KEY (question_id, tag_id)
 ) ENGINE=INNODB;
 
