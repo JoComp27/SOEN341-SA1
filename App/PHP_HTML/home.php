@@ -19,7 +19,7 @@
                 <br>
                 <strong id="tags_title">Associated Tags : </strong>
                 <br>
-                <input type="text" name="tags" data-role="tagsinput" placeholder="Add tags">
+                <input type="text" name="tags" data-role="tagsinput" value="" placeholder="Add tags">
                 <br>
                 <input id="submit" type="submit">
             </p>
