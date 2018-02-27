@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="ask_question.css" type="text/css" rel="stylesheet">
     <?php include "header.php" ?>
+
+      <link rel="stylesheet" type="text/css" href="home.css">
+
 </head>
 <body>
+<br>
     <div class="container">
         <form method="POST" action="question_submission.php">
-            <button id="ask" type="button">Ask a Question!</button>
+            <button id="ask" type="button"><span> Ask a Question!</span></button>
             <br>
             <p id="question_field" name="question_field" class="hidden">
                 <strong id="title_title" class="pretty">Title : </strong>

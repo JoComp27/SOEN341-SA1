@@ -25,7 +25,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Okapi</a>
+            <a class="navbar-brand" href="../home.php"><img id="img" src="login sample/logo.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,6 +51,7 @@
 				 <input type="text" name="query" />
 				 <input type="submit" value="Search" />
                </form>
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="login sample/signIn.php">Sign In</a></li>
                 <li><a href="login sample/signUp.php">Sign Up</a></li>
