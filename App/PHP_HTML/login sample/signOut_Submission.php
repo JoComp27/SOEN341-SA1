@@ -1,18 +1,28 @@
 <?php
-$user   = 'root';
-$password   = '';
-$database   = 'website_db';
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+?>
 
-$db = new mysqli('localhost', $user, $password, $database) or die("Connection failed");
+<?php
+include('sql_connector.php');
 
-$sql = "SELECT user_id, active, logged_out FROM loggedin";
-$result = $db->query($sql);
-if ($result->num_rows > 0)
-    while ($row = $result->fetch_assoc())
-        $r = $row;
-$name = $r['user_id'];
-$sql = "UPDATE loggedin SET active = 0, logged_out = NOW() WHERE user_id = \"$name\"";
-$db->query($sql);
+// Unset all of the session variables.
+$_SESSION = array();
+
+// If it's desired to kill the session, also delete the session cookie.
+// Note: This will destroy the session, and not just the session data!
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+// Finally, destroy the session.
+session_destroy();
 header('Location: ../home.php');
 exit;
 ?>
