@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <link href="ask_question.css" type="text/css" rel="stylesheet">
@@ -229,7 +230,7 @@
           <table class="table">
             <?php
 
-          $sql = "SELECT * FROM questions where DATE(question_date) < curdate() - INTERVAL DAYOFWEEK(curdate()) - 1 DAY";
+          $sql = "SELECT * FROM questions where DATE(question_date) < dateadd(week,-1,getdate())";
           $result = mysqli_query($db, $sql);
 
           if (mysqli_num_rows($result) > 0) {

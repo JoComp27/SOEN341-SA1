@@ -1,7 +1,15 @@
 <?php
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+?>
+
+<?php
     include('sql_connector.php');
 ?>
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Okapi</title>
@@ -34,7 +42,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../home.php"><img id="img" src="login sample/logo.png"></a>
+            <a class="navbar-brand" href="home.php"><img id="img" src="login sample/logo.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,11 +68,22 @@
 				 <input type="text" name="query" />
 				 <input type="submit" value="Search" />
                </form>
-
-            <ul class="nav navbar-nav navbar-right">
+		<?php if(!isset($_SESSION['auth'])) {
+            echo'<ul class="nav navbar-nav navbar-right">
                 <li><a href="login sample/signIn.php">Sign In</a></li>
                 <li><a href="login sample/signUp.php">Sign Up</a></li>
-            </ul>
+            </ul>';
+			}
+		
+		else {
+			echo '<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"> Welcome '. strtoupper($_SESSION['user_name']). '</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#"> Profile</a></li>
+				<li><a href="login sample/signIn_2.php">Log Off</a></li>
+            </ul>';
+		}
+		?>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
