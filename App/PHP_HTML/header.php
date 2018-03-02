@@ -12,6 +12,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="ask_question.js"></script>
     <script type="text/javascript" src="../../BootstrapLibrary/BootstrapTags/bootstrap-tagsinput.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('input[data-role=tagsinput]').tagsinput({
+                confirmKeys: [32, 188]
+            });
+        });
+    </script>
+
 </head>
 <body>
 <!-- Navbar from bootstrap example template -->
