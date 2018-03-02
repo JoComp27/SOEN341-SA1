@@ -1,14 +1,20 @@
+<?php
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+?>
+
+
 <?php include('sql_connector.php'); ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>home page template </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
-          integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <?php include "header.php" ?>
+
+    <link rel="stylesheet" type="text/css" href="home.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 		function increment(id){
@@ -31,9 +37,10 @@
 			window.location.href=x;
 		}
 	</script>
+
 </head>
+
 <body>
-<?php include "header.php" ?>
 </body>
 </html>
 
@@ -49,9 +56,10 @@ mysqli_query($db, $query) or die(mysqli_error($db));
 ?>
 
 <?php
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     $answer = $_REQUEST['answer'];
-    $sql = "insert into answers (reply_questions,answers_content,answers_date)values('$qus_id','$answer',NOW())";
+	$reply_by =$_SESSION['user_id'];
+    $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by) values('$qus_id','$answer',NOW(), '$reply_by')";
 
     ?>
 
@@ -91,7 +99,7 @@ if (isset($_POST['submit'])) {
 
     while ($get_answers = mysqli_fetch_assoc($sql)) {?>
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
-            <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content']; ?>
+            <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content']; ?> 
 
             <?php include('answer_state.php'); ?>
 
@@ -111,13 +119,15 @@ if (isset($_POST['submit'])) {
         <?php $a++;
     } ?>
 </ul>
-
-<form method="post" action="answer.php?id=<?php echo $qus_id; ?>">
+<?php if(isset($_SESSION['auth'])) {
+echo ' <form method="post" action="answer.php?id='. $qus_id. '">
     <div class="form-group">
         <label for="comment">Comment:</label>
         <textarea name="answer" required="" class="form-control" rows="5" id="comment"></textarea>
     </div>
     <button type="Submit" name="submit" class="btn btn-primary">Submit</button>
-</form>
+</form>';
+}
+?>
 </body>
 </html>
