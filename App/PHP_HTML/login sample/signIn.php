@@ -8,7 +8,7 @@
 <?php
 include ("../sqL_connector.php");
 
-    if (isset($_SESSION)) {
+    if (isset($_SESSION['auth'])) {
         include "signIn_2.php";
     } 
 	else {
