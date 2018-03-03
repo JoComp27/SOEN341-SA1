@@ -18,7 +18,8 @@
 			$title = $_POST["title"];
 			$details = $_POST["details"];
 			$t = $_SESSION['user_id'];
-			$sql = "INSERT INTO questions (question_by, question_title, question_description, question_date) VALUES ($t, \"$title\", \"$details\", NOW())";
+			$question_by_user = $_SESSION['user_name'];
+			$sql = "INSERT INTO questions (question_by, question_title, question_description, question_date, question_by_user) VALUES ($t, \"$title\", \"$details\", NOW(), '$question_by_user')";
 			$db->query($sql);
 			
 			$sql = "select question_id from questions where question_by = \"$t\" and question_title = \"$title\"";
