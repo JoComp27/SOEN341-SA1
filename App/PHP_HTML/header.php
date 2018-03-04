@@ -20,12 +20,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="ask_question.js"></script>
     <script type="text/javascript" src="../../BootstrapLibrary/BootstrapTags/bootstrap-tagsinput.js"></script>
-
     <script type="text/javascript">
         $(document).ready(function(){
-            $('input[data-role=tagsinput]').tagsinput({
-                confirmKeys: [32, 188]
-            });
+        $('#tags').tagsinput({
+            confirmKeys: [13, 44, 32, 188],
+            maxTags: 8
+        });
         });
     </script>
 
@@ -63,7 +63,7 @@
                     </ul>
                 </li>
             </ul>
-			<!--  calling search.php for issue#68 --> 
+			<!--  calling search.php for issue#68 -->
 			   <form action="search.php" method="GET">
 				 <input type="text" name="query" />
 				 <input type="submit" value="Search" />
