@@ -62,10 +62,13 @@ CREATE TABLE questions (
 question_id INT(16) NOT NULL AUTO_INCREMENT,
 question_title VARCHAR(255),
 question_date DATETIME,
+question_cat INT(16), -- foreign key to cat_id in table categories
 question_by INT(32),-- foreign key to users_id
+question_by_user VARCHAR(50), -- Minimize processing time/reducing inner join calls
 question_upvote INT(16) DEFAULT 0,
-question_view_count INT(16) DEFAULT 0,
+question_keyword_tag VARCHAR(500), -- we can add tags to the question later
 question_description VARCHAR(1000),
+question_view_count INT(16) DEFAULT 0,
 question_deleted INT(1) DEFAULT 0, -- If 0: question is up. If 1, user has deleted the question
 PRIMARY KEY (question_id)
 ) ENGINE=INNODB;
@@ -77,6 +80,7 @@ answers_content VARCHAR(5000),
 answers_date DATETIME,
 reply_questions INT(16) NOT NULL, -- which question is this answer addressed to. foreign key to question_id in table questions
 reply_by INT(32), -- foreign key to users_id in table user
+answers_by_user VARCHAR(50), -- Minimize processing time/reducing inner join calls
 answers_upvotes INT(8),
 answers_downvotes INT(8),
 answer_state INT(1) DEFAULT 1, -- State 2= accepted, state 1 = pending, state 0= refused. Whether the answer has been refused or accepted
@@ -88,10 +92,9 @@ PRIMARY KEY (answers_id)
 DROP TABLE IF EXISTS notification;
 CREATE TABLE notification (
 notification_id INT(16) NOT NULL AUTO_INCREMENT, -- foreign key to table notification_user
-notification_title VARCHAR(255),
+notification_content VARCHAR(1000),
 notification_date DATETIME,
-notification_text INT(16), -- foreign key to cat_id in table categories
-notification_status INT(1) DEFAULT 0, -- 1 == read, 0 == unread
+notification_title VARCHAR(50), 
 PRIMARY KEY (notification_id)
 ) ENGINE=INNODB;
 
@@ -99,7 +102,8 @@ DROP TABLE IF EXISTS notification_user;
 CREATE TABLE notification_user (
 notification_id INT(16) NOT NULL, -- foreign key to table notification_user. use scope_identity to pair this field with the correct id in table notification
 user_id INT(16), -- foreign key to table users user_id
-PRIMARY KEY (notification_id)
+notification_status INT(1) DEFAULT 0, -- 1 == read, 0 == unread
+PRIMARY KEY (notification_id, user_id)
 ) ENGINE=INNODB;
 
 

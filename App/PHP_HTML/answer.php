@@ -59,7 +59,8 @@ mysqli_query($db, $query) or die(mysqli_error($db));
 if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     $answer = $_REQUEST['answer'];
 	$reply_by =$_SESSION['user_id'];
-    $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by) values('$qus_id','$answer',NOW(), '$reply_by')";
+	$answers_by_user = $_SESSION['user_name'];
+    $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by, answers_by_user) values('$qus_id','$answer',NOW(), '$reply_by', '$answers_by_user')";
 
     ?>
 
@@ -67,6 +68,17 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         <div class="alert alert-success">
             <strong>Success!</strong> Your answer has been posted successfully.
         </div>
+	<?php 
+		$title_question = $data['question_title'];
+		$url = "<a href=\'answer.php?id=$qus_id\'><h4>answer.php?id=$qus_id</h4></a>";
+		$sql = "insert into notification (notification_title, notification_date, notification_content) values('$answers_by_user replied to your question',NOW(), 'You received a new reply from $answers_by_user for question: $title_question $url')";
+		$notice_result = mysqli_query($db, $sql);
+		$latest_local_notification_id = mysqli_fetch_assoc(mysqli_query($db,"SELECT LAST_INSERT_ID() as 'result'"))['result'];
+		$question_user_id = $data['question_by'];
+		$sql = "insert into notification_user (notification_id, user_id) values ('$latest_local_notification_id', '$question_user_id')"; 
+		mysqli_query($db, $sql);
+		
+	?>
     <?php } else { ?>
         <div class="alert alert-danger">
             <strong>Sorry!</strong> Something went wrong.
@@ -88,7 +100,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 <body>
 <h2><?php echo $data['question_title']; ?></h2>
 <ul class="list-group">
-    <li class="list-group-item"><b> <?php echo $data['question_description']; ?></b></li>
+    <li class="list-group-item"><b> <?php echo $data['question_description']; echo '<br> by user: '; echo $data['question_by_user'];?></b></li>
 </ul>
 <ul class="list-group">
     <?php
@@ -99,7 +111,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 
     while ($get_answers = mysqli_fetch_assoc($sql)) {?>
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
-            <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content']; ?> 
+            <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content']; echo '<br> by user: '; echo $get_answers['answers_by_user'];?> 
 
             <?php include('answer_state.php'); ?>
 
