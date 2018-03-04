@@ -69,6 +69,7 @@ question_upvote INT(16) DEFAULT 0,
 question_keyword_tag VARCHAR(500), -- we can add tags to the question later
 question_description VARCHAR(1000),
 question_view_count INT(16) DEFAULT 0,
+question_deleted INT(1) DEFAULT 0, -- If 0: question is up. If 1, user has deleted the question
 PRIMARY KEY (question_id)
 ) ENGINE=INNODB;
 
