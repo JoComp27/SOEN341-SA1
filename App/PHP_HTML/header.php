@@ -1,7 +1,15 @@
 <?php
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+?>
+
+<?php
     include('sql_connector.php');
 ?>
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Okapi</title>
@@ -13,7 +21,7 @@
 </head>
 <body>
 <!-- Navbar from bootstrap example template -->
-<nav class="navbar navbar-default" style="background-color: #9999ff; border-color: #E7E7E7;">
+<nav class="navbar navbar-default" style="background-color: #FF8C00; border-color: #E7E7E7;">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -23,7 +31,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../home.php"><img id="img" src="login sample/logo.png"></a>
+            <a class="navbar-brand" href="home.php"><img id="img" src="login sample/logo3.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,17 +51,40 @@
                         <li><a href="#">One more separated link</a></li>
                     </ul>
                 </li>
+				
             </ul>
 			<!--  calling search.php for issue#68 --> 
 			   <form action="search.php" method="GET">
 				 <input type="text" name="query" />
 				 <input type="submit" value="Search" />
                </form>
-
-            <ul class="nav navbar-nav navbar-right">
+		<?php if(!isset($_SESSION['auth'])) {
+			echo'<ul class="nav navbar-nav navbar-right">
                 <li><a href="login sample/signIn.php">Sign In</a></li>
                 <li><a href="login sample/signUp.php">Sign Up</a></li>
-            </ul>
+            </ul>';
+			}
+		
+		else {
+			$id = $_SESSION['user_id'];
+			$sql = "select count(*) as 'result' from notification_user where user_id = $id and notification_status = 0";
+			$notification_count = mysqli_fetch_assoc(mysqli_query($db,$sql))['result'];			
+			echo '<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"> Welcome '. strtoupper($_SESSION['user_name']). '</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#"> Profile</a></li>
+				<li><a href="login sample/signIn_2.php">Log Off</a></li>
+            </ul>';
+			echo '<button class="navbar-toggle collapsed">...</button>
+
+				  <div class="nav navbar-brand pull-right">
+					  <a href="notification.php" >
+						<i class="glyphicon glyphicon-bell"></i>
+						<span class="label label-danger">' .$notification_count. '</span>
+					  </a>
+				  </div>';
+		}
+		?>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

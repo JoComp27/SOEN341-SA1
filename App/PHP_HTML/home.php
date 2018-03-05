@@ -1,6 +1,8 @@
 <!DOCTYPE html>
+
 <html>
 <head>
+    <link href="ask_question.css" type="text/css" rel="stylesheet">
     <?php include "header.php" ?>
 
       <link rel="stylesheet" type="text/css" href="home.css">
@@ -10,7 +12,7 @@
 <br>
     <div class="container">
         <form method="POST" action="question_submission.php">
-            <button id="ask" type="button">Ask a Question!</button>
+            <button id="ask" type="button"><span> Ask a Question!</span></button>
             <br>
             <p id="question_field" name="question_field" class="hidden">
                 <strong id="title_title" class="pretty">Title</strong>
@@ -224,7 +226,7 @@
           <table class="table">
             <?php
 
-          $sql = "SELECT * FROM questions where DATE(question_date) < curdate() - INTERVAL DAYOFWEEK(curdate()) - 1 DAY";
+          $sql = "SELECT * FROM questions where DATE(question_date) < dateadd(week,-1,getdate())";
           $result = mysqli_query($db, $sql);
 
           if (mysqli_num_rows($result) > 0) {

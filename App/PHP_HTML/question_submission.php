@@ -1,3 +1,10 @@
+<?php
+ if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,25 +13,26 @@
 </head>
 <body>
     <?php
-        $sql = "SELECT user_id, active FROM loggedin";
-        $result = $db->query($sql);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc())
-                $r = $row;
-            if ($r["active"] == 1) {
-                $title = $_POST["title"];
-                $details = $_POST["details"];
-                $t = $r["user_id"];
-                $sql = "INSERT INTO questions (question_by, question_title, question_description, question_date) VALUES ($t, \"$title\", \"$details\", NOW())";
-                $db->query($sql);
-                echo "<div class='alert alert-success'><strong>Sucess!</strong> Your question was submitted! Return to the questions page <a href=\"home.php\">here</a> to see it.</div>";
-            }
-            else {
-                echo "<div class='alert alert-danger'><strong>Error!</strong> Please Log in/Sign up to post a question.</div>";
-            }
-        }else {
-            echo "<div class='alert alert-danger'><strong>Error!</strong> Please Log in/Sign up to post a question.</div>";
-        }
+		
+        if(isset($_SESSION['auth'])) {
+			$title = $_POST["title"];
+			$details = $_POST["details"];
+			$t = $_SESSION['user_id'];
+			$question_by_user = $_SESSION['user_name'];
+			$sql = "INSERT INTO questions (question_by, question_title, question_description, question_date, question_by_user) VALUES ($t, \"$title\", \"$details\", NOW(), '$question_by_user')";
+			$db->query($sql);
+			
+			$sql = "select question_id from questions where question_by = \"$t\" and question_title = \"$title\"";
+			$result = $db->query($sql);
+			$row = $result->fetch_assoc();
+			$id = $row['question_id'];
+			$url = "Location: answer.php?id=$id";
+			header($url);
+		}
+		else {
+			echo "<div class='alert alert-danger'><strong>Error!</strong> Please Log in/Sign up to post a question.</div>";
+		}
+  
     ?>
 </body>
 </html>
