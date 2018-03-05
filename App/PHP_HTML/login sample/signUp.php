@@ -68,7 +68,7 @@ function CloseCon($db) {
 <style type="text/css">
 	
 div.ttip {
-    position: relative;
+    position: absolute;
     display: inline-block;
     opacity: 1;
 }
@@ -89,15 +89,15 @@ div.ttip {
     visibility: visible;
 }
 .ttip .ttiptext {
-    left: 250px;
-	bottom: 20px;
+	position: absolute;
+	left: 15px;
+	bottom: -10px;
 }
 
 img#tooltip{
 	position: relative;
-	left: 200px;
-	bottom: 29px;
-	size: 30px;
+	left: -31px;
+	bottom: -1px;
 	height: 27px;
 	width: 27px
 }
