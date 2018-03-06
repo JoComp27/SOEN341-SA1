@@ -18,7 +18,6 @@ if (isset($_SESSION['auth'])) {
     $details = $_POST["details"];
     $t = $_SESSION['user_id'];
     $tags = $_POST["tags"];
-
     $question_by_user = $_SESSION['user_name'];
     $sql = "INSERT INTO questions (question_by, question_title, question_description, question_date, question_by_user) VALUES ($t, \"$title\", \"$details\", NOW(), '$question_by_user')";
     $db->query($sql);
@@ -27,6 +26,7 @@ if (isset($_SESSION['auth'])) {
     $result = $db->query($sql);
     $row = $result->fetch_assoc();
     $id = $row['question_id'];
+
     $intQId = intval($id);
 
     $tagArray = explode(",", $tags);
@@ -45,7 +45,7 @@ if (isset($_SESSION['auth'])) {
         $sql = "INSERT INTO question_tags (question_id, tag_id) VAlUES($intQId, $Tid_int)";
         $db->query($sql);
     }
-
+  
     $url = "Location: answer.php?id=$id";
     header($url);
 } else {

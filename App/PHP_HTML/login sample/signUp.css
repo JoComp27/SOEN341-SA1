@@ -36,6 +36,7 @@ a.navbar-brand {
 }
 
 .content input {
+    position: relative;
     text-align: left;
     height: 30px;
     border: 1px solid #bdc7d8;

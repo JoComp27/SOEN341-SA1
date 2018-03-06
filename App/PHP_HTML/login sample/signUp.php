@@ -56,7 +56,6 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
 <head>
     <title>signUp</title>
 
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
@@ -65,6 +64,46 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="signUp.css">
+
+    <style type="text/css">
+
+        div.ttip {
+            position: absolute;
+            display: inline-block;
+            opacity: 1;
+        }
+
+        .ttip .ttiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .ttip:hover .ttiptext {
+            visibility: visible;
+        }
+
+        .ttip .ttiptext {
+            position: absolute;
+            left: 15px;
+            bottom: -10px;
+        }
+
+        img#tooltip {
+            position: relative;
+            left: -31px;
+            bottom: -1px;
+            height: 27px;
+            width: 27px
+        }
+
+    </style>
 
 </head>
 
@@ -191,7 +230,11 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
         </select><br><br>
 
         <input required id="password" type="password" name="user_pass" size="48" pattern="\w{6,}\d+"
-               placeholder="Password"><br><br>
+               placeholder="Password">
+        <div class="ttip"><img src="help.png" id="tooltip">
+            <span class="ttiptext">The password must contain at least 1 digit and 6 letters.</span></div>
+        <br><br>
+
         <input required id="confirmPassword" type="password" name="cpassword" size="48"
                placeholder="Confirm password"><br><br>
 
