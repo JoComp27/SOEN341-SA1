@@ -1,5 +1,6 @@
 <?php
 include ("../sqL_connector.php");
+
  if(!isset($_SESSION)) 
     { 
         session_start(); 
@@ -32,17 +33,14 @@ else {
 	$result2 = $db->query($sql4);
 	$problem = "";
 
-	if ((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)){
-    	$problem = "<div class='alert alert-danger'><strong>Error!</strong> Incorrect password.</div>";
-	}
-	elseif (mysqli_num_rows($result1) == 0) {
-		$problem = "<div class='alert alert-danger'><strong>Error!</strong> User name does not exist.</div>";
-	}
+	if ((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1))
+    	$problem = "Error!IncorrectPassword.";
+	elseif (mysqli_num_rows($result1) == 0)
+		$problem = "Error!UserNameDoesNotExist.";
 	else
-	{
-		$problem = "<div class='alert alert-danger'><strong>Error!</strong> Email does not exist.</div>";
-	}
+		$problem = "Error!EmailDoesNotExist.";
 	$url = "Location: signIn_1.php?problem=$problem";
 	header($url);
 	exit;
 }
+?>
