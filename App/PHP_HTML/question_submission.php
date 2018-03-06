@@ -35,14 +35,15 @@
             foreach($tagArray as $tag){
                 // Iterates through every tag, inserts it in the tags table and
                 // makes the Q to T association in the question_tags table
-                $sql = "
-                 INSERT INTO tags (tag_name) VALUES (\"$tag\")
-                 ";
-
+                $sql = " INSERT INTO tags (tag_name) VALUES (\"$tag\") ";
                 $db->query($sql);
-                $last_Tid = $db->insert_id;
 
-                $sql = "INSERT INTO question_tags (question_id, tag_id) VAlUES($intQId, $last_Tid)";
+                $sql = " SELECT tag_id FROM tags WHERE tag_name = \"$tag\"";
+                $result = $db->query($sql);
+                $Tid = $result->fetch_row();
+                $Tid_int = intval($Tid[0]);
+
+                $sql = "INSERT INTO question_tags (question_id, tag_id) VAlUES($intQId, $Tid_int)";
                 $db->query($sql);
             }
 
