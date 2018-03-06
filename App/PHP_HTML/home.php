@@ -5,68 +5,68 @@
     <link href="ask_question.css" type="text/css" rel="stylesheet">
     <?php include "header.php" ?>
 
-      <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
 
 </head>
 <body>
 <br>
-    <div class="container">
-        <form method="POST" action="question_submission.php">
-            <button id="ask" type="button"><span> Ask a Question!</span></button>
+<div class="container">
+    <form method="POST" action="question_submission.php">
+        <button id="ask" type="button"><span> Ask a Question!</span></button>
+        <br>
+        <p id="question_field" name="question_field" class="hidden">
+            <strong id="title_title" class="pretty">Title</strong>
             <br>
-            <p id="question_field" name="question_field" class="hidden">
-                <strong id="title_title" class="pretty">Title</strong>
-                <br>
-                <input type="text" name="title">
-                <br>
-                <strong id="details_title">Details</strong>
-                <br>
-                <textarea rows="4" cols="50" name="details"></textarea>
-                <br>
-                <input id="submit" type="submit">
-            </p>
-        </form>
-    </div>
-	<div class="container">
-	  <h2>Top Questions</h2>
+            <input type="text" name="title">
+            <br>
+            <strong id="details_title">Details</strong>
+            <br>
+            <textarea rows="4" cols="50" name="details"></textarea>
+            <br>
+            <input id="submit" type="submit">
+        </p>
+    </form>
+</div>
+<div class="container">
+    <h2>Top Questions</h2>
 
-	  <ul class="nav nav-tabs">
-		<li class="active"><a data-toggle="tab" href="#home">Interesting</a></li>
-		<li><a data-toggle="tab" href="#menu2">featured</a></li>
-		<li><a data-toggle="tab" href="#menu3">hot</a></li>
-		<li><a data-toggle="tab" href="#menu4">week</a></li>
-		<li><a data-toggle="tab" href="#menu5">month</a></li>
-	  </ul>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Interesting</a></li>
+        <li><a data-toggle="tab" href="#menu2">featured</a></li>
+        <li><a data-toggle="tab" href="#menu3">hot</a></li>
+        <li><a data-toggle="tab" href="#menu4">week</a></li>
+        <li><a data-toggle="tab" href="#menu5">month</a></li>
+    </ul>
 
-	  <div class="tab-content">
-		<div id="home" class="tab-pane fade in active">
-		  <h3>Interesting</h3>
-		  <div class = "tab-content">
-          <table class="table">
-            <?php
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <h3>Interesting</h3>
+            <div class="tab-content">
+                <table class="table">
+                    <?php
 
-          $sql = "SELECT * FROM questions order by question_view_count desc";
-          $result = mysqli_query($db, $sql);
+                    $sql = "SELECT * FROM questions order by question_view_count desc";
+                    $result = mysqli_query($db, $sql);
 
-          if (mysqli_num_rows($result) > 0) {
-              // output data of each row
-          while($row = mysqli_fetch_assoc($result)) {
-                  $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
-                  $answer_data = mysqli_query($db, $sql2);
-                  $data = mysqli_fetch_assoc($answer_data);
-                  echo '<tr>
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
+                            $answer_data = mysqli_query($db, $sql2);
+                            $data = mysqli_fetch_assoc($answer_data);
+                            echo '<tr>
               <td>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_upvote"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' .$data['total'].'</p>
+                  <p class = "top-questions-stats">' . $data['total'] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_view_count"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
                 <div class = "col-md-9">
-                  <a href = "answer.php?id=' .$row["question_id"].' " target = "blank"><h4>' . $row["question_title"].'</h4></a>
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -85,48 +85,47 @@
                   <p>tags</p>
                 </div>
                 <div class = "col-md-7">
-                  <p class = "asked"> asked on ' .$row["question_date"]. '</p>
+                  <p class = "asked"> asked on ' . $row["question_date"] . '</p>
                 </div>
               </td>
             </tr> <!-- end row 2 -->';
-             }
-          } 
-          else {
-              echo "0 results";
-          }
-          ?>
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    ?>
 
-        </table>
+                </table>
+            </div>
         </div>
-		</div>
-		<div id="menu2" class="tab-pane fade">
-		  <h3>Featured</h3>
-        <div class = "tab-content">
-          <table class="table">
-		        <?php
+        <div id="menu2" class="tab-pane fade">
+            <h3>Featured</h3>
+            <div class="tab-content">
+                <table class="table">
+                    <?php
 
-          $sql = "SELECT * FROM questions order by question_upvote desc";
-          $result = mysqli_query($db, $sql);
+                    $sql = "SELECT * FROM questions order by question_upvote desc";
+                    $result = mysqli_query($db, $sql);
 
-          if (mysqli_num_rows($result) > 0) {
-              // output data of each row
-          while($row = mysqli_fetch_assoc($result)) {
-                  $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
-                  $answer_data = mysqli_query($db, $sql2);
-                  $data = mysqli_fetch_assoc($answer_data);
-                  echo '<tr>
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
+                            $answer_data = mysqli_query($db, $sql2);
+                            $data = mysqli_fetch_assoc($answer_data);
+                            echo '<tr>
               <td>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_upvote"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' .$data['total'].'</p>
+                  <p class = "top-questions-stats">' . $data['total'] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_view_count"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
                 <div class = "col-md-9">
-                  <a href = "answer.php?id=' .$row["question_id"].' " target = "blank"><h4>' . $row["question_title"].'</h4></a>
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -145,49 +144,48 @@
                   <p>tags</p>
                 </div>
                 <div class = "col-md-7">
-                  <p class = "asked"> asked on ' .$row["question_date"]. '</p>
+                  <p class = "asked"> asked on ' . $row["question_date"] . '</p>
                 </div>
               </td>
             </tr> <!-- end row 2 -->';
-             }
-          } 
-          else {
-              echo "0 results";
-          }
-          ?>
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    ?>
 
-        </table>
-        </div> <!-- End panel -->
+                </table>
+            </div> <!-- End panel -->
 
-		</div>
-		<div id="menu3" class="tab-pane fade">
-		  <h3>Hot</h3>
-		  <div class = "tab-content">
-          <table class="table">
-            <?php
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            <h3>Hot</h3>
+            <div class="tab-content">
+                <table class="table">
+                    <?php
 
-          $sql = "SELECT * FROM questions where DATE(question_date) = DATE(NOW())";
-          $result = mysqli_query($db, $sql);
+                    $sql = "SELECT * FROM questions where DATE(question_date) = DATE(NOW())";
+                    $result = mysqli_query($db, $sql);
 
-          if (mysqli_num_rows($result) > 0) {
-              // output data of each row
-          while($row = mysqli_fetch_assoc($result)) {
-                  $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
-                  $answer_data = mysqli_query($db, $sql2);
-                  $data = mysqli_fetch_assoc($answer_data);
-                  echo '<tr>
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
+                            $answer_data = mysqli_query($db, $sql2);
+                            $data = mysqli_fetch_assoc($answer_data);
+                            echo '<tr>
               <td>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_upvote"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' .$data['total'].'</p>
+                  <p class = "top-questions-stats">' . $data['total'] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_view_count"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
                 <div class = "col-md-9">
-                  <a href = "answer.php?id=' .$row["question_id"].' " target = "blank"><h4>' . $row["question_title"].'</h4></a>
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -206,48 +204,47 @@
                   <p>tags</p>
                 </div>
                 <div class = "col-md-7">
-                  <p class = "asked">asked on ' .$row["question_date"]. '</p>
+                  <p class = "asked">asked on ' . $row["question_date"] . '</p>
                 </div>
               </td>
             </tr> <!-- end row 2 -->';
-             }
-          } 
-          else {
-              echo "0 question asked today";
-          }
-          ?>
+                        }
+                    } else {
+                        echo "0 question asked today";
+                    }
+                    ?>
 
-        </table>
-        </div> 
-		</div>
-		<div id="menu4" class="tab-pane fade">
-		  <h3>Week</h3>
-		  <div class = "tab-content">
-          <table class="table">
-            <?php
+                </table>
+            </div>
+        </div>
+        <div id="menu4" class="tab-pane fade">
+            <h3>Week</h3>
+            <div class="tab-content">
+                <table class="table">
+                    <?php
 
-          $sql = "SELECT * FROM questions where DATE(question_date) < dateadd(week,-1,getdate())";
-          $result = mysqli_query($db, $sql);
+                    $sql = "SELECT * FROM questions where DATE(question_date) < dateadd(week,-1,getdate())";
+                    $result = mysqli_query($db, $sql);
 
-          if (mysqli_num_rows($result) > 0) {
-              // output data of each row
-          while($row = mysqli_fetch_assoc($result)) {
-                  $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
-                  $answer_data = mysqli_query($db, $sql2);
-                  $data = mysqli_fetch_assoc($answer_data);
-                  echo '<tr>
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
+                            $answer_data = mysqli_query($db, $sql2);
+                            $data = mysqli_fetch_assoc($answer_data);
+                            echo '<tr>
               <td>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_upvote"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' .$data['total'].'</p>
+                  <p class = "top-questions-stats">' . $data['total'] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_view_count"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
                 <div class = "col-md-9">
-                  <a href = "answer.php?id=' .$row["question_id"].' " target = "blank"><h4>' . $row["question_title"].'</h4></a>
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -266,48 +263,47 @@
                   <p>tags</p>
                 </div>
                 <div class = "col-md-7">
-                  <p class = "asked">asked on ' .$row["question_date"]. '</p>
+                  <p class = "asked">asked on ' . $row["question_date"] . '</p>
                 </div>
               </td>
             </tr> <!-- end row 2 -->';
-             }
-          } 
-          else {
-              echo "0 results";
-          }
-          ?>
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    ?>
 
-        </table>
-        </div> 
-		</div>
-		<div id="menu5" class="tab-pane fade">
-		  <h3>Month</h3>
-		  <div class = "tab-content">
-          <table class="table">
-            <?php
+                </table>
+            </div>
+        </div>
+        <div id="menu5" class="tab-pane fade">
+            <h3>Month</h3>
+            <div class="tab-content">
+                <table class="table">
+                    <?php
 
-          $sql = "SELECT * FROM questions where question_date between NOW() - INTERVAL 30 DAY AND NOW()";
-          $result = mysqli_query($db, $sql);
+                    $sql = "SELECT * FROM questions where question_date between NOW() - INTERVAL 30 DAY AND NOW()";
+                    $result = mysqli_query($db, $sql);
 
-          if (mysqli_num_rows($result) > 0) {
-              // output data of each row
-          while($row = mysqli_fetch_assoc($result)) {
-                  $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
-                  $answer_data = mysqli_query($db, $sql2);
-                  $data = mysqli_fetch_assoc($answer_data);
-                  echo '<tr>
+                    if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
+                            $answer_data = mysqli_query($db, $sql2);
+                            $data = mysqli_fetch_assoc($answer_data);
+                            echo '<tr>
               <td>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_upvote"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' .$data['total'].'</p>
+                  <p class = "top-questions-stats">' . $data['total'] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_view_count"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
                 <div class = "col-md-9">
-                  <a href = "answer.php?id=' .$row["question_id"].' " target = "blank"><h4>' . $row["question_title"].'</h4></a>
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -326,24 +322,23 @@
                   <p>tags</p>
                 </div>
                 <div class = "col-md-7">
-                  <p class = "asked">asked on ' .$row["question_date"]. '</p>
+                  <p class = "asked">asked on ' . $row["question_date"] . '</p>
                 </div>
               </td>
             </tr> <!-- end row 2 -->';
-             }
-          } 
-          else {
-              echo "0 results";
-          }
-          ?>
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    ?>
 
-        </table>
-        </div> 
-		</div>
-	  </div>
+                </table>
+            </div>
+        </div>
     </div>
-  </section>
-    
-   
+</div>
+</section>
+
+
 </body>
 </html>
