@@ -48,8 +48,19 @@
         <input required id="password" type="password" name="user_pass" size="48" placeholder="Password"><br><br>
         <br>
         <div style="padding-bottom: 25px;"><input style="display: block; margin:0 auto;" id="sub" type="submit" name="submitform" value="Log In"></div>
+        <a href="forgotPassword.php">Forgot password?</a>
+
+        <br>  <br>
     </form>
-  
+    <?php if("localhost/SOEN341-SA1/App/PHP_HTML/login%20sample/signIn_1.php?problem=Error!IncorrectPassword." == $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'])
+            echo "<div class='alert alert-danger'><strong>Error!</strong> Password is incorrect.</div>";
+        elseif("localhost/SOEN341-SA1/App/PHP_HTML/login%20sample/signIn_1.php?problem=Error!UserNameDoesNotExist." == $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'])
+            echo "<div class='alert alert-danger'><strong>Error!</strong> Username does not exist.</div>";
+    ?>
+    <br><br>
+    <div id="user_error" class='alert alert-danger hidden'><strong>Error!</strong> User name does not exist.</div>
+    <div id="password_error" class='alert alert-danger hidden'><strong>Error!</strong> Password does not match.</div>
+    <div id="email_error" class='alert alert-danger hidden'><strong>Error!</strong> Email does not exist.</div>
 </div>
 
 </body>
