@@ -65,6 +65,46 @@ function CloseCon($db) {
 
 	<link rel="stylesheet" type="text/css" href="signUp.css">
 
+<style type="text/css">
+	
+div.ttip {
+    position: absolute;
+    display: inline-block;
+    opacity: 1;
+}
+
+.ttip .ttiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+}
+
+.ttip:hover .ttiptext {
+    visibility: visible;
+}
+.ttip .ttiptext {
+	position: absolute;
+	left: 15px;
+	bottom: -10px;
+}
+
+img#tooltip{
+	position: relative;
+	left: -31px;
+	bottom: -1px;
+	height: 27px;
+	width: 27px
+}
+
+</style>
+
+
 </head>
 
 <body>
@@ -189,7 +229,11 @@ function CloseCon($db) {
 			<option value="1995" >1995</option>
 		</select><br><br>
 
-		<input required id="password" type="password" name="user_pass" size="48" pattern="\w{6,}\d+" placeholder="Password"><br><br>
+		
+		<input required id="password" type="password" name="user_pass" size="48" pattern="\w{6,}\d+" placeholder="Password">
+		<div class="ttip"><img src="help.png" id="tooltip">
+		<span class="ttiptext">The password must contain at least 1 digit and 6 letters.</span></div>
+		<br><br>
 		<input required  id="confirmPassword" type="password" name="cpassword" size="48" placeholder="Confirm password"><br><br>
 
 		<div style="padding-bottom: 25px;"><input style="display: block; margin:0 auto;" id="sub" type="submit" name="submitform"></div>
