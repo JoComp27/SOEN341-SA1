@@ -1,81 +1,74 @@
 body {
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background: linear-gradient(to right, rgb(255, 126, 95), rgb(254, 180, 123));
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: linear-gradient(to right, rgb(255, 126, 95), rgb(254, 180, 123));
 }
 
-
-#form{
-	box-shadow: 10px 10px 10px rgba(0 ,0 ,0 ,0.7);
-	display: inline-block;
-	width: 45%;
-	color:black;
-	background-color: rgba(200, 200, 240, 0.75);
-	padding-top: 30px;
-	padding-left: 10px;
-	padding-right: 10px;
-
-}
-
-.navbar-brand>img {
-	height: 75px;
-	width: 75px;
-}
-
-a.navbar-brand{
-	padding-top: 0;
-}
-
-
-
-.content{
-	position: absolute;
-	left: 200px;
-	padding-top: 100px;
-	display: inline-block;
-	text-align: center;
-	width: 80%;
+#form {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.7);
+    display: inline-block;
+    width: 45%;
+    color: black;
+    background-color: rgba(200, 200, 240, 0.75);
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
 
 }
 
+.navbar-brand > img {
+    height: 75px;
+    width: 75px;
+}
 
-.content input{
-	text-align: left;
-	height: 30px;
-	border:1px solid #bdc7d8;
-	border-radius: 5px;
-	margin: 0;
-	padding-left: 10px;
-	font-weight: bold;
+a.navbar-brand {
+    padding-top: 0;
+}
+
+.content {
+    position: absolute;
+    left: 200px;
+    padding-top: 100px;
+    display: inline-block;
+    text-align: center;
+    width: 80%;
 
 }
 
-
-nav.navbar.navbar-inverse.navbar-fixed-top{
-	background: rgba(254, 180, 170, 0.95);
+.content input {
+    text-align: left;
+    height: 30px;
+    border: 1px solid #bdc7d8;
+    border-radius: 5px;
+    margin: 0;
+    padding-left: 10px;
+    font-weight: bold;
 
 }
 
-.navbar-inverse{
-	border-color:rgb(200,200,255);
+nav.navbar.navbar-inverse.navbar-fixed-top {
+    background: rgba(254, 180, 170, 0.95);
+
 }
 
+.navbar-inverse {
+    border-color: rgb(200, 200, 255);
+}
 
-
-.content select{
-	height: 35px;
-	width: 60px;
-	border-radius: 1px;
-	border:1px solid #bdc7d8;
+.content select {
+    height: 35px;
+    width: 60px;
+    border-radius: 1px;
+    border: 1px solid #bdc7d8;
 }
 
 input#Male {
-	height: 15px;
-	font-weight: normal;
+    height: 15px;
+    font-weight: normal;
 }
 
 input#Female {
 
-	height: 15px;
-	font-weight: normal;
+    height: 15px;
+    font-weight: normal;
 }

@@ -1,22 +1,22 @@
 <?php include('connection.php'); ?>
 <?php
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $question = $_REQUEST['question'];
     $sql = "insert into questions (question_title,question_date)values('$question',NOW())";
 
     ?>
 
-    <?php if(mysqli_query($link,$sql)){  ?>
+    <?php if (mysqli_query($link, $sql)) { ?>
         <div class="alert alert-success">
             <strong>Success!</strong> Your question has been posted successfully.
         </div>
-    <?php	}else{ ?>
+    <?php } else { ?>
         <div class="alert alert-danger">
             <strong>Sorry!</strong> Somthing went wrong.
         </div>
     <?php } ?>
 
-<?php }  ?>
+<?php } ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,13 +40,16 @@ if(isset($_POST['submit'])){
 <ul class="list-group">
     <?php
     $select_query = "select * from questions order by question_id DESC";
-    $sql = mysqli_query($link,$select_query) or die(mysqli_error($link));
+    $sql = mysqli_query($link, $select_query) or die(mysqli_error($link));
     $a = 1;
-    while($get_questions=mysqli_fetch_assoc($sql)){
+    while ($get_questions = mysqli_fetch_assoc($sql)) {
 
         ?>
-        <li class="list-group-item"><b>Qus <?php echo $a; ?>:</b> <a href="answer.php?id=<?php echo $get_questions['question_id']; ?>" style="text-decoration: none;"><?php echo $get_questions['question_title']; ?></a></li>
-        <?php $a++; } ?>
+        <li class="list-group-item"><b>Qus <?php echo $a; ?>:</b> <a
+                    href="answer.php?id=<?php echo $get_questions['question_id']; ?>"
+                    style="text-decoration: none;"><?php echo $get_questions['question_title']; ?></a></li>
+        <?php $a++;
+    } ?>
 </ul>
 
 </body>

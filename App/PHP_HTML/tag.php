@@ -1,6 +1,5 @@
 <?php
-if(!isset($_SESSION))
-{
+if (!isset($_SESSION)) {
     session_start();
 }
 ?>
@@ -51,7 +50,7 @@ $qt = $_GET['tag'];
 
     if (mysqli_num_rows($result) > 0) {
         // output data of each row
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
             $answer_data = mysqli_query($db, $sql2);
             $data = mysqli_fetch_assoc($answer_data);
@@ -63,27 +62,27 @@ $qt = $_GET['tag'];
             <tr>
               <td>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_upvote"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' .$data['total'].'</p>
+                  <p class = "top-questions-stats">' . $data['total'] . '</p>
                 </div>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_view_count"].'</p>
+                  <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">
                    ';
-            while($tag = mysqli_fetch_row($tag_data)){
+            while ($tag = mysqli_fetch_row($tag_data)) {
                 echo ' 
-                          <a href = "tag.php?tag=' .$tag[0].' " target = "blank">'. $tag[0].'</a> 
+                          <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> 
                           ';
             }
             echo '
                   </p>
                 </div>
                 <div class = "col-md-7">
-                  <a href = "answer.php?id=' .$row["question_id"].' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"].'</h4></a>
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -102,13 +101,12 @@ $qt = $_GET['tag'];
                   <p>tags</p>
                 </div>
                 <div class = "col-md-7">
-                  <p class = "asked"> asked on ' .$row["question_date"]. '</p>
+                  <p class = "asked"> asked on ' . $row["question_date"] . '</p>
                 </div>
               </td>
             </tr> <!-- end row 2 -->';
         }
-    }
-    else {
+    } else {
         echo "0 results";
     }
     ?>

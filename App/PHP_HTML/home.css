@@ -1,36 +1,36 @@
-body{
-	padding-bottom: 40px;
+body {
+    padding-bottom: 40px;
     background: linear-gradient(to right, rgb(255, 126, 95), rgb(254, 180, 123));
 }
 
-.container-fluid{
+.container-fluid {
 
-background: rgba(254, 180, 170, 0.95);
+    background: rgba(254, 180, 170, 0.95);
 
 }
 
-.navbar-brand>img {
-	height: 75px;
-	width: 75px;
+.navbar-brand > img {
+    height: 75px;
+    width: 75px;
 }
 
-div.container{
+div.container {
 
-	padding-top: 15px;
-	background: white;
+    padding-top: 15px;
+    background: white;
 }
 
-input{
+input {
     height: 30px;
     border: 1px solid #bdc7d8;
     border-radius: 5px;
-   margin-top: 10px;
+    margin-top: 10px;
 }
 
-form{
-	    display: inline;
+form {
+    display: inline;
 }
 
-a.navbar-brand{
-	padding-top: 0;
+a.navbar-brand {
+    padding-top: 0;
 }
