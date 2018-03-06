@@ -56,7 +56,6 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
 <head>
     <title>signUp</title>
 
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
@@ -105,7 +104,6 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
         }
 
     </style>
-
 
 </head>
 
@@ -231,12 +229,12 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
             <option value="1995">1995</option>
         </select><br><br>
 
-
         <input required id="password" type="password" name="user_pass" size="48" pattern="\w{6,}\d+"
                placeholder="Password">
         <div class="ttip"><img src="help.png" id="tooltip">
             <span class="ttiptext">The password must contain at least 1 digit and 6 letters.</span></div>
         <br><br>
+
         <input required id="confirmPassword" type="password" name="cpassword" size="48"
                placeholder="Confirm password"><br><br>
 

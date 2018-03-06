@@ -16,9 +16,20 @@ include('sql_connector.php');
           integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
           crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../BootstrapLibrary/BootstrapTags/bootstrap-tagsinput.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="ask_question.js"></script>
+    <script type="text/javascript" src="../../BootstrapLibrary/BootstrapTags/bootstrap-tagsinput.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#tags').tagsinput({
+                confirmKeys: [13, 44, 32, 188],
+                maxTags: 8
+            });
+        });
+    </script>
+
 </head>
 <body>
 <!-- Navbar from bootstrap example template -->

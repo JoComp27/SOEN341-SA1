@@ -15,13 +15,18 @@
         <button id="ask" type="button"><span> Ask a Question!</span></button>
         <br>
         <p id="question_field" name="question_field" class="hidden">
-            <strong id="title_title" class="pretty">Title</strong>
+            <strong id="title_title" class="pretty">Title : </strong>
             <br>
             <input type="text" name="title">
             <br>
-            <strong id="details_title">Details</strong>
+            <strong id="details_title">Details : </strong>
             <br>
             <textarea rows="4" cols="50" name="details"></textarea>
+            <br>
+            <strong id="tags_title">Associated Tags : </strong>
+            <br>
+
+            <input id="tags" name="tags" type="text" data-role="tagsinput" placeholder="Add tags">
             <br>
             <input id="submit" type="submit">
         </p>
@@ -54,7 +59,12 @@
                             $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
                             $answer_data = mysqli_query($db, $sql2);
                             $data = mysqli_fetch_assoc($answer_data);
-                            echo '<tr>
+
+                            $sql3 = "SELECT tag_name FROM tags T INNER JOIN question_tags QT ON T.tag_id = QT.tag_id WHERE QT.question_id = '{$row["question_id"]}'";
+                            $tag_data = mysqli_query($db, $sql3);
+
+                            echo '
+            <tr>
               <td>
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
@@ -65,8 +75,19 @@
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
-                <div class = "col-md-9">
-                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
+                <div class = "col-md-1">
+                  <p class = "top-questions-stats">
+                   ';
+                            while ($tag = mysqli_fetch_row($tag_data)) {
+                                echo ' 
+                          <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> 
+                          ';
+                            }
+                            echo '
+                  </p>
+                </div>
+                <div class = "col-md-7">
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -113,7 +134,12 @@
                             $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
                             $answer_data = mysqli_query($db, $sql2);
                             $data = mysqli_fetch_assoc($answer_data);
-                            echo '<tr>
+
+                            $sql3 = "SELECT tag_name FROM tags T INNER JOIN question_tags QT ON T.tag_id = QT.tag_id WHERE QT.question_id = '{$row["question_id"]}'";
+                            $tag_data = mysqli_query($db, $sql3);
+
+                            echo '
+            <tr>
               <td>
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
@@ -124,8 +150,19 @@
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
-                <div class = "col-md-9">
-                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
+                <div class = "col-md-1">
+                  <p class = "top-questions-stats">
+                   ';
+                            while ($tag = mysqli_fetch_row($tag_data)) {
+                                echo ' 
+                          <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> 
+                          ';
+                            }
+                            echo '
+                  </p>
+                </div>
+                <div class = "col-md-7">
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -173,7 +210,12 @@
                             $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
                             $answer_data = mysqli_query($db, $sql2);
                             $data = mysqli_fetch_assoc($answer_data);
-                            echo '<tr>
+
+                            $sql3 = "SELECT tag_name FROM tags T INNER JOIN question_tags QT ON T.tag_id = QT.tag_id WHERE QT.question_id = '{$row["question_id"]}'";
+                            $tag_data = mysqli_query($db, $sql3);
+
+                            echo '
+            <tr>
               <td>
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
@@ -184,8 +226,19 @@
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
-                <div class = "col-md-9">
-                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
+                <div class = "col-md-1">
+                  <p class = "top-questions-stats">
+                   ';
+                            while ($tag = mysqli_fetch_row($tag_data)) {
+                                echo ' 
+                          <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> 
+                          ';
+                            }
+                            echo '
+                  </p>
+                </div>
+                <div class = "col-md-7">
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -204,13 +257,13 @@
                   <p>tags</p>
                 </div>
                 <div class = "col-md-7">
-                  <p class = "asked">asked on ' . $row["question_date"] . '</p>
+                  <p class = "asked"> asked on ' . $row["question_date"] . '</p>
                 </div>
               </td>
             </tr> <!-- end row 2 -->';
                         }
                     } else {
-                        echo "0 question asked today";
+                        echo "0 results";
                     }
                     ?>
 
@@ -223,7 +276,7 @@
                 <table class="table">
                     <?php
 
-                    $sql = "SELECT * FROM questions where DATE(question_date) < dateadd(week,-1,getdate())";
+                    $sql = "SELECT * FROM questions where question_date between NOW() - INTERVAL 7 DAY AND NOW()";
                     $result = mysqli_query($db, $sql);
 
                     if (mysqli_num_rows($result) > 0) {
@@ -232,7 +285,12 @@
                             $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
                             $answer_data = mysqli_query($db, $sql2);
                             $data = mysqli_fetch_assoc($answer_data);
-                            echo '<tr>
+
+                            $sql3 = "SELECT tag_name FROM tags T INNER JOIN question_tags QT ON T.tag_id = QT.tag_id WHERE QT.question_id = '{$row["question_id"]}'";
+                            $tag_data = mysqli_query($db, $sql3);
+
+                            echo '
+            <tr>
               <td>
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
@@ -243,8 +301,19 @@
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
-                <div class = "col-md-9">
-                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
+                <div class = "col-md-1">
+                  <p class = "top-questions-stats">
+                   ';
+                            while ($tag = mysqli_fetch_row($tag_data)) {
+                                echo ' 
+                          <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> 
+                          ';
+                            }
+                            echo '
+                  </p>
+                </div>
+                <div class = "col-md-7">
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -263,7 +332,7 @@
                   <p>tags</p>
                 </div>
                 <div class = "col-md-7">
-                  <p class = "asked">asked on ' . $row["question_date"] . '</p>
+                  <p class = "asked"> asked on ' . $row["question_date"] . '</p>
                 </div>
               </td>
             </tr> <!-- end row 2 -->';
@@ -291,7 +360,12 @@
                             $sql2 = "SELECT count(*) as total from answers where reply_questions like '{$row["question_id"]}'";
                             $answer_data = mysqli_query($db, $sql2);
                             $data = mysqli_fetch_assoc($answer_data);
-                            echo '<tr>
+
+                            $sql3 = "SELECT tag_name FROM tags T INNER JOIN question_tags QT ON T.tag_id = QT.tag_id WHERE QT.question_id = '{$row["question_id"]}'";
+                            $tag_data = mysqli_query($db, $sql3);
+
+                            echo '
+            <tr>
               <td>
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
@@ -302,8 +376,19 @@
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
-                <div class = "col-md-9">
-                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
+                <div class = "col-md-1">
+                  <p class = "top-questions-stats">
+                   ';
+                            while ($tag = mysqli_fetch_row($tag_data)) {
+                                echo ' 
+                          <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> 
+                          ';
+                            }
+                            echo '
+                  </p>
+                </div>
+                <div class = "col-md-7">
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
@@ -322,7 +407,7 @@
                   <p>tags</p>
                 </div>
                 <div class = "col-md-7">
-                  <p class = "asked">asked on ' . $row["question_date"] . '</p>
+                  <p class = "asked"> asked on ' . $row["question_date"] . '</p>
                 </div>
               </td>
             </tr> <!-- end row 2 -->';
