@@ -12,3 +12,4 @@ script:
 
 before_install:
   - composer update
+  - mysql -e 'CREATE DATABASE website_db;'
