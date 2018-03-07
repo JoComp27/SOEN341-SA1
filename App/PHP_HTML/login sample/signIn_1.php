@@ -58,9 +58,6 @@
             echo "<div class='alert alert-danger'><strong>Error!</strong> Username does not exist.</div>";
     ?>
     <br><br>
-    <div id="user_error" class='alert alert-danger hidden'><strong>Error!</strong> User name does not exist.</div>
-    <div id="password_error" class='alert alert-danger hidden'><strong>Error!</strong> Password does not match.</div>
-    <div id="email_error" class='alert alert-danger hidden'><strong>Error!</strong> Email does not exist.</div>
 </div>
 
 </body>
