@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
 ?>
 
 <?php
-include('sql_connector.php');
+include(dirname(__DIR__) . '\sql_connector.php');
 
 // Unset all of the session variables.
 $_SESSION = array();
