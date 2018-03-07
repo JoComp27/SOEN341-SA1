@@ -2,7 +2,7 @@
 session_start();
 //use PHPUnit\Framework\TestCase;
 
-class QuestionTest extends PHPUnit\Framework\TestCase;{
+class QuestionTest extends PHPUnit\Framework\TestCase{
 
     public function testTest1(){
 
