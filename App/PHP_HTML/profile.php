@@ -13,8 +13,7 @@ if (!isset($_SESSION)) {
 		<style> 
 			body{margin-left: 100px; margin-right: 100px; background-color: white; width: 1100px; margin-top:100px}
 			.c1{length: 700px; margin-left: 100px; margin-right : 100px; background-color: lightgrey; margin-top: 50px; margin-bottom: 50px}
-			.aboutme{border: 2px solid black; width: 200px; margin-left: 50px; margin-top: 50px}
-			tr, td {border: 2px solid blue}
+			.aboutme{border: 10px groove yellowgreen; width: 300px; margin-left: 50px; margin-top: 50px}
 			#profilepic {border-radius : 50%; position: relative; float: right; margin-right: 50px;}
 		</style>
 		
@@ -29,14 +28,15 @@ if (!isset($_SESSION)) {
         <div class="c1">
              <h1 class="">Welcome to <?php echo $_SESSION['user_name'] ?>'s profile page!</h1>
 			 <div ><a href="" class=""><img id="profilepic" title="profile image" class="" src="https://freeiconshop.com/wp-content/uploads/edd/person-flat.png"></a>
-        </div>
+			 </div>
          
           <button type="button" class="btn btn-success">Follow me!</button>  <button type="button" class="btn btn-info">Send me a message</button>
-		<br>
+		</br></br>
 		
 		<table class="aboutme">
 			<tr>
 				<th>About Me!</th>
+				<th> </th>
 			</tr>
 			<tr>
 				<td>Gender: </td>
@@ -61,13 +61,16 @@ if (!isset($_SESSION)) {
 
             <ul class="">
                 <li class=""><strong>Activity </strong></li>
-                <li class=""><strong class="">Questions asked</strong></li>
-                <li class=""><strong class="">Answers</strong></li>
-                <li class=""><strong class="">Likes</strong></li>
-                <li class=""><strong class="">Followers</strong></li>
+                <li class=""><strong class="">Questions asked: </strong></li>
+                <li class=""><strong class="">Answers: </strong></li>
+                <li class=""><strong class="">Likes:</strong></li>
+                <li class=""><strong class="">Followers:</strong></li>
             </ul>
             
                 <div class="">Social Media</div>
+				<form>
+				
+				</form>
                 <div class="">Bio</div>
             
         </div>
