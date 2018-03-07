@@ -4,5 +4,11 @@ php:
   - 7.2
   - master
 
+services:
+  - mysql
+
+script:
+  - vendor/bin/phpunit
+
 before_install:
   - composer update
