@@ -1,7 +1,7 @@
 <?php
 //use PHPUnit\Framework\TestCase;
 
-class ConnectorTest extends PHPUnit_Framework_TestCase
+class ConnectorTest extends PHPUnit\Framework\TestCase
 {
     public function test()
     {
