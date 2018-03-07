@@ -100,8 +100,8 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 <h2><?php echo $data['question_title']; ?></h2>
 <ul class="list-group">
     <li class="list-group-item"><b> <?php echo $data['question_description'];
-            echo '<br> by user: ';
-            echo $data['question_by_user']; ?></b></li>
+            echo '<br> by user: ';?>
+            <a href="profile.php"><?php echo $data['question_by_user']; ?></a></b></li>
 </ul>
 <ul class="list-group">
     <?php
@@ -113,8 +113,8 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     while ($get_answers = mysqli_fetch_assoc($sql)) { ?>
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
             <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content'];
-            echo '<br> by user: ';
-            echo $get_answers['answers_by_user']; ?>
+            echo '<br> by user: ';?>
+            <a href="profile.php"> <?php echo $get_answers['answers_by_user']; ?></a>
 
             <?php include('answer_state.php'); ?>
 
