@@ -5,6 +5,7 @@
         <var name="db_password" value=""/>
     </php>
 
+
 	<testsuites>
 	<testsuite name="unit">
 		<directory>./App/Tests</directory>

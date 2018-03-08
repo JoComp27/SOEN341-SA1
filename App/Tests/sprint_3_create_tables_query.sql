@@ -1,17 +1,4 @@
--- =============================================================================================
--- Query Description:
---       - Additions for Spring 3 
---       - Added additional tables (notification, notification_user) to support user notification feature
---       - Added additional columns (x_deleted) to support delete answer/question feature
---       - Deleted table categories and replaced it with tags
--- Howtos: Run query once on either XAMPP to begin local dev, under database name = website_db, or AWS mysql for global to create tables. 
--- Ming Tao Yu 2018-02-22, adapted from open source license @ code.tutsplus.com Evert Padje
--- Modifications:
---              By:               Detail:                 Date:
---
---
---             
--- =============================================================================================
+
 
 DROP TABLE IF EXISTS categories;
 
@@ -35,7 +22,7 @@ user_email_notification_on INT (1) DEFAULT 1, -- If 1: notifications will also b
 user_deleted INT(1) DEFAULT 0, -- If 0: user is active. If 1, user has deleted his account
 UNIQUE INDEX user_name_unique (user_name),
 PRIMARY KEY (user_id)
-) ENGINE=INNODB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS loggedin;
@@ -44,7 +31,7 @@ user_id INT(32),
 logged_in DATETIME DEFAULT CURRENT_TIMESTAMP,
 logged_out DATETIME,
 active INT(1)
-) ENGINE=INNODB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 DROP TABLE IF EXISTS questions;
 CREATE TABLE questions (
@@ -60,7 +47,7 @@ question_description VARCHAR(1000),
 question_view_count INT(16) DEFAULT 0,
 question_deleted INT(1) DEFAULT 0, -- If 0: question is up. If 1, user has deleted the question
 PRIMARY KEY (question_id)
-) ENGINE=INNODB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS answers;
 CREATE TABLE answers(
@@ -75,7 +62,7 @@ answers_downvotes INT(8),
 answer_state INT(1) DEFAULT 1, -- State 2= accepted, state 1 = pending, state 0= refused. Whether the answer has been refused or accepted
 answer_deleted INT(1) DEFAULT 0, -- If 0: answer is up. If 1, user has deleted the answer
 PRIMARY KEY (answers_id)
-)ENGINE=INNODB;
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS notification;
@@ -85,7 +72,7 @@ notification_content VARCHAR(1000),
 notification_date DATETIME,
 notification_title VARCHAR(50), 
 PRIMARY KEY (notification_id)
-) ENGINE=INNODB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS notification_user;
 CREATE TABLE notification_user (
@@ -93,7 +80,7 @@ notification_id INT(16) NOT NULL, -- foreign key to table notification_user. use
 user_id INT(16), -- foreign key to table users user_id
 notification_status INT(1) DEFAULT 0, -- 1 == read, 0 == unread
 PRIMARY KEY (notification_id, user_id)
-) ENGINE=INNODB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS tags;
 CREATE TABLE tags (
@@ -102,7 +89,7 @@ CREATE TABLE tags (
   tag_description VARCHAR(255),
   UNIQUE INDEX tag_name_unique (tag_name),
   PRIMARY KEY (tag_id)
-) ENGINE=INNODB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS question_tags;
 CREATE TABLE question_tags (
@@ -111,7 +98,7 @@ CREATE TABLE question_tags (
 --  FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE,
 --  FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON DELETE RESTRICT ON UPDATE CASCADE,
   PRIMARY KEY (question_id, tag_id)
-) ENGINE=INNODB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ALTER TABLE answers ADD FOREIGN KEY(reply_questions) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ALTER TABLE answers ADD FOREIGN KEY(reply_by) REFERENCES user(user_id) ON DELETE RESTRICT ON UPDATE CASCADE;

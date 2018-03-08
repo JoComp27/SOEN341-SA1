@@ -4,13 +4,18 @@ php:
   - 7.2
   - master
 
+
 env:
   - DB=mysql
+  
+services:
+  - mysql
 
 before_script:
   - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS website_db;" -uroot; fi
-  - ./App/Tests/sprint_3_create_tables_query.sql
 
+
+  
 script:
   - vendor/bin/phpunit
 
