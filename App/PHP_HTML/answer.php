@@ -112,7 +112,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             include(__DIR__ . '\deleteQuestion\delete_question_view.php');
 
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
-            $question_action = 'question_submission.php';
+            $question_action = "modify_question_action.php?questionId=$qus_id";
             include('question_form_view.php');
         }; ?>
     </li>
