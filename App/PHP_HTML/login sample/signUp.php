@@ -140,9 +140,9 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
     <form id="form" action="signUp.php" method="post">
         <h2>Sign Up</h2>
 
-        <input required type="text" name="user_name" placeholder="User name" size="47">
+        <input required type="text" name="user_name" placeholder="User name" >
         <br><br>
-        <input required type="email" name="user_email" placeholder="Email" size="47"><br>
+        <input required type="email" name="user_email" placeholder="Email" ><br>
         <br><br>
 
         <input required type="radio" id="Male"
@@ -235,7 +235,7 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
             <span class="ttiptext">The password must contain at least 1 digit and 6 letters.</span></div>
         <br><br>
 
-        <input required id="confirmPassword" type="password" name="cpassword" size="48"
+        <input required id="confirmPassword" type="password" name="cpassword"
                placeholder="Confirm password"><br><br>
 
         <div style="padding-bottom: 25px;"><input style="display: block; margin:0 auto;" id="sub" type="submit"
