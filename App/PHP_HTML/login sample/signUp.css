@@ -73,3 +73,15 @@ input#Female {
     height: 15px;
     font-weight: normal;
 }
+
+input[type="text"]{
+    width: 80%;
+}
+
+input[type="password"]{
+    width: 80%;
+}
+
+input[type="email"]{
+    width: 80%;
+}
