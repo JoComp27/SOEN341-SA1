@@ -113,7 +113,9 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 <ul class="list-group">
     <?php
 
-    $select_query = "select * from answers where reply_questions ='$qus_id' order by answers_id DESC";
+    $select_query = "select * from answers "
+        . "where answer_deleted = 0 AND reply_questions ='$qus_id'" // answer must be apart of question and not deleted
+        . " order by answers_id DESC";
     $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
     $a = 1;
 
