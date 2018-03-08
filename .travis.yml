@@ -10,6 +10,7 @@ env:
 
 before_script:
   - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS website_db;" -uroot; fi
+  - mysql -u root --password="" < App/Tests/sprint_3_create_tables_query.sql
 
 
 script:
