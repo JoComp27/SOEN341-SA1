@@ -15,6 +15,7 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" type="text/css" href="home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>check();</script>
     <script>
         function increment(id) {
             <?php $qus_id = $_GET['id'];?>
@@ -97,9 +98,10 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h2><?php echo $data['question_title']; ?></h2>
+<h2><?php echo "<span id='question-title'>" . $data['question_title'] . "</span>"; ?></h2>
 <ul class="list-group">
-    <li class="list-group-item"><b> <?php echo $data['question_description'];
+    <li class="list-group-item"><b> <?php echo
+                "<span id='question-description'>" . $data['question_description'] . "</span>";
             echo '<br> by user: ';?>
             <a href="profile.php"><?php echo $data['question_by_user']; ?></a></b></li>
     <li>
@@ -107,6 +109,10 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         $question_by_id = $data['question_by'];
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) { // only the user that created the question can delete it
             include(__DIR__ . '\deleteQuestion\delete_question_view.php');
+
+            echo "<input id='modify-question' class='question-form-button' type='button' value='Modify'><br><br>";
+            $question_action = 'question_submission.php';
+            include('question_form_view.php');
         }; ?>
     </li>
 </ul>

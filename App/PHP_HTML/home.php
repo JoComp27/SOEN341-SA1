@@ -11,7 +11,7 @@
 <body>
 <br>
 <div class="container">
-    <button id="ask" type="button"><span> Ask a Question!</span></button>
+    <button id="ask" class="question-form-button" type="button"><span> Ask a Question!</span></button>
     <br>
     <?php
     $question_action = 'question_submission.php'; // action can be chosen separately from form view
