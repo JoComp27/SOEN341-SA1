@@ -1,5 +1,0 @@
-test:
-  adapter: myqsl2
-  database: website_db
-  username: travis
-  encoding: utf8
