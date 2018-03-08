@@ -50,7 +50,7 @@
                 <table class="table">
                     <?php
 
-                    $sql = "SELECT * FROM questions order by question_view_count desc";
+                    $sql = "SELECT * FROM questions WHERE question_deleted = 0 order by question_view_count desc";
                     $result = mysqli_query($db, $sql);
 
                     if (mysqli_num_rows($result) > 0) {

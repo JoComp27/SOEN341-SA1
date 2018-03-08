@@ -102,6 +102,13 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     <li class="list-group-item"><b> <?php echo $data['question_description'];
             echo '<br> by user: ';?>
             <a href="profile.php"><?php echo $data['question_by_user']; ?></a></b></li>
+    <li>
+        <?php
+        $question_by_id = $data['question_by'];
+        if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) { // only the user that created the question can delete it
+            include(__DIR__ . '\deleteQuestion\delete_question_view.php');
+        }; ?>
+    </li>
 </ul>
 <ul class="list-group">
     <?php
