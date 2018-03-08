@@ -55,7 +55,7 @@
 
         <br>  <br>
     </form>
-    <?php if(isset($_GET["problem"])
+    <?php if(isset($_GET["problem"]))
             echo "<div class='alert alert-danger'><strong>Error!</strong>" . $_GET["problem"] . "</div>";
     ?>
     <br><br>
