@@ -103,11 +103,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             echo '<br> by user: ';
             echo $data['question_by_user']; ?></b></li>
     <li>
-        <form name="deleteAnswer" action="delete_answer_action.php" method="post">
-           <!-- As long as $qus_id is set, this action will work  -->
-            <input type="hidden" name="questionId" value="<?php echo $qus_id?>">
-            <input type="submit" value="Delete">
-        </form>
+        <?php include(__DIR__ .'\deleteQuestion\delete_question_view.php'); ?>
     </li>
 </ul>
 

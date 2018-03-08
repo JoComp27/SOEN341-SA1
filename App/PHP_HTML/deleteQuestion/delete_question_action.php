@@ -1,4 +1,4 @@
-<?php include('sql_connector.php'); ?>
+<?php include('../sql_connector.php'); ?>
 
 // PURPOSE: runs query that deletes a question
 
@@ -8,6 +8,6 @@
 
     $query = "UPDATE questions SET question_deleted = $DELETE_QUESTION WHERE question_id = '$questionId'";
     mysqli_query($db, $query) or die(mysqli_error($db));
-    $redirect = 'Location: answer.php?id=' . $questionId;
+    $redirect = 'Location: ../home.php'; // go back to home page once answer deleted
     header($redirect);
 ?>
