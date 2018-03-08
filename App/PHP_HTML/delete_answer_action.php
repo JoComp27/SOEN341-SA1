@@ -1,11 +1,13 @@
 <?php include('sql_connector.php'); ?>
 
+// PURPOSE: runs query that deletes a question
+
 <?php
-    $state = $_POST['state'];
-    $ans_id = $_GET['id'];
-    $ques_id = $_GET['question_id'];
-    $query = "UPDATE answers SET answer_state = $state WHERE answers_id = '$ans_id'";
+    $DELETE_QUESTION = 1;
+    $questionId = $_POST['questionId'];
+
+    $query = "UPDATE questions SET question_deleted = $DELETE_QUESTION WHERE question_id = '$questionId'";
     mysqli_query($db, $query) or die(mysqli_error($db));
-    $redirect = 'Location: answer.php?id' . $ques_id;
+    $redirect = 'Location: answer.php?id=' . $questionId;
     header($redirect);
 ?>
