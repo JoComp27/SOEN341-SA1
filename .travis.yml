@@ -7,9 +7,12 @@ php:
 services:
   - mysql
 
+before script:
+- mysql -e 'CREATE DATABASE website_db;'
+- mysql -u root --password="" < ./config/travisDB.sql
+
 script:
   - vendor/bin/phpunit
 
 before_install:
   - composer update
-  - mysql -e 'CREATE DATABASE website_db;'
