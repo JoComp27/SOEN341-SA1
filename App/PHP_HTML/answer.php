@@ -103,7 +103,9 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             echo '<br> by user: ';
             echo $data['question_by_user']; ?></b></li>
     <li>
-        <input type="submit" value="Delete">
+        <form name="deleteAnswer" action="delete_answer_action.php" method="post">
+            <input type="submit" value="Delete">
+        </form>
     </li>
 </ul>
 
