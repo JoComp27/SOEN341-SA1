@@ -50,10 +50,15 @@
         <br><br>
         <input required id="password" type="password" name="user_pass"  placeholder="Password"><br><br>
         <br>
-        <div style="padding-bottom: 25px;"><input style="display: block; margin:0 auto;" id="sub" type="submit"
-                                                  name="submitform" value="Log In"></div>
-    </form>
+        <div style="padding-bottom: 25px;"><input style="display: block; margin:0 auto;" id="sub" type="submit" name="submitform" value="Log In"></div>
+        <a href="forgotPassword.php">Forgot password?</a>
 
+        <br>  <br>
+    </form>
+    <?php if(isset($_GET["problem"])
+            echo "<div class='alert alert-danger'><strong>Error!</strong>" . $_GET["problem"] . "</div>";
+    ?>
+    <br><br>
 </div>
 
 </body>
