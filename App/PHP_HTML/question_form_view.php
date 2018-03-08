@@ -1,7 +1,7 @@
 <!-- PURPOSE: Question form allows user to enter info about question, whether that is to add one or modify it-->
 
-<form method="POST" action="<?php echo "$question_action" ?>"> <!-- generic action on question for
-                                                                    separation of behaviour and view.-->
+<form id="question-form" method="POST" action="<?php echo "$question_action" ?>"> <!-- generic action on question for
+                                                                                       separation of behaviour and view.-->
     <p id="question_field" name="question_field" class="hidden">
         <strong id="title_title" class="pretty">Title : </strong>
         <br>
