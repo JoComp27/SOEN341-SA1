@@ -10,9 +10,22 @@ env:
 
 before_script:
   - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS website_db;" -uroot; fi
-  - mysql -e "DROP TABLE IF EXISTS questions;'
+  - mysql -e "DROP TABLE IF EXISTS questions;"
   - mysql - e "CREATE TABLE questions (question_id INT(16) NOT NULL AUTO_INCREMENT, question_title VARCHAR(255), question_date DATETIME, question_cat INT(16), question_by_user VARCHAR(50), question_upvote INT(16) DEFAULT 0, question_keyword_tag VARCHAR(500), question_description VARCHAR(1000), question_view_count INT(16) DEFAULT 0, question_deleted INT(1) DEFAULT 0, PRIMARY KEY (question_id)) ENGINE=INNODB;"
-
+  - mysql - e "DROP TABLE IF EXISTS answers;"
+  - mysql - e "CREATE TABLE answers(
+answers_id INT(16) NOT NULL AUTO_INCREMENT,
+answers_content VARCHAR(5000),
+answers_date DATETIME,
+reply_questions INT(16) NOT NULL,
+reply_by INT(32), -- foreign key to users_id in table user
+answers_by_user VARCHAR(50),
+answers_upvotes INT(8),
+answers_downvotes INT(8),
+answer_state INT(1) DEFAULT 1,
+answer_deleted INT(1) DEFAULT 0,
+PRIMARY KEY (answers_id)
+)ENGINE=INNODB;"
 
 script:
   - vendor/bin/phpunit
