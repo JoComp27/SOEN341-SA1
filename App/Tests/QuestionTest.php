@@ -12,6 +12,33 @@ class QuestionTest extends PHPUnit\Framework\TestCase{
 
         $db = new mysqli('localhost', $user, $password, $database) or die("Connection failed");
 
+        $db->query("drop table questions if exists");
+        $query = 'CREATE TABLE questions (
+				question_id INT(16) NOT NULL AUTO_INCREMENT,
+				question_title VARCHAR(255),
+				question_date DATETIME,
+				question_cat INT(16),
+				question_by INT(32),
+				question_by_user VARCHAR(50),
+				question_upvote INT(16) DEFAULT 0,
+				question_keyword_tag VARCHAR(500),
+				question_description VARCHAR(1000),
+				question_view_count INT(16) DEFAULT 0,
+				question_deleted INT(1) DEFAULT 0,
+				PRIMARY KEY (question_id)
+				)';
+		$db->query($query);
+		$db->query("Drop table tags if exists");
+
+		$query = 'CREATE TABLE tags (
+		  tag_id INT(16) NOT NULL AUTO_INCREMENT, 
+		  tag_name VARCHAR(255) NOT NULL,
+		  tag_description VARCHAR(255),
+		  UNIQUE INDEX tag_name_unique (tag_name),
+		  PRIMARY KEY (tag_id)
+		)';
+		$db->query($query);
+
 
 
     	$baseline_count1=mysqli_num_rows($db->query("select * from questions"));
