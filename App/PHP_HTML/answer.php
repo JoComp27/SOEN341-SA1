@@ -102,7 +102,11 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     <li class="list-group-item"><b> <?php echo $data['question_description'];
             echo '<br> by user: ';
             echo $data['question_by_user']; ?></b></li>
+    <li>
+        <input type="submit" value="Delete">
+    </li>
 </ul>
+
 <ul class="list-group">
     <?php
 
