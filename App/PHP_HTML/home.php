@@ -4,7 +4,7 @@
 <head>
     <link href="ask_question.css" type="text/css" rel="stylesheet">
     <?php include "header.php";
-          include "Display_Questions.php"?>
+    include "Display_Questions.php" ?>
 
     <link rel="stylesheet" type="text/css" href="home.css">
 
@@ -61,7 +61,7 @@
             <div class="tab-content">
                 <table class="table">
                     <?php
-                    displayQuestions($db,'SELECT * FROM questions WHERE question_deleted = 0 order by question_upvote desc');
+                    displayQuestions($db, 'SELECT * FROM questions WHERE question_deleted = 0 order by question_upvote desc');
                     ?>
 
                 </table>
@@ -84,7 +84,7 @@
             <div class="tab-content">
                 <table class="table">
                     <?php
-                    displayQuestions($db,'SELECT * FROM questions where (question_date between NOW() - INTERVAL 7 DAY AND NOW()) AND question_deleted = 0')
+                    displayQuestions($db, 'SELECT * FROM questions where (question_date between NOW() - INTERVAL 7 DAY AND NOW()) AND question_deleted = 0')
                     ?>
 
                 </table>
