@@ -45,9 +45,14 @@ if (isset($_SESSION['auth'])) {
         $sql = "INSERT INTO question_tags (question_id, tag_id) VAlUES($intQId, $Tid_int)";
         $db->query($sql);
     }
-  
-    $url = "Location: answer.php?id=$id";
-    header($url);
+
+    $url = "answer.php?id=$intQId";
+    ?>
+    <script type="text/javascript">
+       window.location.href = "<?php echo $url?>"
+    </script>
+<?php
+    exit;
 } else {
     echo "<div class='alert alert-danger'><strong>Error!</strong> Please Log in/Sign up to post a question.</div>";
 }
