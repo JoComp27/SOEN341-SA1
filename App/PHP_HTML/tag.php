@@ -40,12 +40,13 @@ $qt = $_GET['tag'];
 
 <table class="table">
     <?php
-    displayQuestions($db, 'SELECT * 
-            FROM questions Q INNER JOIN question_tags QT 
-            ON Q.question_id = QT.question_id 
-            INNER JOIN tags T
-            ON T.tag_id = QT.tag_id
-            WHERE T.tag_name = \'{$qt}\' AND question_deleted = 0 order by question_date desc')
+    displayQuestions($db, '
+            SELECT * 
+            FROM questions Q 
+            INNER JOIN question_tags QT ON Q.question_id = QT.question_id 
+            INNER JOIN tags T ON T.tag_id = QT.tag_id
+            WHERE (T.tag_name = \'' . $qt . '\') AND (question_deleted = 0) 
+            order by question_date desc')
     ?>
 
 </table>
