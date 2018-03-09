@@ -1,9 +1,5 @@
 <?php
-$user = 'root';
-$password = '';
-$database = 'website_db';
-
-$db = new mysqli('localhost', $user, $password, $database) or die("Connection failed");
+include "../sql_connector.php";
 
 function CloseCon($db)
 {
@@ -140,9 +136,9 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
     <form id="form" action="signUp.php" method="post">
         <h2>Sign Up</h2>
 
-        <input required type="text" name="user_name" placeholder="User name" >
+        <input required type="text" name="user_name" placeholder="User name">
         <br><br>
-        <input required type="email" name="user_email" placeholder="Email" ><br>
+        <input required type="email" name="user_email" placeholder="Email"><br>
         <br><br>
 
         <input required type="radio" id="Male"

@@ -1,8 +1,5 @@
-<?php $user = 'root';
-$password = '';
-$database = 'website_db';
-
-$db = new mysqli('localhost', $user, $password, $database) or die("Connection failed");
+<?php
+include "./sql_connector.php";
 ?>
 <!DOCTYPE html>
 <html>
