@@ -4,7 +4,7 @@ session_start();
 
 class ResetPasswordTest extends PHPUnit\Framework\TestCase{
 
-    public function ResetTest1(){
+    public function testTest1(){
     	
         $this->assertTrue(True);
     }

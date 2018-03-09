@@ -4,7 +4,7 @@ session_start();
 
 class tagTest extends PHPUnit\Framework\TestCase{
 
-    public function tagTest1(){
+    public function testTest1(){
     	
         $this->assertTrue(True);
     }

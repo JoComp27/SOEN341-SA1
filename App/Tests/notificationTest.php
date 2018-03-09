@@ -4,7 +4,7 @@ session_start();
 
 class notificationTest extends PHPUnit\Framework\TestCase{
 
-    public function notificationTest1(){
+    public function testTest1(){
     	
         $this->assertTrue(True);
     }

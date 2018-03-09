@@ -4,7 +4,7 @@ session_start();
 
 class AnswerTest extends PHPUnit\Framework\TestCase{
 
-    public function AnswerTest1(){
+    public function testTest3(){
     	
         $this->assertTrue(True);
     }

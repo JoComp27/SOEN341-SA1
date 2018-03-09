@@ -4,7 +4,7 @@ session_start();
 
 class LoginTest extends PHPUnit\Framework\TestCase{
 
-    public function LoginTest1(){
+    public function testTest1(){
     	
         $this->assertTrue(True);
     }

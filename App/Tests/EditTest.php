@@ -4,7 +4,7 @@ session_start();
 
 class EditTest extends PHPUnit\Framework\TestCase{
 
-    public function EditTest1(){
+    public function testTest1(){
     	
         $this->assertTrue(True);
     }
