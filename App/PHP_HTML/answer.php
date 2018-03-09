@@ -150,6 +150,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <?php
             if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $answer_by_id) { // only the user that created the answer can delete it
                 include(__DIR__ . '\deleteAnswer\delete_answer_view.php');
+                include(__DIR__ . '\modifyAnswer\modify_answer_view.php');
             }; ?>
         </li>
         <br/>
