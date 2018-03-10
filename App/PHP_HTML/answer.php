@@ -15,6 +15,8 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" type="text/css" href="home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="fillQuestionForm.js"></script>
+    <script>check();</script>
     <script>
         function increment(id) {
             <?php $qus_id = $_GET['id'];?>
@@ -97,16 +99,21 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h2><?php echo $data['question_title']; ?></h2>
+<h2><?php echo "<span id='question-title'>" . $data['question_title'] . "</span>"; ?></h2>
 <ul class="list-group">
-    <li class="list-group-item"><b> <?php echo $data['question_description'];
-            echo '<br> by user: ';?>
+    <li class="list-group-item"><b> <?php echo
+                "<span id='question-description'>" . $data['question_description'] . "</span>";
+            echo '<br> by user: '; ?>
             <a href="profile.php"><?php echo $data['question_by_user']; ?></a></b></li>
     <li>
         <?php
         $question_by_id = $data['question_by'];
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) { // only the user that created the question can delete it
             include(__DIR__ . '\deleteQuestion\delete_question_view.php');
+
+            echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
+            $question_action = "modify_question_action.php?questionId=$qus_id";
+            include('question_form_view.php');
         }; ?>
     </li>
 </ul>
@@ -126,7 +133,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         ?>
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
             <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content'];
-            echo '<br> by user: ';?>
+            echo '<br> by user: '; ?>
             <a href="profile.php"> <?php echo $get_answers['answers_by_user']; ?></a>
 
             <?php include('answer_state.php'); ?>
