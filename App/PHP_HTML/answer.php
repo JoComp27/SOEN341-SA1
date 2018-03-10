@@ -100,7 +100,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 <h2><?php echo $data['question_title']; ?></h2>
 <ul class="list-group">
     <li class="list-group-item"><b> <?php echo $data['question_description'];
-            echo '<br> by user: ';?>
+            echo '<br> by user: '; ?>
             <a href="profile.php"><?php echo $data['question_by_user']; ?></a></b></li>
     <li>
         <?php
@@ -125,8 +125,9 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         $answer_id = $get_answers['answers_id'];
         ?>
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
-            <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content'];
-            echo '<br> by user: ';?>
+            <b>Ans <?php echo $a; ?>:</b>
+            <span id="<?php echo "answer-description-$a" ?>"><?php echo $get_answers['answers_content']; ?></span>
+            <?php echo '<br> by user: '; ?>
             <a href="profile.php"> <?php echo $get_answers['answers_by_user']; ?></a>
 
             <?php include('answer_state.php'); ?>
@@ -150,6 +151,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <?php
             if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $answer_by_id) { // only the user that created the answer can delete it
                 include(__DIR__ . '\deleteAnswer\delete_answer_view.php');
+                include(__DIR__ . '\modifyAnswer\modify_answer_view.php');
             }; ?>
         </li>
         <br/>
