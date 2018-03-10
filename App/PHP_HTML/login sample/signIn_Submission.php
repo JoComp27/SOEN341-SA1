@@ -1,5 +1,5 @@
 <?php
-include "./sql_connector.php";
+include "./../sql_connector.php";
 ?>
 <!DOCTYPE html>
 <html>
