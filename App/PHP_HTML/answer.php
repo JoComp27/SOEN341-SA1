@@ -103,7 +103,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 <ul class="list-group">
     <li class="list-group-item"><b> <?php echo
                 "<span id='question-description'>" . $data['question_description'] . "</span>";
-            echo '<br> by user: ';?>
+            echo '<br> by user: '; ?>
             <a href="profile.php"><?php echo $data['question_by_user']; ?></a></b></li>
     <li>
         <?php
@@ -133,7 +133,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         ?>
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
             <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content'];
-            echo '<br> by user: ';?>
+            echo '<br> by user: '; ?>
             <a href="profile.php"> <?php echo $get_answers['answers_by_user']; ?></a>
 
             <?php include('answer_state.php'); ?>
