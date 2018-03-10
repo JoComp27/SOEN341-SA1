@@ -120,11 +120,17 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 <ul class="list-group">
     <?php
 
-    $select_query = "select * from answers where reply_questions ='$qus_id' order by answers_id DESC";
+    $select_query = "select * from answers "
+        . "where answer_deleted = 0 AND reply_questions ='$qus_id'" // answer must be apart of question and not deleted
+        . " order by answers_id DESC";
     $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
     $a = 1;
 
-    while ($get_answers = mysqli_fetch_assoc($sql)) { ?>
+    while ($get_answers = mysqli_fetch_assoc($sql)) {
+
+        $answer_by_id = $get_answers['reply_by']; // useful variables while looping through each answer
+        $answer_id = $get_answers['answers_id'];
+        ?>
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
             <b>Ans <?php echo $a; ?>:</b> <?php echo $get_answers['answers_content'];
             echo '<br> by user: ';?>
@@ -146,7 +152,14 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                     <span class="dislike"> <?php echo $get_answers['answers_downvotes']; ?> </span>
                     <span class="like"><i class="glyphicon glyphicon-thumbs-down"></i></span>
                 </a></button>
-        </li><br/>
+        </li>
+        <li>
+            <?php
+            if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $answer_by_id) { // only the user that created the answer can delete it
+                include(__DIR__ . '\deleteAnswer\delete_answer_view.php');
+            }; ?>
+        </li>
+        <br/>
 
         <?php $a++;
     } ?>
