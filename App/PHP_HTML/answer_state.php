@@ -11,10 +11,8 @@
         <form class="answer-state-form" name="answerState"
               action="answer_state_2.php?id=<?php echo $get_answers['answers_id'] ?>&question_id==<?php echo $get_answers['reply_questions'] ?>"
               method="post">
-        <label><input type="submit" name="state" value="2" onchange="checkState(<?php echo $a ?>); this.form.submit()">
-            Accept Answer</label>&nbsp;
-        <label><input type="submit" name="state" value="0" onchange="checkState(<?php echo $a ?>); this.form.submit()">
-            Refuse Answer</label>
+        <button type="submit" name="state" value="2" onchange="checkState(<?php echo $a ?>); this.form.submit()">Accept Answer</button>&nbsp;
+        <button type="submit" name="state" value="0" onchange="checkState(<?php echo $a ?>); this.form.submit()">Refuse Answer</button>
         </form>
     <?php } elseif ($get_answers['answer_state'] == 2) { ?>
         <span>Answer has been accepted.</span>
