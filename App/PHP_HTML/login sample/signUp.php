@@ -30,13 +30,15 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
         }
     }
 
-
+    $answer1 = $_POST['answer1'];
+    $answer2 = $_POST['answer2'];
+    $answer3 = $_POST['answer3'];
     $user_pass = md5($_POST['user_pass']);
     $dateOfBirth = $_POST['year'] . "-" . $_POST['month'] . "-" . $_POST['day'];
     $gender = $_POST['gender'];
 
 
-    $query = "INSERT INTO `users` (user_name, user_pass, user_email, user_birthDate, user_gender, user_date) VALUES ('$user_name', '$user_pass', '$user_email', '$dateOfBirth', '$gender', now())";
+    $query = "INSERT INTO `users` (user_name, user_pass, user_email, user_birthDate, user_gender, user_date, user_answer1, user_answer2, user_answer3) VALUES ('$user_name', '$user_pass', '$user_email', '$dateOfBirth', '$gender', now(), '$answer1', '$answer2', '$answer3')";
     $result = mysqli_query($db, $query);
 } else if (isset($_POST['submitform']) && $_POST['user_pass'] != $_POST['cpassword']) {
     ?>
@@ -224,7 +226,15 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
             <option value="1996">1996</option>
             <option value="1995">1995</option>
         </select><br><br>
-
+        <h3 id="bd">Security Questions: </h3>
+        <div id="q1">Mother's maiden name: </div>
+        <input required type="answer1" name="answer1" placeholder="answer"><br>
+        <div id="q2">Childhood bestfriend: </div>
+        <input required type="answer2" name="answer2" placeholder="answer"><br>
+        <div id="q3">Favourite restaurant: </div>
+        <input required type="answer3" name="answer3" placeholder="answer"><br>
+        <br>
+        <br>
         <input required id="password" type="password" name="user_pass" size="48" pattern="\w{6,}\d+"
                placeholder="Password">
         <div class="ttip"><img src="help.png" id="tooltip">
