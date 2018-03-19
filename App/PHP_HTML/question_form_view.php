@@ -11,17 +11,10 @@
         <br>
         <textarea rows="4" cols="50" name="details"></textarea>
         <br>
-
-        <?php
-        if (strpos($question_action, 'modify_question_action.php') === false) {
-            echo '
-                <strong id="tags_title">Associated Tags : </strong>
-                <br>
-                <input id="tags" name="tags" type="text" data-role="tagsinput" placeholder="Add tags">
-                <br>
-            ';
-        } ?>
-
+        <strong id="tags_title">Associated Tags : </strong>
+        <br>
+        <input id="tags" name="tags" type="text" data-role="tagsinput" placeholder="Add tags">
+        <br>
         <input id="submit" type="submit">
 
     </p>
