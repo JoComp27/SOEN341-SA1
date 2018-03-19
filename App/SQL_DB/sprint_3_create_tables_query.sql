@@ -33,6 +33,9 @@ user_profile_description_short VARCHAR(300),
 user_profile_description_long VARCHAR(2000),
 user_email_notification_on INT (1) DEFAULT 1, -- If 1: notifications will also be forwarded via email to user
 user_deleted INT(1) DEFAULT 0, -- If 0: user is active. If 1, user has deleted his account
+user_answer1 VARCHAR(255) NOT NULL,
+user_answer2 VARCHAR(255) NOT NULL,
+user_answer3 VARCHAR(255) NOT NULL,
 UNIQUE INDEX user_name_unique (user_name),
 PRIMARY KEY (user_id)
 ) ENGINE=INNODB;
