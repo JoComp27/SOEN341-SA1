@@ -78,19 +78,19 @@ answer_deleted INT(1) DEFAULT 0, -- If 0: answer is up. If 1, user has deleted t
 PRIMARY KEY (answers_id)
 )ENGINE=INNODB;
 
-DROP TABLE IF EXISTS user_subscription; --allows users to subscribe to each other
+DROP TABLE IF EXISTS user_subscription; -- allows users to subscribe to each other
 CREATE TABLE user_subscription (
 subscriber_id INT(16),
 subscribee_username INT(16),
 subscribee_id INT(16),
-PRIMARY KEY (subscriber_id, subscribee_id) --uncertain
+PRIMARY KEY (subscriber_id, subscribee_id) -- uncertain
 ) ENGINE=INNODB;
 
-DROP TABLE IF EXISTS question_subscription; --allows users to subscribe to questions
+DROP TABLE IF EXISTS question_subscription; -- allows users to subscribe to questions
 CREATE TABLE question_subscription (
 subscriber_id INT(16),
 question_id INT(16),
-PRIMARY KEY (subscriber_id, question_id) --uncertain
+PRIMARY KEY (subscriber_id, question_id) -- uncertain
 ) ENGINE=INNODB;
 
 DROP TABLE IF EXISTS notification;
