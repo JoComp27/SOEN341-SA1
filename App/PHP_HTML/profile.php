@@ -26,40 +26,76 @@ if (!isset($_SESSION)) {
 		<link href="ask_question.css" type="text/css" rel="stylesheet">
 		<?php include "header.php" ?>
 		<link rel="stylesheet" type="text/css" href="home.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<script>
+			function userSub(subscriber_ID, subscribee_ID){
+				<?php 
+					
+				?>
+			}
+		</script>
 		
 	</head>
 	
 	<body>
-		    
+		
+		<?php 
+			if (isset($_GET['id'])) {
+				$usr_id = $_GET['id'];
+				$select_query = "select * from users WHERE user_id='".$usr_id."'";
+				$sql = mysqli_query($db, $select_query);
+				$get_users = mysqli_fetch_assoc($sql);
+				$name = $get_users['user_name'];
+				$gender = $get_users['user_gender'];
+				$bday = $get_users['user_birthDate'];
+				$membSince = $get_users['user_date'];
+				$nbrQsts = $get_users['user_questions_count'];
+				$nbrAns = $get_users['user_answers_count']; 
+				$subscribers = $get_users['user_followers_count'];
+				$email = $get_users['user_email'];
+				$lBio = $get_users['user_profile_description_long']; 
+				$sBio = $get_users['user_profile_description_short'];
+			} else {
+				$select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
+				$sql = mysqli_query($db, $select_query);
+				$get_users = mysqli_fetch_assoc($sql);
+				$name = $_SESSION['user_name'];
+				$gender = $get_users['user_gender'];
+				$bday = $get_users['user_birthDate'];
+				$membSince = $get_users['user_date'];
+				$nbrQsts = $get_users['user_questions_count'];
+				$nbrAns = $get_users['user_answers_count']; 
+				$subscribers = $get_users['user_followers_count'] ;
+				$email = $get_users['user_email'];
+				$lBio = $get_users['user_profile_description_long']; 
+				$sBio = $get_users['user_profile_description_short'];
+			}
+			
+		?>		
         <div class="c1">
-             <h1 class="">Welcome to <?php echo $_SESSION['user_name'] ?>'s profile page!</h1>
+             <h1 class="">Welcome to <?php echo $name ?>'s profile page!</h1>
 			 <div ><a href="" class=""><img id="profilepic" title="profile image" class="" src="https://freeiconshop.com/wp-content/uploads/edd/person-flat.png"></a></div>
          
-          <button type="button" class="btn btn-success">Follow me!</button>  <button type="button" class="btn btn-info">Send me a message</button>
+          <button type="button" class="btn btn-success" onclick="" >Subscribe to me!</button>  <button type="button" class="btn btn-info">Send me a message</button>
 		</br></br>
 		
 		<table class="aboutme">
 			<tr>
 				<th>About Me!</th>
-				<th> </th>
+				<th> <?php echo $sBio ?></th>
 			</tr>
 			<tr>
 				<td>Gender: </td>
-				<td> <?php  $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-			$sql = mysqli_query($db, $select_query);
-			$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_gender']; ?></td>
+				<td> <?php  echo $gender ?></td>
 			</tr>
 			<tr>
 				<td>Birthday: </td>
-				<td><?php  $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-			$sql = mysqli_query($db, $select_query);
-			$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_birthDate']; ?></td>
+				<td><?php  echo $bday ?></td>
 			</tr>
 			<tr>
 				<td>Member since: </td>
-				<td> <?php  $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-			$sql = mysqli_query($db, $select_query);
-			$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_date']; ?></td>
+				<td> <?php  echo $membSince ?></td>
 			</tr>
 		</table></br>
 		
@@ -79,15 +115,10 @@ if (!isset($_SESSION)) {
 				<tr>
 					<td> 
 					<ul class="">
-						<li class=""><strong class="">Questions asked: <?php  $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-							$sql = mysqli_query($db, $select_query);
-							$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_questions_count']; ?></strong></li>
-						<li class=""><strong class="">Answers: <?php  $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-							$sql = mysqli_query($db, $select_query);
-							$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_answers_count']; ?></strong></li>
-						<li class=""><strong class="">Likes</strong></li>
-						<li class=""><strong class="">Followers</strong></li>
-            </ul>
+						<li class=""><strong class="">Questions asked: <?php echo $nbrQsts ?></strong></li>
+						<li class=""><strong class="">Answers: <?php echo $nbrAns  ?></strong></li>
+						<li class=""><strong class="">Subscribers: <?php echo $subscribers ?></strong></li>
+					</ul>
 					</td>
 				</tr>
 			</table>
@@ -100,11 +131,7 @@ if (!isset($_SESSION)) {
 				</tr>
 				<tr>
 					<td> 
-					<?php  
-						$select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-						$sql = mysqli_query($db, $select_query);
-						$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_email']; 
-					?>
+					<?php  echo $email	?>
 					</td>
 				</tr>
 			</table>
@@ -117,11 +144,7 @@ if (!isset($_SESSION)) {
 				</tr>
 				<tr>
 					<td> 
-					<?php  
-						$select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-						$sql = mysqli_query($db, $select_query);
-						$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_profile_description_long']; 
-					?>
+					<?php echo $lBio ?>
 					</td>
 				</tr>
 			</table>
@@ -134,11 +157,6 @@ if (!isset($_SESSION)) {
 				</tr>
 				<tr>
 					<td> 
-					<?php  
-						$select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-						$sql = mysqli_query($db, $select_query);
-						$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_profile_description_long']; 
-					?>
 					</td>
 				</tr>
 			</table>
@@ -146,7 +164,7 @@ if (!isset($_SESSION)) {
 		
 	<script>
 	// Reference: https://www.w3schools.com/howto/howto_js_tabs.asp
-		function openTab(evt, cityName) {
+		function openTab(evt, obj) {
 		var i, tabcontent, tablinks;
 		tabcontent = document.getElementsByClassName("tabcontent");
 		for (i = 0; i < tabcontent.length; i++) {
@@ -156,7 +174,7 @@ if (!isset($_SESSION)) {
 		for (i = 0; i < tablinks.length; i++) {
 			tablinks[i].className = tablinks[i].className.replace(" active", "");
 		}
-		document.getElementById(cityName).style.display = "block";
+		document.getElementById(obj).style.display = "block";
 		evt.currentTarget.className += " active";
 }
 	</script>
