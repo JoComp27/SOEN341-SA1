@@ -44,7 +44,7 @@ CREATE TABLE loggedin(
 user_id INT(32),
 logged_in DATETIME DEFAULT CURRENT_TIMESTAMP,
 logged_out DATETIME,
-active INT(1)/
+active INT(1)
 ) ENGINE=INNODB;
 
 DROP TABLE IF EXISTS questions;
