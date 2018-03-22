@@ -18,7 +18,7 @@ if (!isset($_SESSION)) {
     <script src="fillQuestionForm.js"></script>
     <script>check();</script>
     <script>
-        function QuestionIncrementDislike(id) {
+        function QuestionIncrementLike(id) {
             <?php $qus_id = $_GET['id'];?>
             var x = "answer.php?id=<?php echo $qus_id ?>";
             var xhttp = new XMLHttpRequest();
@@ -134,7 +134,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             echo '<br> by user: '; ?>
 
             <a href="profile.php?id=<?php
-            $select_query = "select * from users WHERE user_name='".$data['question_by_user']."'";
+            $select_query = "SELECT * FROM users WHERE user_name='" . $data['question_by_user'] . "'";
             $sql = mysqli_query($db, $select_query);
             $get_users = mysqli_fetch_assoc($sql);
             $id = $get_users['user_id'];
@@ -142,21 +142,23 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             ?>"><?php echo $data['question_by_user']; ?></a>&nbsp;
 
             <button type="vote_button" id="incrementalquestionbutton" name="button3"
-                    onclick="AnswerIncrementLike(<?php echo $qus_id; ?>)">
+                    onclick="QuestionIncrementLike(<?php echo $qus_id; ?>)">
                 <a class="social-question-like">
                     <span class="question-like"><i class="glyphicon glyphicon-arrow-up"></i></span>
-                    <span class="count"> <?php echo $data['question_downvotes']; ?> </span>
+                    <span class="count"> <?php echo $data['question_upvotes']; ?> </span>
                 </a>&nbsp;
             </button>
 
             <button type="vote_button" id="decrementalquestionbutton" name="button4"
-                    onclick="AnswerIncrementDislike(<?php echo $qus_id; ?>)">
+                    onclick="QuestionIncrementDislike(<?php echo $qus_id; ?>)">
                 <a class="social-question-dislike">
-                    <span class="question-dislike"> <?php echo $data['question_upvotes']; ?> </span>
-                    <span class="like"><i class="glyphicon glyphicon-arrow-down"></i></span>
-                </a></button>
+                    <span class="question-dislike"> <?php echo $data['question_downvotes']; ?>
+                        <span class="like"><i class="glyphicon glyphicon-arrow-down"></i></span>
+                     </span>
+                </a>
+            </button>
         </b></li>
-    
+
     <li>
         <?php
         $question_by_id = $data['question_by'];
@@ -187,13 +189,13 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <b>Ans <?php echo $a; ?>:</b>
             <span id="<?php echo "answer-description-$a" ?>"><?php echo $get_answers['answers_content']; ?></span>
             <?php echo '<br> by user: '; ?>
-            <a href="profile.php?id=<?php 
-				$select_query = "select * from users WHERE user_name='".$get_answers['answers_by_user']."'";
-				$sql = mysqli_query($db, $select_query);
-				$get_users = mysqli_fetch_assoc($sql);
-				$id = $get_users['user_id'];
-				echo $id;
-			?>"> <?php echo $get_answers['answers_by_user']; ?></a>
+            <a href="profile.php?id=<?php
+            $select_query = "SELECT * FROM users WHERE user_name='" . $get_answers['answers_by_user'] . "'";
+            $sql = mysqli_query($db, $select_query);
+            $get_users = mysqli_fetch_assoc($sql);
+            $id = $get_users['user_id'];
+            echo $id;
+            ?>"> <?php echo $get_answers['answers_by_user']; ?></a>
 
             <?php include('answer_state.php'); ?>
 

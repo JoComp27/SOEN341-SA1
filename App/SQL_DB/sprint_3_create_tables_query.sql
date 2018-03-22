@@ -134,21 +134,21 @@ CREATE TABLE question_userdislikes (
 ) ENGINE=INNODB;
 
 DROP TABLE IF EXISTS answers_userlikes;
-CREATE TABLE question_userlikes (
+CREATE TABLE answers_userlikes (
   answer_id INT(16) NOT NULL,
   user_id INT(16) NOT NULL,
   -- FOREIGN KEY (question_id) REFERENCES answers(answers_id) ON DELETE RESTRICT ON UPDATE CASCADE,
   -- FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-  PRIMARY KEY (question_id, user_id)
+  PRIMARY KEY (answer_id, user_id)
 ) ENGINE=INNODB;
 
 DROP TABLE IF EXISTS answers_userdislikes;
-CREATE TABLE question_userdislikes (
+CREATE TABLE answers_userdislikes (
   answer_id INT(16) NOT NULL,
   user_id INT(16) NOT NULL,
   -- FOREIGN KEY (question_id) REFERENCES answers(answers_id) ON DELETE RESTRICT ON UPDATE CASCADE,
   -- FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-  PRIMARY KEY (question_id, user_id)
+  PRIMARY KEY (answer_id, user_id)
 ) ENGINE=INNODB;
 
 -- ALTER TABLE answers ADD FOREIGN KEY(reply_questions) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE;

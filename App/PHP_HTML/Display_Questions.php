@@ -2,7 +2,8 @@
 
 function displayQuestions($db, $SqlQuestionQuery)
 {
-    $result = mysqli_query($db, $SqlQuestionQuery);
+    $sql = $SqlQuestionQuery;
+    $result = mysqli_query($db, $sql);
 
     if (mysqli_num_rows($result) > 0) {
         // output data of each row
