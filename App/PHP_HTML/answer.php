@@ -104,14 +104,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     <li class="list-group-item"><b> <?php echo
                 "<span id='question-description'>" . $data['question_description'] . "</span>";
             echo '<br> by user: '; ?>
-			
-            <a href="profile.php?id=<?php 
-				$select_query = "select * from users WHERE user_name='".$data['question_by_user']."'";
-				$sql = mysqli_query($db, $select_query);
-				$get_users = mysqli_fetch_assoc($sql);
-				$id = $get_users['user_id'];
-				echo $id;
-			?>"><?php echo $data['question_by_user']; ?></a></b></li>
+            <a href="profile.php"><?php echo $data['question_by_user']; ?></a></b></li>
     <li>
         <?php
         $question_by_id = $data['question_by'];
@@ -142,13 +135,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <b>Ans <?php echo $a; ?>:</b>
             <span id="<?php echo "answer-description-$a" ?>"><?php echo $get_answers['answers_content']; ?></span>
             <?php echo '<br> by user: '; ?>
-            <a href="profile.php?id=<?php 
-				$select_query = "select * from users WHERE user_name='".$get_answers['answers_by_user']."'";
-				$sql = mysqli_query($db, $select_query);
-				$get_users = mysqli_fetch_assoc($sql);
-				$id = $get_users['user_id'];
-				echo $id;
-			?>"> <?php echo $get_answers['answers_by_user']; ?></a>
+            <a href="profile.php"> <?php echo $get_answers['answers_by_user']; ?></a>
 
             <?php include('answer_state.php'); ?>
 
