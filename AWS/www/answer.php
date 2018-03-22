@@ -18,27 +18,7 @@ if (!isset($_SESSION)) {
     <script src="fillQuestionForm.js"></script>
     <script>check();</script>
     <script>
-        function QuestionIncrementLike(id) {
-            <?php $qus_id = $_GET['id'];?>
-            var x = "answer.php?id=<?php echo $qus_id ?>";
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "questionIncrementalVoting.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + id);
-            window.location.href = x;
-        }
-
-        function QuestionIncrementDislike(id) {
-            <?php $qus_id = $_GET['id'];?>
-            var x = "answer.php?id=<?php echo $qus_id ?>";
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "questionDecrementalVoting.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + id);
-            window.location.href = x;
-        }
-
-        function AnswerIncrementLike(id) {
+        function increment(id) {
             <?php $qus_id = $_GET['id'];?>
             var x = "answer.php?id=<?php echo $qus_id ?>";
             var xhttp = new XMLHttpRequest();
@@ -48,7 +28,7 @@ if (!isset($_SESSION)) {
             window.location.href = x;
         }
 
-        function AnswerIncrementDislike(id) {
+        function decrement(id) {
             <?php $qus_id = $_GET['id'];?>
             var x = "answer.php?id=<?php echo $qus_id ?>";
             var xhttp = new XMLHttpRequest();
@@ -74,9 +54,6 @@ $data = mysqli_fetch_assoc($question_data);
 
 $query = "Update questions set question_view_count = question_view_count + 1 where question_id = '$qus_id'";
 mysqli_query($db, $query) or die(mysqli_error($db));
-
-$query = "SELECT tag_name FROM tags T INNER JOIN question_tags QT ON T.tag_id = QT.tag_id WHERE QT.question_id = '$qus_id'";
-$tag_data = mysqli_query($db, $query);
 ?>
 
 <?php
@@ -84,7 +61,6 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     $answer = $_REQUEST['answer'];
     $reply_by = $_SESSION['user_id'];
     $answers_by_user = $_SESSION['user_name'];
-
     $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by, answers_by_user) values('$qus_id','$answer',NOW(), '$reply_by', '$answers_by_user')";
 
     ?>
@@ -127,36 +103,13 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 <ul class="list-group">
     <li class="list-group-item"><b> <?php echo
                 "<span id='question-description'>" . $data['question_description'] . "</span>";
-            echo '<br> Associated Tags: ';
-            while ($tag = mysqli_fetch_row($tag_data)) {
-                echo ' <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
-            }
             echo '<br> by user: '; ?>
-            <a href="profile.php"><?php echo $data['question_by_user']; ?></a>
-
-
-            <button type="vote_button" id="incrementalquestionbutton" name="button3"
-                    onclick="QuestionIncrementLike(<?php echo $qus_id; ?>)">
-                <a class="social-question-like">
-                    <span class="question-like"><i class="glyphicon glyphicon-arrow-up"></i></span>
-                    <span class="count"> <?php echo $data['question_upvotes']; ?> </span>
-                </a>&nbsp;
-            </button>
-
-            <button type="vote_button" id="decrementalquestionbutton" name="button4"
-                    onclick="QuestionIncrementDislike(<?php echo $qus_id; ?>)">
-                <a class="social-question-dislike">
-                    <span class="question-dislike"> <?php echo $data['question_downvotes']; ?>
-                        <span class="like"><i class="glyphicon glyphicon-arrow-down"></i></span>
-                     </span>
-                </a>
-            </button>
-        </b></li>
+            <a href="profile.php"><?php echo $data['question_by_user']; ?></a></b></li>
     <li>
         <?php
         $question_by_id = $data['question_by'];
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) { // only the user that created the question can delete it
-            include(__DIR__ . '\deleteQuestion\delete_question_view.php');
+            include('delete_question_view.php');
 
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
             $question_action = "modify_question_action.php?questionId=$qus_id";
@@ -182,14 +135,12 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <b>Ans <?php echo $a; ?>:</b>
             <span id="<?php echo "answer-description-$a" ?>"><?php echo $get_answers['answers_content']; ?></span>
             <?php echo '<br> by user: '; ?>
-
             <a href="profile.php"> <?php echo $get_answers['answers_by_user']; ?></a>
-
 
             <?php include('answer_state.php'); ?>
 
             <button type="vote_button" id="incrementalbutton" name="button1"
-                    onclick="AnswerIncrementLike(<?php echo $get_answers['answers_id']; ?>)">
+                    onclick="increment(<?php echo $get_answers['answers_id']; ?>)">
                 <a class="social-like">
                     <span class="like"><i class="glyphicon glyphicon-thumbs-up"></i></span>
                     <span class="count"> <?php echo $get_answers['answers_upvotes']; ?> </span>
@@ -197,7 +148,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             </button>
 
             <button type="vote_button" id="decrementalbutton" name="button2"
-                    onclick="AnswerIncrementDislike(<?php echo $get_answers['answers_id']; ?>)">
+                    onclick="decrement(<?php echo $get_answers['answers_id']; ?>)">
                 <a class="social-dislike">
                     <span class="dislike"> <?php echo $get_answers['answers_downvotes']; ?> </span>
                     <span class="like"><i class="glyphicon glyphicon-thumbs-down"></i></span>
@@ -206,8 +157,8 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         <li>
             <?php
             if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $answer_by_id) { // only the user that created the answer can delete it
-                include(__DIR__ . '\deleteAnswer\delete_answer_view.php');
-                include(__DIR__ . '\modifyAnswer\modify_answer_view.php');
+                include('delete_answer_view.php');
+                include('modify_answer_view.php');
             }; ?>
         </li>
         <br/>
