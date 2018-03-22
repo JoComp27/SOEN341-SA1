@@ -75,8 +75,15 @@ if (!isset($_SESSION)) {
 		?>		
         <div class="c1">
              <h1 class="">Welcome to <?php echo $name ?>'s profile page!</h1>
-			 <div ><a href="" class=""><img id="profilepic" title="profile image" class="" src="https://freeiconshop.com/wp-content/uploads/edd/person-flat.png"></a></div>
-         
+            <div ><a href="" class="">
+			<?php if ($gender == 'M')
+                $src ="https://freeiconshop.com/wp-content/uploads/edd/person-flat.png";
+            else
+                $src="https://freeiconshop.com/wp-content/uploads/edd/person-girl-flat.png"; ?>
+
+            <?php echo sprintf("<img id=\"profilepic\" title=\"profile image\" src=\"%s\" />", $src); ?>
+                 </a></div>
+
           <button type="button" class="btn btn-success" onclick="" >Subscribe to me!</button>  <button type="button" class="btn btn-info">Send me a message</button>
 		</br></br>
 		
