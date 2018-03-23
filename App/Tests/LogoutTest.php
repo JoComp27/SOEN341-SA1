@@ -11,7 +11,7 @@ class LogoutTest extends PHPUnit\Framework\TestCase{
 			$_SESSION = array('auth' => 'True', 'user_name' => 'Test', 'user_id' => '1');
 			
 		}
-		$this->dispatch('../PHP_HTML/login sample/signOut_Submission');
+		require('../PHP_HTML/login sample/signOut_Submission');
 		$this->assertRedirectTo('../PHP_HTML/home');
 		
 		if (!isset($_SESSION)){
