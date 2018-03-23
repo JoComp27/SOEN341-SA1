@@ -10,7 +10,7 @@ $userId = $_SESSION['user_id'];
 $result = $db->query("select * from answers where answers_id='$id'");
 $row = $result->fetch_assoc();
 $query = "SELECT * from answers_userlikes where user_id='$userId' AND answer_id='$id'";
-$result = mysqli_query($db,$query);
+$result = mysqli_query($db, $query);
 $isLiked = mysqli_num_rows($result);
 $query = "SELECT * from answers_userdislikes where user_id='$userId' AND answer_id='$id'";
 $result = mysqli_query($db, $query);

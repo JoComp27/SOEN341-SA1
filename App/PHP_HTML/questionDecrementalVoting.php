@@ -10,10 +10,10 @@ $userId = $_SESSION['user_id'];
 $result = $db->query("select * from questions  where question_id='$id'");
 $row = $result->fetch_assoc();
 $query = "SELECT * from question_userlikes where user_id='$userId' AND question_id='$id'";
-$result = mysqli_query($db,$query);
+$result = mysqli_query($db, $query);
 $isLiked = mysqli_num_rows($result);
 $query = "SELECT * from question_userdislikes where user_id='$userId' AND question_id='$id'";
-$result = mysqli_query($db,$query);
+$result = mysqli_query($db, $query);
 $isDisliked = mysqli_num_rows($result);
 if ($isLiked == 0 && $isDisliked == 0) {
     $valueAfterUpdate = $row['question_downvotes'] + 1;
