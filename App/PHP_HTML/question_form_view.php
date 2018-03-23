@@ -3,14 +3,6 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-
-<script type="text/javascript" src="nicEdit.js"></script>
-<script type="text/javascript">
-	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-    </script>
-
-</head>
 <body>
 
 
@@ -23,17 +15,17 @@
         <br>
         <strong id="details_title">Details : </strong>
         <br>
-
-<textarea name="area1" style="width: 600px; height: 150px;">
-	
-</textarea>
-
-        </textarea>
+        <textarea rows="4" cols="50" name="details"></textarea>
         <br>
         <strong id="tags_title">Associated Tags : </strong>
         <br>
-        <input id="tags" name="tags" type="text" data-role="tagsinput" placeholder="Add tags">
+        <?php
+        if (strpos($question_action, 'modify_question_action.php') === false) {
+            echo '
+        <input id="tags" type="text" data-role="tagsinput" placeholder="Add tags">
         <br>
+        ';
+        } ?>
         <input id="submit" type="submit">
 
     </p>

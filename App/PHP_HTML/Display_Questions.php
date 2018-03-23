@@ -19,7 +19,7 @@ function displayQuestions($db, $SqlQuestionQuery)
             <tr>
               <td>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
+                  <p class = "top-questions-stats">' . $row["question_upvotes"] . '</p>
                 </div>
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $data['total'] . '</p>

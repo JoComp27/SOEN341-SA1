@@ -9,15 +9,17 @@ $id = $_POST['value'];
 $userId = $_SESSION['user_id'];
 $result = $db->query("select * from answers where answers_id='$id'");
 $row = $result->fetch_assoc();
-$result = $db->query("SELECT count(1) from answers_userdislikes where user_id='$user_id' AND answer_id='$id'");
-$isDisliked = mysqli_fetch_array($result);
-$result = $db->query("SELECT count(1) from answers_userlikes where user_id='$user_id' AND answer_id='$id'");
-$isLiked = mysqli_fetch_array($result);
-if ($isDisliked[0] == 0 && $isLiked[0] == 0) {
+$query = "SELECT * from answers_userlikes where user_id='$userId' AND answer_id='$id'";
+$result = mysqli_query($db,$query);
+$isLiked = mysqli_num_rows($result);
+$query = "SELECT * from answers_userdislikes where user_id='$userId' AND answer_id='$id'";
+$result = mysqli_query($db, $query);
+$isDisliked = mysqli_num_rows($result);
+if ($isDisliked == 0 && $isLiked == 0) {
     $valueAfterUpdate = $row['answers_downvotes'] + 1;
     $db->query("update answers set answers_downvotes='$valueAfterUpdate' where answers_id='$id'");
     $db->query("INSERT INTO answers_userdislikes (answer_id, user_id) VALUES ('$id','$userId')");
-} else if ($isDisliked[0] == 0) {
+} else if ($isDisliked == 0) {
     $valueAfterUpdate = $row['answers_upvotes'] - 1;
     $valueAfterUpdateDis = $row['answers_downvotes'] + 1;
     $db->query("update answers set answers_downvotes='$valueAfterUpdateDis' where answers_id='$id'");
