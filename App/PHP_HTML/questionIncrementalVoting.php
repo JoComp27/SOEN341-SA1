@@ -16,13 +16,9 @@ $isLiked = mysqli_num_rows($result);
 $query = "SELECT * from question_userdislikes where user_id='$userId' AND question_id='$id'";
 $result = mysqli_query($db,$query);
 $isDisliked = mysqli_num_rows($result);
-
-$db->query("update questions set question_upvotes='$isLiked' where question_id='$id'");
-$db->query("update questions set question_downvotes='$isDisliked' where question_id='$id'");
-
 if ($isLiked == 0 && $isDisliked == 0) {
     $valueAfterUpdate = $row['question_upvotes'] + 1;
-    //$db->query("update questions set question_upvotes='$valueAfterUpdate' where question_id='$id'");
+    $db->query("update questions set question_upvotes='$valueAfterUpdate' where question_id='$id'");
     $db->query("INSERT INTO question_userlikes (question_id, user_id) VALUES ('$id','$userId')");
 } else if ($isLiked == 0) {
     $valueAfterUpdate = $row['question_upvotes'] + 1;
