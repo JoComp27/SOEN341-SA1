@@ -57,8 +57,8 @@ question_date DATETIME,
 question_cat INT(16), -- foreign key to cat_id in table categories
 question_by INT(32),-- foreign key to users_id
 question_by_user VARCHAR(50), -- Minimize processing time/reducing inner join calls
-question_upvote INT(16) DEFAULT 0,
-question_keyword_tag VARCHAR(500), -- we can add tags to the question later
+question_upvotes INT(8) DEFAULT 0,
+question_downvotes INT(8) DEFAULT 0,
 question_description VARCHAR(1000),
 question_view_count INT(16) DEFAULT 0,
 question_deleted INT(1) DEFAULT 0, -- If 0: question is up. If 1, user has deleted the question
@@ -102,7 +102,6 @@ DROP TABLE IF EXISTS tags;
 CREATE TABLE tags (
   tag_id INT(16) NOT NULL AUTO_INCREMENT, -- foreign key to table question_tags.
   tag_name VARCHAR(255) NOT NULL,
-  tag_description VARCHAR(255),
   UNIQUE INDEX tag_name_unique (tag_name),
   PRIMARY KEY (tag_id)
 ) ENGINE=INNODB;
@@ -116,8 +115,46 @@ CREATE TABLE question_tags (
   PRIMARY KEY (question_id, tag_id)
 ) ENGINE=INNODB;
 
+DROP TABLE IF EXISTS question_userlikes;
+CREATE TABLE question_userlikes (
+  question_id INT(16) NOT NULL,
+  user_id INT(16) NOT NULL,
+  -- FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  -- FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  PRIMARY KEY (question_id, user_id)
+) ENGINE=INNODB;
+
+DROP TABLE IF EXISTS question_userdislikes;
+CREATE TABLE question_userdislikes (
+  question_id INT(16) NOT NULL,
+  user_id INT(16) NOT NULL,
+  -- FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  -- FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  PRIMARY KEY (question_id, user_id)
+) ENGINE=INNODB;
+
+DROP TABLE IF EXISTS answers_userlikes;
+CREATE TABLE answers_userlikes (
+  answer_id INT(16) NOT NULL,
+  user_id INT(16) NOT NULL,
+  -- FOREIGN KEY (question_id) REFERENCES answers(answers_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  -- FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  PRIMARY KEY (answer_id, user_id)
+) ENGINE=INNODB;
+
+DROP TABLE IF EXISTS answers_userdislikes;
+CREATE TABLE answers_userdislikes (
+  answer_id INT(16) NOT NULL,
+  user_id INT(16) NOT NULL,
+  -- FOREIGN KEY (question_id) REFERENCES answers(answers_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  -- FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  PRIMARY KEY (answer_id, user_id)
+) ENGINE=INNODB;
+
 -- ALTER TABLE answers ADD FOREIGN KEY(reply_questions) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ALTER TABLE answers ADD FOREIGN KEY(reply_by) REFERENCES user(user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ALTER TABLE questions ADD FOREIGN KEY(question_by) REFERENCES user(user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- ALTER TABLE questions ADD FOREIGN KEY(question_cat) REFERENCES categories(cat_id) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+INSERT INTO `users` (user_name, user_pass, user_email, user_birthDate, user_gender, user_date) VALUES ('Administrator', md5('qwerty1'), 'Administrator@Okapi.ca', '01-01-2000', 'M', now())

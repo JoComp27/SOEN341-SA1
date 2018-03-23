@@ -22,14 +22,6 @@ include('sql_connector.php');
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="ask_question.js"></script>
     <script type="text/javascript" src="../../BootstrapLibrary/BootstrapTags/bootstrap-tagsinput.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#tags').tagsinput({
-                confirmKeys: [13, 44, 32, 188],
-                maxTags: 8
-            });
-        });
-    </script>
 
 </head>
 <body>
