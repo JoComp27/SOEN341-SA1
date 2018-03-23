@@ -1,5 +1,4 @@
 <?php
-session_start();
 //use PHPUnit\Framework\TestCase;
 
 class LogoutTest extends PHPUnit\Framework\TestCase{
