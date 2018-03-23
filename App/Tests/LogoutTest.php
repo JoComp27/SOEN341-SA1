@@ -1,7 +1,6 @@
 <?php
 session_start();
 //use PHPUnit\Framework\TestCase;
-require_once 'HTTP/Client.php';
 
 class LogoutTest extends PHPUnit\Framework\TestCase{
 
