@@ -11,7 +11,7 @@ class LogoutTest extends PHPUnit\Framework\TestCase{
 			$_SESSION = array('auth' => 'True', 'user_name' => 'Test', 'user_id' => '1');
 			
 		}
-		$page = TestPage::get_page( 'http://localhost/App/PHP_HTML/login sample/signOut_Submission.php' );
+		include(dirname(__FILE__)."/../PHP_HTML/login sample/signOut_Submission.php' );
 		//$this->assertRedirectTo('../PHP_HTML/home');
 		
 		if (isset($_SESSION)){
