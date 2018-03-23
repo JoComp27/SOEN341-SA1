@@ -31,8 +31,8 @@ if (((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) && $c
     header('Location: signIn_Submission.php');
 
 } else {
-    $sql3 = "SELECT * from users where user_name = '".$enteredUserinfo."'";
-    $sql4 = "SELECT * from users where user_email = '".$enteredUserinfo."'";
+    $sql3 = "SELECT * from users where user_name = '" . $enteredUserinfo . "'";
+    $sql4 = "SELECT * from users where user_email = '" . $enteredUserinfo . "'";
     $result1 = $db->query($sql3);
     $result2 = $db->query($sql4);
     $problem = "<div class='alert alert-danger'>";

@@ -60,7 +60,9 @@
             </p>
             <input type="text" name="captcha_code" size="10" maxlength="6" required/><br><br>
         </div>
-        <div style="padding-bottom: 25px;"><input style="display: block; margin:0 auto;" id="sub" type="submit" name="submitform" value="Log In"></div>
+        <div style="padding-bottom: 25px;">
+            <input style="display: block; margin:0 auto;" id="sub" type="submit" name="submitform" value="Log In">
+        </div>
         <a href="forgotPassword.php">Forgot password?</a>
         <br><br>
     </form>
