@@ -16,14 +16,14 @@ if (!isset($_SESSION)) {
 if (isset($_SESSION['auth'])) {
     $title = $_POST["title"];
     $details = $_POST["details"];
-    $t = $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];
     $tags = $_POST["tags"];
     $question_by_user = $_SESSION['user_name'];
-    $sql = "INSERT INTO questions (question_by, question_title, question_description, question_date, question_by_user) VALUES ($t, \"$title\", \"$details\", NOW(), '$question_by_user')";
+    $sql = "INSERT INTO questions (question_by, question_title, question_description, question_date, question_by_user) VALUES ($user_id, \"$title\", \"$details\", NOW(), '$question_by_user')";
     $db->query($sql);
 
     // increase users question count
-    $sql = "UPDATE users SET user_questions_count = user_questions_count + 1 WHERE user_id = '".$t."'";
+    $sql = "UPDATE users SET user_questions_count = user_questions_count + 1 WHERE user_id = '".$user_id."'";
     $db->query($sql);
 
     $intQId = intval($id);

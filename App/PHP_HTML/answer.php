@@ -69,7 +69,12 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         <div class="alert alert-success">
             <strong>Success!</strong> Your answer has been posted successfully.
         </div>
+
         <?php
+        // increase users answer count
+        $sql = "UPDATE users SET user_answers_count = user_answers_count + 1 WHERE user_id = '".$_SESSION['user_id']."'";
+        $db->query($sql);
+
         $title_question = $data['question_title'];
         $url = "<a href=\'answer.php?id=$qus_id\'><h4>answer.php?id=$qus_id</h4></a>";
         $sql = "insert into notification (notification_title, notification_date, notification_content) values('$answers_by_user replied to your question',NOW(), 'You received a new reply from $answers_by_user for question: $title_question $url')";
