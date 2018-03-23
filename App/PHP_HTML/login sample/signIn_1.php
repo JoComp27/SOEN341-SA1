@@ -46,17 +46,28 @@
 <div class="content">
     <form id="form" action="check_login.php" method="post">
         <h2>Sign In</h2>
-        <input required type="text" name="user_name" placeholder="User name or Email" >
+        <input required type="text" name="user_name" placeholder="User name or Email">
         <br><br>
-        <input required id="password" type="password" name="user_pass"  placeholder="Password"><br><br>
-        <br>
-        <div style="padding-bottom: 25px;"><input style="display: block; margin:0 auto;" id="sub" type="submit" name="submitform" value="Log In"></div>
+        <input required id="password" type="password" name="user_pass" placeholder="Password"><br><br>
+        <div id="captcha-input">
+            <img id="captcha" src="../securimage/securimage_show.php" alt="CAPTCHA Image"/>
+            <br><br>
+            <p>Please enter the text in the image:<br>
+                <a href="#"
+                   onclick="document.getElementById('captcha').src = '../securimage/securimage_show.php?' + Math.random(); return false">
+                        (click here to change the captcha)
+                </a>
+            </p>
+            <input type="text" name="captcha_code" size="10" maxlength="6" required/><br><br>
+        </div>
+        <div style="padding-bottom: 25px;">
+            <input style="display: block; margin:0 auto;" id="sub" type="submit" name="submitform" value="Log In">
+        </div>
         <a href="forgotPassword.php">Forgot password?</a>
-
-        <br>  <br>
+        <br><br>
     </form>
-    <?php if(isset($_GET["problem"]))
-            echo "<div class='alert alert-danger'><strong>Error!</strong>" . $_GET["problem"] . "</div>";
+    <?php if (isset($_GET["problem"]))
+        echo "<div class='alert alert-danger'><strong>Error!</strong>" . $_GET["problem"] . "</div>";
     ?>
     <br><br>
 </div>
