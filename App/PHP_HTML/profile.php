@@ -33,9 +33,15 @@ if (!isset($_SESSION)) {
 		    
         <div class="c1">
 
-             <h1 class="">Welcome to <?php echo $name ?>'s profile page!</h1>
+             <h1 class="">Welcome to <?php echo $_SESSION['user_name'] ?>'s profile page!</h1>
             <div ><a href="" class="">
-			<?php if ($gender == 'M')
+			<?php
+
+            $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
+			$sql = mysqli_query($db, $select_query);
+			$get_users = mysqli_fetch_assoc($sql);
+
+            if ($get_users['user_gender'] == 'M')
                 $src ="https://freeiconshop.com/wp-content/uploads/edd/person-flat.png";
             else
                 $src="https://freeiconshop.com/wp-content/uploads/edd/person-girl-flat.png"; ?>
