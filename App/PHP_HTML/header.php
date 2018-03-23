@@ -22,14 +22,6 @@ include('sql_connector.php');
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="ask_question.js"></script>
     <script type="text/javascript" src="../../BootstrapLibrary/BootstrapTags/bootstrap-tagsinput.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#tags').tagsinput({
-                confirmKeys: [13, 44, 32, 188],
-                maxTags: 8
-            });
-        });
-    </script>
 
 </head>
 <body>
@@ -84,7 +76,7 @@ include('sql_connector.php');
                 $notification_count = mysqli_fetch_assoc(mysqli_query($db, $sql))['result'];
                 echo '<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"> Welcome ' . strtoupper($_SESSION['user_name']) . '</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="settings.php">Settings</a></li>
                 <li><a href="profile.php"> Profile</a></li>
 				<li><a href="login sample/signIn_2.php">Log Off</a></li>
             </ul>';
