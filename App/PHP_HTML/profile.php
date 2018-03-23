@@ -22,6 +22,23 @@ if (!isset($_SESSION)) {
 			.tab button.active {background-color: #4CAF50 !important;}
 			.tabcontent {display: none; padding: 6px 12px; border: 1px solid #ccc; border-top: none;}
 		</style>
+
+        <script>
+            // Reference: https://www.w3schools.com/howto/howto_js_tabs.asp
+            function openTab(evt, cityName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
 		
 		<link href="ask_question.css" type="text/css" rel="stylesheet">
 		<?php include "header.php" ?>
@@ -30,15 +47,17 @@ if (!isset($_SESSION)) {
 	</head>
 	
 	<body>
+
+        <?php // Query for the user
+            $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
+            $sql = mysqli_query($db, $select_query);
+            $user = mysqli_fetch_assoc($sql);
+		?>
 		    
         <div class="c1">
-
-             <h1 class="">Welcome to <?php echo $_SESSION['user_name'] ?>'s profile page!</h1>
+            <h1 class="">Welcome to <?php echo $_SESSION['user_name'] ?>'s profile page!</h1>
             <div ><a href="" class="">
-			<?php
 
-            $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-			$sql = mysqli_query($db, $select_query);
 			$get_users = mysqli_fetch_assoc($sql);
 
             if ($get_users['user_gender'] == 'M')
@@ -156,23 +175,6 @@ if (!isset($_SESSION)) {
 				</tr>
 			</table>
 		</div>
-		
-	<script>
-	// Reference: https://www.w3schools.com/howto/howto_js_tabs.asp
-		function openTab(evt, cityName) {
-		var i, tabcontent, tablinks;
-		tabcontent = document.getElementsByClassName("tabcontent");
-		for (i = 0; i < tabcontent.length; i++) {
-			tabcontent[i].style.display = "none";
-		}
-		tablinks = document.getElementsByClassName("tablinks");
-		for (i = 0; i < tablinks.length; i++) {
-			tablinks[i].className = tablinks[i].className.replace(" active", "");
-		}
-		document.getElementById(cityName).style.display = "block";
-		evt.currentTarget.className += " active";
-}
-	</script>
 			
 		</br>
             
