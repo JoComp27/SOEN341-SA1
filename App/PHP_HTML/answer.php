@@ -15,7 +15,7 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" type="text/css" href="home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="fillQuestionForm.js"></script>
+    <script src="fill_question_form.js"></script>
     <script>check();</script>
     <script>
         function QuestionIncrementLike(questionId) {
@@ -171,8 +171,8 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
             $question_action = "question_modify.php?questionId=$qus_id";
-            include('question_form_view.php');
-        }; ?>
+            include('ask_question.php');
+        }; ?>9
     </li>
 </ul>
 <ul class="list-group">
