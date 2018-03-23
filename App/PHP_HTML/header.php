@@ -84,7 +84,7 @@ include('sql_connector.php');
                 $notification_count = mysqli_fetch_assoc(mysqli_query($db, $sql))['result'];
                 echo '<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"> Welcome ' . strtoupper($_SESSION['user_name']) . '</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="settings.php">Settings</a></li>
                 <li><a href="profile.php"> Profile</a></li>
 				<li><a href="login sample/signIn_2.php">Log Off</a></li>
             </ul>';
