@@ -23,7 +23,7 @@ if ($isDisliked[0] == 0 && $isLiked[0] == 0) {
     $db->query("update questions set question_downvotes='$valueAfterUpdate' where question_id='$id'");
     $db->query("update questions set question_upvotes='$valueAfterUpdatelik' where question_id='$id'");
     $db->query("INSERT INTO question_userdislikes (question_id, user_id) VALUES ('$id','$userId')");
-    $db->query("DELETE FROM question_userliked WHERE question_id='$id' AND user_id='$userId'");
+    $db->query("DELETE FROM question_userlikes WHERE question_id='$id' AND user_id='$userId'");
 } else {
     $valueAfterUpdate = $row['question_downvotes'] - 1;
     $db->query("update questions set question_downvotes='$valueAfterUpdate' where question_id='$id'");
