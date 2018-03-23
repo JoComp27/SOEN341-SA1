@@ -137,7 +137,9 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <?php echo '<br> by user: '; ?>
             <a href="profile.php"> <?php echo $get_answers['answers_by_user']; ?></a>
 
-            <?php include('answer_state_view.php'); ?>
+            <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) {
+                include('answer_state_view.php');
+            } ?>
 
             <button type="vote_button" id="incrementalbutton" name="button1"
                     onclick="increment(<?php echo $get_answers['answers_id']; ?>)">
