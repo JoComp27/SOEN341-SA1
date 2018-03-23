@@ -21,11 +21,11 @@
         <br>
         <?php
         if (strpos($question_action, 'modify_question_action.php') === false) {
-            echo '
-        <input id="tags" type="text" data-role="tagsinput" placeholder="Add tags">
+            ?>
+        <input id="tags" name="tags" type="text" data-role="tagsinput" placeholder="Add tags">
         <br>
-        ';
-        } ?>
+        <?php }
+            ?>
         <input id="submit" type="submit">
 
     </p>
