@@ -78,21 +78,15 @@ if (!isset($_SESSION)) {
 			</tr>
 			<tr>
 				<td>Gender: </td>
-				<td> <?php  $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-			$sql = mysqli_query($db, $select_query);
-			$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_gender']; ?></td>
+				<td> <?php echo $user['user_gender']; ?></td>
 			</tr>
 			<tr>
 				<td>Birthday: </td>
-				<td><?php  $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-			$sql = mysqli_query($db, $select_query);
-			$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_birthDate']; ?></td>
+				<td><?php echo $user['user_birthDate']; ?></td>
 			</tr>
 			<tr>
 				<td>Member since: </td>
-				<td> <?php  $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-			$sql = mysqli_query($db, $select_query);
-			$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_date']; ?></td>
+				<td><?php echo $user['user_date']; ?></td>
 			</tr>
 		</table></br>
 		
@@ -112,12 +106,8 @@ if (!isset($_SESSION)) {
 				<tr>
 					<td> 
 					<ul class="">
-						<li class=""><strong class="">Questions asked: <?php  $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-							$sql = mysqli_query($db, $select_query);
-							$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_questions_count']; ?></strong></li>
-						<li class=""><strong class="">Answers: <?php  $select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-							$sql = mysqli_query($db, $select_query);
-							$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_answers_count']; ?></strong></li>
+						<li class=""><strong class="">Questions asked: <?php echo $user['user_questions_count']; ?></strong></li>
+						<li class=""><strong class="">Answers: <?php echo $user['user_answers_count']; ?></strong></li>
 						<li class=""><strong class="">Likes</strong></li>
 						<li class=""><strong class="">Followers</strong></li>
             </ul>
@@ -132,13 +122,7 @@ if (!isset($_SESSION)) {
 					<th><h3> E-mail</h3> </th>
 				</tr>
 				<tr>
-					<td> 
-					<?php  
-						$select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-						$sql = mysqli_query($db, $select_query);
-						$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_email']; 
-					?>
-					</td>
+					<td><?php echo $user['user_email']; ?></td>
 				</tr>
 			</table>
 		</div>
@@ -149,13 +133,7 @@ if (!isset($_SESSION)) {
 					<th><h3> User's bio: </h3></th>
 				</tr>
 				<tr>
-					<td> 
-					<?php  
-						$select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-						$sql = mysqli_query($db, $select_query);
-						$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_profile_description_long']; 
-					?>
-					</td>
+					<td><?php echo $user['user_profile_description_long']; ?></td>
 				</tr>
 			</table>
 		</div>
@@ -166,13 +144,7 @@ if (!isset($_SESSION)) {
 					<th><h3> Edit profile </h3></th>
 				</tr>
 				<tr>
-					<td> 
-					<?php  
-						$select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";
-						$sql = mysqli_query($db, $select_query);
-						$get_users = mysqli_fetch_assoc($sql); echo  $get_users['user_profile_description_long']; 
-					?>
-					</td>
+					<td><?php echo $user['user_profile_description_long']; ?></td>
 				</tr>
 			</table>
 		</div>
