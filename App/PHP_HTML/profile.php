@@ -55,17 +55,18 @@ if (!isset($_SESSION)) {
 		?>
 		    
         <div class="c1">
-            <h1 class="">Welcome to <?php echo $_SESSION['user_name'] ?>'s profile page!</h1>
-            <div ><a href="" class="">
-
-			$get_users = mysqli_fetch_assoc($sql);
-
-            if ($get_users['user_gender'] == 'M')
-                $src ="https://freeiconshop.com/wp-content/uploads/edd/person-flat.png";
-            else
-                $src="https://freeiconshop.com/wp-content/uploads/edd/person-girl-flat.png"; ?>
-            <?php echo sprintf("<img id=\"profilepic\" title=\"profile image\" src=\"%s\" />", $src); ?>
-                 </a></div>
+            <h1 class="">Welcome to <?php echo $user['user_name'] ?>'s profile page!</h1>
+            <div>
+                <a href="" class="">
+                <?php if ($user['user_gender'] == 'M')
+                    $imgName ="person-flat.png";
+                else
+                    $imgName="person-girl-flat.png"; ?>
+                <?php
+                echo "<img id='profilepic' title='profile image' src='https://freeiconshop.com/wp-content/uploads/edd/$imgName' />";
+                ?>
+                </a>
+            </div>
 
           <button type="button" class="btn btn-success" onclick="" >Subscribe to me!</button>  <button type="button" class="btn btn-info">Send me a message</button>
 		</br></br>
