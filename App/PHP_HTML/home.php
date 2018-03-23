@@ -47,7 +47,7 @@
             <div class="tab-content">
                 <table class="table">
                     <?php
-                    displayQuestions($db, 'SELECT * FROM questions WHERE question_deleted = 0 order by question_upvote desc');
+                    displayQuestions($db, 'SELECT * FROM questions WHERE question_deleted = 0 order by question_upvotes desc');
                     ?>
 
                 </table>

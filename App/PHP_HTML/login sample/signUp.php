@@ -62,25 +62,28 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="signUp.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
     <style type="text/css">
 
+        #form{
+            text-align:center;
+        }
+
         div.ttip {
-            position: absolute;
+            position: hidden;
             display: inline-block;
             opacity: 1;
+            left: 2.5%;
         }
 
         .ttip .ttiptext {
-            visibility: hidden;
-            width: 200px;
-            background-color: black;
-            color: #fff;
+            visibility: visible;
+            color: black;
             text-align: center;
             padding: 5px 0;
-            border-radius: 6px;
-            position: absolute;
-            z-index: 1;
+            font-family: 'Gloria Hallelujah', cursive;
+
         }
 
         .ttip:hover .ttiptext {
@@ -88,17 +91,11 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
         }
 
         .ttip .ttiptext {
-            position: absolute;
-            left: 15px;
-            bottom: -10px;
+            position: relative;
         }
 
         img#tooltip {
             position: relative;
-            left: -31px;
-            bottom: -1px;
-            height: 27px;
-            width: 27px
         }
 
     </style>
@@ -249,6 +246,9 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
     </form>
 
 </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 </html>
