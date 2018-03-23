@@ -7,16 +7,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-// Captcha will first be checked
-$securimage = new Securimage();
-
-// failing captcha will cause error
-if ($securimage->check($_POST['captcha_code']) == false) {
-    $problem = "<div class='alert alert-danger'>Incorrect Captcha</div>";
-    $url = "Location: signIn_1.php?problem=$problem";
-    header($url);
-    exit;
-}
 
 $enteredUserinfo = $_POST["user_name"];
 $enteredPassword = md5($_POST["user_pass"]);
@@ -27,7 +17,11 @@ $sql2 = "SELECT * from users where user_email = \"$enteredUserinfo\" and user_pa
 $result1 = $db->query($sql1);
 $result2 = $db->query($sql2);
 
-if ((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) {
+// Captcha check
+$securimage = new Securimage();
+$captchaCorrect = $securimage->check($_POST['captcha_code']);
+
+if (((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) && $captchaCorrect) {
     $row = $result1->fetch_assoc();
     $_SESSION['auth'] = "True";
     $_SESSION['user_name'] = $row['user_name'];
@@ -43,12 +37,14 @@ if ((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) {
     $result2 = $db->query($sql4);
     $problem = "";
 
+    // show all problems in the form that exit
     if ((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) {
-        $problem = "<div class='alert alert-danger'>Incorrect password.</div>";
-    } elseif (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 1){
-        $problem = "<div class='alert alert-danger'> User name does not exist.</div>";
+        $problem .= "<div class='alert alert-danger'>Incorrect password.</div>";
     } else {
-        $problem = "<div class='alert alert-danger'>Email does not exist.</div>";
+        $problem .= "<div class='alert alert-danger'> User name / email does not exist.</div>";
+    }
+    if (!$captchaCorrect) {
+        $problem .= "<div class='alert alert-danger'>Incorrect Captcha</div>";
     }
     $url = "Location: signIn_1.php?problem=$problem";
     header($url);
