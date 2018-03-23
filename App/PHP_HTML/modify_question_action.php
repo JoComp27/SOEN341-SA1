@@ -11,10 +11,6 @@ $query = "UPDATE questions
           SET question_title = '$title', question_description  = '$details'
           WHERE question_id = '$questionId'";
 mysqli_query($db, $query) or die(mysqli_error($db));
-$query = "DELETE question_tags WHERE question_id = '$questionId'";
-mysqli_query($db, $query) or die(mysqli_error($db));
-
-
 $redirect = 'Location: answer.php?id=' . $questionId;
 header($redirect);
 ?>

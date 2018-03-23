@@ -39,7 +39,7 @@ function displayQuestions($db, $SqlQuestionQuery)
                   </p>
                 </div>
                 <div class = "col-md-7">
-                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%; align-self: center">' . $row["question_title"] . '</h4></a>
+                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
