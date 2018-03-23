@@ -1,5 +1,4 @@
 <?php
-session_start();
 //use PHPUnit\Framework\TestCase;
 
 class QuestionTest extends PHPUnit\Framework\TestCase{
