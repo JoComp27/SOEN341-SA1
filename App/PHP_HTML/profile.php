@@ -10,87 +10,8 @@ if (!isset($_SESSION)) {
 
 <html>
 <head>
-    <style>
-        body {
-            margin-left: 100px;
-            margin-right: 100px;
-            background-color: white;
-            width: 1100px;
-            margin-top: 100px
-        }
-
-        .c1 {
-            length: 700px;
-            margin-left: 100px;
-            margin-right: 100px;
-            background-color: lightgrey;
-            margin-top: 50px;
-            margin-bottom: 50px
-        }
-
-        #profilepic {
-            border-radius: 50%;
-            position: relative;
-            float: right;
-            margin-right: 50px;
-        }
-
-        #aboutme {
-            border: 10px groove yellowgreen;
-            padding: 10px;
-            border-collapse: separate;
-            width: 300px;
-            margin-left: 50px;
-            margin-top: 20px;
-        }
-
-        .t2 {
-            margin-left: 200px;
-            margin-top: 10px;
-            align: center;
-            border-collapse: separate;
-            border-radius: 25px;
-            border: 2px solid #73AD21;
-            padding: 20px;
-        }
-
-        .tab {
-            width: 80%;
-            overflow: hidden;
-            border: 1px solid #ccc;
-            margin-left: 50px;
-            margin-top: 20px;
-            background-color: #FF8C00;
-            border-radius: 25px
-        }
-
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            font-size: 36px;
-        }
-
-        .tab button:hover {
-            background-color: #000;
-        }
-
-        .tab button.active {
-            background-color: #4CAF50 !important;
-        }
-
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-top: none;
-        }
-    </style>
-
+    <link href="profile.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
         // Reference: https://www.w3schools.com/howto/howto_js_tabs.asp
         function openTab(evt, cityName) {
