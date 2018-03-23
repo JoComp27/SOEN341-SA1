@@ -1,6 +1,8 @@
 
 # SOEN341-SA1
 Website Project for SOEN 341 : Team SA1
+### Website link:
+ec2-52-91-27-143.compute-1.amazonaws.com (note: may be behind current master)
 
 ### Team Members:
 - Refat Kamal

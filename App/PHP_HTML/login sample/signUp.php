@@ -30,13 +30,15 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
         }
     }
 
-
+    $answer1 = $_POST['answer1'];
+    $answer2 = $_POST['answer2'];
+    $answer3 = $_POST['answer3'];
     $user_pass = md5($_POST['user_pass']);
     $dateOfBirth = $_POST['year'] . "-" . $_POST['month'] . "-" . $_POST['day'];
     $gender = $_POST['gender'];
 
 
-    $query = "INSERT INTO `users` (user_name, user_pass, user_email, user_birthDate, user_gender, user_date) VALUES ('$user_name', '$user_pass', '$user_email', '$dateOfBirth', '$gender', now())";
+    $query = "INSERT INTO `users` (user_name, user_pass, user_email, user_birthDate, user_gender, user_date, user_answer1, user_answer2, user_answer3) VALUES ('$user_name', '$user_pass', '$user_email', '$dateOfBirth', '$gender', now(), '$answer1', '$answer2', '$answer3')";
     $result = mysqli_query($db, $query);
 } else if (isset($_POST['submitform']) && $_POST['user_pass'] != $_POST['cpassword']) {
     ?>
@@ -60,25 +62,28 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="signUp.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
     <style type="text/css">
 
+        #form{
+            text-align:center;
+        }
+
         div.ttip {
-            position: absolute;
+            position: hidden;
             display: inline-block;
             opacity: 1;
+            left: 2.5%;
         }
 
         .ttip .ttiptext {
-            visibility: hidden;
-            width: 200px;
-            background-color: black;
-            color: #fff;
+            visibility: visible;
+            color: black;
             text-align: center;
             padding: 5px 0;
-            border-radius: 6px;
-            position: absolute;
-            z-index: 1;
+            font-family: 'Gloria Hallelujah', cursive;
+
         }
 
         .ttip:hover .ttiptext {
@@ -86,17 +91,11 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
         }
 
         .ttip .ttiptext {
-            position: absolute;
-            left: 15px;
-            bottom: -10px;
+            position: relative;
         }
 
         img#tooltip {
             position: relative;
-            left: -31px;
-            bottom: -1px;
-            height: 27px;
-            width: 27px
         }
 
     </style>
@@ -224,7 +223,15 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
             <option value="1996">1996</option>
             <option value="1995">1995</option>
         </select><br><br>
-
+        <h3 id="bd">Security Questions: </h3>
+        <div id="q1">Mother's maiden name: </div>
+        <input required type="answer1" name="answer1" placeholder="answer"><br>
+        <div id="q2">Childhood bestfriend: </div>
+        <input required type="answer2" name="answer2" placeholder="answer"><br>
+        <div id="q3">Favourite restaurant: </div>
+        <input required type="answer3" name="answer3" placeholder="answer"><br>
+        <br>
+        <br>
         <input required id="password" type="password" name="user_pass" size="48" pattern="\w{6,}\d+"
                placeholder="Password">
         <div class="ttip"><img src="help.png" id="tooltip">
@@ -239,6 +246,9 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
     </form>
 
 </div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 </html>
