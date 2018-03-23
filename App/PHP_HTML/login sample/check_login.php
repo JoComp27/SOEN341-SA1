@@ -36,7 +36,6 @@ if ((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) {
     //$db->query($sql);
     header('Location: signIn_Submission.php');
 
-
 } else {
     $sql3 = "SELECT * from users where user_name = '".$enteredUserinfo."'";
     $sql4 = "SELECT * from users where user_email = '".$enteredUserinfo."'";
