@@ -42,7 +42,7 @@ if (!isset($_SESSION)) {
             <?php $qus_id = $_GET['id'];?>
             var x = "answer.php?id=<?php echo $qus_id ?>";
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "incrementalVoting.php", true);
+            xhttp.open("POST", "answer_incremental_voting.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("value=" + answerId);
             window.location.href = x;
@@ -52,7 +52,7 @@ if (!isset($_SESSION)) {
             <?php $qus_id = $_GET['id'];?>
             var x = "answer.php?id=<?php echo $qus_id ?>";
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "decrementalVoting.php", true);
+            xhttp.open("POST", "answer_decremental_voting.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("value=" + answerId);
             window.location.href = x;
