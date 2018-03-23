@@ -38,7 +38,12 @@ if (!isset($_SESSION)) {
 <body>
 
 <?php // Query for the user
-$select_query = "select * from users WHERE user_name='" . $_SESSION['user_name'] . "'";
+if (isset($_GET['id'])) {
+	$usr_id = $_GET['id'];
+	$select_query = "select * from users WHERE user_id='".$usr_id."'";
+}
+else{
+$select_query = "select * from users WHERE user_name='".$_SESSION['user_name']."'";}
 $sql = mysqli_query($db, $select_query);
 $user = mysqli_fetch_assoc($sql);
 ?>

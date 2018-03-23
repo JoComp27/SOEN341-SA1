@@ -137,7 +137,13 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                 echo ' <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
             }
             echo '<br> by user: '; ?>
-            <a href="profile.php"><?php echo $data['question_by_user']; ?></a>
+            <a href="profile.php?id=<?php 
+				$select_query = "select * from users WHERE user_name='".$data['question_by_user']."'";
+				$sql = mysqli_query($db, $select_query);
+				$get_users = mysqli_fetch_assoc($sql);
+				$id = $get_users['user_id'];
+				echo $id;
+			?>"><?php echo $data['question_by_user']; ?></a>
 
 
             <button type="vote_button" id="incrementalquestionbutton" name="button3"
@@ -188,7 +194,13 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <span id="<?php echo "answer-description-$a" ?>"><?php echo $get_answers['answers_content']; ?></span>
             <?php echo '<br> by user: '; ?>
 
-            <a href="profile.php"> <?php echo $get_answers['answers_by_user']; ?></a>
+            <a href="profile.php?id=<?php 
+				$select_query = "select * from users WHERE user_name='".$get_answers['answers_by_user']."'";
+				$sql = mysqli_query($db, $select_query);
+				$get_users = mysqli_fetch_assoc($sql);
+				$id = $get_users['user_id'];
+				echo $id;
+			?>"> <?php echo $get_answers['answers_by_user']; ?></a>
 
             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) {
                 include('answer_state_view.php');
