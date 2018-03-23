@@ -100,8 +100,7 @@ $user = mysqli_fetch_assoc($sql);
             <tr>
                 <td>
                     <ul class="">
-                        <li class=""><strong class="">Questions
-                                asked: <?php echo $user['user_questions_count']; ?></strong></li>
+                        <li class=""><strong class="">Questions asked: <?php echo $user['user_questions_count']; ?></strong></li>
                         <li class=""><strong class="">Answers: <?php echo $user['user_answers_count']; ?></strong></li>
                         <li class=""><strong class="">Likes</strong></li>
                         <li class=""><strong class="">Followers</strong></li>

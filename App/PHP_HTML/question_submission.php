@@ -22,10 +22,9 @@ if (isset($_SESSION['auth'])) {
     $sql = "INSERT INTO questions (question_by, question_title, question_description, question_date, question_by_user) VALUES ($t, \"$title\", \"$details\", NOW(), '$question_by_user')";
     $db->query($sql);
 
-    $sql = "select question_id from questions where question_by = \"$t\" and question_title = \"$title\"";
-    $result = $db->query($sql);
-    $row = $result->fetch_assoc();
-    $id = $row['question_id'];
+    // increase users question count
+    $sql = "UPDATE users SET user_questions_count = user_questions_count + 1 WHERE user_id = '".$t."'";
+    $db->query($sql);
 
     $intQId = intval($id);
 

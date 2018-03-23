@@ -27,9 +27,9 @@ user_gender CHAR(1) NOT NULL,
 user_level INT(16),
 user_karma_score INT(32) DEFAULT 0, -- Reddit-like point system
 user_type INT(3), 
-user_answers_count INT(16), -- keep track of the user's contribution
-user_questions_count INT (16),
-user_followers_count INT(16),
+user_answers_count INT(16) DEFAULT 0, -- keep track of the user's contribution
+user_questions_count INT (16) DEFAULT 0,
+user_followers_count INT(16) DEFAULT 0,
 user_profile_description_short VARCHAR(300),
 user_profile_description_long VARCHAR(2000),
 user_email_notification_on INT (1) DEFAULT 1, -- If 1: notifications will also be forwarded via email to user
