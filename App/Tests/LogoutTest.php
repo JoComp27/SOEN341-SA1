@@ -8,7 +8,7 @@ class LogoutTest extends PHPUnit\Framework\TestCase{
     	if (!isset($_SESSION)){
 			$this->assertFalse(False);
 			session_start();
-			$_SESSION = array('auth' => 'True', 'user_name' => 'Test', 'user_id' = '1');
+			$_SESSION = array('auth' => 'True', 'user_name' => 'Test', 'user_id' => '1');
 			
 		}
 		$this->dispatch('../PHP_HTML/login sample/signOut_Submission');
