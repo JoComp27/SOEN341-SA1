@@ -1,15 +1,27 @@
 <?php
 
 include("../sqL_connector.php");
+include_once '../securimage/securimage.php';
+
 if (!isset($_SESSION)) {
     session_start();
+}
+
+// Captcha will first be checked
+$securimage = new Securimage();
+
+// failing captcha will cause error
+if ($securimage->check($_POST['captcha_code']) == false) {
+    $problem = "<div class='alert alert-danger'>Incorrect Captcha</div>";
+    $url = "Location: signIn_1.php?problem=$problem";
+    header($url);
+    exit;
 }
 
 $enteredUserinfo = $_POST["user_name"];
 $enteredPassword = md5($_POST["user_pass"]);
 
 $sql1 = "SELECT * from users where user_name = \"$enteredUserinfo\" and user_pass =  \"$enteredPassword\"";
-
 $sql2 = "SELECT * from users where user_email = \"$enteredUserinfo\" and user_pass =  \"$enteredPassword\"";
 
 $result1 = $db->query($sql1);
@@ -26,18 +38,18 @@ if ((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) {
 
 
 } else {
-    $sql3 = "SELECT * from users where user_name = \"$enteredUserinfo\"";
-    $sql4 = "SELECT * from users where user_email = \"$enteredUserinfo\"";
+    $sql3 = "SELECT * from users where user_name = '".$enteredUserinfo."'";
+    $sql4 = "SELECT * from users where user_email = '".$enteredUserinfo."'";
     $result1 = $db->query($sql3);
     $result2 = $db->query($sql4);
     $problem = "";
 
     if ((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) {
-        $problem = "<div class='alert alert-danger'><strong>Error!</strong> Incorrect password.</div>";
+        $problem = "<div class='alert alert-danger'>Incorrect password.</div>";
     } elseif (mysqli_num_rows($result1) == 0 && mysqli_num_rows($result2) == 1){
-        $problem = "<div class='alert alert-danger'><strong>Error!</strong> User name does not exist.</div>";
+        $problem = "<div class='alert alert-danger'> User name does not exist.</div>";
     } else {
-        $problem = "<div class='alert alert-danger'><strong>Error!</strong> Email does not exist.</div>";
+        $problem = "<div class='alert alert-danger'>Email does not exist.</div>";
     }
     $url = "Location: signIn_1.php?problem=$problem";
     header($url);
