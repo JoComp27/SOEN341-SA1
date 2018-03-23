@@ -20,42 +20,42 @@ if (!isset($_SESSION)) {
     <script>
         function QuestionIncrementLike(questionId) {
             <?php $qus_id = $_GET['id'];?>
-            var x = "answer.php?id=<?php echo $qus_id ?>";
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "question_incremental_voting.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + questionId);
-            window.location.href = x;
+            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var http_request = new XMLHttpRequest();
+            http_request.open("POST", "question_like.php", true);
+            http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http_request.send("value=" + questionId);
+            window.location.href = link;
         }
 
         function QuestionIncrementDislike(questionId) {
             <?php $qus_id = $_GET['id'];?>
-            var x = "answer.php?id=<?php echo $qus_id ?>";
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "question_decremental_voting.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + questionId);
-            window.location.href = x;
+            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var http_request = new XMLHttpRequest();
+            http_request.open("POST", "question_unlike.php", true);
+            http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http_request.send("value=" + questionId);
+            window.location.href = link;
         }
 
         function AnswerIncrementLike(answerId) {
             <?php $qus_id = $_GET['id'];?>
-            var x = "answer.php?id=<?php echo $qus_id ?>";
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "answer_incremental_voting.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + answerId);
-            window.location.href = x;
+            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var http_request = new XMLHttpRequest();
+            http_request.open("POST", "answer_like.php", true);
+            http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http_request.send("value=" + answerId);
+            window.location.href = link;
         }
 
         function AnswerIncrementDislike(answerId) {
             <?php $qus_id = $_GET['id'];?>
-            var x = "answer.php?id=<?php echo $qus_id ?>";
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "answer_decremental_voting.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + answerId);
-            window.location.href = x;
+            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var http_request = new XMLHttpRequest();
+            http_request.open("POST", "answer_unlike.php", true);
+            http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http_request.send("value=" + answerId);
+            window.location.href = link;
         }
     </script>
 
@@ -170,7 +170,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             include(__DIR__ . '\deleteQuestion\delete_question_view.php');
 
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
-            $question_action = "modify_question_action.php?questionId=$qus_id";
+            $question_action = "question_modify.php?questionId=$qus_id";
             include('question_form_view.php');
         }; ?>
     </li>

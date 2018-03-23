@@ -19,7 +19,7 @@
         <br>
 
         <?php
-        if (strpos($question_action, 'modify_question_action.php') === false) {
+        if (strpos($question_action, 'question_modify.php') === false) {
             ?>
             <strong id="tags_title">Associated Tags : </strong>
             <br>
