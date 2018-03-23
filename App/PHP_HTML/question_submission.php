@@ -26,7 +26,10 @@ if (isset($_SESSION['auth'])) {
     $sql = "UPDATE users SET user_questions_count = user_questions_count + 1 WHERE user_id = '".$user_id."'";
     $db->query($sql);
 
-    $intQId = intval($id);
+    $sql = "SELECT question_id FROM questions WHERE question_by='$user_id' AND question_title = '$title'";
+    $result = mysqli_query($db,$sql);
+    $id = mysqli_fetch_row($result);
+    $intQId = intval($id[0]);
 
     $tagArray = explode(",", $tags);
 
