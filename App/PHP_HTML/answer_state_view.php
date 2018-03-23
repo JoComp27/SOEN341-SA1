@@ -9,7 +9,7 @@
 <div id="answer-state-<?php echo $a ?>" class="answer-state">
     <?php if ($get_answers['answer_state'] == 1) { ?>
         <form class="answer-state-form" name="answerState"
-              action="answer_state_2.php?id=<?php echo $get_answers['answers_id'] ?>&question_id==<?php echo $get_answers['reply_questions'] ?>"
+              action="answer_state_action.php?id=<?php echo $get_answers['answers_id'] ?>&question_id==<?php echo $get_answers['reply_questions'] ?>"
               method="post">
         <button type="submit" name="state" value="2" onchange="checkState(<?php echo $a ?>); this.form.submit()">Accept Answer</button>&nbsp;
         <button type="submit" name="state" value="0" onchange="checkState(<?php echo $a ?>); this.form.submit()">Refuse Answer</button>

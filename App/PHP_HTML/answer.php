@@ -190,8 +190,10 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 
             <a href="profile.php"> <?php echo $get_answers['answers_by_user']; ?></a>
 
+            <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) {
+                include('answer_state_view.php');
+            } ?>
 
-            <?php include('answer_state.php'); ?>
 
             <button type="vote_button" id="incrementalbutton" name="button1"
                     onclick="AnswerIncrementLike(<?php echo $get_answers['answers_id']; ?>)">
