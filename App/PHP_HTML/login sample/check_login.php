@@ -33,15 +33,15 @@ if (((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) && $c
 } else {
     $sql3 = "SELECT * from users where user_name = '" . $enteredUserinfo . "'";
     $sql4 = "SELECT * from users where user_email = '" . $enteredUserinfo . "'";
-    $result1 = $db->query($sql3);
-    $result2 = $db->query($sql4);
+    $result3 = $db->query($sql3);
+    $result4 = $db->query($sql4);
     $problem = "<div class='alert alert-danger'>";
 
     // show all problems in the form that exit
-    if ((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) {
-        $problem .= "Incorrect password.<br><br>";
-    } else {
+    if ((mysqli_num_rows($result3) == 0) && (mysqli_num_rows($result4) == 0)) {
         $problem .= "User name / email does not exist.<br><br>";
+    } elseif ((mysqli_num_rows($result1) == 0) && (mysqli_num_rows($result2) == 0)) {
+        $problem .= "Incorrect password.<br><br>";
     }
     if (!$captchaCorrect) {
         $problem .= "Incorrect Captcha<br><br>";
