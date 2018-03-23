@@ -18,43 +18,43 @@ if (!isset($_SESSION)) {
     <script src="fillQuestionForm.js"></script>
     <script>check();</script>
     <script>
-        function QuestionIncrementLike(id) {
+        function QuestionIncrementLike(questionId) {
             <?php $qus_id = $_GET['id'];?>
             var x = "answer.php?id=<?php echo $qus_id ?>";
             var xhttp = new XMLHttpRequest();
             xhttp.open("POST", "questionIncrementalVoting.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + id);
+            xhttp.send("value=" + questionId);
             window.location.href = x;
         }
 
-        function QuestionIncrementDislike(id) {
+        function QuestionIncrementDislike(questionId) {
             <?php $qus_id = $_GET['id'];?>
             var x = "answer.php?id=<?php echo $qus_id ?>";
             var xhttp = new XMLHttpRequest();
             xhttp.open("POST", "questionDecrementalVoting.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + id);
+            xhttp.send("value=" + questionId);
             window.location.href = x;
         }
 
-        function AnswerIncrementLike(id) {
+        function AnswerIncrementLike(answerId) {
             <?php $qus_id = $_GET['id'];?>
             var x = "answer.php?id=<?php echo $qus_id ?>";
             var xhttp = new XMLHttpRequest();
             xhttp.open("POST", "incrementalVoting.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + id);
+            xhttp.send("value=" + answerId);
             window.location.href = x;
         }
 
-        function AnswerIncrementDislike(id) {
+        function AnswerIncrementDislike(answerId) {
             <?php $qus_id = $_GET['id'];?>
             var x = "answer.php?id=<?php echo $qus_id ?>";
             var xhttp = new XMLHttpRequest();
             xhttp.open("POST", "decrementalVoting.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + id);
+            xhttp.send("value=" + answerId);
             window.location.href = x;
         }
     </script>
