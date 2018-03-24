@@ -37,7 +37,7 @@ include('sql_connector.php');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home.php"><img id="img" src="login sample/logo3.png"></a>
+            <a class="navbar-brand" href="home.php"><img id="img" src="login sample/logo.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -67,8 +67,8 @@ include('sql_connector.php');
             </form>
             <?php if (!isset($_SESSION['auth'])) {
                 echo '<ul class="nav navbar-nav navbar-right">
-                <li><a href="login sample/signIn.php">Sign In</a></li>
-                <li><a href="login sample/signUp.php">Sign Up</a></li>
+                <li><a href="login sample/sign_in_merge_options.php">Sign In</a></li>
+                <li><a href="login sample/sign_up.php">Sign Up</a></li>
             </ul>';
             } else {
                 $id = $_SESSION['user_id'];
@@ -78,7 +78,7 @@ include('sql_connector.php');
 				<li><a href="#"> Welcome ' . strtoupper($_SESSION['user_name']) . '</a></li>
                 <li><a href="settings.php">Settings</a></li>
                 <li><a href="profile.php"> Profile</a></li>
-				<li><a href="login sample/signIn_2.php">Log Off</a></li>
+				<li><a href="login sample/sign_in_already_signed.php">Log Off</a></li>
             </ul>';
                 echo '<button class="navbar-toggle collapsed">...</button>
 
