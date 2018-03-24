@@ -96,7 +96,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 
         <?php
         // increase users answer count
-        $sql = "UPDATE users SET user_answers_count = user_answers_count + 1 WHERE user_id = '".$_SESSION['user_id']."'";
+        $sql = "UPDATE users SET user_answers_count = user_answers_count + 1 WHERE user_id = '" . $_SESSION['user_id'] . "'";
         $db->query($sql);
 
         $title_question = $data['question_title'];
@@ -137,13 +137,13 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                 echo ' <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
             }
             echo '<br> by user: '; ?>
-            <a href="profile.php?id=<?php 
-				$select_query = "select * from users WHERE user_name='".$data['question_by_user']."'";
-				$sql = mysqli_query($db, $select_query);
-				$get_users = mysqli_fetch_assoc($sql);
-				$id = $get_users['user_id'];
-				echo $id;
-			?>"><?php echo $data['question_by_user']; ?></a>
+            <a href="profile.php?id=<?php
+            $select_query = "SELECT * FROM users WHERE user_name='" . $data['question_by_user'] . "'";
+            $sql = mysqli_query($db, $select_query);
+            $get_users = mysqli_fetch_assoc($sql);
+            $id = $get_users['user_id'];
+            echo $id;
+            ?>"><?php echo $data['question_by_user']; ?></a>
 
 
             <button type="vote_button" id="incrementalquestionbutton" name="button3"
@@ -183,7 +183,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     $numAnswers = mysqli_num_rows($sql);
     $a = 1;
 
-   while($get_answers = mysqli_fetch_assoc($sql)){
+    while ($get_answers = mysqli_fetch_assoc($sql)) {
 
         $answer_by_id = $get_answers['reply_by']; // useful variables while looping through each answer
         $answer_id = $get_answers['answers_id'];
@@ -194,7 +194,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <?php echo '<br> by user: '; ?>
 
             <a href="profile.php?id=<?php
-            $select_query = "select * from users WHERE user_name='".$get_answers['answers_by_user']."'";
+            $select_query = "SELECT * FROM users WHERE user_name='" . $get_answers['answers_by_user'] . "'";
             $user_query = mysqli_query($db, $select_query);
             $get_users = mysqli_fetch_assoc($user_query);
             $id = $get_users['user_id'];
@@ -230,7 +230,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         </li>
         <br/>
         <?php
-       $a++;
+        $a++;
     }
 
     ?>
