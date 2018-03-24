@@ -15,10 +15,11 @@ if (!isset($_SESSION)) {
 
 if (isset($_SESSION['auth'])) {
     $title = $_POST["title"];
-    $details = $_POST["details"];
+    $details = mysqli_real_escape_string($db, $_POST["details"]);
     $user_id = $_SESSION['user_id'];
     $tags = $_POST["tags"];
     $question_by_user = $_SESSION['user_name'];
+	
     $sql = "INSERT INTO questions (question_by, question_title, question_description, question_date, question_by_user) VALUES ($user_id, \"$title\", \"$details\", NOW(), '$question_by_user')";
     $db->query($sql);
 
@@ -26,7 +27,7 @@ if (isset($_SESSION['auth'])) {
     $sql = "UPDATE users SET user_questions_count = user_questions_count + 1 WHERE user_id = '".$user_id."'";
     $db->query($sql);
 
-    $sql = "SELECT question_id FROM questions WHERE question_by='$user_id' AND question_title = '$title'";
+    $sql = "SELECT max(question_id) FROM questions WHERE question_by='$user_id' AND question_title = '$title'";
     $result = mysqli_query($db,$sql);
     $id = mysqli_fetch_row($result);
     $intQId = intval($id[0]);
