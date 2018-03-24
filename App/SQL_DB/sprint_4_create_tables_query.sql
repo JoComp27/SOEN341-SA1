@@ -29,8 +29,8 @@ user_gender CHAR(1) NOT NULL,
 user_level INT(16),
 user_karma_score INT(32) DEFAULT 0, -- Reddit-like point system
 user_type INT(3), 
-user_answers_count INT(16), -- keep track of the user's contribution
-user_questions_count INT (16),
+user_answers_count INT(16) DEFAULT 0, -- keep track of the user's contribution
+user_questions_count INT (16) DEFAULT 0,
 user_followers_count INT(16),
 user_profile_description_short VARCHAR(300),
 user_profile_description_long VARCHAR(2000),
@@ -76,8 +76,8 @@ answers_date DATETIME,
 reply_questions INT(16) NOT NULL, -- which question is this answer addressed to. foreign key to question_id in table questions
 reply_by INT(32), -- foreign key to users_id in table user
 answers_by_user VARCHAR(50), -- Minimize processing time/reducing inner join calls
-answers_upvotes INT(8),
-answers_downvotes INT(8),
+answers_upvotes INT(8) DEFAULT 0,
+answers_downvotes INT(8) DEFAULT 0,
 answer_state INT(1) DEFAULT 1, -- State 2= accepted, state 1 = pending, state 0= refused. Whether the answer has been refused or accepted
 answer_deleted INT(1) DEFAULT 0, -- If 0: answer is up. If 1, user has deleted the answer
 PRIMARY KEY (answers_id)
