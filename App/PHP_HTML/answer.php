@@ -96,7 +96,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 
         <?php
         // increase users answer count
-        $sql = "UPDATE users SET user_answers_count = user_answers_count + 1 WHERE user_id = '".$_SESSION['user_id']."'";
+        $sql = "UPDATE users SET user_answers_count = user_answers_count + 1 WHERE user_id = '" . $_SESSION['user_id'] . "'";
         $db->query($sql);
 
         $title_question = $data['question_title'];
@@ -137,13 +137,13 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                 echo ' <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
             }
             echo '<br> by user: '; ?>
-            <a href="profile.php?id=<?php 
-				$select_query = "select * from users WHERE user_name='".$data['question_by_user']."'";
-				$sql = mysqli_query($db, $select_query);
-				$get_users = mysqli_fetch_assoc($sql);
-				$id = $get_users['user_id'];
-				echo $id;
-			?>"><?php echo $data['question_by_user']; ?></a>
+            <a href="profile.php?id=<?php
+            $select_query = "SELECT * FROM users WHERE user_name='" . $data['question_by_user'] . "'";
+            $sql = mysqli_query($db, $select_query);
+            $get_users = mysqli_fetch_assoc($sql);
+            $id = $get_users['user_id'];
+            echo $id;
+            ?>"><?php echo $data['question_by_user']; ?></a>
 
 
             <button type="vote_button" id="incrementalquestionbutton" name="button3"
@@ -172,15 +172,13 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
             $question_action = "question_modify.php?questionId=$qus_id";
             include('ask_question.php');
-        }; ?>9
+        }; ?>
     </li>
 </ul>
 <ul class="list-group">
     <?php
 
-    $select_query = "select * from answers "
-        . "where answer_deleted = 0 AND reply_questions ='$qus_id'" // answer must be apart of question and not deleted
-        . " order by answers_id DESC";
+    $select_query = "select * from answers where answer_deleted = 0 AND reply_questions ='$qus_id' order by answers_id DESC";// answer must be apart of question and not deleted
     $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
     $a = 1;
 
@@ -190,17 +188,17 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         $answer_id = $get_answers['answers_id'];
         ?>
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
-            <b>Ans <?php echo $a; ?>:</b>
-            <span id="<?php echo "answer-description-$a" ?>"><?php echo $get_answers['answers_content']; ?></span>
+            <b>Answer <?php echo $a; ?>:</b>
+            <span id="<?php echo "answer-description-$a" ?>"> <?php echo $get_answers['answers_content']; ?></span>
             <?php echo '<br> by user: '; ?>
 
-            <a href="profile.php?id=<?php 
-				$select_query = "select * from users WHERE user_name='".$get_answers['answers_by_user']."'";
-				$sql = mysqli_query($db, $select_query);
-				$get_users = mysqli_fetch_assoc($sql);
-				$id = $get_users['user_id'];
-				echo $id;
-			?>"> <?php echo $get_answers['answers_by_user']; ?></a>
+            <a href="profile.php?id=<?php
+            $select_query = "SELECT * FROM users WHERE user_name='" . $get_answers['answers_by_user'] . "'";
+            $user_query = mysqli_query($db, $select_query);
+            $get_users = mysqli_fetch_assoc($user_query);
+            $id = $get_users['user_id'];
+            echo $id;
+            ?>"> <?php echo $get_answers['answers_by_user']; ?></a>
 
             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) {
                 include('answer_state_view.php');
@@ -230,9 +228,11 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             }; ?>
         </li>
         <br/>
+        <?php
+        $a++;
+    }
 
-        <?php $a++;
-    } ?>
+    ?>
 </ul>
 <?php if (isset($_SESSION['auth'])) {
     echo ' <form method="post" action="answer.php?id=' . $qus_id . '">
