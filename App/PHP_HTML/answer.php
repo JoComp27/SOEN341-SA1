@@ -142,6 +142,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 				$sql = mysqli_query($db, $select_query);
 				$get_users = mysqli_fetch_assoc($sql);
 				$id = $get_users['user_id'];
+				echo $id;
 			?>"><?php echo $data['question_by_user']; ?></a>
 
 
