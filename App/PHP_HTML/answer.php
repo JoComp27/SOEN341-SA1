@@ -180,7 +180,6 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 
     $select_query = "select * from answers where answer_deleted = 0 AND reply_questions ='$qus_id' order by answers_id DESC";// answer must be apart of question and not deleted
     $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
-    $numAnswers = mysqli_num_rows($sql);
     $a = 1;
 
     while ($get_answers = mysqli_fetch_assoc($sql)) {
