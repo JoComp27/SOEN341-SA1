@@ -12,7 +12,7 @@ include "./../sql_connector.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="signUp.css">
+    <link rel="stylesheet" type="text/css" href="sign.css">
 
 </head>
 <body>
@@ -44,7 +44,7 @@ include "./../sql_connector.php";
 </nav>
 <div class="content">
     You now signed in.
-    Click <a href="signOut_Submission.php">here</a> to log out.
+    Click <a href="sign_out_submission.php">here</a> to log out.
 </div>
 </body>
 </html>
