@@ -1,9 +1,8 @@
-<!-- PURPOSE: Question form allows user to enter info about question, whether that is to add one or modify it-->
-
-<!DOCTYPE html>
-
-<html>
-<body>
+<?php echo "hi_not1" ?>
+<script type="text/javascript" src="nicEdit.js"></script>
+<script type="text/javascript">
+	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+    </script>
 
 
 <form id="question-form" method="POST" action="<?php echo "$question_action" ?>"> <!-- generic action on question for
@@ -15,7 +14,7 @@
         <br>
         <strong id="details_title">Details : </strong>
         <br>
-        <textarea rows="4" cols="50" name="details"></textarea>
+        		<textarea name="details" style="width: 600px; height: 150px;"></textarea>
         <br>
 
         <?php
@@ -31,6 +30,3 @@
 
     </p>
 </form>
-
-</body>
-</html>
