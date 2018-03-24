@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 
 
 <?php include('sql_connector.php');
-include('Display_Questions.php') ?>
+include('question_display.php') ?>
 
 <!DOCTYPE html>
 <html>

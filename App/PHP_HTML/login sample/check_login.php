@@ -28,7 +28,7 @@ if (((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) && $c
     $_SESSION['user_id'] = $row['user_id'];
     //$sql = "INSERT INTO loggedin (user_id, logged_in, active) VALUES ($row['user_id'], NOW(), 1)";
     //$db->query($sql);
-    header('Location: signIn_Submission.php');
+    header('Location: sign_in_submission.php');
 
 } else {
     $sql3 = "SELECT * from users where user_name = '" . $enteredUserinfo . "'";
@@ -49,7 +49,7 @@ if (((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) && $c
 
     $problem .= "</div>";
 
-    $url = "Location: signIn_1.php?problem=$problem";
+    $url = "Location: sign_in_normal.php?problem=$problem";
     header($url);
     exit;
 }

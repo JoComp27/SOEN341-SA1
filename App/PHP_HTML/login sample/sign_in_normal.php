@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="signUp.css">
+    <link rel="stylesheet" type="text/css" href="sign.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 
 
@@ -28,7 +28,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../home.php"><img id="img" src="logo3.png"></a>
+            <a class="navbar-brand" href="../home.php"><img id="img" src="logo.png"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -64,7 +64,7 @@
         <div style="padding-bottom: 25px;">
             <input style="display: block; margin:0 auto;" id="sub" type="submit" name="submitform" value="Log In">
         </div>
-        <a href="forgotPassword.php">Forgot password?</a>
+        <a href="forgot_pwd.php">Forgot password?</a>
         <br><br>
     </form>
     <?php if (isset($_GET["problem"]))

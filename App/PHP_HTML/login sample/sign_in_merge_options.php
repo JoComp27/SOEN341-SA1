@@ -8,8 +8,8 @@ if (!isset($_SESSION)) {
 include("../sqL_connector.php");
 
 if (isset($_SESSION['auth'])) {
-    include "signIn_2.php";
+    include "sign_in_already_signed.php";
 } else {
-    include "signIn_1.php";
+    include "sign_in_normal.php";
 }
 ?>

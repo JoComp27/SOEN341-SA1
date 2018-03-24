@@ -43,7 +43,7 @@
                 if($answer == $row[$qa]) {
                     ?>
                    <script type="text/javascript">
-                       window.location.href = "forgotPassword_resetPassword.php";
+                       window.location.href = "forgot_pwd_reset_pwd.php";
                    </script> <?php
                 }
                 else
@@ -55,7 +55,7 @@
                 if($answer == $row[$qa]) {
                 ?>
                     <script type="text/javascript">
-                        window.location.href = "forgotPassword_resetPassword.php";
+                        window.location.href = "forgot_pwd_reset_pwd.php";
                     </script> <?php
                 }
                 else
