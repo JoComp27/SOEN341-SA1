@@ -15,47 +15,47 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" type="text/css" href="home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="fillQuestionForm.js"></script>
+    <script src="fill_question_form.js"></script>
     <script>check();</script>
     <script>
         function QuestionIncrementLike(questionId) {
             <?php $qus_id = $_GET['id'];?>
-            var x = "answer.php?id=<?php echo $qus_id ?>";
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "questionIncrementalVoting.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + questionId);
-            window.location.href = x;
+            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var http_request = new XMLHttpRequest();
+            http_request.open("POST", "question_like.php", true);
+            http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http_request.send("value=" + questionId);
+            window.location.href = link;
         }
 
         function QuestionIncrementDislike(questionId) {
             <?php $qus_id = $_GET['id'];?>
-            var x = "answer.php?id=<?php echo $qus_id ?>";
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "questionDecrementalVoting.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + questionId);
-            window.location.href = x;
+            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var http_request = new XMLHttpRequest();
+            http_request.open("POST", "question_unlike.php", true);
+            http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http_request.send("value=" + questionId);
+            window.location.href = link;
         }
 
         function AnswerIncrementLike(answerId) {
             <?php $qus_id = $_GET['id'];?>
-            var x = "answer.php?id=<?php echo $qus_id ?>";
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "incrementalVoting.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + answerId);
-            window.location.href = x;
+            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var http_request = new XMLHttpRequest();
+            http_request.open("POST", "answer_like.php", true);
+            http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http_request.send("value=" + answerId);
+            window.location.href = link;
         }
 
         function AnswerIncrementDislike(answerId) {
             <?php $qus_id = $_GET['id'];?>
-            var x = "answer.php?id=<?php echo $qus_id ?>";
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "decrementalVoting.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("value=" + answerId);
-            window.location.href = x;
+            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var http_request = new XMLHttpRequest();
+            http_request.open("POST", "answer_unlike.php", true);
+            http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http_request.send("value=" + answerId);
+            window.location.href = link;
         }
     </script>
 
@@ -170,9 +170,9 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             include(__DIR__ . '\deleteQuestion\delete_question_view.php');
 
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
-            $question_action = "modify_question_action.php?questionId=$qus_id";
-            include('question_form_view.php');
-        }; ?>
+            $question_action = "question_modify.php?questionId=$qus_id";
+            include('ask_question.php');
+        }; ?>9
     </li>
 </ul>
 <ul class="list-group">

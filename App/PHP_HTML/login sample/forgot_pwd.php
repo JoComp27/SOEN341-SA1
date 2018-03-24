@@ -26,7 +26,7 @@
                 $_SESSION["username"] = $enteredUserinfo;
                 ?>
                 <script type="text/javascript">
-                    window.location.href = "forgotPassword_QnA.php";
+                    window.location.href = "forgot_pwd_questions.php";
                 </script> <?php
             } else {
                 echo "<div class='alert alert-danger'><strong>Error!</strong> Email or username does not exist.</div>";

@@ -75,8 +75,8 @@ include('sql_connector.php');
             </form>
             <?php if (!isset($_SESSION['auth'])) {
                 echo '<ul class="nav navbar-nav navbar-right">
-                <li><a href="signIn.php">Sign In</a></li>
-                <li><a href="signUp.php">Sign Up</a></li>
+                <li><a href="sign_in_merge_options.php">Sign In</a></li>
+                <li><a href="sign_up.php">Sign Up</a></li>
             </ul>';
             } else {
                 $id = $_SESSION['user_id'];
@@ -86,7 +86,7 @@ include('sql_connector.php');
 				<li><a href="#"> Welcome ' . strtoupper($_SESSION['user_name']) . '</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="profile.php"> Profile</a></li>
-				<li><a href="signOut_Submission.php">Log Off</a></li>
+				<li><a href="sign_out_submission.php">Log Off</a></li>
             </ul>';
                 echo '<button class="navbar-toggle collapsed">...</button>
 

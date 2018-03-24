@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="signUp.css">
+    <link rel="stylesheet" type="text/css" href="sign.css">
 
 </head>
 <body>
@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../home.php"><img id="img" src="logo3.png"></a>
+            <a class="navbar-brand" href="../home.php"><img id="img" src="logo.png"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -42,7 +42,7 @@
 
 <div class="content">
     You are already signed in.
-    Click <a href="signOut_Submission.php">here</a> to log out.
+    Click <a href="sign_out_submission.php">here</a> to log out.
 </div>
 
 </body>

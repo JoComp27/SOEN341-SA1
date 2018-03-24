@@ -34,20 +34,20 @@ if (!isset($_SESSION)) {
         <input id="submit" type="submit">
         <div><span class="ttiptext">The password must contain at least 1 digit and 6 letters.</span></div>
     </form>
-    <h8>Security Answer 1: <strong><?php echo $get_users['user_answer1']; ?></strong></h8>&nbsp;&nbsp;<a style="color:blue;" onclick="show_CI(3)">Edit</a><br>
+    <h8>Security Answer of Mother's Maiden Name: <strong><?php echo $get_users['user_answer1']; ?></strong></h8>&nbsp;&nbsp;<a style="color:blue;" onclick="show_CI(3)">Edit</a><br>
     <form id="question-form3" method="POST" name="question-form3" class="hidden">
         <input type="text" name="three">
         <input id="submit" type="submit">
         <br>
     </form>
 
-    <h8>Security Answer 2: <strong><?php echo $get_users['user_answer2']; ?></strong></h8>&nbsp;&nbsp;<a style="color:blue;" onclick="show_CI(4)">Edit</a><br>
+    <h8>Security Answer of Childhood Bestfriend: <strong><?php echo $get_users['user_answer2']; ?></strong></h8>&nbsp;&nbsp;<a style="color:blue;" onclick="show_CI(4)">Edit</a><br>
     <form id="question-form4" method="POST" name="question-form4" class="hidden">
         <input type="text" name="four">
         <input id="submit" type="submit">
         <br>
     </form>
-    <h8>Security Answer 3: <strong><?php echo $get_users['user_answer3']; ?></strong></h8>&nbsp;&nbsp;<a style="color:blue;" onclick="show_CI(5)">Edit</a><br>
+    <h8>Security Answer of Favourite Restaurant: <strong><?php echo $get_users['user_answer3']; ?></strong></h8>&nbsp;&nbsp;<a style="color:blue;" onclick="show_CI(5)">Edit</a><br>
     <form id="question-form5" method="POST" name="question-form5" class="hidden">
         <input type="text" name="five">
         <input id="submit" type="submit">
