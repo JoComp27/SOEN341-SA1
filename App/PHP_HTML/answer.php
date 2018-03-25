@@ -126,7 +126,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 <body>
 <h3><?php echo "<span id='question-title'>" . $data['question_title'] . "</span>"; ?></h3>
 <ul class="list-group">
-    <li class="list-group-item"><b>
+    <li class="list-group-item"><strong>
             <div>
                 <?php echo $data['question_description'] ?>
             </div><br>
@@ -161,7 +161,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                      </span>
                 </a>
             </button>
-        </b></li>
+        </strong></li>
     <li>
         <?php
         $question_by_id = $data['question_by'];
@@ -170,13 +170,12 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
             $question_action = "question_modify.php?questionId=$qus_id";
-            include('ask_question1.php');
+            include('question_form.php');
         }; ?>
     </li>
 </ul>
 <ul class="list-group">
     <?php
-
     $select_query = "select * from answers "
         . "where answer_deleted = 0 AND reply_questions ='$qus_id'" // answer must be apart of question and not deleted
         . " order by answers_id DESC";
@@ -184,12 +183,12 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     $a = 1;
 
     while ($get_answers = mysqli_fetch_assoc($sql)) {
-
         $answer_by_id = $get_answers['reply_by']; // useful variables while looping through each answer
         $answer_id = $get_answers['answers_id'];
         ?>
+
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
-            <b>Ans <?php echo $a; ?>:</b>
+            <strong>Ans <?php echo $a; ?>:</strong>
             <span id="<?php echo "answer-description-$a" ?>"><?php echo $get_answers['answers_content']; ?></span>
             <?php echo '<br> by user: '; ?>
 
@@ -204,7 +203,6 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) {
                 include('answer_state_view.php');
             } ?>
-
 
             <button type="vote_button" id="incrementalbutton" name="button1"
                     onclick="AnswerIncrementLike(<?php echo $get_answers['answers_id']; ?>)">
@@ -228,20 +226,20 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                 include(__DIR__ . '\modifyAnswer\modify_answer_view.php');
             }; ?>
         </li>
-        <br/>
+        <br>
 
         <?php $a++;
     } ?>
 </ul>
 <?php if (isset($_SESSION['auth'])) {
-    echo ' <form method="post" action="answer.php?id=' . $qus_id . '">
+    echo ' 
+<form method="post" action="answer.php?id=' . $qus_id . '">
     <div class="form-group">
         <label for="comment">Comment:</label>
         <textarea name="answer" required="" class="form-control" rows="5" id="comment"></textarea>
     </div>
     <button type="Submit" name="submit" class="btn btn-primary">Submit</button>
 </form>';
-}
-?>
+} ?>
 </body>
 </html>

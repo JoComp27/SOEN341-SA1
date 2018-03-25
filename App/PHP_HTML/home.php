@@ -2,12 +2,10 @@
 
 <html>
 <head>
-    <link href="ask_question.css" type="text/css" rel="stylesheet">
     <?php include "header.php";
     include "question_display.php" ?>
-
     <link rel="stylesheet" type="text/css" href="home.css">
-
+    <link href="question_ask_button.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <br>
@@ -16,7 +14,7 @@
     <br>
     <?php
     $question_action = 'question_submission.php'; // action can be chosen separately from form view
-    include('ask_question1.php');                 // question form now in its own file
+    include('question_form.php');                 // question form now in its own file
     ?>
 </div>
 <div class="container">

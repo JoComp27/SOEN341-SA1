@@ -29,7 +29,6 @@ if (!isset($_SESSION)) {
         }
     </script>
 
-    <link href="ask_question.css" type="text/css" rel="stylesheet">
     <?php include "header.php" ?>
     <link rel="stylesheet" type="text/css" href="home.css">
 
@@ -146,12 +145,7 @@ $user = mysqli_fetch_assoc($sql);
                 <td><?php echo $user['user_profile_description_long']; ?></td>
             </tr>
         </table>
-    </div>
-
-    </br>
-
+    </div></br>
 </div>
-
 </body>
 </html>
-
