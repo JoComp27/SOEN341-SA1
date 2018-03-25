@@ -4,8 +4,20 @@
 <head>
 <script type="text/javascript" src="nicEdit.js"></script>
 <script type="text/javascript">
-	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-    </script>
+
+	
+	//bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+    
+	bkLib.onDomLoaded(function() {
+    nicEditors.editors.push(
+        new nicEditor().panelInstance(
+            document.getElementById('details')
+        )
+    );
+});
+	
+	
+	</script>
 
 </head>
 <body>
@@ -33,7 +45,7 @@ $data = mysqli_fetch_assoc($question_data);
         <br>
         <strong id="details_title">Details : </strong>
         <br>
-		<textarea name="details" style="width: 600px; height: 150px;" > <?php echo $data['question_description']?></textarea>		
+		<textarea name="details" id="details" style="width: 600px; height: 150px;" > <?php echo $data['question_description']?></textarea>		
 		<br>
 
         <?php
