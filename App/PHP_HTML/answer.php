@@ -129,6 +129,11 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 </head>
 <body>
 <h3>  <?php echo "Title: " ;?>   <?php echo "<span id='question-title'>" . $data['question_title'] . "</span>"; ?></h3>
+
+<li class="list-group-item">
+    <div>
+    <?php echo $data['question_description'] ?>
+    </div><br><br>
     <b> <?php echo
                  'Associated Tags: ';
             while ($tag = mysqli_fetch_row($tag_data)) {
