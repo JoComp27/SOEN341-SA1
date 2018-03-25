@@ -17,7 +17,6 @@
 <body>
 
 <?php
-$data = null;
 $modifyingQuestion = strpos($question_action, 'question_modify.php') === true;
 
 if ($modifyingQuestion) {
@@ -34,7 +33,7 @@ if ($modifyingQuestion) {
     <p id="question_field" name="question_field" class="hidden">
         <strong id="title_title" class="pretty">Title : </strong>
         <br>
-        <input type="text" name="title">
+        <input type="text" name="title" value="<?php echo $data['question_title'] ?>" required>
         <br>
 
         <strong id="details_title">Details : </strong>
