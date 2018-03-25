@@ -81,8 +81,8 @@ $tag_data = mysqli_query($db, $query);
 
 <?php
 if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
-    $answer = $_REQUEST['answer'];
-    $reply_by = $_SESSION['user_id'];
+	$answer = mysqli_real_escape_string($db, $_REQUEST['answer']);
+	$reply_by = $_SESSION['user_id'];
     $answers_by_user = $_SESSION['user_name'];
 
     $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by, answers_by_user) values('$qus_id','$answer',NOW(), '$reply_by', '$answers_by_user')";
@@ -96,7 +96,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 
         <?php
         // increase users answer count
-        $sql = "UPDATE users SET user_answers_count = user_answers_count + 1 WHERE user_id = '".$_SESSION['user_id']."'";
+        $sql = "UPDATE users SET user_answers_count = user_answers_count + 1 WHERE user_id = '" . $_SESSION['user_id'] . "'";
         $db->query($sql);
 
         $title_question = $data['question_title'];
@@ -126,22 +126,27 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+
 </head>
 <body>
-<h3>  <?php echo "Title: " ;?>   <?php echo "<span id='question-title'>" . $data['question_title'] . "</span>"; ?></h3>
-    <b> <?php echo
-                 'Associated Tags: ';
+<h3><?php echo "<span id='question-title'>" . $data['question_title'] . "</span>"; ?></h3>
+<ul class="list-group">
+    <li class="list-group-item"><b> <?php echo
+                "<span id='question-description'>" . strip_tags($data['question_description']) . "</span>";
+				echo '<br>';
+            echo '<br> Associated Tags: ';
             while ($tag = mysqli_fetch_row($tag_data)) {
                 echo ' <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
             }
             echo '<br> by user: '; ?>
-            <a href="profile.php?id=<?php 
-				$select_query = "select * from users WHERE user_name='".$data['question_by_user']."'";
-				$sql = mysqli_query($db, $select_query);
-				$get_users = mysqli_fetch_assoc($sql);
-				$id = $get_users['user_id'];
-				echo $id;
-			?>"><?php echo $data['question_by_user']; ?></a>
+            <a href="profile.php?id=<?php
+            $select_query = "SELECT * FROM users WHERE user_name='" . $data['question_by_user'] . "'";
+            $sql = mysqli_query($db, $select_query);
+            $get_users = mysqli_fetch_assoc($sql);
+            $id = $get_users['user_id'];
+            echo $id;
+            ?>"><?php echo $data['question_by_user']; ?></a>
 
 
             <button type="vote_button" id="incrementalquestionbutton" name="button3"
