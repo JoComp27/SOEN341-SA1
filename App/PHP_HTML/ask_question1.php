@@ -17,14 +17,15 @@
 <body>
 
 <?php
-$qus_id = $_GET['id'];
+$data = null;
+$modifyingQuestion = strpos($question_action, 'question_modify.php') === true;
 
-if (strpos($question_action, 'question_modify.php') === true) {
-include('sql_connector.php'); 
-
-$select_query = "select * from questions where question_id = '$qus_id'  and question_deleted = 0 ";
-$question_data = mysqli_query($db, $select_query) or die(mysqli_error($db));
-$data = mysqli_fetch_assoc($question_data);
+if ($modifyingQuestion) {
+    include('sql_connector.php');
+    $qus_id = $_GET['id'];
+    $select_query = "select * from questions where question_id = '$qus_id'  and question_deleted = 0 ";
+    $question_data = mysqli_query($db, $select_query) or die(mysqli_error($db));
+    $data = mysqli_fetch_assoc($question_data);
 }
 ?>
 
@@ -35,6 +36,7 @@ $data = mysqli_fetch_assoc($question_data);
         <br>
         <input type="text" name="title">
         <br>
+
         <strong id="details_title">Details : </strong>
         <br>
 		<textarea name="details" id="details" style="width: 600px; height: 150px;" >
@@ -43,16 +45,13 @@ $data = mysqli_fetch_assoc($question_data);
 		<br>
 
         <?php
-        if (strpos($question_action, 'question_modify.php') === false) {
-            ?>
+        if ($modifyingQuestion) {?>
             <strong id="tags_title">Associated Tags : </strong>
             <br>
-        <input id="tags" name="tags" type="text" data-role="tagsinput" placeholder="Add tags">
-        <br>
-        <?php }
-            ?>
+            <input id="tags" name="tags" type="text" data-role="tagsinput" placeholder="Add tags">
+            <br>
+        <?php } ?>
         <input id="submit" type="submit">
-
     </p>
 </form>
 
