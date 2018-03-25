@@ -16,7 +16,7 @@
     <br>
     <?php
     $question_action = 'question_submission.php'; // action can be chosen separately from form view
-    include('ask_question.php');            // question form now in its own file
+    include('ask_question1.php');                 // question form now in its own file
     ?>
 </div>
 <div class="container">
