@@ -81,8 +81,8 @@ $tag_data = mysqli_query($db, $query);
 
 <?php
 if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
-    $answer = $_REQUEST['answer'];
-    $reply_by = $_SESSION['user_id'];
+	$answer = mysqli_real_escape_string($db, $_REQUEST['answer']);
+	$reply_by = $_SESSION['user_id'];
     $answers_by_user = $_SESSION['user_name'];
 
     $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by, answers_by_user) values('$qus_id','$answer',NOW(), '$reply_by', '$answers_by_user')";
@@ -126,12 +126,15 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+
 </head>
 <body>
-<h2><?php echo "<span id='question-title'>" . $data['question_title'] . "</span>"; ?></h2>
+<h3><?php echo "<span id='question-title'>" . $data['question_title'] . "</span>"; ?></h3>
 <ul class="list-group">
     <li class="list-group-item"><b> <?php echo
-                "<span id='question-description'>" . $data['question_description'] . "</span>";
+                "<span id='question-description'>" . strip_tags($data['question_description']) . "</span>";
+				echo '<br>';
             echo '<br> Associated Tags: ';
             while ($tag = mysqli_fetch_row($tag_data)) {
                 echo ' <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
@@ -171,14 +174,16 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
             $question_action = "question_modify.php?questionId=$qus_id";
-            include('ask_question.php');
+            include('ask_question1.php');
         }; ?>
     </li>
 </ul>
 <ul class="list-group">
     <?php
 
-    $select_query = "select * from answers where answer_deleted = 0 AND reply_questions ='$qus_id' order by answers_id DESC";// answer must be apart of question and not deleted
+    $select_query = "select * from answers "
+        . "where answer_deleted = 0 AND reply_questions ='$qus_id'" // answer must be apart of question and not deleted
+        . " order by answers_id DESC";
     $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
     $a = 1;
 
@@ -188,17 +193,17 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         $answer_id = $get_answers['answers_id'];
         ?>
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
-            <b>Answer <?php echo $a; ?>:</b>
-            <span id="<?php echo "answer-description-$a" ?>"> <?php echo $get_answers['answers_content']; ?></span>
+            <b>Ans <?php echo $a; ?>:</b>
+            <span id="<?php echo "answer-description-$a" ?>"><?php echo $get_answers['answers_content']; ?></span>
             <?php echo '<br> by user: '; ?>
 
-            <a href="profile.php?id=<?php
-            $select_query = "SELECT * FROM users WHERE user_name='" . $get_answers['answers_by_user'] . "'";
-            $user_query = mysqli_query($db, $select_query);
-            $get_users = mysqli_fetch_assoc($user_query);
-            $id = $get_users['user_id'];
-            echo $id;
-            ?>"> <?php echo $get_answers['answers_by_user']; ?></a>
+            <a href="profile.php?id=<?php 
+				$select_query = "select * from users WHERE user_name='".$get_answers['answers_by_user']."'";
+				$sql = mysqli_query($db, $select_query);
+				$get_users = mysqli_fetch_assoc($sql);
+				$id = $get_users['user_id'];
+				echo $id;
+			?>"> <?php echo $get_answers['answers_by_user']; ?></a>
 
             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) {
                 include('answer_state_view.php');
@@ -228,11 +233,9 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             }; ?>
         </li>
         <br/>
-        <?php
-        $a++;
-    }
 
-    ?>
+        <?php $a++;
+    } ?>
 </ul>
 <?php if (isset($_SESSION['auth'])) {
     echo ' <form method="post" action="answer.php?id=' . $qus_id . '">
