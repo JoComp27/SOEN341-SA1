@@ -7,7 +7,6 @@ if (!isset($_SESSION)) {
 
 <html>
 <head>
-    <link href="ask_question.css" type="text/css" rel="stylesheet">
     <?php include "header.php"?>
     <link rel="stylesheet" type="text/css" href="home.css">
 </head>

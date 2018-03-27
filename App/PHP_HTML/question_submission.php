@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="ask_question.js"></script>
+<!--    <script src="question_ask_button.js"></script>-->
     <?php include "header.php" ?>
 </head>
 <body>

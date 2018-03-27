@@ -32,7 +32,6 @@ mysqli_query($db, $sql);
 <html>
 <head>
     <!-- Adapted from open source license https://bootsnipp.com/snippets/xaPeQ -->
-    <link href="ask_question.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="notification.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
