@@ -16,18 +16,18 @@ function displayQuestions($db, $SqlQuestionQuery)
             $tag_data = mysqli_query($db, $sql3);
 
             echo '
-            <tr>
+            <tr >
               <td>
-                <div class = "col-md-1">
+                <div class = "col-md-1 col-sm-1 col-xs-1">
                   <p class = "top-questions-stats">' . $row["question_upvotes"] . '</p>
                 </div>
-                <div class = "col-md-1">
+                <div class = "col-md-1 col-sm-1 col-xs-1">
                   <p class = "top-questions-stats">' . $data['total'] . '</p>
                 </div>
-                <div class = "col-md-1">
+                <div class = "col-md-1 col-sm-1 col-xs-1">
                   <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
-                <div class = "col-md-1">
+                <div class = "col-md-1 col-sm-1 col-xs-1">
                   <p class = "top-questions-stats">
                    ';
             while ($tag = mysqli_fetch_row($tag_data)) {
@@ -38,26 +38,26 @@ function displayQuestions($db, $SqlQuestionQuery)
             echo '
                   </p>
                 </div>
-                <div class = "col-md-7">
+                <div class = "col-md-7 col-sm-7 col-xs-7">
                   <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>
             <tr class="warning borderless">
               <td>
-                <div class = "col-md-1">
+                <div class = "col-md-1 col-sm-1 col-xs-1">
                   <p class = "top-questions-stats">votes</p>
                 </div>
-                <div class = "col-md-1">
+                <div class = "col-md-1 col-sm-1 col-xs-1">
                   <p class = "top-questions-stats">answer</p>
                 </div>
-                <div class = "col-md-1">
+                <div class = "col-md-1 col-sm-1 col-xs-1">
                   <p class = "top-questions-stats">views</p>
                 </div>
-                <div class = "col-md-2">
+                <div class = "col-md-2 col-sm-2 col-xs-2">
                   <p>tags</p>
                 </div>
-                <div class = "col-md-7">
+                <div class = "col-md-7 col-sm-7 col-xs-7">
                   <p class = "asked"> asked on ' . $row["question_date"] . '</p>
                 </div>
               </td>
