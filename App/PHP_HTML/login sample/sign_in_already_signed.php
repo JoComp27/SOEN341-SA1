@@ -45,5 +45,13 @@
     Click <a href="sign_out_submission.php">here</a> to log out.
 </div>
 
+<script>
+window.onbeforeunload = function(e) {
+  var dialogText = 'Are you sure you want to leave this page?';
+  e.returnValue = dialogText;
+  return dialogText;
+};
+</script>
+
 </body>
 </html>

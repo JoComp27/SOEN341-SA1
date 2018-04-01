@@ -250,5 +250,13 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script>
+window.onbeforeunload = function(e) {
+  var dialogText = 'Do you want to leave this site?';
+  e.returnValue = dialogText;
+  return dialogText;
+};
+</script>
+
 </body>
 </html>
