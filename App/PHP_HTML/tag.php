@@ -27,6 +27,7 @@ $qt = $_GET['tag'];
 <!DOCTYPE html>
 <html>
 <head>
+<div class="container">
     <title>Tags</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,4 +51,5 @@ $qt = $_GET['tag'];
     ?>
 
 </table>
+</div>
 </body>
