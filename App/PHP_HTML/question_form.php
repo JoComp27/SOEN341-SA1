@@ -35,13 +35,17 @@ $modifyingQuestion = !(strpos($question_action, 'question_modify.php') === false
             <?php if ($modifyingQuestion) { echo $data['question_description']; }?>
         </textarea>
 		<br>
-
-        <?php if (!$modifyingQuestion) {?>
             <strong id="tags_title">Associated Tags : </strong>
             <br>
-            <input id="tags" name="tags" type="text" data-role="tagsinput" placeholder="Add tags">
+            <input id="tags" name="tags" type="text" data-role="tagsinput" placeholder="Add tags"
+                   value="<?php
+                   if ($modifyingQuestion) {
+
+                   }
+                   else{
+                       echo "";
+                   }?>">
             <br>
-        <?php } ?>
 
         <input id="submit" type="submit">
     </p>
