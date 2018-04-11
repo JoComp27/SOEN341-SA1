@@ -228,7 +228,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                                               style="color:rgba(0,0,0,0.5)"></i></span>
                     <?php } ?>
                     <span class="count"> <?php echo $get_answers['answers_upvotes']; ?> </span>
-                </a>&nbsp
+                </a>&nbsp;
             </button>
 
             <button type="vote_button" id="decrementalbutton" name="button2"
@@ -243,7 +243,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                         echo '<span class="dislikeA"><i class="glyphicon glyphicon-thumbs-down" style="color:rgba(0,0,0,0.5)"></i></span>';
                     } ?>
 
-                </a>&nbsp
+                </a>&nbsp;
             </button>
         </li>
         <li>
