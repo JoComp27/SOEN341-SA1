@@ -173,10 +173,6 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 		Running source code replicat from check_login.php line 11 to 55 below: 
 
     	*****************************************************************************************/
-    	//this call should produced 
-
-		$this->assertFalse($this->source_code($mock_POST, $db));
-
 		// Section pertain to test branch: Successful
 		/* Creating mock POST data */
 		// Below is the mock user input for branch success case:
