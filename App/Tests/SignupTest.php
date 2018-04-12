@@ -141,96 +141,6 @@ class SignupTest extends PHPUnit\Framework\TestCase{
     	$this->assertTrue($comparator_count2 == ($baseline_count2 + 1));
     	$this->assertTrue($comparator_count3 == ($baseline_count3 + 1));
 
-
-
-    	//****************************************************************************************
-		// Section pertain to test branch: Fail sign up due to user_name unavailable
-		/* Creating mock POST data */
-		// Below is the mock user input for branch success case:
-		$mock_POST = [
-				"submitform" => true,
-				"user_name" => "test_user_1",
-				"user_email" => "test2@gmail.com",
-				"answer1" => "secret1",
-				"answer2" => "secret2",
-				"answer3" => "secret2",
-				"year" => 2005,
-				"month" => 11,
-				"day" => 1,
-				"gender" => "M",
-				"cpassword" => "password1",
-				"user_pass" => "password1",
-				];
-
-		//***************************************************************************************
-		/*Collect baseline stats pre test*/
-    	$baseline_count1=mysqli_num_rows($db->query("select * from users"));
-
-
-    	/****************************************************************************************
-		TEST BEGIN: Branch fail creation due to username unavailable
-
-		Running source code replicat from sign_up.php line 14 to 74 below: 
-
-    	*****************************************************************************************/
-
-
-		$this->source_code($mock_POST, $db);
-
-       	
-       	//******************************************************************************************
-       	// Asserting results of successful tests. 
-       	// Expected output: all data count should remain the same as no new user should be created. 
-       	// Expected results: assertTrue x 3
-		
-		$comparator_count1=mysqli_num_rows($db->query("select * from users"));
-
-    	$this->assertTrue($comparator_count1 == ($baseline_count1));
-    	
-
-    	//****************************************************************************************
-		// Section pertain to test branch: Fail sign up due to email unavailable
-		/* Creating mock POST data */
-		// Below is the mock user input for branch success case:
-		$mock_POST = [
-				"submitform" => true,
-				"user_name" => "test_user_2",
-				"user_email" => "test1@gmail.com",
-				"answer1" => "secret1",
-				"answer2" => "secret2",
-				"answer3" => "secret2",
-				"year" => 2005,
-				"month" => 11,
-				"day" => 1,
-				"gender" => "M",
-				"cpassword" => "password1",
-				"user_pass" => "password1",
-				];
-
-		//***************************************************************************************
-		/*Collect baseline stats pre test*/
-    	$baseline_count1=mysqli_num_rows($db->query("select * from users"));
-
-
-    	/****************************************************************************************
-		TEST BEGIN: Branch fail creation due to username unavailable
-
-		Running source code replicat from sign_up.php line 14 to 74 below: 
-
-    	*****************************************************************************************/
-
-
-		$this->source_code($mock_POST, $db);
-
-       	
-       	//******************************************************************************************
-       	// Asserting results of successful tests. 
-       	// Expected output: all data count should remain the same as no new user should be created. 
-       	// Expected results: assertTrue x 3
-		
-		$comparator_count1=mysqli_num_rows($db->query("select * from users"));
-
-    	$this->assertTrue($comparator_count1 == ($baseline_count1));
     	//****************************************************************************************
 		// Section pertain to test branch: Fail sign up due to unmatching password
 		/* Creating mock POST data */
@@ -267,7 +177,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 
        	
        	//******************************************************************************************
-       	// Asserting results of successful tests. 
+       	// Asserting results of failed tests. 
        	// Expected output: all data count should remain the same as no new user should be created. 
        	// Expected results: assertTrue x 3
 		
