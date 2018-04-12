@@ -191,9 +191,13 @@ class Sign_upTest extends PHPUnit\Framework\TestCase{
        	// Expected output: all data count should increase by 1. 
        	// Expected results: assertTrue x 3
 
+       	$comparator_count1=mysqli_num_rows($db->query("select * from users"));
+    	$comparator_count2=mysqli_num_rows($db->query("select * from notification"));
+    	$comparator_count3=mysqli_num_rows($db->query("select * from notification"));
+
     	$this->assertTrue($comparator_count1 == ($baseline_count1 + 1));
     	$this->assertTrue($comparator_count2 == ($baseline_count2 + 1));
-    	$this->assertTrue($comparator_count2 == ($baseline_count2 + 1));
+    	$this->assertTrue($comparator_count3 == ($baseline_count3 + 1));
 
 
 
