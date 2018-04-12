@@ -88,13 +88,5 @@
 </div>
 </section>
 
-<script>
-window.onbeforeunload = function(e) {
-  var dialogText = 'Are you sure you want to leave this page?';
-  e.returnValue = dialogText;
-  return dialogText;
-};
-</script>
-
 </body>
 </html>
