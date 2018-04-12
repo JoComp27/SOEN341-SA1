@@ -98,8 +98,8 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 		
 		$mock_POST = [
 				"submitform" => true,
-				"user_name" => "test_user_1",
-				"user_email" => "test1@gmail.com",
+				"user_name" => "test_user_3",
+				"user_email" => "test3@gmail.com",
 				"answer1" => "secret1",
 				"answer2" => "secret2",
 				"answer3" => "secret2",
