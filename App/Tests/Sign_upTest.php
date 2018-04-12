@@ -92,8 +92,7 @@ class Sign_upTest extends PHPUnit\Framework\TestCase{
 		//****************************************************************************************
 		/* Creating mock POST data */
 		// Below is the mock user input for branch success case:
-		$_POST = array(
-				"submitform" = true,
+		$_POST = array("submitform" = true,
 				"user_name" = "test_user_1",
 				"user_email" = "test1@gmail.com",
 				"answer1" = "secret1",
