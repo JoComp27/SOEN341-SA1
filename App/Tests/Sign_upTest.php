@@ -88,13 +88,12 @@ class Sign_upTest extends PHPUnit\Framework\TestCase{
 					PRIMARY KEY (notification_id, user_id)
 					) ENGINE=INNODB';
 		$db->query($query);
-
 		//****************************************************************************************
 		// Section pertain to test branch: SUCCESSFUL sign up
 		/* Creating mock POST data */
 		// Below is the mock user input for branch success case:
 
-
+		/*
 		$_POST = [
 				"submitform" => true,
 				"user_name" => "test_user_1",
@@ -109,6 +108,7 @@ class Sign_upTest extends PHPUnit\Framework\TestCase{
 				"cpassword" => "password1",
 				"user_pass" => "password1",
 				];
+		*/
 
 		//***************************************************************************************
 		/*Collect baseline stats pre test*/
