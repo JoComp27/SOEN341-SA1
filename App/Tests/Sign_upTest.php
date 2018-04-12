@@ -177,8 +177,6 @@ class Sign_upTest extends PHPUnit\Framework\TestCase{
 		    $user_id = $user_id['user_id'];
 		    $sql = "insert into notification_user (notification_id, user_id) values ('$latest_local_notification_id', '$user_id')";
 		    mysqli_query($db, $sql);
-		    // TO CHANGE PATH ON AWS
-		    header('Location: ../home.php');
 		} else if (isset($mock_POST['submitform']) && $mock_POST['user_pass'] != $mock_POST['cpassword']) {
 		    ?>
 		    <script type="text/javascript">alert("two passwords do not match. Try again!");</script>
@@ -287,8 +285,6 @@ class Sign_upTest extends PHPUnit\Framework\TestCase{
 		    $user_id = $user_id['user_id'];
 		    $sql = "insert into notification_user (notification_id, user_id) values ('$latest_local_notification_id', '$user_id')";
 		    mysqli_query($db, $sql);
-		    // TO CHANGE PATH ON AWS
-		    header('Location: ../home.php');
 		} else if (isset($mock_POST['submitform']) && $mock_POST['user_pass'] != $mock_POST['cpassword']) {
 		    ?>
 		    <script type="text/javascript">alert("two passwords do not match. Try again!");</script>
