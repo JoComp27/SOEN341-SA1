@@ -72,7 +72,7 @@ class Sign_upTest extends PHPUnit\Framework\TestCase{
 
 		$db->query("Drop table notification if exists");
 		$query = 'CREATE TABLE notification (
-					notification_id INT(16) NOT NULL AUTO_INCREMENT, -- foreign key to table notification_user
+					notification_id INT(16) NOT NULL AUTO_INCREMENT,
 					notification_content VARCHAR(1000),
 					notification_date DATETIME,
 					notification_title VARCHAR(50), 
@@ -93,7 +93,9 @@ class Sign_upTest extends PHPUnit\Framework\TestCase{
 		// Section pertain to test branch: SUCCESSFUL sign up
 		/* Creating mock POST data */
 		// Below is the mock user input for branch success case:
-		$_POST = array(
+
+
+		$POST = array(
 				"submitform" => true,
 				"user_name" => "test_user_1",
 				"user_email" => "test1@gmail.com",
