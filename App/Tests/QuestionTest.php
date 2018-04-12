@@ -5,7 +5,16 @@ session_start();
 class QuestionTest extends PHPUnit\Framework\TestCase{
 
     public function testTest1(){
+    	/*Interface/component test 
+			- Assert
+			
+    	*/
 
+
+		/********************************
+		The following is a stub running on Travis CI that simulates the website's mySQL database.
+		Similation running on PHPunit 
+		*/	
     	$user   = 'root';
         $password   = '';
         $database   = 'website_db';
