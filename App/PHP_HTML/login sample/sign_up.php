@@ -57,14 +57,14 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
 
     //add a welcome message to user inbox
 
-    $query = "insert into notification (notification_title, notification_date, notification_content) values('Welcome to Okapi!',NOW(), 'Hi $user_name, <br/> <br/> welcome to Okapi.com, a platform that allows user to exchange questions and share knowledges! <br/> <br/> On behalf of the Okapi team, we wish you a pleasant journey. <br/><br/> Sincerely, <br/> Team Okapi')";
+    $query = "insert into notification (notification_title, notification_date, notification_content) values('Welcome to Okapi!',NOW(), 'Hi $user_name, <br/> <br/> Welcome to Okapi.com, a platform that allows user to exchange questions and share knowledges! <br/> <br/> On behalf of the Okapi team, we wish you a pleasant journey. <br/><br/> Sincerely, <br/> Team Okapi')";
     $notice_result = mysqli_query($db, $query);
     $latest_local_notification_id = mysqli_fetch_assoc(mysqli_query($db, "SELECT LAST_INSERT_ID() as 'result'"))['result'];
     $user_id = $user_id['user_id'];
     $sql = "insert into notification_user (notification_id, user_id) values ('$latest_local_notification_id', '$user_id')";
     mysqli_query($db, $sql);
     // TO CHANGE PATH ON AWS
-    header('Location: okapi/SOEN341-SA1/App/home.php');
+    header('Location: ../home.php');
 } else if (isset($_POST['submitform']) && $_POST['user_pass'] != $_POST['cpassword']) {
     ?>
     <script type="text/javascript">alert("two passwords do not match. Try again!");</script>
