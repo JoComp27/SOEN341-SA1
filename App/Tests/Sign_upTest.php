@@ -197,7 +197,7 @@ class Sign_upTest extends PHPUnit\Framework\TestCase{
 		// Section pertain to test branch: Fail sign up due to user_name unavailable
 		/* Creating mock POST data */
 		// Below is the mock user input for branch success case:
-		$_POST = array("submitform" = true,
+		$_POST = array("submitform" => true,
 				"user_name" => "test_user_1",
 				"user_email" => "test2@gmail.com",
 				"answer1" => "secret1",
