@@ -296,11 +296,15 @@ class Sign_upTest extends PHPUnit\Framework\TestCase{
        	// Asserting results of successful tests. 
        	// Expected output: all data count should remain the same as no new user should be created. 
        	// Expected results: assertTrue x 3
-		/*
+		
+		$comparator_count1=mysqli_num_rows($db->query("select * from users"));
+    	$comparator_count2=mysqli_num_rows($db->query("select * from notification"));
+    	$comparator_count3=mysqli_num_rows($db->query("select * from notification"));
+
     	$this->assertTrue($comparator_count1 == ($baseline_count1));
     	$this->assertTrue($comparator_count2 == ($baseline_count2));
     	$this->assertTrue($comparator_count2 == ($baseline_count2));
-    	*/
+    	
 }
 }
 
