@@ -125,7 +125,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
     	*****************************************************************************************/
 
 
-		source_code();
+		$this->source_code();
 
        	
        	//******************************************************************************************
@@ -177,7 +177,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
     	*****************************************************************************************/
 
 
-		source_code();
+		$this->source_code();
 
        	
        	//******************************************************************************************
@@ -228,7 +228,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
     	*****************************************************************************************/
 
 
-		source_code();
+		$this->source_code();
 
        	
        	//******************************************************************************************
@@ -277,7 +277,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
     	*****************************************************************************************/
 
 
-		source_code();
+		$this->source_code();
 
        	
        	//******************************************************************************************
@@ -293,6 +293,9 @@ class SignupTest extends PHPUnit\Framework\TestCase{
     	$this->assertTrue($comparator_count2 == ($baseline_count2));
     	$this->assertTrue($comparator_count2 == ($baseline_count2));
 }
+
+
+
 
 		private function source_code(){
 			/*contains source code under test*/
