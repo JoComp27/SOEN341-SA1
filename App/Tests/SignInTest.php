@@ -142,11 +142,11 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 				"user_pass" => "password2",
 				];
     	/****************************************************************************************
-		TEST BEGIN: Branch fail creation due to wrong username
+		TEST BEGIN: Branch succesful
 
     	*****************************************************************************************/
 
-		$this->assertTrue($this->source_code($mock_POST, $db));
+		//$this->assertTrue($this->source_code($mock_POST, $db));
 
 		/****************************************************************************************
 		TEST BEGIN: Branch successful with email
@@ -162,9 +162,6 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 				"user_email" => "test1@gmail.com",
 				"user_pass" => "password2",
 				];
-		$password = md5("password2");
-		$query = "INSERT INTO `users` (user_name, user_pass, user_email, user_birthDate, user_gender, user_date, user_answer1, user_answer2, user_answer3) VALUES ('test_user_1', '$password', 'test1@gmail.com', '2005-01-01', 'M', now(), 'x', 'x', 'x')";
-		$result = mysqli_query($db, $query);
     	/****************************************************************************************
 		TEST BEGIN: Branch successful with email
 
