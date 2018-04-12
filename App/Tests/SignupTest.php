@@ -165,8 +165,6 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 		//***************************************************************************************
 		/*Collect baseline stats pre test*/
     	$baseline_count1=mysqli_num_rows($db->query("select * from users"));
-    	$baseline_count2=mysqli_num_rows($db->query("select * from notification"));
-    	$baseline_count3=mysqli_num_rows($db->query("select * from notification"));
 
 
     	/****************************************************************************************
@@ -186,12 +184,8 @@ class SignupTest extends PHPUnit\Framework\TestCase{
        	// Expected results: assertTrue x 3
 		
 		$comparator_count1=mysqli_num_rows($db->query("select * from users"));
-    	$comparator_count2=mysqli_num_rows($db->query("select * from notification"));
-    	$comparator_count3=mysqli_num_rows($db->query("select * from notification"));
 
     	$this->assertTrue($comparator_count1 == ($baseline_count1));
-    	$this->assertTrue($comparator_count2 == ($baseline_count2));
-    	$this->assertTrue($comparator_count2 == ($baseline_count2));
     	
 
     	//****************************************************************************************
@@ -216,8 +210,6 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 		//***************************************************************************************
 		/*Collect baseline stats pre test*/
     	$baseline_count1=mysqli_num_rows($db->query("select * from users"));
-    	$baseline_count2=mysqli_num_rows($db->query("select * from notification"));
-    	$baseline_count3=mysqli_num_rows($db->query("select * from notification"));
 
 
     	/****************************************************************************************
@@ -237,12 +229,8 @@ class SignupTest extends PHPUnit\Framework\TestCase{
        	// Expected results: assertTrue x 3
 		
 		$comparator_count1=mysqli_num_rows($db->query("select * from users"));
-    	$comparator_count2=mysqli_num_rows($db->query("select * from notification"));
-    	$comparator_count3=mysqli_num_rows($db->query("select * from notification"));
 
     	$this->assertTrue($comparator_count1 == ($baseline_count1));
-    	$this->assertTrue($comparator_count2 == ($baseline_count2));
-    	$this->assertTrue($comparator_count2 == ($baseline_count2));
     	//****************************************************************************************
 		// Section pertain to test branch: Fail sign up due to unmatching password
 		/* Creating mock POST data */
@@ -265,8 +253,6 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 		//***************************************************************************************
 		/*Collect baseline stats pre test*/
     	$baseline_count1=mysqli_num_rows($db->query("select * from users"));
-    	$baseline_count2=mysqli_num_rows($db->query("select * from notification"));
-    	$baseline_count3=mysqli_num_rows($db->query("select * from notification"));
 
 
     	/****************************************************************************************
@@ -286,12 +272,8 @@ class SignupTest extends PHPUnit\Framework\TestCase{
        	// Expected results: assertTrue x 3
 		
 		$comparator_count1=mysqli_num_rows($db->query("select * from users"));
-    	$comparator_count2=mysqli_num_rows($db->query("select * from notification"));
-    	$comparator_count3=mysqli_num_rows($db->query("select * from notification"));
 
     	$this->assertTrue($comparator_count1 == ($baseline_count1));
-    	$this->assertTrue($comparator_count2 == ($baseline_count2));
-    	$this->assertTrue($comparator_count2 == ($baseline_count2));
 }
 
 
