@@ -9,22 +9,22 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 			Functional and non-function features coverage:
 				- 1) User must complete all mandatory in order to sign up
 					Both positive and negative branches tested with representative class/asserts
-				- 2) Username must be unique, else fails to create new user
-					Both positive and negative branches tested with representative class/asserts
-				- 3) Email must be unique, else fails to create new user
-					Both positive and negative branches tested with representative class/asserts
-				- 4) User will receive 1 Welcome message upon sign up
+				- 2) User will receive 1 Welcome message upon sign up
 					Positive branch tested. 
-				- 5) User must confirm password selection. If 2 password do not matched, fails to create new user
+				- 3) User must confirm password selection. If 2 password do not matched, fails to create new user
 					Both positive and negative branches tested with representative class/asserts
 				Not covered:
 					- session cookie creation (simulated with stubs)
-					- redirect to home page upon successful sign up 
+					- redirect to home page upon successful sign up
+					- Username must be unique, else fails to create new user
+					 		Handlers outside scope of test (javascript based)
+					- Email must be unique, else fails to create new user
+							Handlers outside scope of test (javascript based)
 
 			Database coverage:
 				- a) User passwords are salted and encrypted
 				- b) Table user, table notification, table notification_user
-					Values are added to SQL table users and notification when 1),2) and 4) above meets conditions. Conditions and results tested with asserts.
+					Values are added to SQL table users and notification when 1),2) and 3) above meets conditions. Conditions and results tested with asserts.
 
 			Date last updated            By  
 			2018-04-11                   MattYu
@@ -193,61 +193,61 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 			/*contains source code under test*/
 				if (isset($mock_POST['submitform']) && $mock_POST['user_pass'] == $mock_POST['cpassword']) {
 
-		    $user_name = mysqli_real_escape_string($db, $mock_POST['user_name']);
-		    $user_email = mysqli_real_escape_string($db, $mock_POST['user_email']);
+					    $user_name = mysqli_real_escape_string($db, $mock_POST['user_name']);
+					    $user_email = mysqli_real_escape_string($db, $mock_POST['user_email']);
 
 
-		    $user_check_query = "SELECT * FROM users WHERE user_name ='$user_name' OR user_email='$user_email' LIMIT 1";
-		    $result = mysqli_query($db, $user_check_query);
-		    $user = mysqli_fetch_assoc($result);
+					    $user_check_query = "SELECT * FROM users WHERE user_name ='$user_name' OR user_email='$user_email' LIMIT 1";
+					    $result = mysqli_query($db, $user_check_query);
+					    $user = mysqli_fetch_assoc($result);
 
-		    if ($user) { // if user exists
-		        if ($user['user_name'] === $user_name) {
-		            ?>
-		            <script type="text/javascript">alert("username already exist");</script>
-		            <?php
-		        }
+					    if ($user) { // if user exists
+					        if ($user['user_name'] === $user_name) {
+					            ?>
+					            <script type="text/javascript">alert("username already exist");</script>
+					            <?php
+					        }
 
-		        if ($user['user_email'] === $user_email) {
-		            ?>
-		            <script type="text/javascript">alert("email already exist");</script>
-		            <?php
-		        }
-		    }
+					        if ($user['user_email'] === $user_email) {
+					            ?>
+					            <script type="text/javascript">alert("email already exist");</script>
+					            <?php
+					        }
+					    }
 
-		    $answer1 = $mock_POST['answer1'];
-		    $answer2 = $mock_POST['answer2'];
-		    $answer3 = $mock_POST['answer3'];
-		    $user_pass = md5($mock_POST['user_pass']);
-		    $dateOfBirth = $mock_POST['year'] . "-" . $mock_POST['month'] . "-" . $mock_POST['day'];
-		    $gender = $mock_POST['gender'];
-
-
-		    $query = "INSERT INTO `users` (user_name, user_pass, user_email, user_birthDate, user_gender, user_date, user_answer1, user_answer2, user_answer3) VALUES ('$user_name', '$user_pass', '$user_email', '$dateOfBirth', '$gender', now(), '$answer1', '$answer2', '$answer3')";
-		    $result = mysqli_query($db, $query);
-
-		    //once sign up is successful, automatically log the user in and generate a welcome message with session
-		    $_SESSION['auth'] = "True";
-		    $_SESSION['user_name'] = $user_name;
-		    $user_id_check_query = "SELECT user_id FROM users WHERE user_name = '$user_name' AND user_email='$user_email' LIMIT 1";
-		    $result = mysqli_query($db, $user_id_check_query);
-		    $user_id = mysqli_fetch_assoc($result);
-		    $_SESSION['user_id'] = $user_id['user_id'];
+					    $answer1 = $mock_POST['answer1'];
+					    $answer2 = $mock_POST['answer2'];
+					    $answer3 = $mock_POST['answer3'];
+					    $user_pass = md5($mock_POST['user_pass']);
+					    $dateOfBirth = $mock_POST['year'] . "-" . $mock_POST['month'] . "-" . $mock_POST['day'];
+					    $gender = $mock_POST['gender'];
 
 
-		    //add a welcome message to user inbox
+					    $query = "INSERT INTO `users` (user_name, user_pass, user_email, user_birthDate, user_gender, user_date, user_answer1, user_answer2, user_answer3) VALUES ('$user_name', '$user_pass', '$user_email', '$dateOfBirth', '$gender', now(), '$answer1', '$answer2', '$answer3')";
+					    $result = mysqli_query($db, $query);
 
-		    $query = "insert into notification (notification_title, notification_date, notification_content) values('Welcome to Okapi!',NOW(), 'Hi $user_name, <br/> <br/> Welcome to Okapi.com, a platform that allows user to exchange questions and share knowledges! <br/> <br/> On behalf of the Okapi team, we wish you a pleasant journey. <br/><br/> Sincerely, <br/> Team Okapi')";
-		    $notice_result = mysqli_query($db, $query);
-		    $latest_local_notification_id = mysqli_fetch_assoc(mysqli_query($db, "SELECT LAST_INSERT_ID() as 'result'"))['result'];
-		    $user_id = $user_id['user_id'];
-		    $sql = "insert into notification_user (notification_id, user_id) values ('$latest_local_notification_id', '$user_id')";
-		    mysqli_query($db, $sql);
-		} else if (isset($mock_POST['submitform']) && $mock_POST['user_pass'] != $mock_POST['cpassword']) {
-		    ?>
-		    <script type="text/javascript">alert("two passwords do not match. Try again!");</script>
-		    <?php
-		}
+					    //once sign up is successful, automatically log the user in and generate a welcome message with session
+					    $_SESSION['auth'] = "True";
+					    $_SESSION['user_name'] = $user_name;
+					    $user_id_check_query = "SELECT user_id FROM users WHERE user_name = '$user_name' AND user_email='$user_email' LIMIT 1";
+					    $result = mysqli_query($db, $user_id_check_query);
+					    $user_id = mysqli_fetch_assoc($result);
+					    $_SESSION['user_id'] = $user_id['user_id'];
+
+
+					    //add a welcome message to user inbox
+
+					    $query = "insert into notification (notification_title, notification_date, notification_content) values('Welcome to Okapi!',NOW(), 'Hi $user_name, <br/> <br/> Welcome to Okapi.com, a platform that allows user to exchange questions and share knowledges! <br/> <br/> On behalf of the Okapi team, we wish you a pleasant journey. <br/><br/> Sincerely, <br/> Team Okapi')";
+					    $notice_result = mysqli_query($db, $query);
+					    $latest_local_notification_id = mysqli_fetch_assoc(mysqli_query($db, "SELECT LAST_INSERT_ID() as 'result'"))['result'];
+					    $user_id = $user_id['user_id'];
+					    $sql = "insert into notification_user (notification_id, user_id) values ('$latest_local_notification_id', '$user_id')";
+					    mysqli_query($db, $sql);
+					} else if (isset($mock_POST['submitform']) && $mock_POST['user_pass'] != $mock_POST['cpassword']) {
+					    ?>
+					    <script type="text/javascript">alert("two passwords do not match. Try again!");</script>
+					    <?php
+					}
 
 		}
 }
