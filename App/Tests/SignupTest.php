@@ -1,5 +1,5 @@
 <?php
-class Sign_upTest extends PHPUnit\Framework\TestCase{
+class SignupTest extends PHPUnit\Framework\TestCase{
 	/** @test */
     public function testTest1(){
     	/*Test description: Interface/component + db test
