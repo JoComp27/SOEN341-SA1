@@ -125,7 +125,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
     	*****************************************************************************************/
 
 
-		$this->source_code();
+		$this->source_code($mock_POST, $db);
 
        	
        	//******************************************************************************************
@@ -177,7 +177,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
     	*****************************************************************************************/
 
 
-		$this->source_code();
+		$this->source_code($mock_POST, $db);
 
        	
        	//******************************************************************************************
@@ -228,7 +228,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
     	*****************************************************************************************/
 
 
-		$this->source_code();
+		$this->source_code($mock_POST, $db);
 
        	
        	//******************************************************************************************
@@ -277,7 +277,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
     	*****************************************************************************************/
 
 
-		$this->source_code();
+		$this->source_code($mock_POST, $db);
 
        	
        	//******************************************************************************************
@@ -297,7 +297,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 
 
 
-		private function source_code(){
+		private function source_code($mock_POST, $db){
 			/*contains source code under test*/
 				if (isset($mock_POST['submitform']) && $mock_POST['user_pass'] == $mock_POST['cpassword']) {
 
