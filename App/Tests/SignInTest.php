@@ -37,8 +37,8 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 
         $db = new mysqli('localhost', $user, $password, $database) or die("Connection failed");
 
-        $db->query("drop table users if exists");
-        $query = 'CREATE TABLE users (
+       // $db->query("drop table users if exists");
+        $query = 'CREATE TABLE if not exists users (
 					user_id INT(32) NOT NULL AUTO_INCREMENT,
 					user_name VARCHAR(50) NOT NULL,
 					user_pass VARCHAR(255) NOT NULL,
@@ -96,7 +96,7 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 		TEST BEGIN: Branch fail creation due to wrong username 
     	*****************************************************************************************/
 
-		//$this->assertFalse($this->source_code($mock_POST, $db));
+		$this->assertFalse($this->source_code($mock_POST, $db));
 
 		/****************************************************************************************
 		TEST BEGIN: Branch failed sign due to wrong password
@@ -141,7 +141,7 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 
     	*****************************************************************************************/
 
-		//$this->assertTrue($this->source_code($mock_POST, $db));
+		$this->assertTrue($this->source_code($mock_POST, $db));
 
 		/****************************************************************************************
 		TEST BEGIN: Branch successful with email
@@ -161,7 +161,7 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 		TEST BEGIN: Branch successful with email
 
     	*****************************************************************************************/
-		//$this->assertTrue($this->source_code($mock_POST, $db));
+		$this->assertTrue($this->source_code($mock_POST, $db));
       
 		}
 
