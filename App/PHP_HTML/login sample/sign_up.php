@@ -1,6 +1,11 @@
 <?php
 include "../sql_connector.php";
 
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 function CloseCon($db)
 {
     $db->close();
@@ -40,6 +45,26 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
 
     $query = "INSERT INTO `users` (user_name, user_pass, user_email, user_birthDate, user_gender, user_date, user_answer1, user_answer2, user_answer3) VALUES ('$user_name', '$user_pass', '$user_email', '$dateOfBirth', '$gender', now(), '$answer1', '$answer2', '$answer3')";
     $result = mysqli_query($db, $query);
+
+    //once sign up is successful, automatically log the user in and generate a welcome message with session
+    $_SESSION['auth'] = "True";
+    $_SESSION['user_name'] = $user_name;
+    $user_id_check_query = "SELECT user_id FROM users WHERE user_name = '$user_name' AND user_email='$user_email' LIMIT 1";
+    $result = mysqli_query($db, $user_id_check_query);
+    $user_id = mysqli_fetch_assoc($result);
+    $_SESSION['user_id'] = $user_id['user_id'];
+
+
+    //add a welcome message to user inbox
+
+    $query = "insert into notification (notification_title, notification_date, notification_content) values('Welcome to Okapi!',NOW(), 'Hi $user_name, <br/> <br/> welcome to Okapi.com, a platform that allows user to exchange questions and share knowledges! <br/> <br/> On behalf of the Okapi team, we wish you a pleasant journey. <br/><br/> Sincerely, <br/> Team Okapi')";
+    $notice_result = mysqli_query($db, $query);
+    $latest_local_notification_id = mysqli_fetch_assoc(mysqli_query($db, "SELECT LAST_INSERT_ID() as 'result'"))['result'];
+    $user_id = $user_id['user_id'];
+    $sql = "insert into notification_user (notification_id, user_id) values ('$latest_local_notification_id', '$user_id')";
+    mysqli_query($db, $sql);
+    // TO CHANGE PATH ON AWS
+    header('Location: okapi/SOEN341-SA1/App/home.php');
 } else if (isset($_POST['submitform']) && $_POST['user_pass'] != $_POST['cpassword']) {
     ?>
     <script type="text/javascript">alert("two passwords do not match. Try again!");</script>
@@ -250,13 +275,6 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script>
-window.onbeforeunload = function(e) {
-  var dialogText = 'Do you want to leave this site?';
-  e.returnValue = dialogText;
-  return dialogText;
-};
-</script>
 
 </body>
 </html>
