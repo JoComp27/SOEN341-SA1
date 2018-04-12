@@ -1,7 +1,7 @@
 <?php
 class Sign_upTest extends PHPUnit\Framework\TestCase{
 
-    public function sign_upTest(){
+    public function testTest1(){
     	/*Test description: Interface/component + db test
     	  Coverage: 
 			Unit Coverage: sign_up.php 
