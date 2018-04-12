@@ -299,10 +299,10 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 
 		private function source_code(){
 			/*contains source code under test*/
-				if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
+				if (isset($mock_POST['submitform']) && $mock_POST['user_pass'] == $mock_POST['cpassword']) {
 
-		    $user_name = mysqli_real_escape_string($db, $_POST['user_name']);
-		    $user_email = mysqli_real_escape_string($db, $_POST['user_email']);
+		    $user_name = mysqli_real_escape_string($db, $mock_POST['user_name']);
+		    $user_email = mysqli_real_escape_string($db, $mock_POST['user_email']);
 
 
 		    $user_check_query = "SELECT * FROM users WHERE user_name ='$user_name' OR user_email='$user_email' LIMIT 1";
@@ -323,12 +323,12 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 		        }
 		    }
 
-		    $answer1 = $_POST['answer1'];
-		    $answer2 = $_POST['answer2'];
-		    $answer3 = $_POST['answer3'];
-		    $user_pass = md5($_POST['user_pass']);
-		    $dateOfBirth = $_POST['year'] . "-" . $_POST['month'] . "-" . $_POST['day'];
-		    $gender = $_POST['gender'];
+		    $answer1 = $mock_POST['answer1'];
+		    $answer2 = $mock_POST['answer2'];
+		    $answer3 = $mock_POST['answer3'];
+		    $user_pass = md5($mock_POST['user_pass']);
+		    $dateOfBirth = $mock_POST['year'] . "-" . $mock_POST['month'] . "-" . $mock_POST['day'];
+		    $gender = $mock_POST['gender'];
 
 
 		    $query = "INSERT INTO `users` (user_name, user_pass, user_email, user_birthDate, user_gender, user_date, user_answer1, user_answer2, user_answer3) VALUES ('$user_name', '$user_pass', '$user_email', '$dateOfBirth', '$gender', now(), '$answer1', '$answer2', '$answer3')";
