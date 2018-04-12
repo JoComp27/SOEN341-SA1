@@ -197,7 +197,7 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 		$this->assertTrue($this->source_code($mock_POST, $db));
        	
       
-}
+		}
 
 
 
@@ -227,7 +227,8 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 				   // header('Location: sign_in_submission.php');
 				    return true;
 
-				} else {
+				} 
+				else {
 				    $sql3 = "SELECT * from users where user_name = '" . $enteredUserinfo . "'";
 				    $sql4 = "SELECT * from users where user_email = '" . $enteredUserinfo . "'";
 				    $result3 = $db->query($sql3);
@@ -238,7 +239,8 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 				    if ((mysqli_num_rows($result3) == 0) && (mysqli_num_rows($result4) == 0)) {
 				        $problem .= "User name / email does not exist.<br><br>";
 				        return false;
-				    } elseif ((mysqli_num_rows($result1) == 0) && (mysqli_num_rows($result2) == 0)) {
+				    } 
+				    elseif ((mysqli_num_rows($result1) == 0) && (mysqli_num_rows($result2) == 0)) {
 				        $problem .= "Incorrect password.<br><br>";
 				        return false;
 				    }
@@ -250,8 +252,8 @@ class SignInTest extends PHPUnit\Framework\TestCase{
 
 				    $url = "Location: sign_in_normal.php?problem=$problem";
 				    //header($url);
-				    exit;
 				}
+			}
 }
 
 ?>
