@@ -14,12 +14,14 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 				- 3) User must confirm password selection. If 2 password do not matched, fails to create new user
 					Both positive and negative branches tested with representative class/asserts
 				Not covered:
-					- session cookie creation (simulated with stubs)
+					- session cookie creation
+							Simulated with stubs, covered by Acceptance test. No branch statements. 
 					- redirect to home page upon successful sign up
+							Covered by Acceptance test
 					- Username must be unique, else fails to create new user
-					 		Handlers outside scope of test (javascript based)
+					 		Handlers outside scope of test (javascript based), covered by Acceptance test
 					- Email must be unique, else fails to create new user
-							Handlers outside scope of test (javascript based)
+							Handlers outside scope of test (javascript based), covered by Acceptance test
 
 			Database coverage:
 				- a) User passwords are salted and encrypted
@@ -96,8 +98,8 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 		
 		$mock_POST = [
 				"submitform" => true,
-				"user_name" => "test_user_1",
-				"user_email" => "test1@gmail.com",
+				"user_name" => "test_user_3",
+				"user_email" => "test3@gmail.com",
 				"answer1" => "secret1",
 				"answer2" => "secret2",
 				"answer3" => "secret2",
@@ -180,6 +182,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
        	// Asserting results of failed tests. 
        	// Expected output: all data count should remain the same as no new user should be created. 
        	// Expected results: assertTrue x 3
+       	
 		
 		$comparator_count1=mysqli_num_rows($db->query("select * from users"));
 

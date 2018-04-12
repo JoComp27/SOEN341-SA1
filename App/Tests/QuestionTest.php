@@ -5,8 +5,10 @@ session_start();
 class QuestionTest extends PHPUnit\Framework\TestCase{
 
     public function testTest1(){
-    	/*Interface/component test 
-			- Assert
+    	/*Interface/component + db test 
+			Coverages:
+				- Negative Tag results | Positive Tag results
+				- 
 			
     	*/
 
@@ -21,8 +23,8 @@ class QuestionTest extends PHPUnit\Framework\TestCase{
 
         $db = new mysqli('localhost', $user, $password, $database) or die("Connection failed");
 
-        $db->query("drop table questions if exists");
-        $query = 'CREATE TABLE questions (
+        //$db->query("drop table questions if exists");
+        $query = 'CREATE TABLE if not exists questions (
 				question_id INT(16) NOT NULL AUTO_INCREMENT,
 				question_title VARCHAR(255),
 				question_date DATETIME,
