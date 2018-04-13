@@ -37,7 +37,7 @@ include('sql_connector.php');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home.php"><img id="img" src="login sample/logo.png"></a>
+            <a class="navbar-brand" href="home.php"><img id="img" src="Login SignUp/logo.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,14 +61,14 @@ include('sql_connector.php');
 
             </ul>
             <!--  calling search.php for issue#68 -->
-            <form action="search.php" method="GET">
+            <form action="Search/search.php" method="GET">
                 <input type="text" name="query"/>
                 <input type="submit" value="Search"/>
             </form>
             <?php if (!isset($_SESSION['auth'])) {
                 echo '<ul class="nav navbar-nav navbar-right">
-                <li><a href="login sample/sign_in_merge_options.php">Sign In</a></li>
-                <li><a href="login sample/sign_up.php">Sign Up</a></li>
+                <li><a href="Login SignUp/sign_in_merge_options.php">Sign In</a></li>
+                <li><a href="Login SignUp/sign_up.php">Sign Up</a></li>
             </ul>';
             } else {
                 $id = $_SESSION['user_id'];
@@ -76,9 +76,9 @@ include('sql_connector.php');
                 $notification_count = mysqli_fetch_assoc(mysqli_query($db, $sql))['result'];
                 echo '<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"> Welcome ' . strtoupper($_SESSION['user_name']) . '</a></li>
-                <li><a href="settings.php">Settings</a></li>
-                <li><a href="profile.php"> Profile</a></li>
-				<li><a href="login sample/sign_in_already_signed.php">Log Off</a></li>
+                <li><a href="Settings/settings.php">Settings</a></li>
+                <li><a href="Profile/profile.php"> Profile</a></li>
+				<li><a href="Login SignUp/sign_in_already_signed.php">Log Off</a></li>
             </ul>';
                 echo '<button class="navbar-toggle collapsed">...</button>
 

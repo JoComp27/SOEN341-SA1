@@ -91,8 +91,8 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
 
     <style type="text/css">
 
-        #form{
-            text-align:center;
+        #form {
+            text-align: center;
         }
 
         div.ttip {
@@ -249,11 +249,11 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
             <option value="1995">1995</option>
         </select><br><br>
         <h3 id="bd">Security Questions: </h3>
-        <div id="q1">Mother's maiden name: </div>
+        <div id="q1">Mother's maiden name:</div>
         <input required type="answer1" name="answer1" placeholder="Answer"><br>
-        <div id="q2">Childhood bestfriend: </div>
+        <div id="q2">Childhood bestfriend:</div>
         <input required type="answer2" name="answer2" placeholder="Answer"><br>
-        <div id="q3">Favourite restaurant: </div>
+        <div id="q3">Favourite restaurant:</div>
         <input required type="answer3" name="answer3" placeholder="Answer"><br>
         <br>
         <br>

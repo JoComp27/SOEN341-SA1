@@ -13,7 +13,6 @@ body {
     padding-top: 30px;
     padding-left: 10px;
     padding-right: 10px;
-
 }
 
 .navbar-brand > img {
@@ -32,7 +31,6 @@ a.navbar-brand {
     display: inline-block;
     text-align: center;
     width: 80%;
-
 }
 
 .content input {
@@ -44,12 +42,10 @@ a.navbar-brand {
     margin: 0;
     padding-left: 10px;
     font-weight: bold;
-
 }
 
 nav.navbar.navbar-inverse.navbar-fixed-top {
     background: rgba(254, 180, 170, 0.95);
-
 }
 
 .navbar-inverse {
@@ -74,14 +70,14 @@ input#Female {
     font-weight: normal;
 }
 
-input[type="text"]{
+input[type="text"] {
     width: 80%;
 }
 
-input[type="password"]{
+input[type="password"] {
     width: 80%;
 }
 
-input[type="email"]{
+input[type="email"] {
     width: 80%;
 }
