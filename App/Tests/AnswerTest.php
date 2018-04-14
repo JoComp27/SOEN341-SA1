@@ -101,6 +101,8 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
     	$baseline_count2=mysqli_num_rows($db->query("select * from notification"));
     	$baseline_count3=mysqli_num_rows($db->query("select * from notification_user"));
 
+    	$mock_POST = [];
+
     	$this->source_code($mock_POST, null, $db, $data);
 
     	$comparator_count1=mysqli_num_rows($db->query("select * from answers"));
