@@ -3,7 +3,7 @@ session_start();
 
 class AnswerTest extends PHPUnit\Framework\TestCase{
 	/** @test */
-	/*
+	
     public function testTest1(){
     	/*Test description: Interface/component + db test
     	  Coverage: 
@@ -25,7 +25,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
 
     	/****************************************************************************************
 		The following is a stub running on Travis CI that simulates the website's mySQL database: table users
-		*/	
+		*/
 		
     	$user   = 'root';
         $password   = '';
