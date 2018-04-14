@@ -32,14 +32,14 @@ function displayQuestions($db, $SqlQuestionQuery)
                    ';
             while ($tag = mysqli_fetch_row($tag_data)) {
                 echo ' 
-                          <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> 
+                          <a href = "./Tags/tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> 
                           ';
             }
             echo '
                   </p>
                 </div>
                 <div class = "col-md-7 col-sm-7 col-xs-7">
-                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"] . '</h4></a>
+                  <a href = "./Answer/answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4 style="padding-left:15%">' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>

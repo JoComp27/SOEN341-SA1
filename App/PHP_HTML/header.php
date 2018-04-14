@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
 ?>
 
 <?php
-include('sql_connector.php');
+include('/SOEN341-SA1/APP/PHP_HTML/sql_connector.php');
 ?>
 <!DOCTYPE html>
 
@@ -21,7 +21,7 @@ include('sql_connector.php');
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="question_ask_button.js"></script>
-    <script type="text/javascript" src="../../BootstrapLibrary/BootstrapTags/bootstrap-tagsinput.js"></script>
+    <script type="text/javascript" src="/SOEN341-SA1/APP/BootstrapLibrary/BootstrapTags/bootstrap-tagsinput.js"></script>
 
 </head>
 <body>
@@ -37,7 +37,7 @@ include('sql_connector.php');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home.php"><img id="img" src="Login SignUp/logo.png"></a>
+            <a class="navbar-brand" href="/SOEN341-SA1/APP/PHP_HTML/home.php"><img id="img" src="/SOEN341-SA1/APP/PHP_HTML/LoginSignUp/logo.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -67,8 +67,8 @@ include('sql_connector.php');
             </form>
             <?php if (!isset($_SESSION['auth'])) {
                 echo '<ul class="nav navbar-nav navbar-right">
-                <li><a href="Login SignUp/sign_in_merge_options.php">Sign In</a></li>
-                <li><a href="Login SignUp/sign_up.php">Sign Up</a></li>
+                <li><a href="LoginSignUp/sign_in_merge_options.php">Sign In</a></li>
+                <li><a href="LoginSignUp/sign_up.php">Sign Up</a></li>
             </ul>';
             } else {
                 $id = $_SESSION['user_id'];
@@ -78,7 +78,7 @@ include('sql_connector.php');
 				<li><a href="#"> Welcome ' . strtoupper($_SESSION['user_name']) . '</a></li>
                 <li><a href="Settings/settings.php">Settings</a></li>
                 <li><a href="Profile/profile.php"> Profile</a></li>
-				<li><a href="Login SignUp/sign_in_already_signed.php">Log Off</a></li>
+				<li><a href="LoginSignUp/sign_in_already_signed.php">Log Off</a></li>
             </ul>';
                 echo '<button class="navbar-toggle collapsed">...</button>
 

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <script type="text/javascript" src="../nicEdit.js"></script>
+    <script type="text/javascript" src="../Question/nicEdit.js"></script>
     <script type="text/javascript">
         bkLib.onDomLoaded(function () {
             nicEditors.editors.push(
