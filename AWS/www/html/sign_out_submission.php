@@ -22,6 +22,6 @@ if (ini_get("session.use_cookies")) {
 
 // Finally, destroy the session.
 session_destroy();
-header('Location: home.php');
+header('Location: sign_in_merge_options.php');
 exit;
 ?>

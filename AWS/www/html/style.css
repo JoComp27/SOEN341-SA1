@@ -17,7 +17,7 @@ input#Female {
 
 #form{
 	margin:0 auto;
-	background: linear-gradient(to right, rgb(254, 180, 123), rgb(255, 126, 95));
+	background: rgba(200, 200, 240, 0.75);
 }
 
 .content select{

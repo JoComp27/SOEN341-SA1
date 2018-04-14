@@ -10,11 +10,21 @@ if (!isset($_SESSION)) {
 
 <html>
 <head>
+	
     <link href="profile.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script>
+    <link rel="stylesheet" type="text/css" href="home.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<?php include "header.php"?>
+	<?php include "question_display.php"?>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+	
+	<script>
         // Reference: https://www.w3schools.com/howto/howto_js_tabs.asp
-        function openTab(evt, cityName) {
+        function openTab(evt, obj) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -24,14 +34,11 @@ if (!isset($_SESSION)) {
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(cityName).style.display = "block";
+            document.getElementById(obj).style.display = "block";
             evt.currentTarget.className += " active";
         }
+		
     </script>
-
-    <?php include "header.php" ?>
-    <link rel="stylesheet" type="text/css" href="home.css">
-
 </head>
 
 <body>
@@ -47,9 +54,11 @@ $sql = mysqli_query($db, $select_query);
 $user = mysqli_fetch_assoc($sql);
 ?>
 
+<!--Start of big div -->
 <div class="c1">
     <h1 class="">Welcome to <?php echo $user['user_name'] ?>'s profile page!</h1>
     <div>
+	<!-- Display user's icon based on his/her gender -->
         <a href="" class="">
             <?php if ($user['user_gender'] == 'M')
                 $imgName = "person-flat.png";
@@ -61,11 +70,13 @@ $user = mysqli_fetch_assoc($sql);
         </a>
     </div>
 
-    <button type="button" class="btn btn-success" onclick="">Subscribe to me!</button>
+	<!--Inactive buttons -->
+    <button type="button" class="btn btn-success">Subscribe to me!</button> <!-- adds a follower to one user from the other who's session is connected-->
     <button type="button" class="btn btn-info">Send me a message</button>
     </br></br>
-
-    <table class="aboutme">
+	
+	<!--Displays basic information about user's profile -->
+    <table class="t2">
         <tr>
             <th>About Me!</th>
             <th></th>
@@ -84,54 +95,67 @@ $user = mysqli_fetch_assoc($sql);
         </tr>
     </table>
     </br>
+	
 
     <!--Reference: https://www.w3schools.com/howto/howto_css_icon_bar.asp -->
+	<!-- This tab bar lets you navigate to view user's information and activity  -->
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'about')"><a class="active" href="#"><i
-                        class="fa fa-address-card"></i></a></button>
-        <button class="tablinks" onclick="openTab(event, 'mail')"><a href="#"><i class="fa fa-envelope"></i></a>
+		<!--Opens the activity tab -->
+        <button class="tablinks" onclick="openTab(event, 'activity')"><a class="active" href="#"><i class="fa fa-line-chart"></i></a>
         </button>
-        <button class="tablinks" onclick="openTab(event, 'activity')"><a href="#"><i class="fa fa-line-chart"></i></a>
-        </button>
+		<!--Opens the question tab which displays all the questions the user asked -->
+		<button class="tablinks" onclick="openTab(event, 'question_mark')"><a href="#"><i class="fa fa-question"></i></a>
+		</button>
+		<!-- Opens the edit profile tab-->
         <button class="tablinks" onclick="openTab(event, 'edit')"><a href="#"><i class="fa fa-edit"></i></a></button>
     </div>
-
+	
+	<!-- Reference: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_progressbar3&stacked=h -->
+	<!-- Added a progress bar to illustrate user's activity and personal information -->
     <div id="activity" class="tabcontent">
         <table class="t2">
             <tr>
-                <th><h3>Activity</h3></th>
+                <th><h2> User's Activity : </h2></th>
             </tr>
             <tr>
                 <td>
-                    <ul class="">
-                        <li class=""><strong class="">Questions asked: <?php echo $user['user_questions_count']; ?></strong></li>
-                        <li class=""><strong class="">Answers: <?php echo $user['user_answers_count']; ?></strong></li>
-                        <li class=""><strong class="">Likes</strong></li>
-                        <li class=""><strong class="">Followers</strong></li>
-                    </ul>
+				<ul>
+					<div class="">
+						<!--Displays the number of questions asked -->
+						<h4> Questions asked : </h4>
+						<ul><div class="progress">
+							<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $user['user_questions_count']; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $user['user_questions_count']; ?>%">
+								<?php echo $user['user_questions_count']; ?> 
+							</div> 
+						</div></ul>
+						
+						<!--Displays the number of answers -->
+						<h4> Number of Answers: </h4>
+						<ul><div class="progress">
+							<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="<?php echo $user['user_answers_count']; ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?php echo $user['user_answers_count']; ?>%">
+								<?php echo $user['user_answers_count']; ?> 
+							</div>
+						</div></ul>
+					</div>
+				</ul>	
                 </td>
             </tr>
         </table>
     </div>
 
-    <div id="mail" class="tabcontent">
+	<!--Displays every questions that user ever asked -->
+	<div id="question_mark" class="tabcontent">
         <table class="t2">
             <tr>
-                <th><h3> E-mail</h3></th>
+                <th><h3> Questions from user:</h3></th><br>
             </tr>
             <tr>
-                <td><?php echo $user['user_email']; ?></td>
-            </tr>
-        </table>
-    </div>
-
-    <div id="about" class="tabcontent">
-        <table class="t2">
-            <tr>
-                <th><h3> User's bio: </h3></th>
-            </tr>
-            <tr>
-                <td><?php echo $user['user_profile_description_long']; ?></td>
+                <td  class="showquestion">
+					<?php
+						$usr_id = $user['user_id'];
+						displayQuestions($db, 'SELECT * FROM questions WHERE question_by = '.$usr_id.' order by question_date desc');
+					?>
+				</td>
             </tr>
         </table>
     </div>
@@ -139,13 +163,17 @@ $user = mysqli_fetch_assoc($sql);
     <div id="edit" class="tabcontent">
         <table class="t2">
             <tr>
-                <th><h3> Edit profile </h3></th>
-            </tr>
-            <tr>
-                <td><?php echo $user['user_profile_description_long']; ?></td>
+                <th>
+					<h3> Edit profile </h3>
+					<!-- link that directs to user's settings-->
+					<a href="settings.php"> Click here to change settings! </a>
+				</th>
             </tr>
         </table>
     </div></br>
-</div>
+	
+<!--End of big div -->
+	</div> 
+	
 </body>
 </html>
