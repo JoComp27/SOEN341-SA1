@@ -116,7 +116,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 		/*Collect baseline stats pre test*/
     	$baseline_count1=mysqli_num_rows($db->query("select * from users"));
     	$baseline_count2=mysqli_num_rows($db->query("select * from notification"));
-    	$baseline_count3=mysqli_num_rows($db->query("select * from notification"));
+    	$baseline_count3=mysqli_num_rows($db->query("select * from notification_user"));
 
 
     	/****************************************************************************************
@@ -137,7 +137,7 @@ class SignupTest extends PHPUnit\Framework\TestCase{
 
        	$comparator_count1=mysqli_num_rows($db->query("select * from users"));
     	$comparator_count2=mysqli_num_rows($db->query("select * from notification"));
-    	$comparator_count3=mysqli_num_rows($db->query("select * from notification"));
+    	$comparator_count3=mysqli_num_rows($db->query("select * from notification_user"));
 
     	$this->assertTrue($comparator_count1 == ($baseline_count1 + 1));
     	$this->assertTrue($comparator_count2 == ($baseline_count2 + 1));
