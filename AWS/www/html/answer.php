@@ -150,12 +150,14 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                     onclick="QuestionIncrementLike(<?php echo $qus_id; ?>)">
                 <a class="social-question-like">
 
-                    <?php if (mysqli_num_rows(mysqli_query($db, "SELECT * from question_userlikes where user_id='$id' AND question_id='$qus_id'")) != 0) { ?>
+                    <?php
+                    $currentUserID = $_SESSION['user_id'];
+                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from question_userlikes where user_id='$currentUserID' AND question_id='$qus_id'")) != 0) { ?>
                         <span class="question-like"><i class="glyphicon glyphicon-arrow-up"
                                                        style="color:rgb(0,0,0)"></i></span>
                     <?php } else { ?>
                         <span class="question-like"><i class="glyphicon glyphicon-arrow-up"
-                                                       style="color:rgba(0,0,0,0.5)"></i></span>
+                                                       style="color:rgba(0,0,0,0.30)"></i></span>
                     <?php } ?>
                     <span class="count"> <?php echo $data['question_upvotes']; ?> </span>
                 </a>&nbsp;
@@ -165,12 +167,12 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                     onclick="QuestionIncrementDislike(<?php echo $qus_id; ?>)">
                 <a class="social-question-dislike">
                     <span class="question-dislike"> <?php echo $data['question_downvotes']; ?>
-                        <?php if (mysqli_num_rows(mysqli_query($db, "SELECT * from question_userdislikes where user_id='$id' AND question_id='$qus_id'")) != 0) { ?>
+                        <?php if (mysqli_num_rows(mysqli_query($db, "SELECT * from question_userdislikes where user_id='$currentUserID' AND question_id='$qus_id'")) != 0) { ?>
                             <span class="like"><i class="glyphicon glyphicon-arrow-down"
                                                   style="color:rgb(0,0,0)"></i></span>
                         <?php } else { ?>
                             <span class="like"><i class="glyphicon glyphicon-arrow-down"
-                                                  style="color:rgba(0,0,0,0.5)"></i></span>
+                                                  style="color:rgba(0,0,0,0.30)"></i></span>
                         <?php } ?>
                      </span>
                 </a>
@@ -221,11 +223,11 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <button type="vote_button" id="incrementalbutton" name="button1"
                     onclick="AnswerIncrementLike(<?php echo $get_answers['answers_id']; ?>)">
                 <a class="social-like">
-                    <?php if (mysqli_num_rows(mysqli_query($db, "SELECT * from answers_userlikes where user_id='$id' AND answer_id='$answer_id'")) != 0) { ?>
+                    <?php if (mysqli_num_rows(mysqli_query($db, "SELECT * from answers_userlikes where user_id='$currentUserID' AND answer_id='$answer_id'")) != 0) { ?>
                         <span class="like"><i class="glyphicon glyphicon-thumbs-up" style="color:rgb(0,0,0)"></i></span>
                     <?php } else { ?>
                         <span class="like"><i class="glyphicon glyphicon-thumbs-up"
-                                              style="color:rgba(0,0,0,0.5)"></i></span>
+                                              style="color:rgba(0,0,0,0.30)"></i></span>
                     <?php } ?>
                     <span class="count"> <?php echo $get_answers['answers_upvotes']; ?> </span>
                 </a>&nbsp;
@@ -237,10 +239,10 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                     <span class="dislike"> <?php echo $get_answers['answers_downvotes']; ?> </span>
 
                     <?php
-                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from answers_userdislikes where user_id='$id' AND answer_id='$answer_id'")) != 0) {
+                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from answers_userdislikes where user_id='$currentUserID' AND answer_id='$answer_id'")) != 0) {
                         echo '<span class="dislikeA"><i class="glyphicon glyphicon-thumbs-down" style="color:rgb(0,0,0)"></i></span>';
                     } else {
-                        echo '<span class="dislikeA"><i class="glyphicon glyphicon-thumbs-down" style="color:rgba(0,0,0,0.5)"></i></span>';
+                        echo '<span class="dislikeA"><i class="glyphicon glyphicon-thumbs-down" style="color:rgba(0,0,0,0.30)"></i></span>';
                     } ?>
 
                 </a>&nbsp;
