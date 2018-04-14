@@ -89,7 +89,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
     	$db->query($sql);
 
 
-    	$qus_id = $_GET['id'];
+    	$qus_id = '1';
 
 		$select_query = "select * from questions where question_id = '$qus_id'";
 		$question_data = mysqli_query($db, $select_query) or die(mysqli_error($db));
