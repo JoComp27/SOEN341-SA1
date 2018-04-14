@@ -1,6 +1,6 @@
 <?php
 
-include("sqL_connector.php");
+include("sql_connector.php");
 include_once 'securimage/securimage.php';
 
 if (!isset($_SESSION)) {

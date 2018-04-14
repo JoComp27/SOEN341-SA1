@@ -1,5 +1,5 @@
 <?php
-include ("../sqL_connector.php");
+include ("../sql_connector.php");
 if (!isset($_SESSION)) {
     session_start();
 }

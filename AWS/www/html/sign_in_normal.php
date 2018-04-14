@@ -1,4 +1,4 @@
-<?php include("sqL_connector.php") ?>
+<?php include("sql_connector.php") ?>
 
 <!DOCTYPE html>
 <html>
