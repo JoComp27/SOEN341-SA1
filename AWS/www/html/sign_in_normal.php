@@ -28,7 +28,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../home.php"><img id="img" src="logo.png"></a>
+            <a class="navbar-brand" href="home.php"><img id="img" src="logo.png"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -51,11 +51,11 @@
         <br><br>
         <input required id="password" type="password" name="user_pass" placeholder="Password"><br><br>
         <div id="captcha-input">
-            <img id="captcha" src="../securimage/securimage_show.php" alt="CAPTCHA Image"/>
+            <img id="captcha" src="securimage/securimage_show.php" alt="CAPTCHA Image"/>
             <br><br>
             <p>Please enter the text in the image:<br>
                 <a href="#"
-                   onclick="document.getElementById('captcha').src = '../securimage/securimage_show.php?' + Math.random(); return false">
+                   onclick="document.getElementById('captcha').src = 'securimage/securimage_show.php?' + Math.random(); return false">
                         (click here to change the captcha)
                 </a>
             </p>

@@ -138,7 +138,7 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../home.php"><img id="img" src="logo.png"></a>
+            <a class="navbar-brand" href="home.php"><img id="img" src="logo.png"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">

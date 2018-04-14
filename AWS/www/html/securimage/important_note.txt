@@ -1,1 +1,0 @@
-Please copy past securimage from App folder. Intentional left from built due to size

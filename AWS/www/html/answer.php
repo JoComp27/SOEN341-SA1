@@ -180,7 +180,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         <?php
         $question_by_id = $data['question_by'];
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) { // only the user that created the question can delete it
-            include(__DIR__ . '\deleteQuestion\delete_question_view.php');
+            include('delete_question_view.php');
 
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
             $question_action = "question_modify.php?questionId=$qus_id";
@@ -249,8 +249,8 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         <li>
             <?php
             if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $answer_by_id) { // only the user that created the answer can delete it
-                include(__DIR__ . '\deleteAnswer\delete_answer_view.php');
-                include(__DIR__ . '\modifyAnswer\modify_answer_view.php');
+                include('delete_answer_view.php');
+                include('modify_answer_view.php');
             }; ?>
         </li>
         <br>
