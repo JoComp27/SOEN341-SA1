@@ -133,9 +133,14 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <br>
             <?php
             echo '<br> Associated Tags: ';
+            $tag_array[] = [];
             while ($tag = mysqli_fetch_row($tag_data)) {
                 echo ' <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
+                array_push($tag_array, $tag[0]);
             }
+            array_shift($tag_array);
+            $tagsValue = implode(",", $tag_array);
+
             echo '<br> by user: '; ?>
             <a href="profile.php?id=<?php
             $select_query = "SELECT * FROM users WHERE user_name='" . $data['question_by_user'] . "'";
@@ -183,7 +188,6 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         $question_by_id = $data['question_by'];
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) { // only the user that created the question can delete it
             include(__DIR__ . '\deleteQuestion\delete_question_view.php');
-
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
             $question_action = "question_modify.php?questionId=$qus_id";
             include('question_form.php');
