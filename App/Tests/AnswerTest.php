@@ -200,6 +200,5 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
 
 		   
 	}
-	*/
 }
 ?>
