@@ -197,6 +197,8 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
 		        $question_user_id = $data['question_by'];
 		        $sql = "insert into notification_user (notification_id, user_id) values ('$latest_local_notification_id', '$question_user_id')";
 		        mysqli_query($db, $sql);
+		    }
+		}
 
 		   
 	}
