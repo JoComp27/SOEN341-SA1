@@ -89,7 +89,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
     	$db->query($sql);
 
 
-    	$qus_id = '1';
+    	$qus_id = '0';
 
 		$select_query = "select * from questions where question_id = '$qus_id'";
 		$question_data = mysqli_query($db, $select_query) or die(mysqli_error($db));
@@ -103,7 +103,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
 
     	$mock_POST = [];
 
-    	$this->source_code($mock_POST, null, $db, $data);
+    	$this->source_code($mock_POST, null, $db, $data, $qus_id);
 
     	$comparator_count1=mysqli_num_rows($db->query("select * from answers"));
     	$comparator_count2=mysqli_num_rows($db->query("select * from notification"));
@@ -126,7 +126,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
     	$baseline_count2=mysqli_num_rows($db->query("select * from notification"));
     	$baseline_count3=mysqli_num_rows($db->query("select * from notification_user"));
 
-    	$this->source_code($mock_POST, $mock_REQUEST, $db, $data);
+    	$this->source_code($mock_POST, $mock_REQUEST, $db, $data, $qus_id);
 
     	$comparator_count1=mysqli_num_rows($db->query("select * from answers"));
     	$comparator_count2=mysqli_num_rows($db->query("select * from notification"));
@@ -145,7 +145,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
     	$baseline_count2=mysqli_num_rows($db->query("select * from notification"));
     	$baseline_count3=mysqli_num_rows($db->query("select * from notification_user"));
 
-    	$this->source_code($mock_POST, $mock_REQUEST, $db, $data);
+    	$this->source_code($mock_POST, $mock_REQUEST, $db, $data, $qus_id);
 
     	$comparator_count1=mysqli_num_rows($db->query("select * from answers"));
     	$comparator_count2=mysqli_num_rows($db->query("select * from notification"));
@@ -163,7 +163,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
     	$baseline_count2=mysqli_num_rows($db->query("select * from notification"));
     	$baseline_count3=mysqli_num_rows($db->query("select * from notification_user"));
 
-    	$this->source_code($mock_POST, $mock_REQUEST, $db, $data);
+    	$this->source_code($mock_POST, $mock_REQUEST, $db, $data, $qus_id);
 
     	$comparator_count1=mysqli_num_rows($db->query("select * from answers"));
     	$comparator_count2=mysqli_num_rows($db->query("select * from notification"));
@@ -175,7 +175,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase{
 
 	}
 
-	public function source_code($mock_POST, $mock_REQUEST, $db, $data){
+	public function source_code($mock_POST, $mock_REQUEST, $db, $data, $qus_id){
 
 
 		if (isset($mock_POST['submit']) && isset($_SESSION['user_id'])) {
