@@ -7,9 +7,21 @@ class QuestionTest extends PHPUnit\Framework\TestCase
     public function testTest1()
     {
         /*Interface/component + db test 
-            Coverages:
-                - Negative Tag results | Positive Tag results
-                - 
+            Coverages: question_submission.php |Partially covers tags systems
+                - 1) User cannot ask question if not logged in
+                     Both positive and negative branches tested
+                - 2) User sign in but has not submitted a question: no new questions will be added until submit form is pressed
+                     Both positive and negative branches tested
+                - 3) User sign in and submit a question with no tags: new question created with no new tag creation
+                     Scenario tested with representative class
+                - 4) User sign in and submit a question with tags: new question created with new tag creation matching number of tags
+                     Scenario tested with representative class: new question with 2 tags
+            Not covered:
+                - Search by tags, question display
+                     Covered by Acceptance tests
+                 
+             Database coverage
+             - tables: questions, tags, question_tags
             
         */
 
@@ -75,7 +87,7 @@ class QuestionTest extends PHPUnit\Framework\TestCase
         $comparator_count2 = mysqli_num_rows($db->query("SELECT * FROM tags"));
         $comparator_count3 = mysqli_num_rows($db->query("SELECT * FROM question_tags"));
 
-        $this->assertTrue($comparator_count1 == ($baseline_count1));
+        $this->assertTrue($comparator_count1 == ($baseline_count1)); //expecting no changes in db
         $this->assertTrue($comparator_count2 == ($baseline_count2));
         $this->assertTrue($comparator_count3 == ($baseline_count3));
 
