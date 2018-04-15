@@ -226,14 +226,14 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             echo $id;
             ?>"> <?php echo $get_answers['answers_by_user']; ?></a>
 
-            <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) {
-                include('answer_state_view.php');
-            } ?>
+            <?php include('answer_state_view.php'); ?>
+
             <?php
             $currentUserId = 0;
             if (isset($_SESSION['user_id'])) {
                 $currentUserId = $_SESSION['user_id'];
             } ?>
+
             <button type="vote_button" id="incrementalbutton" name="button1" <?PHP if($currentUserId == 0){ echo ' disabled '; }?>"
                     onclick="answerIncrementLike(<?php echo $get_answers['answers_id']; ?>)">
                 <a class="social-like">
