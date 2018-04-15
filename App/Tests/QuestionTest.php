@@ -71,7 +71,7 @@ class QuestionTest extends PHPUnit\Framework\TestCase
 
         $this->assertTrue($comparator_count1 == ($baseline_count1));
         $this->assertTrue($comparator_count2 == ($baseline_count2));
-        $this->assertTrue($comparator_count3 == ($baseline_count2));
+        $this->assertTrue($comparator_count3 == ($baseline_count3));
 
         //Test: User sign in, question 
         $_SESSION['auth'] = "True";
@@ -96,7 +96,7 @@ class QuestionTest extends PHPUnit\Framework\TestCase
 
         $this->assertTrue($comparator_count1 == ($baseline_count1 + 1));
         $this->assertTrue($comparator_count2 == ($baseline_count2));
-        $this->assertTrue($comparator_count3 == ($baseline_count2));
+        $this->assertTrue($comparator_count3 == ($baseline_count3));
 
         //Test: User sign in, 2 tags
         $_SESSION['auth'] = "True";
@@ -121,7 +121,7 @@ class QuestionTest extends PHPUnit\Framework\TestCase
 
         $this->assertTrue($comparator_count1 == ($baseline_count1 + 1));
         $this->assertTrue($comparator_count2 == ($baseline_count2 + 1));
-        $this->assertTrue($comparator_count3 == ($baseline_count2 + 2));
+        $this->assertTrue($comparator_count3 == ($baseline_count3 + 2));
 
 
     }
