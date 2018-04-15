@@ -113,8 +113,8 @@ class QuestionTest extends PHPUnit\Framework\TestCase
         $comparator_count3 = mysqli_num_rows($db->query("SELECT * FROM question_tags"));
 
         $this->assertTrue($comparator_count1 == ($baseline_count1 + 1));
-        //$this->assertTrue($comparator_count2 == ($baseline_count2));
-        $this->assertTrue($comparator_count3 == ($baseline_count3));
+        $this->assertTrue($comparator_count2 == ($baseline_count2));
+        //$this->assertTrue($comparator_count3 == ($baseline_count3));
 
         //Test: User sign in, 2 tags *********************
         $_SESSION['auth'] = "True";
