@@ -144,8 +144,8 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             echo '<br> by user: '; ?>
             <a href="profile.php?id=<?php
             $select_query = "SELECT * FROM users WHERE user_name='" . $data['question_by_user'] . "'";
-            $sql = mysqli_query($db, $select_query);
-            $get_users = mysqli_fetch_assoc($sql);
+            $sql2 = mysqli_query($db, $select_query);
+            $get_users = mysqli_fetch_assoc($sql2);
             $id = $get_users['user_id'];
             echo $id;
             ?>"><?php echo $data['question_by_user']; ?></a>
