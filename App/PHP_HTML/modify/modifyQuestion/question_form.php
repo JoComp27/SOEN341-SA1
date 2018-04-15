@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <script type="text/javascript" src="../../../../Library/nicEdit/nicEdit.js"></script>
+    <script type="text/javascript" src="\SOEN341-SA1\Library\bootstrapTagsLibrary\nicEdit\nicEdit.js"></script>
     <script type="text/javascript">
         bkLib.onDomLoaded(function () {
             nicEditors.editors.push(
@@ -17,7 +17,7 @@
 <body>
 
 <?php
-$modifyingQuestion = !(strpos($question_action, 'question_modify.php') === false);
+$modifyingQuestion = !(strpos($question_action, '\SOEN341-SA1\App\PHP_HTML\modify\modifyQuestion\question_modify.php') === false);
 ?>
 
 <form id="question-form" method="POST" action="<?php echo "$question_action" ?>"> <!-- generic action on question for
