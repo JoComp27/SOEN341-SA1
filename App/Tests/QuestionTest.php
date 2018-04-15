@@ -81,7 +81,7 @@ class QuestionTest extends PHPUnit\Framework\TestCase
 
         //Test: User sign in, question 
         $_SESSION['auth'] = "True";
-        $_SESSION['user_name'] = $user_name;
+        $_SESSION['user_name'] = 'test1';
         $_SESSION['user_id'] = 1;
 
         $mock_POST = [
