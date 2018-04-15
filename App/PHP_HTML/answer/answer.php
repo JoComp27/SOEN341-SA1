@@ -217,8 +217,8 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
 
             <a href="/SOEN341-SA1/App/PHP_HTML/answer/profile.php?id=<?php
             $select_query = "SELECT * FROM users WHERE user_name='" . $get_answers['answers_by_user'] . "'";
-            $sql = mysqli_query($db, $select_query);
-            $get_users = mysqli_fetch_assoc($sql);
+            $sql2 = mysqli_query($db, $select_query);
+            $get_users = mysqli_fetch_assoc($sql2);
             $id = $get_users['user_id'];
             echo $id;
             ?>"> <?php echo $get_answers['answers_by_user']; ?></a>
