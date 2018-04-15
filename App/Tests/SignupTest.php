@@ -96,7 +96,7 @@ class SignupTest extends PHPUnit\Framework\TestCase
         // Section pertain to test branch: SUCCESSFUL sign up
         /* Creating mock POST data */
         // Below is the mock user input for branch success case:
-
+      
 
         $mock_POST = [
             "submitform" => true,
@@ -119,7 +119,7 @@ class SignupTest extends PHPUnit\Framework\TestCase
         $baseline_count1 = mysqli_num_rows($db->query("SELECT * FROM users"));
         $baseline_count2 = mysqli_num_rows($db->query("SELECT * FROM notification"));
         $baseline_count3 = mysqli_num_rows($db->query("SELECT * FROM notification_user"));
-
+        $_SESSION = array();
         $this->assertFalse((isset($_SESSION["auth"]))); //user not yet logging, cannot have session
         /****************************************************************************************
          * TEST BEGIN: Branch successful creation
