@@ -12,7 +12,12 @@ class AnswerTest extends PHPUnit\Framework\TestCase
             Unit Coverage: answer.php 
 
             Functionality coverage:
-                - When user submit a question, 
+                - user not sign in and not submitted a question: should fail
+		- user not sign in and submitted a request: should fail
+		- user sign in and not submitted a request: should fail
+		- user sign in and  submitted a request: should succeed
+		- Original poster get notified when a user answers a question: partial db coverage
+
                 Not covered:
                 - One to many association between question and answers
                     Covered in acceptance test
@@ -20,7 +25,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase
                     Covered in acceptance test
 
             Database coverage:
-                - a) table answer insert
+                - a) table answer, notification
 
             Date last updated            By  
             2018-04-12                   MattYu
