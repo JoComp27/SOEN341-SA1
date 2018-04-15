@@ -40,8 +40,8 @@ class QuestionTest extends PHPUnit\Framework\TestCase
                 PRIMARY KEY (question_id)
                 )';
         $db->query($query);
-        $db->query("DROP TABLE tags IF EXISTS");
 
+        $db->query("DROP TABLE tags IF EXISTS");
         $query = 'CREATE TABLE tags (
                   tag_id   INT(16)      NOT NULL AUTO_INCREMENT, -
                   tag_name VARCHAR(255) NOT NULL,
@@ -51,8 +51,7 @@ class QuestionTest extends PHPUnit\Framework\TestCase
         $db->query($query);
 
         $db->query("DROP TABLE IF EXISTS question_tags");
-        $query = 'CREATE TABLE answers(
-                    CREATE TABLE question_tags (
+        $query = 'CREATE TABLE question_tags (
                     question_id INT(16) NOT NULL, 
                      tag_id      INT(16) NOT NULL,  
                      PRIMARY KEY (question_id, tag_id)
