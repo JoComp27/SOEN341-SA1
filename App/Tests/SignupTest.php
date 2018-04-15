@@ -16,19 +16,18 @@ class SignupTest extends PHPUnit\Framework\TestCase
                     Positive branch tested. 
                 - 3) User must confirm password selection. If 2 password do not matched, fails to create new user
                     Both positive and negative branches tested with representative class/asserts
+		- 4) Session cookie creation when successfully sign up (auto-loging)
+		    Positive and negative branches tested.
+		- 5) Username must be unique, else fails to create new user
+		- 6) Email must be unique, else fails to create new user
                 Not covered:
-                    - session cookie creation
-                            Simulated with stubs, covered by Acceptance test. No branch statements. 
                     - redirect to home page upon successful sign up
                             Covered by Acceptance test
-                    - Username must be unique, else fails to create new user
-                             Handlers outside scope of test (javascript based), covered by Acceptance test
-                    - Email must be unique, else fails to create new user
-                            Handlers outside scope of test (javascript based), covered by Acceptance test
+	            - User passwords are salted and encrypted
+		            Relies on built-in php functions - covered by inspection sample of mySQL databases. 
 
-            Database coverage:
-                - a) User passwords are salted and encrypted
-                - b) Table user, table notification, table notification_user
+            Database coverage
+                - a) Table user, table notification, table notification_user
                     Values are added to SQL table users and notification when 1),2) and 3) above meets conditions. Conditions and results tested with asserts.
 
             Date last updated            By  
@@ -121,7 +120,7 @@ class SignupTest extends PHPUnit\Framework\TestCase
         $baseline_count2 = mysqli_num_rows($db->query("SELECT * FROM notification"));
         $baseline_count3 = mysqli_num_rows($db->query("SELECT * FROM notification_user"));
 
-
+        $this->assertFalse((isset($_SESSION["auth"])); //user not yet logging, cannot have session
         /****************************************************************************************
          * TEST BEGIN: Branch successful creation
          *
@@ -141,12 +140,25 @@ class SignupTest extends PHPUnit\Framework\TestCase
         $comparator_count2 = mysqli_num_rows($db->query("SELECT * FROM notification"));
         $comparator_count3 = mysqli_num_rows($db->query("SELECT * FROM notification_user"));
 
-        $this->assertTrue($comparator_count1 == ($baseline_count1 + 1));
+        $this->assertTrue($comparator_count1 == ($baseline_count1 + 1)); //user count should increase
         $this->assertTrue($comparator_count2 == ($baseline_count2 + 1));
         $this->assertTrue($comparator_count3 == ($baseline_count3 + 1));
-
+        $this->assertFalse((isset($_SESSION["auth"])); //user should have a session 
+			   
+	//****************************************************************************************
+	// Failed test due to user already existing | we used the same user as above and attempt to sign him up again
+			   
+        $baseline_count1 = mysqli_num_rows($db->query("SELECT * FROM users"));
+        $baseline_count2 = mysqli_num_rows($db->query("SELECT * FROM notification"));
+        $baseline_count3 = mysqli_num_rows($db->query("SELECT * FROM notification_user"));
+	
+	$this->source_code($mock_POST, $db);	
+        $this->assertFalse($comparator_count1 == ($baseline_count1 + 1)); //user count should not increase
+        $this->assertFalse($comparator_count2 == ($baseline_count2 + 1));
+        $this->assertFalse($comparator_count3 == ($baseline_count3 + 1));
+			   
         //****************************************************************************************
-        // Section pertain to test branch: Fail sign up due to unmatching password
+        // Section pertain to test branch: Fail sign up due to unmatching password. With a new user this time
         /* Creating mock POST data */
         // Below is the mock user input for branch success case:
         $mock_POST = [
@@ -187,7 +199,8 @@ class SignupTest extends PHPUnit\Framework\TestCase
 
         $comparator_count1 = mysqli_num_rows($db->query("SELECT * FROM users"));
 
-        $this->assertTrue($comparator_count1 == ($baseline_count1));
+        $this->assertTrue($comparator_count1 == ($baseline_count1)); //user count should stay the same
+        
     }
 
 
@@ -217,7 +230,7 @@ class SignupTest extends PHPUnit\Framework\TestCase
                     <?php
                 }
             }
-
+            else{
             $answer1 = $mock_POST['answer1'];
             $answer2 = $mock_POST['answer2'];
             $answer3 = $mock_POST['answer3'];
@@ -246,6 +259,7 @@ class SignupTest extends PHPUnit\Framework\TestCase
             $user_id = $user_id['user_id'];
             $sql = "insert into notification_user (notification_id, user_id) values ('$latest_local_notification_id', '$user_id')";
             mysqli_query($db, $sql);
+	    }
         } else if (isset($mock_POST['submitform']) && $mock_POST['user_pass'] != $mock_POST['cpassword']) {
             ?>
             <script type="text/javascript">alert("two passwords do not match. Try again!");</script>
