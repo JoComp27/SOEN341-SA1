@@ -43,7 +43,7 @@ class QuestionTest extends PHPUnit\Framework\TestCase
 
         $db->query("DROP TABLE tags IF EXISTS");
         $query = 'CREATE TABLE tags (
-                  tag_id   INT(16)      NOT NULL AUTO_INCREMENT, -
+                  tag_id   INT(16)      NOT NULL AUTO_INCREMENT,
                   tag_name VARCHAR(255) NOT NULL,
                   UNIQUE INDEX tag_name_unique (tag_name),
                   PRIMARY KEY (tag_id)
