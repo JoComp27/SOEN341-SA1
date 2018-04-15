@@ -1,4 +1,4 @@
-<phpunit bootstrap="./App/Tests/phpunit.php">
+<phpunit bootstrap="./App/TESTS/phpunit.php">
 	<php>
         <var name="db_dsn" value="mysql:dbname=website_db;host=localhost"/>
         <var name="db_username" value="root"/>
