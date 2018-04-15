@@ -188,12 +188,11 @@ class QuestionTest extends PHPUnit\Framework\TestCase
                 window.location.href = "<?php echo $url?>"
             </script>
             <?php
-            exit;
-        } else {
-            echo "<div class='alert alert-danger'><strong>Error!</strong> Please Log in/Sign up to post a question.</div>";
+  
+        } 
+        else {
+            //echo "<div class='alert alert-danger'><strong>Error!</strong> Please Log in/Sign up to post a question.</div>";
         }
-
-
 
     }
 }
