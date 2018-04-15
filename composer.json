@@ -7,8 +7,5 @@
       "SOEN341-SA1\\src\\": "src/",
       "SOEN341-SA1\\src\\Tests": "Tests/"
     }
-  },
-  "require": {
-    "aws/aws-sdk-php": "2.*"
   }
 }

@@ -5,9 +5,9 @@ class ConnectorTest extends PHPUnit\Framework\TestCase
 {
     public function test()
     {
-        $user   = 'root';
-        $password   = '';
-        $database   = 'website_db';
+        $user = 'root';
+        $password = '';
+        $database = 'website_db';
 
         $link = new mysqli('localhost', $user, $password, $database) or die("Connection failed");
         $checker = False;
@@ -29,4 +29,5 @@ class ConnectorTest extends PHPUnit\Framework\TestCase
         $this->AssertTrue($checker);
     }
 }
+
 ?>

@@ -17,7 +17,7 @@ if (!isset($_SESSION)) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>check();</script>
     <script>
-        function QuestionIncrementLike(questionId) {
+        function questionIncrementLike(questionId) {
             <?php $qus_id = $_GET['id'];?>
             var link = "answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
@@ -27,7 +27,7 @@ if (!isset($_SESSION)) {
             window.location.href = link;
         }
 
-        function QuestionIncrementDislike(questionId) {
+        function questionIncrementDislike(questionId) {
             <?php $qus_id = $_GET['id'];?>
             var link = "answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
@@ -37,7 +37,7 @@ if (!isset($_SESSION)) {
             window.location.href = link;
         }
 
-        function AnswerIncrementLike(answerId) {
+        function answerIncrementLike(answerId) {
             <?php $qus_id = $_GET['id'];?>
             var link = "answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
@@ -47,7 +47,7 @@ if (!isset($_SESSION)) {
             window.location.href = link;
         }
 
-        function AnswerIncrementDislike(answerId) {
+        function answerIncrementDislike(answerId) {
             <?php $qus_id = $_GET['id'];?>
             var link = "answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
@@ -133,9 +133,14 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <br>
             <?php
             echo '<br> Associated Tags: ';
+            $tag_array[] = [];
             while ($tag = mysqli_fetch_row($tag_data)) {
                 echo ' <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
+                array_push($tag_array, $tag[0]);
             }
+            array_shift($tag_array);
+            $tagsValue = implode(",", $tag_array);
+
             echo '<br> by user: '; ?>
             <a href="profile.php?id=<?php
             $select_query = "SELECT * FROM users WHERE user_name='" . $data['question_by_user'] . "'";
@@ -145,33 +150,38 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             echo $id;
             ?>"><?php echo $data['question_by_user']; ?></a>
 
+            <?php
+            if (isset($_SESSION['user_id']) != 0){
+            $currentUserID = $_SESSION['user_id']; ?>
 
             <button type="vote_button" id="incrementalquestionbutton" name="button3"
-                    onclick="QuestionIncrementLike(<?php echo $qus_id; ?>)">
+                    onclick="questionIncrementLike(<?php echo $qus_id; ?>)">
                 <a class="social-question-like">
 
-                    <?php if (mysqli_num_rows(mysqli_query($db, "SELECT * from question_userlikes where user_id='$id' AND question_id='$qus_id'")) != 0) { ?>
+                    <?php
+                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from question_userlikes where user_id='$currentUserID' AND question_id='$qus_id'")) != 0) { ?>
                         <span class="question-like"><i class="glyphicon glyphicon-arrow-up"
                                                        style="color:rgb(0,0,0)"></i></span>
                     <?php } else { ?>
                         <span class="question-like"><i class="glyphicon glyphicon-arrow-up"
-                                                       style="color:rgba(0,0,0,0.5)"></i></span>
+                                                       style="color:rgba(0,0,0,0.30)"></i></span>
                     <?php } ?>
                     <span class="count"> <?php echo $data['question_upvotes']; ?> </span>
                 </a>&nbsp;
             </button>
 
             <button type="vote_button" id="decrementalquestionbutton" name="button4"
-                    onclick="QuestionIncrementDislike(<?php echo $qus_id; ?>)">
+                    onclick="questionIncrementDislike(<?php echo $qus_id; ?>)">
                 <a class="social-question-dislike">
                     <span class="question-dislike"> <?php echo $data['question_downvotes']; ?>
-                        <?php if (mysqli_num_rows(mysqli_query($db, "SELECT * from question_userdislikes where user_id='$id' AND question_id='$qus_id'")) != 0) { ?>
+                        <?php if (mysqli_num_rows(mysqli_query($db, "SELECT * from question_userdislikes where user_id='$currentUserID' AND question_id='$qus_id'")) != 0) { ?>
                             <span class="like"><i class="glyphicon glyphicon-arrow-down"
                                                   style="color:rgb(0,0,0)"></i></span>
                         <?php } else { ?>
                             <span class="like"><i class="glyphicon glyphicon-arrow-down"
-                                                  style="color:rgba(0,0,0,0.5)"></i></span>
-                        <?php } ?>
+                                                  style="color:rgba(0,0,0,0.30)"></i></span>
+                        <?php }
+                        } ?>
                      </span>
                 </a>
             </button>
@@ -181,7 +191,6 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         $question_by_id = $data['question_by'];
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) { // only the user that created the question can delete it
             include('delete_question_view.php');
-
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
             $question_action = "question_modify.php?questionId=$qus_id";
             include('question_form.php');
@@ -217,32 +226,35 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) {
                 include('answer_state_view.php');
             } ?>
-
+            <?php
+            if (isset($_SESSION['user_id']) != 0){
+            $currentUserID = $_SESSION['user_id']; ?>
             <button type="vote_button" id="incrementalbutton" name="button1"
-                    onclick="AnswerIncrementLike(<?php echo $get_answers['answers_id']; ?>)">
+                    onclick="answerIncrementLike(<?php echo $get_answers['answers_id']; ?>)">
                 <a class="social-like">
-                    <?php if (mysqli_num_rows(mysqli_query($db, "SELECT * from answers_userlikes where user_id='$id' AND answer_id='$answer_id'")) != 0) { ?>
+                    <?php
+                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from answers_userlikes where user_id='$currentUserID' AND answer_id='$answer_id'")) != 0) { ?>
                         <span class="like"><i class="glyphicon glyphicon-thumbs-up" style="color:rgb(0,0,0)"></i></span>
                     <?php } else { ?>
                         <span class="like"><i class="glyphicon glyphicon-thumbs-up"
-                                              style="color:rgba(0,0,0,0.5)"></i></span>
+                                              style="color:rgba(0,0,0,0.30)"></i></span>
                     <?php } ?>
                     <span class="count"> <?php echo $get_answers['answers_upvotes']; ?> </span>
                 </a>&nbsp;
             </button>
 
             <button type="vote_button" id="decrementalbutton" name="button2"
-                    onclick="AnswerIncrementDislike(<?php echo $get_answers['answers_id']; ?>)">
+                    onclick="answerIncrementDislike(<?php echo $get_answers['answers_id']; ?>)">
                 <a class="social-dislike">
                     <span class="dislike"> <?php echo $get_answers['answers_downvotes']; ?> </span>
 
                     <?php
-                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from answers_userdislikes where user_id='$id' AND answer_id='$answer_id'")) != 0) {
+                    if (mysqli_num_rows(mysqli_query($db, "SELECT * from answers_userdislikes where user_id='$currentUserID' AND answer_id='$answer_id'")) != 0) {
                         echo '<span class="dislikeA"><i class="glyphicon glyphicon-thumbs-down" style="color:rgb(0,0,0)"></i></span>';
                     } else {
-                        echo '<span class="dislikeA"><i class="glyphicon glyphicon-thumbs-down" style="color:rgba(0,0,0,0.5)"></i></span>';
+                        echo '<span class="dislikeA"><i class="glyphicon glyphicon-thumbs-down" style="color:rgba(0,0,0,0.30)"></i></span>';
+                    }
                     } ?>
-
                 </a>&nbsp;
             </button>
         </li>
@@ -258,12 +270,13 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
     } ?>
 </ul>
 <?php if (isset($_SESSION['auth'])) {
-    echo ' <form method="post" action="answer.php?id=' . $qus_id . '">
-    <div class="form-group">
-        <label for="comment">Comment:</label>
-        <textarea name="answer" required="" class="form-control" rows="5" id="comment"></textarea>
-    </div>
-    <button type="Submit" name="submit" class="btn btn-primary">Submit</button>
-</form>'; }?>
+    echo '<form method="post" action="answer.php?id=' . $qus_id . '">
+        <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea name="answer" required="" class="form-control" rows="5" id="comment"></textarea>
+        </div>
+        <button type="Submit" name="submit" class="btn btn-primary">Submit</button>
+    </form>';
+} ?>
 </body>
 </html>

@@ -27,7 +27,7 @@ $qt = $_GET['tag'];
 <!DOCTYPE html>
 <html>
 <head>
-<div class="container">
+
     <title>Tags</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,19 +37,20 @@ $qt = $_GET['tag'];
 </head>
 
 <body>
-<h2><?php echo $qt; ?></h2>
+<div class="container">
+    <h2><?php echo $qt; ?></h2>
 
-<table class="table">
-    <?php
-    displayQuestions($db, '
+    <table class="table">
+        <?php
+        displayQuestions($db, '
             SELECT * 
             FROM questions Q 
             INNER JOIN question_tags QT ON Q.question_id = QT.question_id 
             INNER JOIN tags T ON T.tag_id = QT.tag_id
             WHERE (T.tag_name = \'' . $qt . '\') AND (question_deleted = 0) 
-            order by question_date desc')
-    ?>
+            ORDER BY question_date DESC')
+        ?>
 
-</table>
+    </table>
 </div>
 </body>

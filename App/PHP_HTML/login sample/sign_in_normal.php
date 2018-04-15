@@ -1,4 +1,4 @@
-<?php include("../sqL_connector.php") ?>
+<?php include("../sql_connector.php") ?>
 
 <!DOCTYPE html>
 <html>
@@ -56,7 +56,7 @@
             <p>Please enter the text in the image:<br>
                 <a href="#"
                    onclick="document.getElementById('captcha').src = '../securimage/securimage_show.php?' + Math.random(); return false">
-                        (click here to change the captcha)
+                    (click here to change the captcha)
                 </a>
             </p>
             <input type="text" name="captcha_code" size="10" maxlength="6" required/><br><br>

@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
 ?>
 
 <?php
-include("sqL_connector.php");
+include("sql_connector.php");
 
 if (isset($_SESSION['auth'])) {
     include "home.php";

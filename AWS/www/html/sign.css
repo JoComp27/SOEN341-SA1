@@ -74,14 +74,14 @@ input#Female {
     font-weight: normal;
 }
 
-input[type="text"]{
+input[type="text"] {
     width: 80%;
 }
 
-input[type="password"]{
+input[type="password"] {
     width: 80%;
 }
 
-input[type="email"]{
+input[type="email"] {
     width: 80%;
 }

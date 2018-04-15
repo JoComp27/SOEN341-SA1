@@ -7,30 +7,30 @@
  * See https://github.com/dapphp/securimage/blob/master/README.md
  */
 
-var SecurimageAudio = function(options) {
-    this.html5Support    = true;
-    this.flashFallback   = false;
-    this.captchaId       = null;
-    this.playing         = false;
-    this.reload          = false;
-    this.audioElement    = null;
+var SecurimageAudio = function (options) {
+    this.html5Support = true;
+    this.flashFallback = false;
+    this.captchaId = null;
+    this.playing = false;
+    this.reload = false;
+    this.audioElement = null;
     this.controlsElement = null;
-    this.playButton      = null;
+    this.playButton = null;
     this.playButtonImage = null;
-    this.loadingImage    = null;
-    
+    this.loadingImage = null;
+
     if (options.audioElement) {
         this.audioElement = document.getElementById(options.audioElement);
     }
     if (options.controlsElement) {
         this.controlsElement = document.getElementById(options.controlsElement);
     }
-    
+
     this.init();
 }
 
-SecurimageAudio.prototype.init = function() {
-    var ua    = navigator.userAgent.toLowerCase();
+SecurimageAudio.prototype.init = function () {
+    var ua = navigator.userAgent.toLowerCase();
     var ieVer = (ua.indexOf('msie') != -1) ? parseInt(ua.split('msie')[1]) : false;
     // ie 11+ detection
     if (!ieVer && null != (ieVer = ua.match(/trident\/.*rv:(\d+\.\d+)/)))
@@ -48,13 +48,13 @@ SecurimageAudio.prototype.init = function() {
             // no html5 audio support, hide player controls
             this.controlsElement.style.display = 'none';
             this.html5Support = false;
-            return ;
+            return;
         } else if ('' == this.audioElement.canPlayType('audio/wav')) {
             // check for mpeg <source> tag - if not found then fallback to flash
-            var sources    = this.audioElement.getElementsByTagName('source');
+            var sources = this.audioElement.getElementsByTagName('source');
             var mp3support = false;
             var type;
-            
+
             if (objAu) {
                 this.flashFallback = true;
             }
@@ -70,7 +70,7 @@ SecurimageAudio.prototype.init = function() {
             if (false == mp3support) {
                 // browser supports <audio> but does not support WAV audio and no flash audio available
                 this.html5Support = false;
-                
+
                 if (this.flashFallback) {
                     // ie9+? bug - flash object does not display when moved from within audio tag to other dom node
                     var newObjAu = document.createElement('object');
@@ -87,14 +87,14 @@ SecurimageAudio.prototype.init = function() {
 
                 this.audioElement.parentNode.removeChild(this.audioElement);
                 this.controlsElement.parentNode.removeChild(this.controlsElement);
-                
-                return ;
+
+                return;
             }
         }
     }
 
     this.audioElement.addEventListener('playing', this.updateControls.bind(this), false);
-    this.audioElement.addEventListener('ended',   this.audioStopped.bind(this), false);
+    this.audioElement.addEventListener('ended', this.audioStopped.bind(this), false);
 
     // find the element used as the play button and register click event to play/stop audio
     var children = this.controlsElement.getElementsByTagName('*');
@@ -118,7 +118,7 @@ SecurimageAudio.prototype.init = function() {
     }
 }
 
-SecurimageAudio.prototype.play = function(evt) {
+SecurimageAudio.prototype.play = function (evt) {
     if (null != this.playButton) {
         this.playButton.blur();
     }
@@ -140,7 +140,7 @@ SecurimageAudio.prototype.play = function(evt) {
             this.audioElement.onerror = this.audioError;
             try {
                 this.audioElement.play();
-            } catch(ex) {
+            } catch (ex) {
                 alert('Audio error: ' + ex);
             }
         } else {
@@ -156,42 +156,42 @@ SecurimageAudio.prototype.play = function(evt) {
     } catch (ex) {
         alert('Audio error: ' + ex);
     }
-    
+
     if (undefined !== evt) {
         evt.preventDefault();
     }
     return false;
 }
 
-SecurimageAudio.prototype.refresh = function(captchaId) {
+SecurimageAudio.prototype.refresh = function (captchaId) {
     if (!this.html5Support) {
         return;
     }
 
     if (undefined !== captchaId) {
         this.captchaId = captchaId;
-    }    
+    }
 
     this.playing = true;
-    this.reload  = false;
+    this.reload = false;
     this.play(); // stops audio if playing
-    this.reload  = true;
-    
+    this.reload = true;
+
     return false;
 }
 
-SecurimageAudio.prototype.copyElementAttributes = function(newEl, el) {
+SecurimageAudio.prototype.copyElementAttributes = function (newEl, el) {
     for (var i = 0, atts = el.attributes, n = atts.length; i < n; ++i) {
         newEl.setAttribute(atts[i].nodeName, atts[i].value);
     }
-    
+
     return newEl;
 }
 
-SecurimageAudio.prototype.replaceElements = function() {
+SecurimageAudio.prototype.replaceElements = function () {
     var parent = this.audioElement.parentNode;
     parent.removeChild(this.audioElement);
-    
+
     var newAudioEl = document.createElement('audio');
     newAudioEl.setAttribute('style', 'display: none;');
     newAudioEl.setAttribute('preload', 'false');
@@ -211,10 +211,10 @@ SecurimageAudio.prototype.replaceElements = function() {
     parent.appendChild(this.audioElement);
 
     this.audioElement.addEventListener('playing', this.updateControls.bind(this), false);
-    this.audioElement.addEventListener('ended',   this.audioStopped.bind(this), false);
+    this.audioElement.addEventListener('ended', this.audioStopped.bind(this), false);
 }
 
-SecurimageAudio.prototype.updateControls = function() {
+SecurimageAudio.prototype.updateControls = function () {
     this.playing = true;
     if (this.loadingImage != null) {
         this.loadingImage.style.display = 'none';
@@ -224,13 +224,13 @@ SecurimageAudio.prototype.updateControls = function() {
     }
 }
 
-SecurimageAudio.prototype.audioStopped = function() {
+SecurimageAudio.prototype.audioStopped = function () {
     this.playing = false;
 }
 
-SecurimageAudio.prototype.audioError = function(err) {
+SecurimageAudio.prototype.audioError = function (err) {
     var msg = null;
-    switch(err.target.error.code) {
+    switch (err.target.error.code) {
         case err.target.error.MEDIA_ERR_ABORTED:
             break;
         case err.target.error.MEDIA_ERR_NETWORK:
