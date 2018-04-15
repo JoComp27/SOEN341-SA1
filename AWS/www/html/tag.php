@@ -21,7 +21,7 @@ include('question_display.php') ?>
 </html>
 
 <?php
-$qt = $_GET['tag'];
+$qt = $_GET['tags'];
 ?>
 
 <!DOCTYPE html>

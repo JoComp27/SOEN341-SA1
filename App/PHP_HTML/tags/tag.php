@@ -13,7 +13,7 @@ include('question_display.php') ?>
 <head>
     <?php include "header.php" ?>
 
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="../home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -21,7 +21,7 @@ include('question_display.php') ?>
 </html>
 
 <?php
-$qt = $_GET['tag'];
+$qt = $_GET['tags'];
 ?>
 
 <!DOCTYPE html>

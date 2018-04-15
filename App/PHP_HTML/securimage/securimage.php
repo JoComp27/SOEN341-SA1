@@ -30,7 +30,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * Any modifications to the library should be indicated clearly in the source code
+ * Any modifications to the Library should be indicated clearly in the source code
  * to inform users that the changes are not a part of the original software.
  *
  * @link https://www.phpcaptcha.org Securimage Homepage
@@ -927,7 +927,7 @@ class Securimage
      * the captcha image.
      *
      * Used only if captcha codes are generated and managed by a 3rd party
-     * app/library
+     * app/Library
      *
      * @var string Captcha code value to display on the image
      */
@@ -1292,7 +1292,7 @@ class Securimage
      *         Optional: The URI to where securimage is installed (e.g. /securimage)
      *     'show_image_url':
      *         Path to the securimage_show.php script (useful when integrating with a framework or moving outside the securimage directory)
-     *         This will be passed as a urlencoded string to the <img> tag for outputting the captcha image
+     *         This will be passed as a urlencoded string to the <img> tags for outputting the captcha image
      *     'audio_play_url':
      *         Same as show_image_url, except this indicates the URL of the audio playback script
      *     'image_id':
@@ -1322,9 +1322,9 @@ class Securimage
      *     'input_text':
      *         A string that sets the text of the label for the captcha text input (default: Type the text:)
      *     'input_attributes':
-     *         An array of additional HTML tag attributes to pass to the text input tag (default: empty)
+     *         An array of additional HTML tags attributes to pass to the text input tags (default: empty)
      *     'image_attributes':
-     *         An array of additional HTML tag attributes to pass to the captcha image tag (default: empty)
+     *         An array of additional HTML tags attributes to pass to the captcha image tags (default: empty)
      *     'error_html':
      *         Optional HTML markup to be shown above the text input field
      *     'namespace':

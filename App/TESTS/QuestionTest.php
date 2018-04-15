@@ -73,7 +73,7 @@ class QuestionTest extends PHPUnit\Framework\TestCase
         $tagArray = explode(",", $tags);
 
         foreach ($tagArray as $tag) {
-            // Iterates through every tag, inserts it in the tags table and
+            // Iterates through every tags, inserts it in the tags table and
             // makes the Q to T association in the question_tags table
             $sql = " INSERT INTO tags (tag_name) VALUES (\"$tag\") ";
             $db->query($sql);

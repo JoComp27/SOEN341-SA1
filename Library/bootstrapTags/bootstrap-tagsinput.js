@@ -56,7 +56,7 @@
         constructor: TagsInput,
 
         /**
-         * Adds the given item as a new tag. Pass true to dontPushVal to prevent
+         * Adds the given item as a new tags. Pass true to dontPushVal to prevent
          * updating the elements val()
          */
         add: function (item, dontPushVal, options) {
@@ -82,7 +82,7 @@
             if (item.toString().match(/^\s*$/))
                 return;
 
-            // If SELECT but not multiple, remove current tag
+            // If SELECT but not multiple, remove current tags
             if (self.isSelect && !self.multiple && self.itemsArray.length > 0)
                 self.remove(self.itemsArray[0]);
 
@@ -133,9 +133,9 @@
             // register item in internal array and map
             self.itemsArray.push(item);
 
-            // add a tag element
+            // add a tags element
 
-            var $tag = $('<span class="tag ' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"></span></span>');
+            var $tag = $('<span class="tags ' + htmlEncode(tagClass) + (itemTitle !== null ? ('" title="' + itemTitle) : '') + '">' + htmlEncode(itemText) + '<span data-role="remove"></span></span>');
             $tag.data('item', item);
             self.findInputWrapper().before($tag);
             $tag.after(' ');
@@ -232,7 +232,7 @@
                     itemText = self.options.itemText(item),
                     tagClass = self.options.tagClass(item);
 
-                // Update tag's class and inner text
+                // Update tags's class and inner text
                 $tag.attr('class', null);
                 $tag.addClass('tag ' + htmlEncode(tagClass));
                 $tag.contents().filter(function () {
@@ -368,7 +368,7 @@
             if (self.options.addOnBlur && self.options.freeInput) {
                 self.$input.on('focusout', $.proxy(function (event) {
                     // HACK: only process on focusout when no typeahead opened, to
-                    //       avoid adding the typeahead text as tag
+                    //       avoid adding the typeahead text as tags
                     if ($('.typeahead, .twitter-typeahead', self.$container).length === 0) {
                         self.add(self.$input.val());
                         self.$input.val('');
@@ -409,7 +409,7 @@
 
                     // LEFT ARROW
                     case 37:
-                        // Try to move the input before the previous tag
+                        // Try to move the input before the previous tags
                         var $prevTag = $inputWrapper.prev();
                         if ($input.val().length === 0 && $prevTag[0]) {
                             $prevTag.before($inputWrapper);
@@ -418,7 +418,7 @@
                         break;
                     // RIGHT ARROW
                     case 39:
-                        // Try to move the input after the next tag
+                        // Try to move the input after the next tags
                         var $nextTag = $inputWrapper.next();
                         if ($input.val().length === 0 && $nextTag[0]) {
                             $nextTag.after($inputWrapper);
@@ -447,7 +447,7 @@
                 var text = $input.val(),
                     maxLengthReached = self.options.maxChars && text.length >= self.options.maxChars;
                 if (self.options.freeInput && (keyCombinationInList(event, self.options.confirmKeys) || maxLengthReached)) {
-                    // Only attempt to add a tag if there is data in the field
+                    // Only attempt to add a tags if there is data in the field
                     if (text.length !== 0) {
                         self.add(maxLengthReached ? text.substr(0, self.options.maxChars) : text);
                         $input.val('');
@@ -471,7 +471,7 @@
                 if (self.$element.attr('disabled')) {
                     return;
                 }
-                self.remove($(event.target).closest('.tag').data('item'));
+                self.remove($(event.target).closest('.tags').data('item'));
             }, self));
 
             // Only add existing value as tags when using strings as tags

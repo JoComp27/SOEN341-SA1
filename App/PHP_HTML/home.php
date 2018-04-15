@@ -5,7 +5,7 @@
     <?php include "header.php";
     include "question_display.php" ?>
     <link rel="stylesheet" type="text/css" href="home.css">
-    <link href="question_ask_button.css" type="text/css" rel="stylesheet">
+    <link href="question/question_ask_button.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <br>

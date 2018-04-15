@@ -32,7 +32,7 @@ function displayQuestions($db, $SqlQuestionQuery)
                    ';
             while ($tag = mysqli_fetch_row($tag_data)) {
                 echo ' 
-                          <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> 
+                          <a href = "tags.php?tags=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> 
                           ';
             }
             echo '

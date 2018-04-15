@@ -30,7 +30,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * Any modifications to the library should be indicated clearly in the source code
+ * Any modifications to the Library should be indicated clearly in the source code
  * to inform users that the changes are not a part of the original software.<br /><br />
  *
  * @copyright 2014 Drew Phillips

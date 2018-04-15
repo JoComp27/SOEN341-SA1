@@ -135,7 +135,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             echo '<br> Associated Tags: ';
             $tag_array[] = [];
             while ($tag = mysqli_fetch_row($tag_data)) {
-                echo ' <a href = "tag.php?tag=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
+                echo ' <a href = "tags.php?tags=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
                 array_push($tag_array, $tag[0]);
             }
             array_shift($tag_array);
