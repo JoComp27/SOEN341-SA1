@@ -70,7 +70,7 @@ class QuestionTest extends PHPUnit\Framework\TestCase
                  )ENGINE = INNODB';
         $db->query($query);
 
-        //Test: User not sign in
+        //Test: User not sign in ********************
         $baseline_count1 = mysqli_num_rows($db->query("SELECT * FROM questions"));
         $baseline_count2 = mysqli_num_rows($db->query("SELECT * FROM tags"));
         $baseline_count3 = mysqli_num_rows($db->query("SELECT * FROM question_tags"));
@@ -91,7 +91,7 @@ class QuestionTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($comparator_count2 == ($baseline_count2));
         $this->assertTrue($comparator_count3 == ($baseline_count3));
 
-        //Test: User sign in, question 
+        //Test: User sign in, question **********************
         $_SESSION['auth'] = "True";
         $_SESSION['user_name'] = 'test1';
         $_SESSION['user_id'] = 1;
@@ -113,10 +113,10 @@ class QuestionTest extends PHPUnit\Framework\TestCase
         $comparator_count3 = mysqli_num_rows($db->query("SELECT * FROM question_tags"));
 
         $this->assertTrue($comparator_count1 == ($baseline_count1 + 1));
-        $this->assertTrue($comparator_count2 == ($baseline_count2));
+        $this->assertTrue($comparator_count2 == ($baseline_count2 + 1));
         $this->assertTrue($comparator_count3 == ($baseline_count3));
 
-        //Test: User sign in, 2 tags
+        //Test: User sign in, 2 tags *********************
         $_SESSION['auth'] = "True";
         $_SESSION['user_name'] = 'test1';
         $_SESSION['user_id'] = 1;
