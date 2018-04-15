@@ -120,7 +120,7 @@ class SignupTest extends PHPUnit\Framework\TestCase
         $baseline_count2 = mysqli_num_rows($db->query("SELECT * FROM notification"));
         $baseline_count3 = mysqli_num_rows($db->query("SELECT * FROM notification_user"));
 
-        $this->assertFalse((isset($_SESSION["auth"])); //user not yet logging, cannot have session
+        $this->assertFalse((isset($_SESSION["auth"]))); //user not yet logging, cannot have session
         /****************************************************************************************
          * TEST BEGIN: Branch successful creation
          *
@@ -143,7 +143,7 @@ class SignupTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($comparator_count1 == ($baseline_count1 + 1)); //user count should increase
         $this->assertTrue($comparator_count2 == ($baseline_count2 + 1));
         $this->assertTrue($comparator_count3 == ($baseline_count3 + 1));
-        $this->assertFalse((isset($_SESSION["auth"])); //user should have a session 
+        $this->assertTrue((isset($_SESSION["auth"]))); //user should have a session 
 			   
 	//****************************************************************************************
 	// Failed test due to user already existing | we used the same user as above and attempt to sign him up again
