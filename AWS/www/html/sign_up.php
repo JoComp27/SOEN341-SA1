@@ -34,6 +34,7 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
             <?php
         }
     }
+	else{
 
     $answer1 = $_POST['answer1'];
     $answer2 = $_POST['answer2'];
@@ -64,6 +65,7 @@ if (isset($_POST['submitform']) && $_POST['user_pass'] == $_POST['cpassword']) {
     $sql = "insert into notification_user (notification_id, user_id) values ('$latest_local_notification_id', '$user_id')";
     mysqli_query($db, $sql);
     header('Location: home.php');
+	}
 } else if (isset($_POST['submitform']) && $_POST['user_pass'] != $_POST['cpassword']) {
     ?>
     <script type="text/javascript">alert("two passwords do not match. Try again!");</script>
