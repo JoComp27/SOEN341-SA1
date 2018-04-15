@@ -269,14 +269,14 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         <?php $a++;
     } ?>
 </ul>
-<?php if (isset($_SESSION['auth'])) { ?>
-    <form method="post" action="answer.php?id=' . $qus_id . '">
+<?php if (isset($_SESSION['auth'])) {
+    echo '<form method="post" action="answer.php?id=' . $qus_id . '">
         <div class="form-group">
             <label for="comment">Comment:</label>
             <textarea name="answer" required="" class="form-control" rows="5" id="comment"></textarea>
         </div>
         <button type="Submit" name="submit" class="btn btn-primary">Submit</button>
-    </form>
-<?php } ?>
+    </form>';
+} ?>
 </body>
 </html>
