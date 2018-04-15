@@ -5,7 +5,7 @@ if (!isset($_SESSION)) {
 ?>
 
 <?php
-include('sql_connector.php');
+include('../sql_connector.php');
 ?>
 
 <?php if (!isset($_SESSION['auth'])) {
@@ -33,7 +33,7 @@ $num_rows = mysqli_num_rows($result);
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <?php include "header.php" ?>
+    <?php include "../header.php" ?>
 
 </head>
 
@@ -129,7 +129,7 @@ $num_rows = mysqli_num_rows($result);
                                       <input type="checkbox" class="mail-checkbox">
                                   </td>
                                   <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                                  <td class="view-message  dont-show"> <a href = "notification_view_message.php?notification_id=' . $row["notification_id"] . '&id=' . $row["user_id"] . '" target = "blank"><h5>' . $row['notification_title'] . '</h4></a> </td>
+                                  <td class="view-message  dont-show"> <a href = "/SOEN341-SA1/App/PHP_HTML/notification/notification_view_message.php?notification_id=' . $row["notification_id"] . '&id=' . $row["user_id"] . '" target = "blank"><h5>' . $row['notification_title'] . '</h4></a> </td>
                                   <td class="view-message ">' . $preview . '</td>
                                   <td class="view-message  text-right">' . $row['notification_date'] . '</td>
                                   </tr>';

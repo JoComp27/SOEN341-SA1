@@ -1,11 +1,11 @@
 {
   "require-dev": {
-    "phpunit/phpunit": "^7 || ^4.6 || ^5.0"
+    "phpunit/phpunit": "^7"
   },
   "autoload": {
     "prs-4": {
-      "SOEN341-SA1\\src\\": "src/",
-      "SOEN341-SA1\\src\\Tests": "Tests/"
+      "SOEN341-SA1\\App\\": "App/",
+      "SOEN341-SA1\\src\\TESTS": "TESTS/"
     }
   }
 }

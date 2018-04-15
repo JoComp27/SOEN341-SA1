@@ -5,12 +5,12 @@ if (!isset($_SESSION)) {
 ?>
 
 
-<?php include('sql_connector.php'); ?>
+<?php include('../sql_connector.php'); ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include "header.php" ?>
+    <?php include "../header.php" ?>
 
     <link rel="stylesheet" type="text/css" href="home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,9 +19,9 @@ if (!isset($_SESSION)) {
     <script>
         function questionIncrementLike(questionId) {
             <?php $qus_id = $_GET['id'];?>
-            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var link = "/SOEN341-SA1/App/PHP_HTML/answer/answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
-            http_request.open("POST", "question_like.php", true);
+            http_request.open("POST", "/SOEN341-SA1/App/PHP_HTML/like/question/question_like.php", true);
             http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             http_request.send("value=" + questionId);
             window.location.href = link;
@@ -29,9 +29,9 @@ if (!isset($_SESSION)) {
 
         function questionIncrementDislike(questionId) {
             <?php $qus_id = $_GET['id'];?>
-            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var link = "/SOEN341-SA1/App/PHP_HTML/answer/answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
-            http_request.open("POST", "question_unlike.php", true);
+            http_request.open("POST", "/SOEN341-SA1/App/PHP_HTML/like/question/question_dislike.php", true);
             http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             http_request.send("value=" + questionId);
             window.location.href = link;
@@ -39,9 +39,9 @@ if (!isset($_SESSION)) {
 
         function answerIncrementLike(answerId) {
             <?php $qus_id = $_GET['id'];?>
-            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var link = "/SOEN341-SA1/App/PHP_HTML/answer/answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
-            http_request.open("POST", "answer_like.php", true);
+            http_request.open("POST", "/SOEN341-SA1/App/PHP_HTML/like/answer/answer_like.php", true);
             http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             http_request.send("value=" + answerId);
             window.location.href = link;
@@ -49,9 +49,9 @@ if (!isset($_SESSION)) {
 
         function answerIncrementDislike(answerId) {
             <?php $qus_id = $_GET['id'];?>
-            var link = "answer.php?id=<?php echo $qus_id ?>";
+            var link = "/SOEN341-SA1/App/PHP_HTML/answer/answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
-            http_request.open("POST", "answer_unlike.php", true);
+            http_request.open("POST", "/SOEN341-SA1/App/PHP_HTML/like/answer/answer_dislike.php", true);
             http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             http_request.send("value=" + answerId);
             window.location.href = link;
@@ -96,7 +96,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         $db->query($sql);
 
         $title_question = $data['question_title'];
-        $url = "<a href=\'answer.php?id=$qus_id\'><h4>answer.php?id=$qus_id</h4></a>";
+        $url = "<a href=\'SOEN341-SA1\App\PHP_HTML\answer\answer.php?id=$qus_id\'><h4>answer.php?id=$qus_id</h4></a>";
         $sql = "insert into notification (notification_title, notification_date, notification_content) values('$answers_by_user replied to your question',NOW(), 'You received a new reply from $answers_by_user for question: $title_question $url')";
         $notice_result = mysqli_query($db, $sql);
         $latest_local_notification_id = mysqli_fetch_assoc(mysqli_query($db, "SELECT LAST_INSERT_ID() as 'result'"))['result'];
@@ -135,14 +135,14 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             echo '<br> Associated Tags: ';
             $tag_array[] = [];
             while ($tag = mysqli_fetch_row($tag_data)) {
-                echo ' <a href = "tags.php?tags=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
+                echo ' <a href = "/SOEN341-SA1/App/PHP_HTML/tags/tag.php?tags=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
                 array_push($tag_array, $tag[0]);
             }
             array_shift($tag_array);
             $tagsValue = implode(",", $tag_array);
 
             echo '<br> by user: '; ?>
-            <a href="profile.php?id=<?php
+            <a href="/SOEN341-SA1/App/PHP_HTML/profile/profile.php?id=<?php
             $select_query = "SELECT * FROM users WHERE user_name='" . $data['question_by_user'] . "'";
             $sql = mysqli_query($db, $select_query);
             $get_users = mysqli_fetch_assoc($sql);
@@ -215,7 +215,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             <span id="<?php echo "answer-description-$a" ?>"><?php echo $get_answers['answers_content']; ?></span>
             <?php echo '<br> by user: '; ?>
 
-            <a href="profile.php?id=<?php
+            <a href="/SOEN341-SA1/App/PHP_HTML/answer/profile.php?id=<?php
             $select_query = "SELECT * FROM users WHERE user_name='" . $get_answers['answers_by_user'] . "'";
             $sql = mysqli_query($db, $select_query);
             $get_users = mysqli_fetch_assoc($sql);

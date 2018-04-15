@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-include_once('sql_connector.php');
+include_once('../../sql_connector.php');
 
 $id = $_POST['value'];
 $userId = $_SESSION['user_id'];
