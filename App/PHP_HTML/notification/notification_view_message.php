@@ -18,7 +18,8 @@ if ($_SESSION['user_id'] != $user_id) header('Location: home.php'); //security c
 
 $sql = "SELECT notification.*, notification_user.notification_status, notification_user.user_id
 FROM notification
-INNER JOIN notification_user ON notification.notification_id=notification_user.notification_id where notification_user.user_id = $user_id and notification.notification_id = $notification_id";
+INNER JOIN notification_user ON notification.notification_id=notification_user.notification_id 
+where notification_user.user_id = $user_id and notification.notification_id = $notification_id";
 
 $result = mysqli_query($db, $sql);
 

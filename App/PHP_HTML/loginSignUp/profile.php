@@ -49,7 +49,7 @@ if (!isset($_SESSION)) {
 
     <link href="ask_question.css" type="text/css" rel="stylesheet">
     <?php include "../header.php" ?>
-    <link rel="stylesheet" type="text/css" href="SOEN341-SA1/App/PHP_HTML/home.css">
+    <link rel="stylesheet" type="text/css" href="/SOEN341-SA1/App/PHP_HTML/home.css">
 
 </head>
 
