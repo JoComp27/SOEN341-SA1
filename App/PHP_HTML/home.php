@@ -34,7 +34,7 @@
             <div class="tab-content">
                 <table class="table">
                     <?php
-                    displayQuestions($db, 'SELECT * FROM questions WHERE question_deleted = 0 order by question_view_count desc');
+                    displayQuestions($db, 'SELECT * FROM questions WHERE question_deleted = 0 ORDER BY question_view_count DESC');
                     ?>
 
                 </table>
@@ -45,7 +45,7 @@
             <div class="tab-content">
                 <table class="table">
                     <?php
-                    displayQuestions($db, 'SELECT * FROM questions WHERE question_deleted = 0 order by question_upvotes desc');
+                    displayQuestions($db, 'SELECT * FROM questions WHERE question_deleted = 0 ORDER BY question_upvotes DESC');
                     ?>
 
                 </table>
@@ -57,7 +57,7 @@
             <div class="tab-content">
                 <table class="table">
                     <?php
-                    displayQuestions($db, 'SELECT * FROM questions where DATE(question_date) = DATE(NOW()) AND question_deleted = 0')
+                    displayQuestions($db, 'SELECT * FROM questions WHERE DATE(question_date) = DATE(NOW()) AND question_deleted = 0')
                     ?>
 
                 </table>
@@ -68,7 +68,7 @@
             <div class="tab-content">
                 <table class="table">
                     <?php
-                    displayQuestions($db, 'SELECT * FROM questions where (question_date between NOW() - INTERVAL 7 DAY AND NOW()) AND question_deleted = 0')
+                    displayQuestions($db, 'SELECT * FROM questions WHERE (question_date BETWEEN NOW() - INTERVAL 7 DAY AND NOW()) AND question_deleted = 0')
                     ?>
 
                 </table>
@@ -79,7 +79,7 @@
             <div class="tab-content">
                 <table class="table">
                     <?php
-                    displayQuestions($db, 'SELECT * FROM questions where (question_date between NOW() - INTERVAL 30 DAY AND NOW()) AND question_deleted = 0')
+                    displayQuestions($db, 'SELECT * FROM questions WHERE (question_date BETWEEN NOW() - INTERVAL 30 DAY AND NOW()) AND question_deleted = 0')
                     ?>
                 </table>
             </div>

@@ -17,7 +17,7 @@ if (!isset($_SESSION)) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>check();</script>
     <script>
-        function QuestionIncrementLike(questionId) {
+        function questionIncrementLike(questionId) {
             <?php $qus_id = $_GET['id'];?>
             var link = "answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
@@ -27,7 +27,7 @@ if (!isset($_SESSION)) {
             window.location.href = link;
         }
 
-        function QuestionIncrementDislike(questionId) {
+        function questionIncrementDislike(questionId) {
             <?php $qus_id = $_GET['id'];?>
             var link = "answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
@@ -37,7 +37,7 @@ if (!isset($_SESSION)) {
             window.location.href = link;
         }
 
-        function AnswerIncrementLike(answerId) {
+        function answerIncrementLike(answerId) {
             <?php $qus_id = $_GET['id'];?>
             var link = "answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
@@ -47,7 +47,7 @@ if (!isset($_SESSION)) {
             window.location.href = link;
         }
 
-        function AnswerIncrementDislike(answerId) {
+        function answerIncrementDislike(answerId) {
             <?php $qus_id = $_GET['id'];?>
             var link = "answer.php?id=<?php echo $qus_id ?>";
             var http_request = new XMLHttpRequest();
@@ -151,11 +151,11 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             ?>"><?php echo $data['question_by_user']; ?></a>
 
             <?php
-            if(isset($_SESSION['user_id']) != 0){
-                $currentUserID = $_SESSION['user_id'];?>
+            if (isset($_SESSION['user_id']) != 0){
+            $currentUserID = $_SESSION['user_id']; ?>
 
             <button type="vote_button" id="incrementalquestionbutton" name="button3"
-                    onclick="QuestionIncrementLike(<?php echo $qus_id; ?>)">
+                    onclick="questionIncrementLike(<?php echo $qus_id; ?>)">
                 <a class="social-question-like">
 
                     <?php
@@ -171,7 +171,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             </button>
 
             <button type="vote_button" id="decrementalquestionbutton" name="button4"
-                    onclick="QuestionIncrementDislike(<?php echo $qus_id; ?>)">
+                    onclick="questionIncrementDislike(<?php echo $qus_id; ?>)">
                 <a class="social-question-dislike">
                     <span class="question-dislike"> <?php echo $data['question_downvotes']; ?>
                         <?php if (mysqli_num_rows(mysqli_query($db, "SELECT * from question_userdislikes where user_id='$currentUserID' AND question_id='$qus_id'")) != 0) { ?>
@@ -181,7 +181,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                             <span class="like"><i class="glyphicon glyphicon-arrow-down"
                                                   style="color:rgba(0,0,0,0.30)"></i></span>
                         <?php }
-                    } ?>
+                        } ?>
                      </span>
                 </a>
             </button>
@@ -227,10 +227,10 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                 include('answer_state_view.php');
             } ?>
             <?php
-            if(isset($_SESSION['user_id']) != 0){
-            $currentUserID = $_SESSION['user_id'];?>
+            if (isset($_SESSION['user_id']) != 0){
+            $currentUserID = $_SESSION['user_id']; ?>
             <button type="vote_button" id="incrementalbutton" name="button1"
-                    onclick="AnswerIncrementLike(<?php echo $get_answers['answers_id']; ?>)">
+                    onclick="answerIncrementLike(<?php echo $get_answers['answers_id']; ?>)">
                 <a class="social-like">
                     <?php
                     if (mysqli_num_rows(mysqli_query($db, "SELECT * from answers_userlikes where user_id='$currentUserID' AND answer_id='$answer_id'")) != 0) { ?>
@@ -244,7 +244,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             </button>
 
             <button type="vote_button" id="decrementalbutton" name="button2"
-                    onclick="AnswerIncrementDislike(<?php echo $get_answers['answers_id']; ?>)">
+                    onclick="answerIncrementDislike(<?php echo $get_answers['answers_id']; ?>)">
                 <a class="social-dislike">
                     <span class="dislike"> <?php echo $get_answers['answers_downvotes']; ?> </span>
 
@@ -254,7 +254,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
                     } else {
                         echo '<span class="dislikeA"><i class="glyphicon glyphicon-thumbs-down" style="color:rgba(0,0,0,0.30)"></i></span>';
                     }
-                    }?>
+                    } ?>
                 </a>&nbsp;
             </button>
         </li>

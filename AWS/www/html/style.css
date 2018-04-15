@@ -1,36 +1,36 @@
-.navbar-inverse .navbar-nav>li>a {
+.navbar-inverse .navbar-nav > li > a {
     color: black;
 }
 
 input#Male {
-	height: 15px;
-	width: 15px;
-	font-weight: normal;
+    height: 15px;
+    width: 15px;
+    font-weight: normal;
 }
 
 input#Female {
 
-	height: 15px;
-	width: 15px;
-	font-weight: normal;
+    height: 15px;
+    width: 15px;
+    font-weight: normal;
 }
 
-#form{
-	margin:0 auto;
-	background: rgba(200, 200, 240, 0.75);
+#form {
+    margin: 0 auto;
+    background: rgba(200, 200, 240, 0.75);
 }
 
-.content select{
-	border-radius: 13px;
+.content select {
+    border-radius: 13px;
 }
 
-#form{
-	margin: 0 auto;
+#form {
+    margin: 0 auto;
 }
 
-.content{
-	width: 100%;
-	left: 0;
-	padding-top: 5%;
+.content {
+    width: 100%;
+    left: 0;
+    padding-top: 5%;
 
 }

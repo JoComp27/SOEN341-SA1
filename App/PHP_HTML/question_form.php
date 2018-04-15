@@ -45,8 +45,8 @@ $modifyingQuestion = !(strpos($question_action, 'question_modify.php') === false
                value="<?php
                if ($modifyingQuestion) {
                    echo $tagsValue;
-                    }
-                   ?>">
+               }
+               ?>">
 
         <br>
 
