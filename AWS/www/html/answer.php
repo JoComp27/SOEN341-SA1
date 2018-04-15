@@ -264,6 +264,6 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         <textarea name="answer" required="" class="form-control" rows="5" id="comment"></textarea>
     </div>
     <button type="Submit" name="submit" class="btn btn-primary">Submit</button>
-</form>'; ?>
+</form>'; }?>
 </body>
 </html>
