@@ -63,6 +63,12 @@ class QuestionTest extends PHPUnit\Framework\TestCase
         $baseline_count2 = mysqli_num_rows($db->query("SELECT * FROM tags"));
         $baseline_count3 = mysqli_num_rows($db->query("SELECT * FROM question_tags"));
 
+        $mock_POST = [
+            "title" => "question title",
+            "details" => "question details",
+            "tags" => '',
+        ];
+
         $this->source_code($mock_POST, $db);
 
         $comparator_count1 = mysqli_num_rows($db->query("SELECT * FROM questions"));
