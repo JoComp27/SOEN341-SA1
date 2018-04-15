@@ -16,6 +16,7 @@ class SignInTest extends PHPUnit\Framework\TestCase
                     Both positive and negative branches tested with representative class/asserts
                 - 3) User can sign in with username or email
                     Positive case tests for both
+		- 4) Creation of a server side cookie when successfully logged in.
                 Not covered:
                     - Captcha system
                         Open source code used. Covered in acceptance test
@@ -78,7 +79,8 @@ class SignInTest extends PHPUnit\Framework\TestCase
             "user_pass" => "password2",
         ];
         //this user does not exists
-        $this->assertFalse($this->source_code($mock_POST, $db));
+        $this->assertFalse($this->source_code($mock_POST, $db)); 
+	//source code tested will return false. See below for source code
         /****************************************************************************************
          * TEST BEGIN: Branch failed sign due to wrong user_name
          *
