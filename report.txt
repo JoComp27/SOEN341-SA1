@@ -1,9 +1,0 @@
-D:\Github Projects\SOEN341-SA1\App\PHP_HTML\login sample\sign_up.php:9	Avoid variables with short names like $db. Configured minimum length is 3.
-D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The parameter $SqlQuestionQuery is not named in camelCase.
-D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The variable $SqlQuestionQuery is not named in camelCase.
-D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The variable $answer_data is not named in camelCase.
-D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The variable $answer_data is not named in camelCase.
-D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The variable $tag_data is not named in camelCase.
-D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The variable $tag_data is not named in camelCase.
-D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	Avoid variables with short names like $db. Configured minimum length is 3.
-D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:66	The method displayQuestions uses an else expression. Else is never necessary and you can simplify the code to work without else.
