@@ -55,7 +55,7 @@
             <br><br>
             <p>Please enter the text in the image:<br>
                 <a href="#"
-                   onclick="document.getElementById('captcha').src = '../securimage/securimage_show.php?' + Math.random(); return false">
+                   onclick="document.getElementById('captcha').src = '/SOEN341-SA1/App/PHP_HTML/securimage/securimage_show.php?' + Math.random(); return false">
                     (click here to change the captcha)
                 </a>
             </p>

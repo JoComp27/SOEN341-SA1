@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 }
 ?>
 
-<?php include('sql_connector.php'); ?>
+<?php include('../sql_connector.php'); ?>
 
 <!DOCTYPE html>
 
@@ -48,8 +48,8 @@ if (!isset($_SESSION)) {
     </style>
 
     <link href="ask_question.css" type="text/css" rel="stylesheet">
-    <?php include "header.php" ?>
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <?php include "../header.php" ?>
+    <link rel="stylesheet" type="text/css" href="SOEN341-SA1/App/PHP_HTML/home.css">
 
 </head>
 

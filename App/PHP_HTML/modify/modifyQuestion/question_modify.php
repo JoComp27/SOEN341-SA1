@@ -1,4 +1,4 @@
-<?php include('sql_connector.php'); ?>
+<?php include('../../sql_connector.php'); ?>
 
 // PURPOSE: runs query that modifies a question
 
@@ -31,6 +31,6 @@ foreach ($tagArray as $tag) {
     $db->query($sql);
 }
 
-$redirect = 'Location: answer.php?id=' . $questionId;
+$redirect = 'Location: SOEN341-SA1/App/PHP_HTML/answer/answer.php?id=' . $questionId;
 header($redirect);
 ?>

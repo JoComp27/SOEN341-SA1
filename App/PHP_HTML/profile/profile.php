@@ -4,7 +4,7 @@ if (!isset($_SESSION)) {
 }
 ?>
 
-<?php include('sql_connector.php'); ?>
+<?php include('../sql_connector.php'); ?>
 
 <!DOCTYPE html>
 
@@ -16,8 +16,8 @@ if (!isset($_SESSION)) {
     <link rel="stylesheet" type="text/css" href="../home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <?php include "header.php" ?>
-    <?php include "question_display.php" ?>
+    <?php include "../header.php" ?>
+    <?php include "../question/question_display.php" ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

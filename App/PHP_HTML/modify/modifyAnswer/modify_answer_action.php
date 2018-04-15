@@ -1,4 +1,4 @@
-<?php include('../sql_connector.php'); ?>
+<?php include('../../sql_connector.php'); ?>
 
 <!-- PURPOSE: runs query that modifies an answer-->
 

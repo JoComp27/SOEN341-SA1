@@ -10,7 +10,7 @@ include('../sql_connector.php');
 
 <?php if (!isset($_SESSION['auth'])) {
 
-    header('Location: home.php');
+    header('Location: SOEN341-SA1/App/PHP_HTML/home.php');
 }
 
 $user_id = $_SESSION['user_id'];
@@ -29,7 +29,7 @@ $num_rows = mysqli_num_rows($result);
 <html>
 <head>
     <!-- Adapted from open source license https://bootsnipp.com/snippets/xaPeQ -->
-    <link rel="stylesheet" type="text/css" href="notification.css">
+    <link rel="stylesheet" type="text/css" href="/SOEN341-SA1/App/PHP_HTML/notification/notification.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>

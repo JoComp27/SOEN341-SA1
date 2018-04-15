@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include "header.php" ?>
+    <?php include "../header.php" ?>
 </head>
 </html>
 <body>
@@ -53,7 +53,7 @@
                   <p class = "top-questions-stats">' . $row["question_view_count"] . '</p>
                 </div>
                 <div class = "col-md-9">
-                  <a href = "answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
+                  <a href = "/SOEN341-SA1/App/PHP_HTML/answer/answer.php?id=' . $row["question_id"] . ' " target = "blank"><h4>' . $row["question_title"] . '</h4></a>
                 </div>
               </td>
             </tr>

@@ -8,7 +8,7 @@ if (!isset($_SESSION)) {
 <html>
 <head>
     <!--    <script src="question_ask_button.js"></script>-->
-    <?php include "header.php" ?>
+    <?php include "../header.php" ?>
 </head>
 <body>
 <?php
@@ -49,7 +49,7 @@ if (isset($_SESSION['auth'])) {
         $db->query($sql);
     }
 
-    $url = "answer.php?id=$intQId";
+    $url = "\SOEN341-SA1\App\PHP_HTML\answer\answer.php?id=$intQId";
     ?>
     <script type="text/javascript">
         window.location.href = "<?php echo $url?>"

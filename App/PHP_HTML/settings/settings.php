@@ -7,8 +7,8 @@ if (!isset($_SESSION)) {
 
 <html>
 <head>
-    <?php include "header.php" ?>
-    <link rel="stylesheet" type="text/css" href="../home.css">
+    <?php include "../header.php" ?>
+    <link rel="stylesheet" type="text/css" href="/SOEN341-SA1/App/PHP_HTML/home.css">
 </head>
 <body>
 <div class="container">

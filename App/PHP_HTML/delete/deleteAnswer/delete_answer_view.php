@@ -1,4 +1,4 @@
-<!-- PURPOSE: Shows the delete answer button which allows user to delete aanswer -->
+<!-- PURPOSE: Shows the delete answer button which allows user to delete answer -->
 
 <form name="deleteAnswer" action="../deleteAnswer/delete_answer_action.php" method="post">
     <!-- As long as $answer_id is set, this action will work  -->

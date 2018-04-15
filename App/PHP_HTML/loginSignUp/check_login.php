@@ -49,7 +49,7 @@ if (((mysqli_num_rows($result1) == 1) || (mysqli_num_rows($result2) == 1)) && $c
 
     $problem .= "</div>";
 
-    $url = "Location: sign_in_normal.php?problem=$problem";
+    $url = "Location: SOEN341-SA1/App/PHP_HTML/loginSignUp/sign_in_normal.php?problem=$problem";
     header($url);
     exit;
 }
