@@ -1,0 +1,286 @@
+D:\Github Projects\SOEN341-SA1\App\PHP_HTML\login sample\sign_up.php:9	Avoid variables with short names like $db. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The parameter $SqlQuestionQuery is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The variable $SqlQuestionQuery is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The variable $answer_data is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The variable $answer_data is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The variable $tag_data is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	The variable $tag_data is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:3	Avoid variables with short names like $db. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\PHP_HTML\question_display.php:66	The method displayQuestions uses an else expression. Else is never necessary and you can simplify the code to work without else.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The method testTest1() has 171 lines of code. Current threshold is set to 100. Avoid really long methods.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	testTest1 accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	testTest1 accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $qus_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $select_query is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $qus_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $question_data is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $select_query is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $question_data is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $qus_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_REQUEST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_REQUEST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $qus_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_REQUEST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $qus_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $mock_REQUEST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $qus_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:8	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:36	The method testTest1() contains an exit expression.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:36	Avoid variables with short names like $db. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:97	The method testTest1() contains an exit expression.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The method source_code is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The parameter $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The parameter $mock_REQUEST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The parameter $qus_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $mock_REQUEST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $reply_by is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $answers_by_user is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $qus_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $reply_by is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $answers_by_user is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $title_question is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $qus_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $qus_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $answers_by_user is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $answers_by_user is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $title_question is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $notice_result is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $latest_local_notification_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $question_user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $latest_local_notification_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	The variable $question_user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:180	Avoid variables with short names like $db. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:200	Avoid unused local variables such as '$notice_result'.
+D:\Github Projects\SOEN341-SA1\App\Tests\AnswerTest.php:201	Avoid excessively long variable names like $latest_local_notification_id. Keep variable name length under 20.
+D:\Github Projects\SOEN341-SA1\App\Tests\ConnectorTest.php:12	The method test() contains an exit expression.
+D:\Github Projects\SOEN341-SA1\App\Tests\ConnectorTest.php:16	Avoid unused local variables such as '$check'.
+D:\Github Projects\SOEN341-SA1\App\Tests\ConnectorTest.php:22	The method test uses an else expression. Else is never necessary and you can simplify the code to work without else.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The method testTest1() has 127 lines of code. Current threshold is set to 100. Avoid really long methods.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	testTest1 accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	testTest1 accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	testTest1 accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	testTest1 accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	testTest1 accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	testTest1 accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:7	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:25	The method testTest1() contains an exit expression.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:25	Avoid variables with short names like $db. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The method source_code is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The parameter $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $question_by_user is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $question_by_user is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $Tid is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $Tid_int is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $Tid is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	The variable $Tid_int is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:135	Avoid variables with short names like $db. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:153	Avoid variables with short names like $id. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:179	The method source_code() contains an exit expression.
+D:\Github Projects\SOEN341-SA1\App\Tests\QuestionTest.php:180	The method source_code uses an else expression. Else is never necessary and you can simplify the code to work without else.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:6	The method testTest1() has 157 lines of code. Current threshold is set to 100. Avoid really long methods.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:41	The method testTest1() contains an exit expression.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:41	Avoid variables with short names like $db. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:96	Avoid unused local variables such as '$result'.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:165	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:165	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:165	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:165	The method source_code is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:165	The parameter $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:165	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:165	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:165	Avoid variables with short names like $db. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:191	The method source_code uses an else expression. Else is never necessary and you can simplify the code to work without else.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignInTest.php:212	Avoid unused local variables such as '$url'.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The method testTest1() has 186 lines of code. Current threshold is set to 100. Avoid really long methods.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $comparator_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $baseline_count2 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $comparator_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $baseline_count3 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $comparator_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:6	The variable $baseline_count1 is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:48	The method testTest1() contains an exit expression.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:48	Avoid variables with short names like $db. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	source_code accesses the super-global variable $_SESSION.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The method source_code is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The parameter $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_name is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_email is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_check_query is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_name is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_email is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_check_query is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_name is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_email is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_pass is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_name is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_pass is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_email is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_name is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_id_check_query is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_name is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_email is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_id_check_query is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_name is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $notice_result is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $latest_local_notification_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $latest_local_notification_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $user_id is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	The variable $mock_POST is not named in camelCase.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:194	Avoid variables with short names like $db. Configured minimum length is 3.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:244	Avoid unused local variables such as '$notice_result'.
+D:\Github Projects\SOEN341-SA1\App\Tests\SignupTest.php:245	Avoid excessively long variable names like $latest_local_notification_id. Keep variable name length under 20.
