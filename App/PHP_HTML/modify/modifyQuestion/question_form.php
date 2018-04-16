@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <script type="text/javascript" src="\SOEN341-SA1\Library\bootstrapTagsLibrary\nicEdit\nicEdit.js"></script>
+    <script type="text/javascript" src="\SOEN341-SA1\Library\nicEdit\nicEdit.js"></script>
     <script type="text/javascript">
         bkLib.onDomLoaded(function () {
             nicEditors.editors.push(
@@ -45,11 +45,9 @@ $modifyingQuestion = !(strpos($question_action, 'question_modify.php') === false
                value="<?php
                if ($modifyingQuestion) {
                    echo $tagsValue;
-               }
-               ?>">
-
+               } ?>"
+        >
         <br>
-
         <input id="submit" type="submit">
     </p>
 </form>

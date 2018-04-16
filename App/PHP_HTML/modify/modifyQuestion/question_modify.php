@@ -31,6 +31,6 @@ foreach ($tagArray as $tag) {
     $db->query($sql);
 }
 
-$redirect = 'Location: SOEN341-SA1/App/PHP_HTML/answer/answer.php?id=' . $questionId;
+$redirect = 'Location: /SOEN341-SA1/App/PHP_HTML/answer/answer.php?id=' . $questionId;
 header($redirect);
 ?>
