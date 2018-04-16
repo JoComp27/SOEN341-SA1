@@ -13,7 +13,7 @@
     <button id="ask" class="question-form-button" type="button"><span> Ask a Question!</span></button>
     <br>
     <?php
-    $question_action = 'question_submission.php'; // action can be chosen separately from form view
+    $question_action = 'question/question_submission.php'; // action can be chosen separately from form view
     include('./modify/modifyQuestion/question_form.php');                 // question form now in its own file
     ?>
 </div>

@@ -49,7 +49,7 @@ if (isset($_SESSION['auth'])) {
         $db->query($sql);
     }
 
-    $url = "\SOEN341-SA1\App\PHP_HTML\answer\answer.php?id=$intQId";
+    $url = "/SOEN341-SA1/App/PHP_HTML/answer/answer.php?id=$intQId";
     ?>
     <script type="text/javascript">
         window.location.href = "<?php echo $url?>"

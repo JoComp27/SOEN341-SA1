@@ -12,7 +12,7 @@ if (!isset($_SESSION)) {
 <head>
     <?php include "../header.php" ?>
 
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="/SOEN341-SA1/App/PHP_HTML/home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>check();</script>
@@ -96,7 +96,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         $db->query($sql);
 
         $title_question = $data['question_title'];
-        $url = "<a href=\'SOEN341-SA1\App\PHP_HTML\answer\answer.php?id=$qus_id\'><h4>answer.php?id=$qus_id</h4></a>";
+        $url = "<a href='/SOEN341-SA1/App/PHP_HTML/answer/answer.php?id=$qus_id'></a>";
         $sql = "insert into notification (notification_title, notification_date, notification_content) values('$answers_by_user replied to your question',NOW(), 'You received a new reply from $answers_by_user for question: $title_question $url')";
         $notice_result = mysqli_query($db, $sql);
         $latest_local_notification_id = mysqli_fetch_assoc(mysqli_query($db, "SELECT LAST_INSERT_ID() as 'result'"))['result'];
@@ -135,14 +135,14 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
             echo '<br> Associated Tags: ';
             $tag_array[] = [];
             while ($tag = mysqli_fetch_row($tag_data)) {
-                echo ' <a href = "/SOEN341-SA1/App/PHP_HTML/tags/tag.php?tags=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
+                echo ' <a href = "\SOEN341-SA1\App\PHP_HTML\tags\tag.php?tags=' . $tag[0] . ' " target = "blank">' . $tag[0] . '</a> ';
                 array_push($tag_array, $tag[0]);
             }
             array_shift($tag_array);
             $tagsValue = implode(",", $tag_array);
 
             echo '<br> by user: '; ?>
-            <a href="/SOEN341-SA1/App/PHP_HTML/profile/profile.php?id=<?php
+            <a href="\SOEN341-SA1\App\PHP_HTML\profile\profile.php?id=<?php
             $select_query = "SELECT * FROM users WHERE user_name='" . $data['question_by_user'] . "'";
             $sql2 = mysqli_query($db, $select_query);
             $get_users = mysqli_fetch_assoc($sql2);
@@ -195,7 +195,7 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $question_by_id) { // only the user that created the question can delete it
             include(__DIR__ . '\..\delete\deleteQuestion\delete_question_view.php');
             echo "<input id='modify-question' class='question-form-button' type='button' value='Modify' onclick='fillForm()'><br><br>";
-            $question_action = "question_modify.php?questionId=$qus_id";
+            $question_action = "modify/modifyQuestion/question_modify.php?questionId=$qus_id";
             include('../modify/modifyQuestion/question_form.php');
         }; ?>
     </li>
@@ -214,11 +214,11 @@ if (isset($_POST['submit']) && isset($_SESSION['user_id'])) {
         ?>
 
         <li id="<?php echo "answer-$a" ?>" class="list-group-item">
-            <strong>Ans <?php echo $a; ?>:</strong>
+            <strong>Answer <?php echo $a; ?>:</strong>
             <span id="<?php echo "answer-description-$a" ?>"><?php echo $get_answers['answers_content']; ?></span>
             <?php echo '<br> by user: '; ?>
 
-            <a href="/SOEN341-SA1/App/PHP_HTML/answer/profile.php?id=<?php
+            <a href="\SOEN341-SA1\App\PHP_HTML\answer\profile.php?id=<?php
             $select_query = "SELECT * FROM users WHERE user_name='" . $get_answers['answers_by_user'] . "'";
             $sql2 = mysqli_query($db, $select_query);
             $get_users = mysqli_fetch_assoc($sql2);

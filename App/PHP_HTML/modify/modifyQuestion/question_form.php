@@ -17,7 +17,7 @@
 <body>
 
 <?php
-$modifyingQuestion = !(strpos($question_action, '\SOEN341-SA1\App\PHP_HTML\modify\modifyQuestion\question_modify.php') === false);
+$modifyingQuestion = !(strpos($question_action, 'question_modify.php') === false);
 ?>
 
 <form id="question-form" method="POST" action="<?php echo "$question_action" ?>"> <!-- generic action on question for

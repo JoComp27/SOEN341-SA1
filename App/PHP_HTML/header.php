@@ -61,7 +61,7 @@ include('sql_connector.php');
 
             </ul>
             <!--  calling search.php for issue#68 -->
-            <form action="search/search.php" method="GET">
+            <form action="\SOEN341-SA1\App\PHP_HTML\search\search.php" method="GET">
                 <input type="text" name="query"/>
                 <input type="submit" value="Search"/>
             </form>

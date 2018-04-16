@@ -29,10 +29,10 @@
                 if (strlen($query) >= $min_length) { // if query length is more or equal minimum length then
 
                     $search_query = "select questions.question_id,questions.question_view_count,questions.question_title, questions.question_date, 
-							questions.question_upvote, ifnull(count(answers.answers_id),0) as total
+							questions.question_upvotes, ifnull(count(answers.answers_id),0) as total
 							from questions left join answers on (answers.reply_questions = questions.question_id)
 							where (questions.question_description like '%$query%' OR questions.question_title like '%$query%') 
-							group by questions.question_id,questions.question_view_count,questions.question_title, questions.question_date, questions.question_upvote;";
+							group by questions.question_id,questions.question_view_count,questions.question_title, questions.question_date, questions.question_upvotes;";
                     $question_data = mysqli_query($db, $search_query) or die(mysqli_error($db));
 
                     if (mysqli_num_rows($question_data) == 0) {
@@ -44,7 +44,7 @@
                             echo '<tr>
               <td>
                 <div class = "col-md-1">
-                  <p class = "top-questions-stats">' . $row["question_upvote"] . '</p>
+                  <p class = "top-questions-stats">' . $row["question_upvotes"] . '</p>
                 </div>
                 <div class = "col-md-1">
                   <p class = "top-questions-stats">' . $row["total"] . '</p>
