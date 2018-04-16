@@ -103,7 +103,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase
         $data = mysqli_fetch_assoc($question_data);
 
 
-        //Testing user not sign in and not submitted a question
+        //Testing user not sign in and not submitted a question ***************************************
         $baseline_count1 = mysqli_num_rows($db->query("SELECT * FROM answers"));
         $baseline_count2 = mysqli_num_rows($db->query("SELECT * FROM notification"));
         $baseline_count3 = mysqli_num_rows($db->query("SELECT * FROM notification_user"));
@@ -119,7 +119,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($comparator_count2 == ($baseline_count2));
         $this->assertTrue($comparator_count3 == ($baseline_count3));
 
-        //Testing user not sign in and submitted a request
+        //Testing user not sign in and submitted a request      ***************************************
 
         $mock_POST = [
             "submit" => true,
@@ -142,7 +142,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($comparator_count2 == ($baseline_count2));
         $this->assertTrue($comparator_count3 == ($baseline_count3));
 
-        //Testing user sign in and not submitted a request
+        //Testing user sign in and not submitted a request        ***************************************
 
         $_SESSION['user_id'] = '1';
         $_SESSION['user_name'] = 'test_user';
@@ -161,7 +161,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($comparator_count2 == ($baseline_count2));
         $this->assertTrue($comparator_count3 == ($baseline_count3));
 
-        //Testing user sign in and submitted a request
+        //Testing user sign in and submitted a request           ***************************************
         $mock_POST = [
             "submit" => true,
         ];
@@ -183,8 +183,7 @@ class AnswerTest extends PHPUnit\Framework\TestCase
     }
 
     public function source_code($mock_POST, $mock_REQUEST, $db, $data, $qus_id)
-    {
-
+    {//Source code from answer.php with $_POST changed to $mock_POST, $REQUEST to $mock_REQUEST
 
         if (isset($mock_POST['submit']) && isset($_SESSION['user_id'])) {
             $answer = mysqli_real_escape_string($db, $mock_REQUEST['answer']);
