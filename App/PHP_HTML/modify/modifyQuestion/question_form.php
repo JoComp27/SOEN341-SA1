@@ -3,6 +3,8 @@
 <html>
 <head>
     <script type="text/javascript" src="\SOEN341-SA1\Library\nicEdit\nicEdit.js"></script>
+    <script type="text/javascript" src="/SOEN341-SA1/Library/bootstrapTags/bootstrap-tagsinput.js"></script>
+    <link rel="stylesheet" type="text/css" href="/SOEN341-SA1/Library/bootstrapTags/bootstrap-tagsinput.css">
     <script type="text/javascript">
         bkLib.onDomLoaded(function () {
             nicEditors.editors.push(
@@ -12,6 +14,8 @@
             );
         });
     </script>
+
+
 
 </head>
 <body>
