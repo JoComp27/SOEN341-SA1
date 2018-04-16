@@ -88,7 +88,7 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
             ];
 
             $mock_GET = [
-                "answer" => $id_of_answer_with_no_state,
+                "id" => $id_of_answer_with_no_state,
             ];
 
             $this->source_code($mock_POST, $mock_GET, $db);
@@ -108,7 +108,7 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
         ];
 
         $mock_GET = [
-            "answer" => $id_of_answer_with_no_state,
+            "id" => $id_of_answer_with_no_state,
         ];
 
         $this->source_code($mock_POST, $mock_GET, $db);
@@ -131,7 +131,7 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
         ];
 
         $mock_GET = [
-            "answer" => $id_of_answer_with_no_state,
+            "id" => $id_of_answer_with_no_state,
         ];
 
         $this->source_code($mock_POST, $mock_GET, $db);
@@ -156,7 +156,7 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
             ];
 
             $mock_GET = [
-                "answer" => $id_of_answer_with_refused_state,
+                "id" => $id_of_answer_with_refused_state,
             ];
 
             $this->source_code($mock_POST, $mock_GET, $db);
@@ -176,7 +176,7 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
             ];
 
             $mock_GET = [
-                "answer" => $id_of_answer_with_accepted_state,
+                "id" => $id_of_answer_with_accepted_state,
             ];
 
             $this->source_code($mock_POST, $mock_GET, $db);
