@@ -15,13 +15,11 @@ include('sql_connector.php');
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
           integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
           crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="/SOEN341-SA1/App/PHP_HTML/home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../BootstrapLibrary/BootstrapTags/bootstrap-tagsinput.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="question_ask_button.js"></script>
-    <script type="text/javascript" src="../../BootstrapLibrary/BootstrapTags/bootstrap-tagsinput.js"></script>
+    <script src="/SOEN341-SA1/App/PHP_HTML/question/question_ask_button.js"></script>
 
 </head>
 <body>
@@ -37,13 +35,13 @@ include('sql_connector.php');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home.php"><img id="img" src="login sample/logo.png"></a>
+            <a class="navbar-brand" href="/SOEN341-SA1/App/PHP_HTML/home.php"><img id="img" src="/SOEN341-SA1/App/PHP_HTML/loginSignUp/logo.png"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style=>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="home.php">Ask <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="/SOEN341-SA1/App/PHP_HTML/home.php">Ask <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Questions</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -61,14 +59,14 @@ include('sql_connector.php');
 
             </ul>
             <!--  calling search.php for issue#68 -->
-            <form action="search.php" method="GET">
+            <form action="\SOEN341-SA1\App\PHP_HTML\search\search.php" method="GET">
                 <input type="text" name="query"/>
                 <input type="submit" value="Search"/>
             </form>
             <?php if (!isset($_SESSION['auth'])) {
                 echo '<ul class="nav navbar-nav navbar-right">
-                <li><a href="login sample/sign_in_merge_options.php">Sign In</a></li>
-                <li><a href="login sample/sign_up.php">Sign Up</a></li>
+                <li><a href="/SOEN341-SA1/App/PHP_HTML/loginSignUp/sign_in_merge_options.php">Sign In</a></li>
+                <li><a href="/SOEN341-SA1/App/PHP_HTML/loginSignUp/sign_up.php">Sign Up</a></li>
             </ul>';
             } else {
                 $id = $_SESSION['user_id'];
@@ -76,14 +74,14 @@ include('sql_connector.php');
                 $notification_count = mysqli_fetch_assoc(mysqli_query($db, $sql))['result'];
                 echo '<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"> Welcome ' . strtoupper($_SESSION['user_name']) . '</a></li>
-                <li><a href="settings.php">Settings</a></li>
-                <li><a href="profile.php"> Profile</a></li>
-				<li><a href="login sample/sign_in_already_signed.php">Log Off</a></li>
+                <li><a href="/SOEN341-SA1/App/PHP_HTML/settings/settings.php">Settings</a></li>
+                <li><a href="/SOEN341-SA1/App/PHP_HTML/profile/profile.php"> Profile</a></li>
+				<li><a href="/SOEN341-SA1/App/PHP_HTML/loginSignUp/sign_in_already_signed.php">Log Off</a></li>
             </ul>';
                 echo '<button class="navbar-toggle collapsed">...</button>
 
 				  <div class="nav navbar-brand pull-right">
-					  <a href="notification.php" >
+					  <a href="/SOEN341-SA1/App/PHP_HTML/notification/notification.php" >
 						<i class="glyphicon glyphicon-bell"></i>
 						<span class="label label-danger">' . $notification_count . '</span>
 					  </a>

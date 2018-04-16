@@ -50,7 +50,7 @@ SecurimageAudio.prototype.init = function () {
             this.html5Support = false;
             return;
         } else if ('' == this.audioElement.canPlayType('audio/wav')) {
-            // check for mpeg <source> tag - if not found then fallback to flash
+            // check for mpeg <source> tags - if not found then fallback to flash
             var sources = this.audioElement.getElementsByTagName('source');
             var mp3support = false;
             var type;
@@ -72,7 +72,7 @@ SecurimageAudio.prototype.init = function () {
                 this.html5Support = false;
 
                 if (this.flashFallback) {
-                    // ie9+? bug - flash object does not display when moved from within audio tag to other dom node
+                    // ie9+? bug - flash object does not display when moved from within audio tags to other dom node
                     var newObjAu = document.createElement('object');
                     var newParams = document.createElement('param');
                     var oldParams = objAu.getElementsByTagName('param');

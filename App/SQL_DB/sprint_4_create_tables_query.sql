@@ -134,7 +134,7 @@ CREATE TABLE tags (
 DROP TABLE IF EXISTS question_tags;
 CREATE TABLE question_tags (
   question_id INT(16) NOT NULL, -- foreign key from table questions
-  tag_id      INT(16) NOT NULL, -- foreign key from table tag
+  tag_id      INT(16) NOT NULL, -- foreign key from table tags
   --  FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE RESTRICT ON UPDATE CASCADE,
   --  FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON DELETE RESTRICT ON UPDATE CASCADE,
   PRIMARY KEY (question_id, tag_id)

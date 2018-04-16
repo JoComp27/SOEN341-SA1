@@ -85,14 +85,14 @@
     <img style="float: left; padding-right: 5px" id="captcha_image2"
          src="securimage_show.php?<?php echo md5(uniqid(time)) ?>" alt="CAPTCHA Image">
 
-    <!-- invisible div containing captcha audio tag, and optional flash fallback code -->
+    <!-- invisible div containing captcha audio tags, and optional flash fallback code -->
     <div id="captcha_image_audio_div2">
-        <!-- the audio tag -->
+        <!-- the audio tags -->
         <audio id="captcha_image2_audio" preload="none" style="display: none">
-            <!-- mp3 source tag - uncomment if you have LAME installed -->
+            <!-- mp3 source tags - uncomment if you have LAME installed -->
             <!-- <source id="captcha_image2_source_mp3" src="securimage_play.php?id=<?php echo uniqid() ?>&amp;format=mp3" type="audio/mpeg"> -->
 
-            <!-- wav source tag -->
+            <!-- wav source tags -->
             <source id="captcha_image2_source_wav" src="securimage_play.php?id=<?php echo uniqid() ?>" type="audio/wav">
 
             <!-- flash player fallback - delete if you don't want flash fallback -->
