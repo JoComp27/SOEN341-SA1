@@ -57,7 +57,7 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
         $refused = 0;
         $accepted = 2;
 
-        $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by, answers_by_user, answer_state) values (1,'answer',NOW(), 1, 'user', 1)";
+        $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by, answers_by_user) values (1,'answer',NOW(), 1, 'user')";
         $db->query($sql);
 
         $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by, answers_by_user, answer_state) 
@@ -204,7 +204,7 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
             $answer = mysqli_fetch_assoc($sql);
             $current_state = $answer['answer_state'];
 
-            if ($current_state == 2 && ($state == 0 || $state == 2)) { // state should only be able to be set to accepted or refused and only if it has no state
+            if ($current_state == 1 && ($state == 0 || $state == 2)) { // state should only be able to be set to accepted or refused and only if it has no state
                 $query = "UPDATE answers SET answer_state = $state WHERE answers_id = '$ans_id'";
                 mysqli_query($db, $query) or die(mysqli_error($db));
             }

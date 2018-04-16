@@ -12,7 +12,7 @@ if (isset ($_POST['state'])) {
     $answer = mysqli_fetch_assoc($sql);
     $current_state = $answer['answer_state'];
 
-    if ($current_state == 2 && ($state == 0 || $state == 2)) { // state should only be able to be set to accepted or refused and only if it has no state
+    if ($current_state == 1 && ($state == 0 || $state == 2)) { // state should only be able to be set to accepted or refused and only if it has no state
         $query = "UPDATE answers SET answer_state = $state WHERE answers_id = '$ans_id'";
         mysqli_query($db, $query) or die(mysqli_error($db));
     }
