@@ -57,7 +57,7 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
         $refused = 0;
         $accepted = 2;
 
-        $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by, answers_by_user) values (1,'answer',NOW(), 1, 'user')";
+        $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by, answers_by_user, answer_state) values (1,'answer',NOW(), 1, 'user', 1)";
         $db->query($sql);
 
         $sql = "insert into answers (reply_questions,answers_content,answers_date, reply_by, answers_by_user, answer_state) 
@@ -73,10 +73,10 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
 
 
         //Testing an answer has no state (== 1) when created
-//        $select_query = "select * from answers where answers_id = '$id_of_answer_with_no_state'";
-//        $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
-//        $answer_from_stub = mysqli_fetch_assoc($sql);
-//        $this->assertEquals($no_state, $answer_from_stub['answer_state']);
+        $select_query = "select * from answers where answers_id = '$id_of_answer_with_no_state'";
+        $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
+        $answer_from_stub = mysqli_fetch_assoc($sql);
+        $this->assertEquals($no_state, $answer_from_stub['answer_state']);
 
 
         //Testing that an answer state won't change given invalid values
