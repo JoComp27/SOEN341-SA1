@@ -1,5 +1,5 @@
 <!-- PURPOSE: Shows the modify answer button which allows user to modify an answer -->
-<script src="../modifyAnswer/answer_form.js"></script>
+<script src="../modify/modifyAnswer/answer_form.js"></script>
 
 <input type="button" value="Modify" onclick="toggleModifyAnswerForm(<?php echo $a ?>)">
 
