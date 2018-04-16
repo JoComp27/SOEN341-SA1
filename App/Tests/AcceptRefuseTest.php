@@ -75,8 +75,8 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
         //Testing an answer has no state (== 1) when created
         $select_query = "select * from answers where answers_id = '$id_of_answer_with_no_state'";
         $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
-        $answer = mysqli_fetch_assoc($sql);
-        $this->assertEquals($no_state, $answer['answer_state']);
+        $answer_from_stub = mysqli_fetch_assoc($sql);
+        $this->assertEquals($no_state, $answer_from_stub['answer_state']);
 
 
         //Testing that an answer state won't change given invalid values
@@ -91,13 +91,14 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
                 "answer" => $id_of_answer_with_no_state,
             ];
 
+            $this->source_code($mock_POST, $mock_GET, $db);
+
             //get answer
             $select_query = "select * from answers where answers_id = '$id_of_answer_with_no_state'";
             $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
-            $answer = mysqli_fetch_assoc($sql);
+            $answer_from_stub = mysqli_fetch_assoc($sql);
 
-            $this->source_code($mock_POST, $mock_GET, $db);
-            $this->assertEquals($no_state, $answer['answer_state']);
+            $this->assertEquals($no_state, $answer_from_stub['answer_state']);
         }
 
 
@@ -111,7 +112,13 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
         ];
 
         $this->source_code($mock_POST, $mock_GET, $db);
-        $this->assertEquals($accepted, $answer['answer_state']);
+
+        //get answer
+        $select_query = "select * from answers where answers_id = '$id_of_answer_with_no_state'";
+        $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
+        $answer_from_stub = mysqli_fetch_assoc($sql);
+
+        $this->assertEquals($accepted, $answer_from_stub['answer_state']);
 
         //reset the answer with no state to have no state
         $query = "UPDATE answers SET answer_state = $no_state WHERE answers_id = '$id_of_answer_with_no_state'";
@@ -128,7 +135,13 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
         ];
 
         $this->source_code($mock_POST, $mock_GET, $db);
-        $this->assertEquals($refused, $answer['answer_state']);
+
+        //get answer
+        $select_query = "select * from answers where answers_id = '$id_of_answer_with_no_state'";
+        $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
+        $answer_from_stub = mysqli_fetch_assoc($sql);
+
+        $this->assertEquals($refused, $answer_from_stub['answer_state']);
 
         //reset the answer with no state to have no state
         $query = "UPDATE answers SET answer_state = $no_state WHERE answers_id = '$id_of_answer_with_no_state'";
@@ -146,13 +159,14 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
                 "answer" => $id_of_answer_with_refused_state,
             ];
 
+            $this->source_code($mock_POST, $mock_GET, $db);
+
             //get answer
             $select_query = "select * from answers where answers_id = '$id_of_answer_with_refused_state'";
             $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
-            $answer = mysqli_fetch_assoc($sql);
+            $answer_from_stub = mysqli_fetch_assoc($sql);
 
-            $this->source_code($mock_POST, $mock_GET, $db);
-            $this->assertEquals($refused, $answer['answer_state']);
+            $this->assertEquals($refused, $answer_from_stub['answer_state']);
         }
 
         // for refused state
@@ -165,13 +179,14 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
                 "answer" => $id_of_answer_with_accepted_state,
             ];
 
+            $this->source_code($mock_POST, $mock_GET, $db);
+
             //get answer
             $select_query = "select * from answers where answers_id = '$id_of_answer_with_accepted_state'";
             $sql = mysqli_query($db, $select_query) or die(mysqli_error($db));
-            $answer = mysqli_fetch_assoc($sql);
+            $answer_from_stub = mysqli_fetch_assoc($sql);
 
-            $this->source_code($mock_POST, $mock_GET, $db);
-            $this->assertEquals($accepted, $answer['answer_state']);
+            $this->assertEquals($accepted, $answer_from_stub['answer_state']);
         }
 
     }
