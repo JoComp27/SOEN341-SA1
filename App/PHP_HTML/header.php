@@ -17,11 +17,9 @@ include('sql_connector.php');
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/SOEN341-SA1/App/PHP_HTML/home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/SOEN341-SA1/Library/bootstrapTags/bootstrap-tagsinput.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/SOEN341-SA1/App/PHP_HTML/question/question_ask_button.js"></script>
-    <script type="text/javascript" src="/SOEN341-SA1/Library/bootstrapTags/bootstrap-tagsinput.js"></script>
 
 </head>
 <body>
