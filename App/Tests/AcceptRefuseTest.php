@@ -64,9 +64,9 @@ class AcceptRefuseTest extends PHPUnit\Framework\TestCase
                 values (1,'answer',NOW(), 1, 'user', $refused), (1,'answer',NOW(), 1, 'user', $accepted)";
         $db->query($sql);
 
-        $id_of_answer_with_no_state = 0;
-        $id_of_answer_with_refused_state = 1;
-        $id_of_answer_with_accepted_state = 2;
+        $id_of_answer_with_no_state = 1;
+        $id_of_answer_with_refused_state = 2;
+        $id_of_answer_with_accepted_state = 3;
 
 
         // TESTS
